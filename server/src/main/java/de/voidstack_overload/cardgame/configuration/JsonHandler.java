@@ -2,6 +2,8 @@ package de.voidstack_overload.cardgame.configuration;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import de.voidstack_overload.cardgame.logging.StandardLogger;
+import de.voidstack_overload.cardgame.objects.ExitCode;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -16,6 +18,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.function.Supplier;
 
 public abstract class JsonHandler<T> {
+    private static final StandardLogger LOGGER = new StandardLogger("JsonHandler");
     protected static final Gson GSON = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
 
     protected final Path file;
@@ -55,9 +58,11 @@ public abstract class JsonHandler<T> {
     public void init() throws IOException {
         try {
             this.writeLock.lock();
-            if (this.init) {
-                throw new IllegalStateException("Init was already called");
-            }
+
+            if (this.init) throw new IllegalStateException("Init was already called");
+
+            LOGGER.log("Reading %s...", this.file.getFileName().toString());
+
             this.init = true;
             File file = new File(this.file.toString());
             if (file.getParentFile() != null) file.getParentFile().mkdirs();
@@ -84,13 +89,15 @@ public abstract class JsonHandler<T> {
             this.needsSaving.set(false);
             this.saveFile();
         } catch (IOException ex) {
-            System.exit(2);
+            LOGGER.error("Forced save encountered fatal error. Terminating...");
+            System.exit(ExitCode.CONFIG_ERROR.getCode());
         }
     }
 
     protected T getData() {
         if (this.data == null) {
-            System.exit(2);
+            LOGGER.error("Data is not available. Terminating...");
+            System.exit(ExitCode.CONFIG_ERROR.getCode());
         }
         return this.data;
     }
@@ -98,6 +105,7 @@ public abstract class JsonHandler<T> {
     private void saveFile() throws IOException {
         try {
             this.writeLock.lock();
+            LOGGER.log("Saving %s...", this.file.getFileName().toString());
             writeFile(this.file, this.getData());
         } finally {
             this.writeLock.unlock();
@@ -111,7 +119,9 @@ public abstract class JsonHandler<T> {
         try (BufferedReader reader = Files.newBufferedReader(file, StandardCharsets.UTF_8)) {
             return Optional.of(GSON.fromJson(reader, dataClass));
         } catch (Exception ex) {
-            System.exit(2);
+            LOGGER.error("Could not read file: %s", file);
+            LOGGER.error("This likely indicates the file is corrupted. Full stacktrace:", ex);
+            System.exit(ExitCode.CONFIG_ERROR.getCode());
             return Optional.empty();
         }
     }
@@ -123,7 +133,8 @@ public abstract class JsonHandler<T> {
                 GSON.toJson(config, writer);
             }
         } catch (Exception ex) {
-            System.exit(2);
+            LOGGER.log("Could not write config file: %s", file);
+            System.exit(ExitCode.CONFIG_ERROR.getCode());
         }
     }
 

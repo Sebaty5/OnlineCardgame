@@ -1,9 +1,13 @@
 package de.voidstack_overload.cardgame.configuration;
 
+import de.voidstack_overload.cardgame.logging.StandardLogger;
+
 import java.io.IOException;
 import java.nio.file.Paths;
 
 public class Config extends JsonHandler<Config.Data> {
+    protected static final StandardLogger LOGGER = new StandardLogger("Config");
+
     public static final Config INSTANCE;
 
     static {
@@ -25,9 +29,7 @@ public class Config extends JsonHandler<Config.Data> {
         }
     }
     @Override
-    public void init() {}
-
-    public void load() {
+    public void init() {
         this.serverPort = fetchServerPort();
         forceSave();
     }
