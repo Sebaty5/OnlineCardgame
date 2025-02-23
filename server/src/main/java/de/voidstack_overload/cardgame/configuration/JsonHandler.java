@@ -61,7 +61,7 @@ public abstract class JsonHandler<T> {
 
             if (this.init) throw new IllegalStateException("Init was already called");
 
-            LOGGER.log("Reading %s...", this.file.getFileName().toString());
+            LOGGER.log(String.format("Reading %s...", this.file.getFileName().toString()));
 
             this.init = true;
             File file = new File(this.file.toString());
@@ -105,7 +105,7 @@ public abstract class JsonHandler<T> {
     private void saveFile() throws IOException {
         try {
             this.writeLock.lock();
-            LOGGER.log("Saving %s...", this.file.getFileName().toString());
+            LOGGER.log(String.format("Saving %s...", this.file.getFileName().toString()));
             writeFile(this.file, this.getData());
         } finally {
             this.writeLock.unlock();
@@ -119,7 +119,7 @@ public abstract class JsonHandler<T> {
         try (BufferedReader reader = Files.newBufferedReader(file, StandardCharsets.UTF_8)) {
             return Optional.of(GSON.fromJson(reader, dataClass));
         } catch (Exception ex) {
-            LOGGER.error("Could not read file: %s", file);
+            LOGGER.error(String.format("Could not read file: %s", file));
             LOGGER.error("This likely indicates the file is corrupted. Full stacktrace:", ex);
             System.exit(ExitCode.CONFIG_ERROR.getCode());
             return Optional.empty();
@@ -133,7 +133,7 @@ public abstract class JsonHandler<T> {
                 GSON.toJson(config, writer);
             }
         } catch (Exception ex) {
-            LOGGER.log("Could not write config file: %s", file);
+            LOGGER.error(String.format("Could not write config file: %s", file));
             System.exit(ExitCode.CONFIG_ERROR.getCode());
         }
     }
