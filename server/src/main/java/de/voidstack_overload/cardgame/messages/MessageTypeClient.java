@@ -1,0 +1,19 @@
+package de.voidstack_overload.cardgame.messages;
+
+public enum MessageTypeClient {
+    //Account
+    ACCOUNT_LOGIN,
+    ACCOUNT_LOGOUT,
+    ACCOUNT_REGISTER,
+    //Lobby
+    LOBBY_CREATE,
+    LOBBY_JOIN,
+    LOBBY_LEAVE,
+    LOBBY_UPDATE,
+    LOBBY_LIST,
+    //GAME
+    GAME_PLAY,
+    GAME_PASS,
+    //Invalid
+    INVALID,
+}
