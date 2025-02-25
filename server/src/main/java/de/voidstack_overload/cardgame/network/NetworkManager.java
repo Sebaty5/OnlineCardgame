@@ -10,7 +10,7 @@ import org.java_websocket.server.WebSocketServer;
 import java.net.InetSocketAddress;
 
 public class NetworkManager extends WebSocketServer {
-    protected static final StandardLogger LOGGER = new StandardLogger("NetworkManager");
+    private static final StandardLogger LOGGER = new StandardLogger("NetworkManager");
 
     public static final NetworkManager INSTANCE = new NetworkManager(Config.INSTANCE.getServerPort());
 
@@ -35,41 +35,7 @@ public class NetworkManager extends WebSocketServer {
 
     @Override
     public void onMessage(WebSocket clientConnection, String message) {
-        Player player = PlayerManager.INSTANCE.getPlayer(clientConnection);
-        if (player == null) {
-            clientConnection.close(1008, "Client not registered!");
-        }
-        LOGGER.log("Received: " + message);
-        String[] parts = message.split(" ", 2);
-        String command = parts[0].toUpperCase();
-
-        switch (command) {
-            case "CREATE_LOBBY":
-                if(LobbyManager.INSTANCE.createLobby(player, "noLobbyName", 2, 0)) {
-                    clientConnection.send("lobby created");
-                } else {
-                    clientConnection.send("lobby creation failed");
-                }
-                break;
-            case "VIEW_LOBBIES":
-                clientConnection.send(LobbyManager.INSTANCE.getLobbies());
-                break;
-            case "JOIN_LOBBY":
-                if (parts.length > 1) {
-                    if(LobbyManager.INSTANCE.joinLobby(player, parts[1])) {
-                        clientConnection.send("joined lobby");
-                    } else {
-                        clientConnection.send("lobby is in an ongoing game");
-                    }
-                }
-                break;
-            case "LEAVE_LOBBY":
-                LobbyManager.INSTANCE.leaveLobby(player);
-                clientConnection.send("lobby has been left");
-                break;
-            default:
-                clientConnection.send("Unknown command");
-        }
+        clientConnection.send(MessageHandler.INSTANCE.handleMessage(message, clientConnection).response());
     }
 
     @Override

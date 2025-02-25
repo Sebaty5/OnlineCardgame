@@ -23,5 +23,6 @@ public enum MessageTypeServer {
     //Game Broadcasts
     GAME_STATE,
     //Invalid
-    INVALID_REPLY,
+    UNKNOWN_CASE,
+    ERROR,
 }

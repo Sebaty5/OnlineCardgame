@@ -15,5 +15,13 @@ public enum MessageTypeClient {
     GAME_PLAY,
     GAME_PASS,
     //Invalid
-    INVALID,
+    INVALID;
+
+    public static MessageTypeClient fromString(String action) {
+        try {
+            return MessageTypeClient.valueOf(action.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            return INVALID;
+        }
+    }
 }

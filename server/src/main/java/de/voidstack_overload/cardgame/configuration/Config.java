@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.nio.file.Paths;
 
 public class Config extends JsonHandler<Config.Data> {
-    protected static final StandardLogger LOGGER = new StandardLogger("Config");
+    private static final StandardLogger LOGGER = new StandardLogger("Config");
 
     public static final Config INSTANCE;
 
