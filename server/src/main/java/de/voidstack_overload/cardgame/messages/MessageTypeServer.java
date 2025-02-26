@@ -8,6 +8,7 @@ public enum MessageTypeServer {
     ACCOUNT_REGISTER_DENY,
     //Lobby Client interaction
     LOBBY_CREATE_ACCEPT,
+    LOBBY_CREATE_DENY,
     LOBBY_JOIN_ACCEPT,
     LOBBY_JOIN_DENY,
     LOBBY_LEAVE_ACKNOWLEDGE,
