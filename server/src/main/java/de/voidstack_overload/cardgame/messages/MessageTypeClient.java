@@ -18,6 +18,9 @@ public enum MessageTypeClient {
     INVALID;
 
     public static MessageTypeClient fromString(String action) {
+        if(action == null) {
+            return INVALID;
+        }
         try {
             return MessageTypeClient.valueOf(action.toUpperCase());
         } catch (IllegalArgumentException e) {
