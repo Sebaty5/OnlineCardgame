@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * The player manager is responsible for the registration of players and their association with a network connection.
- * @author Sebastian Kiel (Sebayt5)
+ * @author Sebastian Kiel (Sebaty5)
  */
 public class PlayerManager {
     /**
