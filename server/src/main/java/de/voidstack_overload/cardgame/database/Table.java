@@ -1,11 +1,10 @@
 package de.voidstack_overload.cardgame.database;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Table {
-    private String tableName;
-    private ArrayList<Field> fields;
+    private final String tableName;
+    private final ArrayList<Field> fields;
     private Table(Builder tableBuilder) {
         this.tableName = tableBuilder.tableName;
         this.fields = tableBuilder.fields;
@@ -23,17 +22,16 @@ public class Table {
 
     // ---------------------------------------------------------------------------------------------------------- //
     public static class Builder {
-        private String tableName;
-        private ArrayList<Field> fields = new ArrayList<>();
+        private final String tableName;
+        private final ArrayList<Field> fields = new ArrayList<>();
 
         public Builder(String tableName){
             this.tableName = tableName;
         }
 
-        public Builder addField(String fieldName, FieldType fieldType, Boolean isPrimary, Boolean isNotNull) {
+        public void addField(String fieldName, FieldType fieldType, Boolean isPrimary, Boolean isAutoincrement, Boolean isNotNull) {
             if(isPrimary && hasPrimary()) throw new RuntimeException("Tried to add second primary-key in addField during table-building.");
-            this.fields.add(new Field(fieldName, fieldType, isPrimary, isNotNull));
-            return this;
+            this.fields.add(new Field(fieldName, fieldType, isPrimary, isAutoincrement, isNotNull));
         }
 
         public Table build() {

@@ -2,9 +2,9 @@ package de.voidstack_overload.cardgame.actions;
 
 import com.google.gson.JsonObject;
 import de.voidstack_overload.cardgame.actions.messages.account.LoginAction;
+import de.voidstack_overload.cardgame.actions.messages.account.RegisterAction;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
 import de.voidstack_overload.cardgame.messages.MessageTypeClient;
-import de.voidstack_overload.cardgame.objects.Message;
 import de.voidstack_overload.cardgame.objects.Response;
 import de.voidstack_overload.cardgame.utility.ResponseBuilder;
 import org.java_websocket.WebSocket;
@@ -19,6 +19,7 @@ public class ActionManager {
 
     static {
         actions.put(MessageTypeClient.ACCOUNT_LOGIN, new LoginAction());
+        actions.put(MessageTypeClient.ACCOUNT_REGISTER, new RegisterAction());
     }
 
     public static Response handleAction(MessageTypeClient type, JsonObject json, WebSocket connection) {

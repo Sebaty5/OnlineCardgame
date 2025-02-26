@@ -24,13 +24,7 @@ public class NetworkManager extends WebSocketServer {
 
     @Override
     public void onOpen(WebSocket clientConnection, ClientHandshake handshake) {
-        if(PlayerManager.INSTANCE.addPlayer(new Player(clientConnection, "noUsernameDefined"))) {
-            LOGGER.log("New connection: " + clientConnection.getRemoteSocketAddress());
-            clientConnection.send("Welcome to the server!");
-        } else {
-            clientConnection.send("User already logged in!");
-        }
-
+        LOGGER.log("New connection: " + clientConnection.getRemoteSocketAddress());
     }
 
     @Override

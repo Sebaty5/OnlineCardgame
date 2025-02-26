@@ -1,15 +1,17 @@
 package de.voidstack_overload.cardgame.database;
 
 public class Field {
-    private String name;
-    private FieldType type;
-    private Boolean isPrimary;
-    private Boolean isNotNull;
+    private final String name;
+    private final FieldType type;
+    private final Boolean isPrimary;
+    private final Boolean isAutoIncrement;
+    private final Boolean isNotNull;
 
-    public Field(String name, FieldType type, Boolean isPrimary, Boolean isNotNull) {
+    public Field(String name, FieldType type, Boolean isPrimary, boolean isAutoIncrement, Boolean isNotNull) {
         this.name = name;
         this.type = type;
         this.isPrimary = isPrimary;
+        this.isAutoIncrement = isAutoIncrement;
         this.isNotNull = isNotNull;
     }
 
@@ -25,7 +27,12 @@ public class Field {
         return isPrimary;
     }
 
+    public boolean getAutoIncrement() {
+        return isAutoIncrement;
+    }
     public Boolean getNotNull() {
         return isNotNull;
     }
+
+
 }

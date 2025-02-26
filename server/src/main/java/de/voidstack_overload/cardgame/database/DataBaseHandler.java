@@ -17,7 +17,7 @@ public class DataBaseHandler {
 
     public static final DataBaseHandler INSTANCE = new DataBaseHandler();
 
-    private ArrayList<String> tableNames = new ArrayList<>();
+    private final ArrayList<String> tableNames = new ArrayList<>();
 
     private DataBaseHandler()
     {
@@ -26,9 +26,9 @@ public class DataBaseHandler {
         LOGGER.log("Initializing database...");
         createNewDatabase();
         Table.Builder tableBuilder = new Table.Builder("users");
-        tableBuilder.addField("id", FieldType.LONG, true, true);
-        tableBuilder.addField("username", FieldType.STRING, false, true);
-        tableBuilder.addField("password", FieldType.STRING, false, true);
+        tableBuilder.addField("id", FieldType.INTEGER, true, true, true);
+        tableBuilder.addField("username", FieldType.STRING, false, false, true);
+        tableBuilder.addField("password", FieldType.STRING, false, false, true);
         Table table = tableBuilder.build();
         createNewTable(table);
         LOGGER.log("Database initialization complete.");
@@ -61,7 +61,12 @@ public class DataBaseHandler {
         for (Field field : table.getFields()) {
             if(i > 0)  sqlString.append(",");
             sqlString.append("\n").append(field.getName()).append(" ").append(field.getType().toString());
-            if(field.getPrimary()) sqlString.append(" PRIMARY KEY");
+            if(field.getPrimary()) {
+                sqlString.append(" PRIMARY KEY");
+                if(field.getType() == FieldType.INTEGER && field.getAutoIncrement()) {
+                    sqlString.append(" AUTOINCREMENT");
+                }
+            }
             if(field.getNotNull()) sqlString.append(" NOT NULL");
             i++;
         }
@@ -118,7 +123,18 @@ public class DataBaseHandler {
         return list;
     }
 
+    public boolean isRegisteredUser(String username) {
+        return !executeQuerySQL("SELECT * FROM users WHERE username = ?", username).isEmpty();
+    }
 
+    public boolean isValidLogin(String username, String password) {
+        return !executeQuerySQL("SELECT * FROM users WHERE username = ? AND password = ?", username, password).isEmpty();
+    }
+
+
+    public void registerUser(String username, String password) {
+        executeSQL("INSERT INTO users (username, password) VALUES (?, ?)", username, password);
+    }
 
 
 }

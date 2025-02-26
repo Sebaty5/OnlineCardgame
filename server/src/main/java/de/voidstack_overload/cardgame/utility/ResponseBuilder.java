@@ -4,17 +4,20 @@ import de.voidstack_overload.cardgame.messages.MessageTypeServer;
 import de.voidstack_overload.cardgame.objects.Response;
 
 public class ResponseBuilder {
-    public static Response errorResponse(String error) {
-        JsonBuilder builder = new JsonBuilder();
-        builder.add("type", "ERROR");
-        builder.add("messageJson", error);
-        return new Response(MessageTypeServer.ERROR, builder.toString());
+    public static Response build(MessageTypeServer type, JsonBuilder builder) {
+        builder.add("type", type.name());
+        return new Response(type, builder.toString());
     }
 
-    public static Response unhandledCaseResponse(String type) {
+    public static Response errorResponse(String error) {
         JsonBuilder builder = new JsonBuilder();
-        builder.add("type", "UNKNOWN_CASE");
-        builder.add("messageJson", "Unhandled case. Server does not support this request type: " + type);
-        return new Response(MessageTypeServer.UNKNOWN_CASE, builder.toString());
+        builder.add("errorMessage", error);
+        return build(MessageTypeServer.ERROR, builder);
+    }
+
+    public static Response unhandledCaseResponse(String typeName) {
+        JsonBuilder builder = new JsonBuilder();
+        builder.add("errorMessage", "Unhandled case. Server does not support this request type: " + typeName);
+        return build(MessageTypeServer.UNKNOWN_CASE, builder);
     }
 }

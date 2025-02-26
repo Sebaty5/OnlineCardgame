@@ -1,5 +1,6 @@
 package de.voidstack_overload.cardgame.network;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
@@ -25,8 +26,7 @@ public class MessageHandler {
         if (invalidMessageResponse != null){
             return invalidMessageResponse;
         }
-
-        String type = json.get("type").getAsString();
+        String type = json != null ? json.get("type").getAsString() : null;
         MessageTypeClient messageType = MessageTypeClient.fromString(type);
         return ActionManager.handleAction(messageType, json, connection);
     }
@@ -43,9 +43,13 @@ public class MessageHandler {
 
     private JsonObject parseMessage(String message) {
         try {
-            return JsonParser.parseString(message).getAsJsonObject();
+            JsonElement jsonElement = JsonParser.parseString(message);
+            if (jsonElement.isJsonObject()) {
+                return jsonElement.getAsJsonObject();
+            }
         } catch (JsonSyntaxException | NullPointerException e) {
             return null;
         }
+        return null;
     }
 }
