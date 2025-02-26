@@ -25,10 +25,10 @@ public class DataBaseHandler {
         if (file.getParentFile() != null) file.getParentFile().mkdirs();
         LOGGER.log("Initializing database...");
         createNewDatabase();
-        Table.Builder tableBuilder = new Table.Builder("metaData");
+        Table.Builder tableBuilder = new Table.Builder("users");
         tableBuilder.addField("id", FieldType.LONG, true, true);
-        tableBuilder.addField("infiniteVersion", FieldType.STRING, false, true);
-        tableBuilder.addField("isIndexed", FieldType.BOOLEAN, false, false);
+        tableBuilder.addField("username", FieldType.STRING, false, true);
+        tableBuilder.addField("password", FieldType.STRING, false, true);
         Table table = tableBuilder.build();
         createNewTable(table);
         LOGGER.log("Database initialization complete.");
@@ -69,11 +69,15 @@ public class DataBaseHandler {
         if(executeSQL(sqlString.toString())) tableNames.add(table.getTableName());
     }
 
-    public boolean executeSQL(String sqlString)
+    public boolean executeSQL(String sqlString, Object... params)
     {
         try(Connection connection = DriverManager.getConnection(dbUrl)) {
-            Statement statement = connection.createStatement();
-            statement.execute(sqlString);
+            PreparedStatement statement = connection.prepareStatement(sqlString);
+                // Bind parameters dynamically
+                for (int i = 0; i < params.length; i++) {
+                    statement.setObject(i + 1, params[i]); // Indexes start from 1 in JDBC
+                }
+            statement.execute();
             return true;
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
@@ -82,11 +86,15 @@ public class DataBaseHandler {
         return false;
     }
 
-    public List<Map<String, Object>> executeQuerySQL(String sqlString)
+    public List<Map<String, Object>> executeQuerySQL(String sqlString, Object... params)
     {
         try(Connection connection = DriverManager.getConnection(dbUrl)) {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sqlString);
+            PreparedStatement statement = connection.prepareStatement(sqlString);
+            // Bind parameters dynamically
+            for (int i = 0; i < params.length; i++) {
+                statement.setObject(i + 1, params[i]); // Indexes start from 1 in JDBC
+            }
+            ResultSet resultSet = statement.executeQuery();
 
             return resultSetToArrayList(resultSet);
         } catch (SQLException e) {
@@ -108,31 +116,6 @@ public class DataBaseHandler {
             list.add(row);
         }
         return list;
-    }
-
-    public void setInfiniteVersion(String version) {
-        if(retrieveInfiniteVersion().equals(version)) return;
-        String sql = String.format("INSERT INTO metaData (id, infiniteVersion) VALUES (1, \"%s\") ON CONFLICT(id) DO UPDATE SET infiniteVersion = \"%s\"", version, version);
-        executeSQL(sql);
-    }
-
-    public String retrieveInfiniteVersion() {
-        String sql = "SELECT * FROM metaData LIMIT 1;";
-        List<Map<String, Object>> results = DataBaseHandler.INSTANCE.executeQuerySQL(sql);
-        if(results.isEmpty()) return "";
-        return results.get(0).get("infiniteVersion").toString();
-    }
-
-    public void setPrimalIndexation() {
-        String sql = "UPDATE metaData SET isIndexed = \"true\" WHERE id = 1";
-        executeSQL(sql);
-    }
-
-    public Boolean retrievePrimalIndexation() {
-        String sql = "SELECT * FROM metaData LIMIT 1;";
-        List<Map<String, Object>> results = DataBaseHandler.INSTANCE.executeQuerySQL(sql);
-        if(results.isEmpty()) return false;
-        return results.get(0).get("isIndexed") != null;
     }
 
 
