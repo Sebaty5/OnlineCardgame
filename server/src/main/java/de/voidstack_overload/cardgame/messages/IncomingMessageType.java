@@ -1,6 +1,6 @@
 package de.voidstack_overload.cardgame.messages;
 
-public enum MessageTypeClient {
+public enum IncomingMessageType {
     //Account
     ACCOUNT_LOGIN,
     ACCOUNT_LOGOUT,
@@ -17,12 +17,12 @@ public enum MessageTypeClient {
     //Invalid
     INVALID;
 
-    public static MessageTypeClient fromString(String action) {
+    public static IncomingMessageType fromString(String action) {
         if(action == null) {
             return INVALID;
         }
         try {
-            return MessageTypeClient.valueOf(action.toUpperCase());
+            return IncomingMessageType.valueOf(action.toUpperCase());
         } catch (IllegalArgumentException e) {
             return INVALID;
         }

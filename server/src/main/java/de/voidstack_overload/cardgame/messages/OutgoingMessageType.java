@@ -1,6 +1,6 @@
 package de.voidstack_overload.cardgame.messages;
 
-public enum MessageTypeServer {
+public enum OutgoingMessageType {
     //Account
     ACCOUNT_LOGIN_ACCEPT,
     ACCOUNT_LOGIN_DENY,
@@ -16,7 +16,7 @@ public enum MessageTypeServer {
     LOBBY_LIST_REPLY,
     //Lobby Broadcasts
     LOBBY_DATA,
-    LOBBY_NOTIFY,
+    LOBBY_BROADCAST,
     //Game Client interaction
     GAME_PLAY_ACCEPT,
     GAME_PLAY_DENY,
@@ -26,4 +26,5 @@ public enum MessageTypeServer {
     //Invalid
     UNKNOWN_CASE,
     ERROR,
+    INSUFFICIENT_PERMISSIONS,
 }

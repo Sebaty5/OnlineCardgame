@@ -3,6 +3,7 @@ package de.voidstack_overload.cardgame.network;
 import de.voidstack_overload.cardgame.configuration.Config;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
 import de.voidstack_overload.cardgame.objects.Player;
+import de.voidstack_overload.cardgame.objects.Response;
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
@@ -29,17 +30,20 @@ public class NetworkManager extends WebSocketServer {
 
     @Override
     public void onMessage(WebSocket clientConnection, String message) {
-        clientConnection.send(MessageHandler.INSTANCE.handleMessage(message, clientConnection).response());
+        Response response = MessageHandler.INSTANCE.handleMessage(message, clientConnection);
+        if(response != null) {
+            clientConnection.send(response.response());
+        }
     }
 
     @Override
     public void onClose(WebSocket clientConnection, int code, String reason, boolean remote) {
         Player player = PlayerManager.INSTANCE.getPlayer(clientConnection);
-        if (player == null) {
-            LOGGER.log("Client disconnected abnormally: " + clientConnection.getRemoteSocketAddress());
+        if (player != null) {
+            LOGGER.log("Player disconnected: " + player.username()+ " " + clientConnection.getRemoteSocketAddress());
+            LobbyManager.INSTANCE.leaveLobby(player);
             return;
         }
-        LobbyManager.INSTANCE.leaveLobby(player);
         LOGGER.log("Client disconnected: " + clientConnection.getRemoteSocketAddress());
     }
 

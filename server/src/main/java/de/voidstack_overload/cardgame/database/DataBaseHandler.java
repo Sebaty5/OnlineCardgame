@@ -55,6 +55,10 @@ public class DataBaseHandler {
         }
     }
 
+    public void init() {
+
+    }
+
     public void createNewTable(Table table) {
         StringBuilder sqlString = new StringBuilder("CREATE TABLE IF NOT EXISTS " + table.getTableName() + " (");
         int i = 0;

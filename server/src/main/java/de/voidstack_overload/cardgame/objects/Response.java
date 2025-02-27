@@ -1,6 +1,6 @@
 package de.voidstack_overload.cardgame.objects;
 
-import de.voidstack_overload.cardgame.messages.MessageTypeServer;
+import de.voidstack_overload.cardgame.messages.OutgoingMessageType;
 
-public record Response(MessageTypeServer responseType, String response) {
+public record Response(OutgoingMessageType responseType, String response) {
 }

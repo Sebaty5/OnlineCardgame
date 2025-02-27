@@ -6,7 +6,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 import de.voidstack_overload.cardgame.actions.ActionManager;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
-import de.voidstack_overload.cardgame.messages.MessageTypeClient;
+import de.voidstack_overload.cardgame.messages.IncomingMessageType;
 import de.voidstack_overload.cardgame.objects.Response;
 import de.voidstack_overload.cardgame.utility.ResponseBuilder;
 import org.java_websocket.WebSocket;
@@ -27,7 +27,7 @@ public class MessageHandler {
             return invalidMessageResponse;
         }
         String type = json != null ? json.get("type").getAsString() : null;
-        MessageTypeClient messageType = MessageTypeClient.fromString(type);
+        IncomingMessageType messageType = IncomingMessageType.fromString(type);
         return ActionManager.handleAction(messageType, json, connection);
     }
 

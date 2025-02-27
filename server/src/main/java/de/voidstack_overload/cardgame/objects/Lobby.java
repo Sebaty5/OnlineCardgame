@@ -1,6 +1,9 @@
 package de.voidstack_overload.cardgame.objects;
 
 import de.voidstack_overload.cardgame.logging.StandardLogger;
+import de.voidstack_overload.cardgame.messages.OutgoingMessageType;
+import de.voidstack_overload.cardgame.utility.JsonBuilder;
+import de.voidstack_overload.cardgame.utility.ResponseBuilder;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -72,6 +75,10 @@ public class Lobby {
         broadcast("Player left lobby: " + id);
     }
 
+    public String getId() {
+        return this.id;
+    }
+
     public boolean isEmpty() {
         return players.isEmpty();
     }
@@ -89,7 +96,9 @@ public class Lobby {
     }
 
     private void broadcast(String message) {
-        players.forEach(player -> player.socket().send(message));
+        JsonBuilder json = new JsonBuilder();
+        json.add("message", message);
+        players.forEach(player -> player.socket().send(ResponseBuilder.build(OutgoingMessageType.LOBBY_BROADCAST, json).response()));
     }
 
     @Override

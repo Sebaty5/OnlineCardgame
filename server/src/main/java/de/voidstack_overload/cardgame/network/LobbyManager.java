@@ -24,13 +24,13 @@ public class LobbyManager {
     /**
      * Creates a new lobby and assigns the creator as the host.
      */
-    public boolean createLobby(Player host, String lobbyName, int maxPlayers, int botCount) {
+    public Lobby createLobby(Player host, String lobbyName, int maxPlayers, int botCount) {
         String lobbyId = UUID.randomUUID().toString().substring(0, 6);
         Lobby lobby = new Lobby(lobbyId, lobbyName, maxPlayers, botCount, host);
         lobbies.put(lobbyId, lobby);
         clientLobbyMap.put(host, lobbyId);
         LOGGER.log("Lobby " + lobbyId + " created by " + host.socket().getRemoteSocketAddress());
-        return true;
+        return lobby;
     }
 
     /**
@@ -83,5 +83,9 @@ public class LobbyManager {
             }
         }
         return lobbyList.toString();
+    }
+
+    public boolean isPlayerInLobby(Player player) {
+        return clientLobbyMap.containsKey(player);
     }
 }
