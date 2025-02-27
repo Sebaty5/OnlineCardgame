@@ -16,12 +16,30 @@ public class Lobby {
     protected static final StandardLogger LOGGER = new StandardLogger("Lobby");
 
     private final String id;
+    public String getId() {
+        return this.id;
+    }
+
     private String lobbyName;
+    public String getLobbyName() {
+        return lobbyName;
+    }
 
     private int maxPlayers;
+    public int getMaxPlayers() {
+        return maxPlayers;
+    }
+
     private int botCount;
+    public int getBotCount() {
+        return botCount;
+    }
 
     private Player host;
+    public Player getHost() {
+        return host;
+    }
+
     private final Set<Player> players = Collections.synchronizedSet(new HashSet<>());
     private boolean isFull = false;
     private boolean isInGame = false;
@@ -73,10 +91,6 @@ public class Lobby {
             LOGGER.log(host.username() + " has been assigned host.");
         }
         broadcast("Player left lobby: " + id);
-    }
-
-    public String getId() {
-        return this.id;
     }
 
     public boolean isEmpty() {
