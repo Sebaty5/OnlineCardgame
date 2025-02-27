@@ -22,4 +22,8 @@ public class GameClient extends Application {
 
         GameClient.stage.show();
     }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 }

@@ -12,11 +12,11 @@
     <artifactId>client</artifactId>
 
     <properties>
-        <maven.compiler.source>23</maven.compiler.source>
-        <maven.compiler.target>23</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <javafx.version>23.0.2</javafx.version>
-        <maven.compiler.release>23</maven.compiler.release>
+        <javafx.version>21.0.2</javafx.version>
+        <maven.compiler.release>21</maven.compiler.release>
     </properties>
 
     <dependencies>
@@ -25,6 +25,11 @@
             <artifactId>Java-WebSocket</artifactId>
             <version>1.6.0</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.openjfx</groupId>-->
+<!--            <artifactId>javafx-base</artifactId>-->
+<!--            <version>22.0.1</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
