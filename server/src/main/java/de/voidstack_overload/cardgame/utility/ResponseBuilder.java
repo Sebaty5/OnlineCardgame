@@ -1,5 +1,6 @@
 package de.voidstack_overload.cardgame.utility;
 
+import de.voidstack_overload.cardgame.messages.IncomingMessageType;
 import de.voidstack_overload.cardgame.messages.OutgoingMessageType;
 import de.voidstack_overload.cardgame.objects.Response;
 
@@ -20,4 +21,12 @@ public class ResponseBuilder {
         builder.add("errorMessage", "Unhandled case. Server does not support this request type: " + typeName);
         return build(OutgoingMessageType.UNKNOWN_CASE, builder);
     }
+
+    public static Response insufficientPermissionResponse(IncomingMessageType type) {
+        JsonBuilder builder = new JsonBuilder();
+        builder.add("errorMessage", "Access denied. Not a valid user login.");
+        builder.add("attemptedAction", type.name());
+        return build(OutgoingMessageType.INSUFFICIENT_PERMISSIONS, builder);
+    }
+
 }

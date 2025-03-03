@@ -12,7 +12,8 @@ public enum OutgoingMessageType {
     LOBBY_JOIN_ACCEPT,
     LOBBY_JOIN_DENY,
     LOBBY_LEAVE_ACKNOWLEDGE,
-    LOBBY_UPDATE_ACKNOWLEDGE,
+    LOBBY_UPDATE_ACCEPT,
+    LOBBY_UPDATE_DENY,
     LOBBY_LIST_REPLY,
     //Lobby Broadcasts
     LOBBY_DATA,
@@ -20,7 +21,8 @@ public enum OutgoingMessageType {
     //Game Client interaction
     GAME_PLAY_ACCEPT,
     GAME_PLAY_DENY,
-    GAME_PASS_ACKNOWLEDGE,
+    GAME_PASS_ACCEPT,
+    GAME_PASS_DENY,
     //Game Broadcasts
     GAME_STATE,
     //Invalid

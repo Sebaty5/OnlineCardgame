@@ -25,6 +25,9 @@ public class LobbyManager {
      * Creates a new lobby and assigns the creator as the host.
      */
     public Lobby createLobby(Player host, String lobbyName, int maxPlayers, int botCount) {
+        if(clientLobbyMap.containsKey(host)) {
+            return null;
+        }
         String lobbyId = UUID.randomUUID().toString().substring(0, 6);
         Lobby lobby = new Lobby(lobbyId, lobbyName, maxPlayers, botCount, host);
         lobbies.put(lobbyId, lobby);
@@ -46,7 +49,6 @@ public class LobbyManager {
             LOGGER.log("Client " + player.socket().getRemoteSocketAddress() + " joined lobby " + lobbyId);
             return true;
         }
-        // TODO: Add reply to indicate that the lobby is full or in an ongoing game.
         return false;
     }
 

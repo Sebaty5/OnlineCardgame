@@ -4,7 +4,9 @@ import de.voidstack_overload.cardgame.logging.StandardLogger;
 import de.voidstack_overload.cardgame.objects.Player;
 import org.java_websocket.WebSocket;
 
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -28,10 +30,16 @@ public class PlayerManager {
     private final Map<WebSocket, Player> players;
 
     /**
+     * A set reflecting the connected players by their usernames for quick look up.
+     */
+    private final Set<String> connectedPlayer;
+
+    /**
      * The constructor of the player manager.
      */
     private PlayerManager() {
         players = new ConcurrentHashMap<>();
+        connectedPlayer = new HashSet<>();
     }
 
     /**
@@ -53,6 +61,10 @@ public class PlayerManager {
      */
     public boolean addPlayer(Player player) {
         LOGGER.log("Adding player " + player.username() + " with IP " + player.socket().getRemoteSocketAddress());
+        if(connectedPlayer.contains(player.username())) {
+            return false;
+        }
+        connectedPlayer.add(player.username());
         return players.putIfAbsent(player.socket(), player) == null;
     }
 
@@ -65,6 +77,7 @@ public class PlayerManager {
      */
     public boolean removePlayer(Player player) {
         LOGGER.log("removing player " + player.username() + " with IP " + player.socket().getRemoteSocketAddress());
+        connectedPlayer.remove(player.username());
         return players.remove(player.socket()) != null;
     }
 }

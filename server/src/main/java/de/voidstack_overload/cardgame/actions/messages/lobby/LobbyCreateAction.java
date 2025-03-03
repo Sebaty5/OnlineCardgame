@@ -27,6 +27,9 @@ public class LobbyCreateAction extends LobbyAction {
         int maxPlayers = json.get("maxPlayers").getAsInt();
         int botCount= json.get("botCount").getAsInt();
         Lobby lobby = LobbyManager.INSTANCE.createLobby(player, lobbyName, maxPlayers, botCount);
+        if(lobby == null) {
+            return ResponseBuilder.errorResponse("User already in a lobby.");
+        }
         jsonBuilder.add("lobbyID", lobby.getId());
         return ResponseBuilder.build(OutgoingMessageType.LOBBY_CREATE_ACCEPT, jsonBuilder);
     }

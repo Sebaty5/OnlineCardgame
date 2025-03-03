@@ -13,13 +13,12 @@ import org.java_websocket.WebSocket;
 public class LoginAction extends AccountAction {
     @Override
     public Response execute(JsonObject json, WebSocket connection) {
-        JsonBuilder jsonBuilder = new JsonBuilder();
         if(json.get("username") == null || json.get("password") == null) {
-            jsonBuilder.add("errorMessage", "Missing parameters for login");
-            return ResponseBuilder.build(OutgoingMessageType.ERROR, jsonBuilder);
+            return ResponseBuilder.errorResponse("Missing parameters for login");
         }
         String username = json.get("username").getAsString();
         String password = json.get("password").getAsString();
+        JsonBuilder jsonBuilder = new JsonBuilder();
         if(!DataBaseHandler.INSTANCE.isValidLogin(username, password)) {
             jsonBuilder.add("errorMessage", "Username or password is incorrect");
             return ResponseBuilder.build(OutgoingMessageType.ACCOUNT_LOGIN_DENY, jsonBuilder);
