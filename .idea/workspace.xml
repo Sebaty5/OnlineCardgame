@@ -4,24 +4,44 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c197b94-6937-4125-85c9-ff55def2361a" name="Changes" comment="Deed network message types">
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/mockclient/MockClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/de/voidstack_overload/cardgame/actions/Action.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/de/voidstack_overload/cardgame/actions/ActionManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/de/voidstack_overload/cardgame/actions/messages/account/AccountAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/de/voidstack_overload/cardgame/actions/messages/account/LoginAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/de/voidstack_overload/cardgame/actions/messages/game/GameAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/de/voidstack_overload/cardgame/actions/messages/lobby/LobbyAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/de/voidstack_overload/cardgame/network/MessageHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/de/voidstack_overload/cardgame/objects/Message.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/de/voidstack_overload/cardgame/objects/Response.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="6c197b94-6937-4125-85c9-ff55def2361a" name="Changes" comment="Added (old) resources">
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/PaneResizer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/application/GameClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/configuration/Config.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/configuration/JsonHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/ConnectionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/ControllerInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/CreditsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/GameBoardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/HostJoinController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/LoadingController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/LoggingController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/MenuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/MenuPlayPopUpController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/RegisterController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/SettingsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/StartPageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/CSSController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/ControllerInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/CreditsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/GameBoardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/HomeScreenController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/LoadingScreenController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/MainController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/model/CardColor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/model/Cards.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/model/SpecialTexture.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/network/ClientHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/network/ClientNetwork.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/network/Message.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/network/MessageSender.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/utility/ExitCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/utility/FXMLNavigator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/de/voidstack_overload/cardgame/configuration/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/de/voidstack_overload/cardgame/configuration/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/de/voidstack_overload/cardgame/messages/MessageTypeClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/de/voidstack_overload/cardgame/messages/MessageTypeClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/de/voidstack_overload/cardgame/messages/MessageTypeServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/de/voidstack_overload/cardgame/messages/MessageTypeServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/de/voidstack_overload/cardgame/network/LobbyManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/de/voidstack_overload/cardgame/network/LobbyManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/de/voidstack_overload/cardgame/network/NetworkManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/de/voidstack_overload/cardgame/network/NetworkManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/client/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/GameClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/application/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,10 +51,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Record" />
-        <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -53,36 +73,65 @@
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2sfM871ZC0kRggeFMcYW3ldCRiX" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.GameServer.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.MockClient (1).executor": "Run",
-    "Application.MockClient (2).executor": "Run",
-    "Application.MockClient (3).executor": "Run",
-    "Application.MockClient.executor": "Run",
-    "Application.Server.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.GameClient.executor&quot;: &quot;Run&quot;,
+    &quot;Application.GameServer.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MockClient (1).executor&quot;: &quot;Run&quot;,
+    &quot;Application.MockClient (2).executor&quot;: &quot;Run&quot;,
+    &quot;Application.MockClient (3).executor&quot;: &quot;Run&quot;,
+    &quot;Application.MockClient.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Server.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Application.MockClient (3)">
+}</component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="GameClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="de.voidstack_overload.cardgame.application.GameClient" />
+      <module name="client" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="de.voidstack_overload.cardgame.network.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="de.voidstack_overload.cardgame.application.Main" />
+      <module name="client" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="de.voidstack_overload.cardgame.network.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MockClient (1)" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="de.voidstack_overload.cardgame.mockclient.MockClient" />
       <module name="client" />
@@ -140,7 +189,7 @@
       <module name="server" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="de.voidstack_overload.cardgame.*" />
+          <option name="PATTERN" value="de.voidstack_overload.cardgame.network.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -159,10 +208,14 @@
       <item itemvalue="Application.MockClient (2)" />
       <item itemvalue="Application.MockClient (3)" />
       <item itemvalue="Application.Server" />
+      <item itemvalue="Application.GameClient" />
+      <item itemvalue="Application.Main" />
       <item itemvalue="Application.MockClient" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.GameClient" />
         <item itemvalue="Application.MockClient" />
       </list>
     </recent_temporary>
@@ -187,6 +240,8 @@
       <workItem from="1739968562952" duration="659000" />
       <workItem from="1740121834311" duration="12009000" />
       <workItem from="1740313542927" duration="27823000" />
+      <workItem from="1741159428410" duration="8321000" />
+      <workItem from="1741259809734" duration="2055000" />
     </task>
     <task id="LOCAL-00001" summary="Updated Modules">
       <option name="closed" value="true" />
@@ -252,7 +307,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740396233781</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added (old) resources">
+      <option name="closed" value="true" />
+      <created>1740642562868</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1740642562868</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -290,6 +353,7 @@
     <MESSAGE value="Improved logging in JsonHandler&#10;Now using proper formatting." />
     <MESSAGE value="Basic network communication" />
     <MESSAGE value="Deed network message types" />
-    <option name="LAST_COMMIT_MESSAGE" value="Deed network message types" />
+    <MESSAGE value="Added (old) resources" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added (old) resources" />
   </component>
 </project>

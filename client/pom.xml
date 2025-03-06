@@ -25,11 +25,11 @@
             <artifactId>Java-WebSocket</artifactId>
             <version>1.6.0</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.openjfx</groupId>-->
-<!--            <artifactId>javafx-base</artifactId>-->
-<!--            <version>22.0.1</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10.1</version>
+        </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -47,5 +47,4 @@
             <version>22.0.1</version>
         </dependency>
     </dependencies>
-
 </project>

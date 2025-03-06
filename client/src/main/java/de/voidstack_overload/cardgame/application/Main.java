@@ -1,7 +1,5 @@
-package de.voidstack_overload.cardgame;
+package de.voidstack_overload.cardgame.application;
 
-
-import javafx.application.Application;
 
 public class Main {
 
