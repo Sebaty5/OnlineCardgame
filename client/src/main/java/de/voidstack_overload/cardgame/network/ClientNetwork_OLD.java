@@ -2,27 +2,23 @@ package de.voidstack_overload.cardgame.network;
 
 import de.voidstack_overload.cardgame.logging.StandardLogger;
 import org.java_websocket.client.WebSocketClient;
-import org.java_websocket.handshake.ServerHandshake;
 
-import java.io.BufferedReader;
-import java.net.URI;
-
-public class ClientNetwork {
+public class ClientNetwork_OLD {
 
     private WebSocketClient clientSocket;
 
-    private static final StandardLogger LOGGER = new StandardLogger(ClientNetwork.class.getName());
+    private static final StandardLogger LOGGER = new StandardLogger(ClientNetwork_OLD.class.getName());
 
 
-    private static ClientNetwork instance;
+    private static ClientNetwork_OLD instance;
 
-    private ClientNetwork() {
+    private ClientNetwork_OLD() {
         clientSocket = null;
     }
 
-    public static ClientNetwork getInstance() {
+    public static ClientNetwork_OLD getInstance() {
         if (instance == null) {
-            instance = new ClientNetwork();
+            instance = new ClientNetwork_OLD();
         }
         return instance;
     }

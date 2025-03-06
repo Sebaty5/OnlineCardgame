@@ -4,44 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c197b94-6937-4125-85c9-ff55def2361a" name="Changes" comment="Added (old) resources">
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/PaneResizer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/application/GameClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/configuration/Config.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/configuration/JsonHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/ConnectionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/ControllerInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/CreditsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/GameBoardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/HostJoinController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/LoadingController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/LoggingController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/MenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/MenuPlayPopUpController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/RegisterController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/SettingsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/StartPageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/CSSController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/ControllerInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/CreditsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/GameBoardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/HomeScreenController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/LoadingScreenController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/MainController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/model/CardColor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/model/Cards.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/model/SpecialTexture.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/network/ClientHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/network/ClientNetwork.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/network/Message.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/network/MessageSender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/utility/ExitCode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/utility/FXMLNavigator.java" afterDir="false" />
+    <list default="true" id="6c197b94-6937-4125-85c9-ff55def2361a" name="Changes" comment="New Package Order (old files in controller_old).">
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/configuration/ThemeHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/client/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/GameClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/application/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/LoadingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/LoadingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/network/ClientNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/network/ClientNetwork_OLD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/network/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/network/Message.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,8 +21,8 @@
       <list>
         <option value="Record" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -241,7 +209,7 @@
       <workItem from="1740121834311" duration="12009000" />
       <workItem from="1740313542927" duration="27823000" />
       <workItem from="1741159428410" duration="8321000" />
-      <workItem from="1741259809734" duration="2055000" />
+      <workItem from="1741259809734" duration="3457000" />
     </task>
     <task id="LOCAL-00001" summary="Updated Modules">
       <option name="closed" value="true" />
@@ -315,7 +283,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740642562868</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="New Package Order (old files in controller_old).">
+      <option name="closed" value="true" />
+      <created>1741262058838</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1741262058838</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -354,6 +330,7 @@
     <MESSAGE value="Basic network communication" />
     <MESSAGE value="Deed network message types" />
     <MESSAGE value="Added (old) resources" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added (old) resources" />
+    <MESSAGE value="New Package Order (old files in controller_old)." />
+    <option name="LAST_COMMIT_MESSAGE" value="New Package Order (old files in controller_old)." />
   </component>
 </project>
