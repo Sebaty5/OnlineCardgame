@@ -3,8 +3,8 @@ package de.voidstack_overload.cardgame.actions.messages.account;
 import com.google.gson.JsonObject;
 import de.voidstack_overload.cardgame.database.DataBaseHandler;
 import de.voidstack_overload.cardgame.messages.OutgoingMessageType;
-import de.voidstack_overload.cardgame.network.PlayerManager;
-import de.voidstack_overload.cardgame.objects.Player;
+import de.voidstack_overload.cardgame.network.UserManager;
+import de.voidstack_overload.cardgame.objects.User;
 import de.voidstack_overload.cardgame.objects.Response;
 import de.voidstack_overload.cardgame.utility.JsonBuilder;
 import de.voidstack_overload.cardgame.utility.ResponseBuilder;
@@ -23,7 +23,7 @@ public class LoginAction extends AccountAction {
             jsonBuilder.add("errorMessage", "Username or password is incorrect");
             return ResponseBuilder.build(OutgoingMessageType.ACCOUNT_LOGIN_DENY, jsonBuilder);
         }
-        if (!PlayerManager.INSTANCE.addPlayer(new Player(connection, username))) {
+        if (!UserManager.INSTANCE.addUser(new User(connection, username, password))) {
             jsonBuilder.add("errorMessage", "Already logged in");
             return ResponseBuilder.build(OutgoingMessageType.ACCOUNT_LOGIN_DENY, jsonBuilder);
         }

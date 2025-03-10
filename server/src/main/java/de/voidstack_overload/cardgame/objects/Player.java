@@ -1,6 +1,9 @@
 package de.voidstack_overload.cardgame.objects;
 
-import org.java_websocket.WebSocket;
+public class Player extends User {
+    public Player(User user) {
+        super(user.getWebSocket(), user.getUsername(), user.getPassword());
+    }
 
-public record Player(WebSocket socket, String username) {
+
 }

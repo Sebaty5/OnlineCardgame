@@ -36,6 +36,7 @@ public class MessageHandler {
             LOGGER.log("Invalid message");
             return ResponseBuilder.errorResponse("Received invalid JSON-formated message.");
         } else if(!json.has("type")) {
+            LOGGER.log("Invalid message: " + json);
             return ResponseBuilder.errorResponse("Received JSON-message without type attribute.");
         }
         return null;

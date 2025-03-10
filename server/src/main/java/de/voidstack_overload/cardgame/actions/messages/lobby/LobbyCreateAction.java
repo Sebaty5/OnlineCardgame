@@ -2,10 +2,10 @@ package de.voidstack_overload.cardgame.actions.messages.lobby;
 
 import com.google.gson.JsonObject;
 import de.voidstack_overload.cardgame.messages.OutgoingMessageType;
-import de.voidstack_overload.cardgame.network.LobbyManager;
-import de.voidstack_overload.cardgame.network.PlayerManager;
-import de.voidstack_overload.cardgame.objects.Lobby;
-import de.voidstack_overload.cardgame.objects.Player;
+import de.voidstack_overload.cardgame.game.lobby.LobbyManager;
+import de.voidstack_overload.cardgame.network.UserManager;
+import de.voidstack_overload.cardgame.game.lobby.Lobby;
+import de.voidstack_overload.cardgame.objects.User;
 import de.voidstack_overload.cardgame.objects.Response;
 import de.voidstack_overload.cardgame.utility.JsonBuilder;
 import de.voidstack_overload.cardgame.utility.ResponseBuilder;
@@ -19,14 +19,15 @@ public class LobbyCreateAction extends LobbyAction {
                return response;
         }
         JsonBuilder jsonBuilder = new JsonBuilder();
-        Player player = PlayerManager.INSTANCE.getPlayer(connection);
-        if(json.get("lobbyName") == null || json.get("maxPlayers") == null || json.get("botCount") == null) {
+        User user = UserManager.INSTANCE.getUser(connection);
+        if(json.get("lobbyName") == null || json.get("lobbyPassword") == null || json.get("maxPlayers") == null || json.get("botCount") == null) {
             return ResponseBuilder.errorResponse("Missing arguments for lobby creation.");
         }
         String lobbyName = json.get("lobbyName").getAsString();
+        String lobbyPassword = json.get("lobbyPassword").getAsString();
         int maxPlayers = json.get("maxPlayers").getAsInt();
         int botCount= json.get("botCount").getAsInt();
-        Lobby lobby = LobbyManager.INSTANCE.createLobby(player, lobbyName, maxPlayers, botCount);
+        Lobby lobby = LobbyManager.INSTANCE.createLobby(user, lobbyName, lobbyPassword, maxPlayers, botCount);
         if(lobby == null) {
             return ResponseBuilder.errorResponse("User already in a lobby.");
         }

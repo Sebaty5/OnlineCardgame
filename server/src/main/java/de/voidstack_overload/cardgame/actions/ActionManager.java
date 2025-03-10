@@ -5,6 +5,9 @@ import de.voidstack_overload.cardgame.actions.messages.account.LoginAction;
 import de.voidstack_overload.cardgame.actions.messages.account.LogoutAction;
 import de.voidstack_overload.cardgame.actions.messages.account.RegisterAction;
 import de.voidstack_overload.cardgame.actions.messages.lobby.LobbyCreateAction;
+import de.voidstack_overload.cardgame.actions.messages.lobby.LobbyJoinAction;
+import de.voidstack_overload.cardgame.actions.messages.lobby.LobbyLeaveAction;
+import de.voidstack_overload.cardgame.actions.messages.lobby.LobbyUpdateAction;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
 import de.voidstack_overload.cardgame.messages.IncomingMessageType;
 import de.voidstack_overload.cardgame.objects.Response;
@@ -26,6 +29,9 @@ public class ActionManager {
         actions.put(IncomingMessageType.ACCOUNT_LOGOUT, new LogoutAction());
         //Lobby actions
         actions.put(IncomingMessageType.LOBBY_CREATE, new LobbyCreateAction());
+        actions.put(IncomingMessageType.LOBBY_JOIN, new LobbyJoinAction());
+        actions.put(IncomingMessageType.LOBBY_LEAVE, new LobbyLeaveAction());
+        actions.put(IncomingMessageType.LOBBY_UPDATE, new LobbyUpdateAction());
     }
 
     public static Response handleAction(IncomingMessageType type, JsonObject json, WebSocket connection) {

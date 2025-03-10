@@ -10,6 +10,11 @@ public class ResponseBuilder {
         return new Response(type, builder.toString());
     }
 
+    public static Response build(OutgoingMessageType type) {
+        JsonBuilder builder = new JsonBuilder();
+        return build(type, builder);
+    }
+
     public static Response errorResponse(String error) {
         JsonBuilder builder = new JsonBuilder();
         builder.add("errorMessage", error);

@@ -8,6 +8,6 @@ public class Main {
     public static void main(String[] args) {
         Config.INSTANCE.init(); //Loads config
         DataBaseHandler.INSTANCE.init(); //Prepares Database
-        NetworkManager.INSTANCE.init(); //Starts network communication
+        NetworkManager.INSTANCE.init();
     }
 }
