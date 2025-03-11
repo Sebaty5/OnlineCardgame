@@ -49,6 +49,10 @@ public class Lobby {
     }
 
     private final Set<Player> players = Collections.synchronizedSet(new HashSet<>());
+    public int getPlayerCount() {
+        return players.size();
+    }
+
     private boolean isFull = false;
     private boolean isInGame = false;
 

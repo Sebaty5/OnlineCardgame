@@ -1,5 +1,7 @@
 package de.voidstack_overload.cardgame.game.lobby;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
 import de.voidstack_overload.cardgame.messages.OutgoingMessageType;
 import de.voidstack_overload.cardgame.objects.User;
@@ -73,21 +75,18 @@ public class LobbyManager {
     /**
      * Sends a list of active lobbies
      */
-    public String getLobbies() {
-        if(lobbies.isEmpty()) {
-            return "No lobbies found";
-        }
-        StringBuilder lobbyList = new StringBuilder();
-        boolean first = true;
+    public JsonArray getLobbies() {
+        JsonArray lobbyListJson = new JsonArray();
         for (Lobby lobby : lobbies.values()) {
-            if(first) {
-                lobbyList.append(lobby.toString());
-                first = false;
-            } else {
-                lobbyList.append(", ").append(lobby.toString());
-            }
+            JsonObject lobbyJson = new JsonObject();
+            lobbyJson.addProperty("lobbyID", lobby.getId());
+            lobbyJson.addProperty("lobbyName", lobby.getLobbyName());
+            lobbyJson.addProperty("currentPlayerCount", lobby.getPlayerCount());
+            lobbyJson.addProperty("maxPlayerCount", lobby.getMaxPlayers());
+            lobbyJson.addProperty("isPasswordProtected", !lobby.getPassword().isEmpty());
+            lobbyListJson.add(lobbyJson);
         }
-        return lobbyList.toString();
+        return lobbyListJson;
     }
 
     public boolean isPlayerInLobby(User user) {
