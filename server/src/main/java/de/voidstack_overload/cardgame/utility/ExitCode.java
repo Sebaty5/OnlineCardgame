@@ -1,4 +1,4 @@
-package de.voidstack_overload.cardgame.objects;
+package de.voidstack_overload.cardgame.utility;
 
 public enum ExitCode {
     CONFIG_ERROR(2),

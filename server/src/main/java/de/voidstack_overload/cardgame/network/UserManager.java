@@ -1,7 +1,6 @@
 package de.voidstack_overload.cardgame.network;
 
 import de.voidstack_overload.cardgame.logging.StandardLogger;
-import de.voidstack_overload.cardgame.objects.User;
 import org.java_websocket.WebSocket;
 
 import java.util.HashSet;

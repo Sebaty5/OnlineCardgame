@@ -1,6 +1,6 @@
 package de.voidstack_overload.cardgame.database;
 
-import de.voidstack_overload.cardgame.objects.ExitCode;
+import de.voidstack_overload.cardgame.utility.ExitCode;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
 
 import java.io.File;

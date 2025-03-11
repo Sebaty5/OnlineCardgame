@@ -1,12 +1,14 @@
 package de.voidstack_overload.cardgame.game.lobby;
 
+import de.voidstack_overload.cardgame.game.engine.bots.Bot;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
 import de.voidstack_overload.cardgame.messages.OutgoingMessageType;
-import de.voidstack_overload.cardgame.objects.Player;
-import de.voidstack_overload.cardgame.objects.Response;
-import de.voidstack_overload.cardgame.objects.User;
+import de.voidstack_overload.cardgame.game.engine.Player;
+import de.voidstack_overload.cardgame.network.Response;
+import de.voidstack_overload.cardgame.network.User;
 import de.voidstack_overload.cardgame.utility.JsonBuilder;
 import de.voidstack_overload.cardgame.utility.ResponseBuilder;
+import org.java_websocket.WebSocket;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -49,6 +51,9 @@ public class Lobby {
     }
 
     private final Set<Player> players = Collections.synchronizedSet(new HashSet<>());
+    public Set<Player> getPlayers() {
+        return players;
+    }
     public int getPlayerCount() {
         return players.size();
     }
@@ -63,6 +68,10 @@ public class Lobby {
         updateLobbyPassword(lobbyPassword);
         updateMaxPlayers(maxPlayers);
         updateBotCount(botCount);
+        for (int i = 0; i < botCount; i++) {
+            players.add(new Bot(i));
+        }
+
         this.players.add(this.host);
         broadcast(lobbyName + " created by " + host.getUsername());
     }
@@ -137,11 +146,18 @@ public class Lobby {
     private void broadcast(String message) {
         JsonBuilder json = new JsonBuilder();
         json.add("message", message);
-        players.forEach(player -> player.getWebSocket().send(ResponseBuilder.build(OutgoingMessageType.LOBBY_BROADCAST, json).response()));
+        players.forEach(player -> {
+            WebSocket socket =  player.getWebSocket();
+            if(socket != null) {
+                socket.send(ResponseBuilder.build(OutgoingMessageType.LOBBY_BROADCAST, json).response());
+            }
+        });
     }
 
     @Override
     public String toString() {
         return "Lobby: " + lobbyName + " | " + id;
     }
+
+
 }

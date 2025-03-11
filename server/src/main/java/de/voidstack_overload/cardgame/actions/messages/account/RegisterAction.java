@@ -3,7 +3,7 @@ package de.voidstack_overload.cardgame.actions.messages.account;
 import com.google.gson.JsonObject;
 import de.voidstack_overload.cardgame.database.DataBaseHandler;
 import de.voidstack_overload.cardgame.messages.OutgoingMessageType;
-import de.voidstack_overload.cardgame.objects.Response;
+import de.voidstack_overload.cardgame.network.Response;
 import de.voidstack_overload.cardgame.utility.JsonBuilder;
 import de.voidstack_overload.cardgame.utility.ResponseBuilder;
 import org.java_websocket.WebSocket;

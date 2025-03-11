@@ -3,7 +3,7 @@ package de.voidstack_overload.cardgame.configuration;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
-import de.voidstack_overload.cardgame.objects.ExitCode;
+import de.voidstack_overload.cardgame.utility.ExitCode;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

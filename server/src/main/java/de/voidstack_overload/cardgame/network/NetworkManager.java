@@ -3,8 +3,6 @@ package de.voidstack_overload.cardgame.network;
 import de.voidstack_overload.cardgame.configuration.Config;
 import de.voidstack_overload.cardgame.game.lobby.LobbyManager;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
-import de.voidstack_overload.cardgame.objects.User;
-import de.voidstack_overload.cardgame.objects.Response;
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;

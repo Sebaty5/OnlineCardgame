@@ -2,7 +2,7 @@ package de.voidstack_overload.cardgame.utility;
 
 import de.voidstack_overload.cardgame.messages.IncomingMessageType;
 import de.voidstack_overload.cardgame.messages.OutgoingMessageType;
-import de.voidstack_overload.cardgame.objects.Response;
+import de.voidstack_overload.cardgame.network.Response;
 
 public class ResponseBuilder {
     public static Response build(OutgoingMessageType type, JsonBuilder builder) {
