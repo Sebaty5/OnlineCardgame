@@ -12,5 +12,5 @@
       </Text>
       <Text fx:id="StartupSubTitle" layoutX="165.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="by Yann, Robert, Patrick and Sebastian" textAlignment="CENTER" />
       <Text fx:id="StartupPressX" layoutX="240.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Press to Continue" />
-      <Button fx:id="StartupContinueButton" layoutX="220.0" layoutY="340.0" mnemonicParsing="false" text="To Loading Screen" />
+      <Button fx:id="StartupContinueButton" onAction="#continueButtonClicked" layoutX="220.0" layoutY="340.0" mnemonicParsing="false" text="To Loading Screen" />
 </Pane>
