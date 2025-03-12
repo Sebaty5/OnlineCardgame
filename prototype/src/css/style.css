@@ -1,0 +1,10 @@
+*{
+    margin: 0;
+    color: #FFD3FF;
+    background-image: url(../img/background.png);
+
+}
+
+.main{
+    background-image: url(../img/logo.png);
+}
