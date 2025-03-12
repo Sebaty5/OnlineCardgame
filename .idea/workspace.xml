@@ -5,43 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c197b94-6937-4125-85c9-ff55def2361a" name="Changes" comment="added Message Types (siehe Sebastian Discord pdf)">
-      <change afterPath="$PROJECT_DIR$/client/src/main/resources/StartupScreen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/PaneResizer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/application/GameClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/application/GameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/application/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/configuration/Config.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/configuration/JsonHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/configuration/ThemeHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/ConnectionController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/ControllerInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/CreditsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/StartupScreenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/GameBoardController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/HostJoinController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/LoadingController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/LoggingController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/MenuController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/MenuPlayPopUpController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/RegisterController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/SettingsController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/StartPageController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/CSSController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/ControllerInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/CreditsController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/GameBoardController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/HomeScreenController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/LoadingScreenController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/LoginController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/MainController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/model/CardColor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/model/Cards.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/model/SpecialTexture.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/network/ClientHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/network/ClientNetwork_OLD.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/network/Message.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/network/MessageSender.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/utility/ExitCode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/utility/FXMLNavigator.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/resources/StartupScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/StartupScreen.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,31 +46,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.GameClient.executor&quot;: &quot;Run&quot;,
-    &quot;Application.GameServer.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MockClient (1).executor&quot;: &quot;Run&quot;,
-    &quot;Application.MockClient (2).executor&quot;: &quot;Run&quot;,
-    &quot;Application.MockClient (3).executor&quot;: &quot;Run&quot;,
-    &quot;Application.MockClient.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Server.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.GameClient.executor": "Run",
+    "Application.GameServer.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.MockClient (1).executor": "Run",
+    "Application.MockClient (2).executor": "Run",
+    "Application.MockClient (3).executor": "Run",
+    "Application.MockClient.executor": "Run",
+    "Application.Server.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\fynnw\Desktop\Schule\OnlineCardgame\client\src\main\resources" />
