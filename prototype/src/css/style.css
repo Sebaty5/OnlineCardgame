@@ -9,7 +9,6 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    grid-template-columns: 1fr 1fr 1fr;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
@@ -21,6 +20,8 @@ body{
 }
 
 #start{
+    margin-bottom: 150px;
+    margin-left: 100px;
     width: 581px;
     height: 100px;
     font-size: 48px;
@@ -28,7 +29,9 @@ body{
     border-radius: 24px;
     border: 6px solid #FFD3FF;
     text-align: center;
-    text-shadow:3px 0 0 #60239F,0 3px 0 #60239F,-3px 0 0 #60239F,0 -3px 0 #60239F;}
+    text-shadow:3px 0 0 #60239F,0 3px 0 #60239F,-3px 0 0 #60239F,0 -3px 0 #60239F;
+    z-index: -1;
+    box-shadow: inset -6px -6px 12px 12px #1E0857;}
 
 #logo{
     margin: auto;
