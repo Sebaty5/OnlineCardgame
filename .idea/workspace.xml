@@ -4,12 +4,44 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c197b94-6937-4125-85c9-ff55def2361a" name="Changes" comment="New Package Order (old files in controller_old).">
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/configuration/ThemeHandler.java" afterDir="false" />
+    <list default="true" id="6c197b94-6937-4125-85c9-ff55def2361a" name="Changes" comment="added Message Types (siehe Sebastian Discord pdf)">
+      <change afterPath="$PROJECT_DIR$/client/src/main/resources/StartupScreen.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/LoadingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/LoadingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/network/ClientNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/network/ClientNetwork_OLD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/network/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/network/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/PaneResizer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/application/GameClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/application/GameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/application/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/configuration/Config.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/configuration/JsonHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/configuration/ThemeHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/ConnectionController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/ControllerInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/CreditsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/StartupScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/GameBoardController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/HostJoinController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/LoadingController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/LoggingController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/MenuController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/MenuPlayPopUpController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/RegisterController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/SettingsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller/StartPageController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/CSSController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/ControllerInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/CreditsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/GameBoardController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/HomeScreenController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/LoadingScreenController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/LoginController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/controller_OLD/MainController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/model/CardColor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/model/Cards.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/model/SpecialTexture.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/network/ClientHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/network/ClientNetwork_OLD.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/network/Message.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/network/MessageSender.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/utility/ExitCode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/de/voidstack_overload/cardgame/utility/FXMLNavigator.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,9 +105,14 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\fynnw\Desktop\Schule\OnlineCardgame\client\src\main\resources" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.Main">
-    <configuration name="GameClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="de.voidstack_overload.cardgame.application.GameClient" />
+    <configuration name="GameManager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="de.voidstack_overload.cardgame.application.GameManager" />
       <module name="client" />
       <extension name="coverage">
         <pattern>
@@ -176,14 +213,14 @@
       <item itemvalue="Application.MockClient (2)" />
       <item itemvalue="Application.MockClient (3)" />
       <item itemvalue="Application.Server" />
-      <item itemvalue="Application.GameClient" />
+      <item itemvalue="Application.GameManager" />
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.MockClient" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.GameClient" />
+        <item itemvalue="Application.GameManager" />
         <item itemvalue="Application.MockClient" />
       </list>
     </recent_temporary>
@@ -209,7 +246,9 @@
       <workItem from="1740121834311" duration="12009000" />
       <workItem from="1740313542927" duration="27823000" />
       <workItem from="1741159428410" duration="8321000" />
-      <workItem from="1741259809734" duration="3457000" />
+      <workItem from="1741259809734" duration="3554000" />
+      <workItem from="1741687875160" duration="30000" />
+      <workItem from="1741764536765" duration="3031000" />
     </task>
     <task id="LOCAL-00001" summary="Updated Modules">
       <option name="closed" value="true" />
@@ -291,7 +330,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741262058838</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="added Message Types (siehe Sebastian Discord pdf)">
+      <option name="closed" value="true" />
+      <created>1741263376310</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1741263376310</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,6 +378,7 @@
     <MESSAGE value="Deed network message types" />
     <MESSAGE value="Added (old) resources" />
     <MESSAGE value="New Package Order (old files in controller_old)." />
-    <option name="LAST_COMMIT_MESSAGE" value="New Package Order (old files in controller_old)." />
+    <MESSAGE value="added Message Types (siehe Sebastian Discord pdf)" />
+    <option name="LAST_COMMIT_MESSAGE" value="added Message Types (siehe Sebastian Discord pdf)" />
   </component>
 </project>

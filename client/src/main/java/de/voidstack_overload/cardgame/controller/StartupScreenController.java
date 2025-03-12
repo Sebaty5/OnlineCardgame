@@ -1,4 +1,8 @@
 package de.voidstack_overload.cardgame.controller;
 
-public class GameBoardController {
+public class StartupScreenController {
+
+
+
+
 }
