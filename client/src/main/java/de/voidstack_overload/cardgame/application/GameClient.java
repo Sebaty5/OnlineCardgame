@@ -15,7 +15,7 @@ public class GameClient extends Application {
         primaryStage.setMinWidth(800);
         primaryStage.setMinHeight(600);
 
-        sceneManager.switchScene("StartupScreen.fxml");
+        sceneManager.switchScene("TitleScreen.fxml");
     }
 
     public static void main(String[] args) {

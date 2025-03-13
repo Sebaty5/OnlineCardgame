@@ -7,7 +7,7 @@
 <Pane stylesheets="@styles/cardGameStyle.css" maxHeight="-Infinity" maxWidth="-Infinity"
       minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
       xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="de.voidstack_overload.cardgame.controller.StartupScreenController">
+      fx:controller="de.voidstack_overload.cardgame.controller.TitleScreenController">
     <Text layoutX="300.0" layoutY="40.0" styleClass="label" text="The best cardgame ever created"
           textAlignment="CENTER">
         <font>

@@ -3,7 +3,7 @@ package de.voidstack_overload.cardgame.controller;
 import javafx.fxml.FXML;
 import java.io.IOException;
 
-public class StartupScreenController extends BaseController {
+public class TitleScreenController extends BaseController {
 
     @FXML
     private void continueButtonClicked() throws IOException {

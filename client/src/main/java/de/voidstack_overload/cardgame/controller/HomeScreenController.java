@@ -1,7 +1,5 @@
 package de.voidstack_overload.cardgame.controller;
 
-import javafx.fxml.FXML;
-
 public class HomeScreenController extends BaseController {
 
     public void switcheToSettings() {
