@@ -4,6 +4,7 @@ import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.ProgressBar;
 import javafx.util.Duration;
+import java.io.IOException;
 
 public class LoadingScreenController extends BaseController {
 
@@ -27,6 +28,12 @@ public class LoadingScreenController extends BaseController {
                         progressbarValue = (1.0 / textureAmount) * texturesLoaded;
                         loadingBar.setProgress(progressbarValue);
                         pauseTransition.playFromStart();
+                    } else {
+                        try {
+                            sceneManager.switchScene("HomeScreen.fxml");
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
                     }
                 }
         );

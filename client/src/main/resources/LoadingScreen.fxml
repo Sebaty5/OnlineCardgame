@@ -4,7 +4,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane fx:id="Loading" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+<Pane stylesheets="@styles/cardGameStyle.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity"
       prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="de.voidstack_overload.cardgame.controller.LoadingScreenController">
     <ProgressBar fx:id="loadingBar" layoutX="150.0" layoutY="200.0" prefHeight="20.0" prefWidth="300.0" progress="0.0"/>
