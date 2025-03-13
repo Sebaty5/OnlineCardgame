@@ -1,0 +1,63 @@
+Index: prototype/src/css/style.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>*{\r\n    margin: 0;\r\n    box-sizing: border-box;\r\n    font-family: \"Orbitron\", sans-serif;\r\n    color: #FFD3FF;\r\n}\r\n\r\nbody{\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    font-optical-sizing: auto;\r\n    font-weight: 400;\r\n    font-style: normal;\r\n    color: #FFD3FF;\r\n    margin: 0;\r\n    width:100%;\r\n    min-height:100vh;\r\n    background-image: linear-gradient(0.66turn, #4E34C1, #0F042C,#0F042C, #0F042C,#B81FA1);\r\n}\r\n\r\n#start{\r\n    width: 581px;\r\n    height: 100px;\r\n    font-size: 48px;\r\n    background: #0F042C;\r\n    border-radius: 24px;\r\n    border: 6px solid #FFD3FF;\r\n    text-align: center;\r\n    text-shadow:3px 0 0 #60239F,0 3px 0 #60239F,-3px 0 0 #60239F,0 -3px 0 #60239F;}\r\n\r\n#logo{\r\n    margin: auto;\r\n    width:770px;\r\n    height:735px;\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/prototype/src/css/style.css b/prototype/src/css/style.css
+--- a/prototype/src/css/style.css	(revision ca3cf65d1400fa522279d12c4af0a8a4e989718c)
++++ b/prototype/src/css/style.css	(date 1741862729238)
+@@ -9,7 +9,6 @@
+     display: flex;
+     align-items: center;
+     justify-content: center;
+-    grid-template-columns: 1fr 1fr 1fr;
+     font-optical-sizing: auto;
+     font-weight: 400;
+     font-style: normal;
+@@ -21,6 +20,8 @@
+ }
+ 
+ #start{
++    margin-bottom: 150px;
++    margin-left: 100px;
+     width: 581px;
+     height: 100px;
+     font-size: 48px;
+@@ -28,7 +29,9 @@
+     border-radius: 24px;
+     border: 6px solid #FFD3FF;
+     text-align: center;
+-    text-shadow:3px 0 0 #60239F,0 3px 0 #60239F,-3px 0 0 #60239F,0 -3px 0 #60239F;}
++    text-shadow:3px 0 0 #60239F,0 3px 0 #60239F,-3px 0 0 #60239F,0 -3px 0 #60239F;
++    z-index: -1;
++    box-shadow: inset -6px -6px 12px 12px #1E0857;}
+ 
+ #logo{
+     margin: auto;
+Index: prototype/src/html/index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>Durak</title>\r\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\r\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\r\n    <link href=\"https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap\" rel=\"stylesheet\">\r\n    <link rel=\"stylesheet\" href=\"../css/style.css\">\r\n</head>\r\n<body>\r\n<div class=\"grid-container\">\r\n    <div class=\"grid-item1\">\r\n        <img src=\"../img/logo.png\" alt=\"logo\" id=\"logo\">\r\n    </div>\r\n    <div class=\"grid-item2\">\r\n        <button id=\"start\">Start</button>\r\n    </div>\r\n</div>\r\n</body>\r\n<script src=\"../js/index.js\"></script>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/prototype/src/html/index.html b/prototype/src/html/index.html
+--- a/prototype/src/html/index.html	(revision ca3cf65d1400fa522279d12c4af0a8a4e989718c)
++++ b/prototype/src/html/index.html	(date 1741862729239)
+@@ -9,11 +9,11 @@
+     <link rel="stylesheet" href="../css/style.css">
+ </head>
+ <body>
+-<div class="grid-container">
+-    <div class="grid-item1">
++<div >
++    <div >
+         <img src="../img/logo.png" alt="logo" id="logo">
+     </div>
+-    <div class="grid-item2">
++    <div>
+         <button id="start">Start</button>
+     </div>
+ </div>
