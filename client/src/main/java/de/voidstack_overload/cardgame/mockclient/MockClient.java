@@ -64,9 +64,9 @@ public class MockClient {
         if (client.isOpen()) {
             String jsonMessage = parseInputToJson(message);
             if(jsonMessage != null) {
-                client.send(message);
+                client.send(jsonMessage);
             } else {
-                LOGGER.log("Message (" + message + ") not send due to invalid command format");
+                LOGGER.log("Message (" + jsonMessage + ") not send due to invalid command format");
             }
         } else {
             LOGGER.log("Connection not established.");
