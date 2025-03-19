@@ -1,5 +1,7 @@
 package de.voidstack_overload.cardgame.controller;
 
+import javafx.application.Platform;
+
 public class HomeScreenController extends BaseController {
 
     public void switcheToSettings() {
@@ -15,6 +17,6 @@ public class HomeScreenController extends BaseController {
     }
 
     public void exitGame() {
-        System.out.println("Bye bye");
+        Platform.exit();
     }
 }
