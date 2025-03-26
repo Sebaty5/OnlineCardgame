@@ -58,26 +58,33 @@
     -fx-background-color: linear-gradient(to right top , #B81FA1, #0F042C, #0F042C, #0F042C,#4E34C1);
 }
 
-#logo {
-    -fx-margin: auto;
-    -fx-pref-width: 470px;
-    -fx-pref-height: 435px;
-    -fx-background-image: url('../textures/logo.png');
-}
-
 #start {
-    -fx-margin-bottom: 150px;
-    -fx-margin-left: 100px;
     -fx-pref-width: 581px;
     -fx-pref-height: 100px;
-    -fx-background-color: #0F042C;
     -fx-border-radius: 24px;
     -fx-border-width: 6px;
-    -fx-border-color: #FFD3FF;
     -fx-font-family: 'Orbitron';
     -fx-font-size: 60px;
     -fx-text-alignment: center;
-    -fx-effect: dropshadow(three-pass-box, #60239F, 3, 0, 0, 3);
-    -fx-background-insets: -6px -6px 12px 12px #1E0857;
+    -fx-background-color: #0F042C;
+    -fx-background-radius: 24px;
+    -fx-translate-y: -150px;
+    -fx-background-insets: 6px;
+    -fx-wrap-text: true;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0,1,1);
+}
+
+#start .text{
+    -fx-effect:
+            dropshadow(gaussian, #60239F, 3, 1, -1, -1), /* Top-left shadow */
+            dropshadow(gaussian, #60239F, 3, 1, 1, -1),  /* Top-right shadow */
+            dropshadow(gaussian, #60239F, 3, 1, -1, 1),  /* Bottom-left shadow */
+            dropshadow(gaussian, #60239F, 3, 1, 1, 1);   /* Bottom-right shadow */
+}
+
+#logo {
+    -fx-pref-width: 470px;
+    -fx-pref-height: 435px;
+    -fx-background-image: url('../textures/logo.png');
 }
 

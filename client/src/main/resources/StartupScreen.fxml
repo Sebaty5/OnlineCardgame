@@ -4,8 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
-<?import javafx.geometry.Insets?>
-<GridPane fx:id="Startup" stylesheets="@styles/style.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+<!--<GridPane fx:id="Startup" stylesheets="@styles/style.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
           xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
           alignment="center" hgap="10" vgap="10"
           fx:controller="de.voidstack_overload.cardgame.controller.StartupScreenController">
@@ -15,4 +14,26 @@
         </image>
     </ImageView>
      <Button fx:id="start" mnemonicParsing="false" text="Start" />
-</GridPane>
+</GridPane>-->
+<VBox fx:id="Startup" stylesheets="@styles/style.css" alignment="CENTER" spacing="5.0"
+      xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="de.voidstack_overload.cardgame.controller.StartupScreenController">
+    <ImageView fx:id="logo" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@textures/logo.png" />
+        </image>
+    </ImageView>
+    <Button fx:id="start" mnemonicParsing="false" text="Start" />
+</VBox>
+
+<!--
+<Pane fx:id="Startup" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.voidstack_overload.cardgame.controller.StartupScreenController">
+<VBox alignment="CENTER" spacing="5.0">
+    <ImageView fx:id="logo" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@textures/logo.png" />
+        </image>
+    </ImageView>
+    <Button fx:id="start" mnemonicParsing="false" text="Start" />
+</VBox>
+</Pane>-->
