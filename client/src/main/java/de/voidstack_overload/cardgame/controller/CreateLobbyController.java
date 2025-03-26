@@ -1,5 +1,6 @@
 package de.voidstack_overload.cardgame.controller;
 
+import de.voidstack_overload.cardgame.connection.ConnectionManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
@@ -28,7 +29,7 @@ public class CreateLobbyController extends BaseController {
         String password = lobbyPassword.getText();
         int maxPlayers = (int) maxPlayerSlider.getValue();
         int botAmount = (int) botAmountSlider.getValue();
-
-        System.out.println("ConnectionManager on diff. Branch: Cant send data");
+        System.out.println("Create Lobby");
+        ConnectionManager.getInstance().lobbyCreate(name, password, maxPlayers, botAmount);
     }
 }

@@ -4,6 +4,8 @@ import de.voidstack_overload.cardgame.configuration.Config;
 import de.voidstack_overload.cardgame.connection.ConnectionManager;
 import javafx.application.Platform;
 
+import java.io.IOException;
+
 public class HomeScreenController extends BaseController {
 
     public void switchToSettings() {
@@ -14,6 +16,11 @@ public class HomeScreenController extends BaseController {
         System.out.println("Lobbys");
         ConnectionManager.getInstance().setServerUri(Config.getInstance().getServerUri());
         ConnectionManager.getInstance().connect();
+        try {
+            sceneManager.switchScene("CreateLobbyScreen.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void switchToCredits() {

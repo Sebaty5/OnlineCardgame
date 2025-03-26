@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="de.voidstack_overload.cardgame.controller.CreateLobbyController">
+    <children>
+        <TextField fx:id="lobbyName" layoutX="50" layoutY="50" promptText="Lobby Name"/>
+        <TextField fx:id="lobbyPassword" layoutX="50" layoutY="100" promptText="Lobby Passwort"/>
+        <Slider fx:id="maxPlayerSlider" layoutX="50" layoutY="150" min="2" max="10" value="4"/>
+        <Slider fx:id="botAmountSlider" layoutX="50" layoutY="200" min="2" max="10" value="4"/>
+        <Button fx:id="createLobbyButton" layoutX="50" layoutY="300" text="Create Lobby" onAction="#handleCreateLobby"/>
+    </children>
+</AnchorPane>
