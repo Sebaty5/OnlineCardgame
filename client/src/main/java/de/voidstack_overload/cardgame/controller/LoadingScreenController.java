@@ -19,7 +19,7 @@ public class LoadingScreenController extends BaseController {
         loadingBar.setProgress(0.0);
         int textureAmount = 5;
 
-        PauseTransition pauseTransition = new PauseTransition(Duration.millis(1000));
+        PauseTransition pauseTransition = new PauseTransition(Duration.millis(100));
         pauseTransition.setOnFinished(
                 e -> {
                     if (texturesLoaded < textureAmount) {

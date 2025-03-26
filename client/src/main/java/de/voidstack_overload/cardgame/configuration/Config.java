@@ -23,6 +23,7 @@ public class Config extends JsonHandler<Config.Data> {
         return INSTANCE;
     }
 
+
     private Config() throws IOException {
         super(Paths.get("client/config/config.json"), 600_000L, Data.class, Data::new);
         try {
@@ -42,7 +43,6 @@ public class Config extends JsonHandler<Config.Data> {
     // --------------------- //
     // Read from config-file //
     // --------------------- //
-
 
     private String fetchServerUri() {
         try {

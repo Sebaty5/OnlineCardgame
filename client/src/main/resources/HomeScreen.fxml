@@ -12,7 +12,7 @@
                 prefHeight="20.0" prefWidth="180.0" text="Play" textAlignment="CENTER"/>
         <Label fx:id="label" contentDisplay="CENTER" layoutX="55.0" layoutY="25.0" styleClass="labelHead" text="Durak">
         </Label>
-        <Button layoutX="10.0" layoutY="200.0" mnemonicParsing="false" onAction="#switcheToSettings" prefHeight="20.0"
+        <Button layoutX="10.0" layoutY="200.0" mnemonicParsing="false" onAction="#switchToSettings" prefHeight="20.0"
                 prefWidth="180.0" text="Settings" textAlignment="CENTER"/>
         <Button fx:id="CreditButton" layoutX="10.0" layoutY="260.0" mnemonicParsing="false" onAction="#switchToCredits"
                 prefHeight="20.0" prefWidth="180.0" text="Credits" textAlignment="CENTER"/>
