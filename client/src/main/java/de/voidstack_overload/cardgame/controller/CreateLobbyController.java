@@ -17,13 +17,18 @@ public class CreateLobbyController extends BaseController {
     private Slider maxPlayerSlider;
 
     @FXML
-    private Slider botSlider;
+    private Slider botAmountSlider;
 
     @FXML
     private Button createLobbyButton;
 
     @FXML
     public void handleCreateLobby() {
+        String name = lobbyName.getText();
+        String password = lobbyPassword.getText();
+        int maxPlayers = (int) maxPlayerSlider.getValue();
+        int botAmount = (int) botAmountSlider.getValue();
 
+        System.out.println("ConnectionManager on diff. Branch: Cant send data");
     }
 }
