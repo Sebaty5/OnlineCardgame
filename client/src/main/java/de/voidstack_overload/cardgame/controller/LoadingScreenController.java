@@ -3,6 +3,7 @@ package de.voidstack_overload.cardgame.controller;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TextField;
 import javafx.util.Duration;
 import java.io.IOException;
 
