@@ -10,31 +10,51 @@
 
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
-<BorderPane stylesheets="@styles/style.css" styleClass="background2"
+<StackPane stylesheets="@styles/style.css" styleClass="background2"
             xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="de.voidstack_overload.cardgame.controller.CreditScreenController">
-    <top>
-        <ImageView BorderPane.alignment="CENTER_LEFT" fx:id="corner1" pickOnBounds="true" preserveRatio="true">
+        <ImageView StackPane.alignment="TOP_LEFT" fx:id="cornerTop" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@textures/corner.png" />
             </image>
         </ImageView>
-    </top>
 
-    <center>
         <VBox alignment="CENTER" spacing="50">
             <Text fx:id="header" styleClass="header" text="Credits" />
             <Text fx:id="subtext"
                   text="This Game was created by:&#10;&#10;Jennifer de Pinho Sousa&#10;Sebastian Kiel&#10;Ines Meyer&#10;Fynn Wichary&#10;Anastasiia Zhdanova&#10;&#10;as a group project for&#10;Europaschule Schulzentrum SII Utbremen -&#10;Mittelstufenprojekt"/>
             <Button fx:id="backButton" mnemonicParsing="false" text="back" BorderPane.alignment="CENTER_LEFT"/>
         </VBox>
-    </center>
 
-    <bottom>
-        <ImageView fx:id="corner2" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER_RIGHT">
+        <ImageView fx:id="cornerBottom" pickOnBounds="true" preserveRatio="true" StackPane.alignment="BOTTOM_RIGHT">
             <image>
                 <Image  url="@textures/corner.png" />
             </image>
         </ImageView>
-    </bottom>
-</BorderPane>
+</StackPane>
+
+
+<!--<top>-->
+<!--<ImageView BorderPane.alignment="CENTER_LEFT" fx:id="cornerTop" pickOnBounds="true" preserveRatio="true">-->
+<!--    <image>-->
+<!--        <Image url="@textures/corner.png" />-->
+<!--    </image>-->
+<!--</ImageView>-->
+<!--</top>-->
+
+<!--<center>-->
+<!--<VBox alignment="CENTER" spacing="50">-->
+<!--    <Text fx:id="header" styleClass="header" text="Credits" />-->
+<!--    <Text fx:id="subtext"-->
+<!--          text="This Game was created by:&#10;&#10;Jennifer de Pinho Sousa&#10;Sebastian Kiel&#10;Ines Meyer&#10;Fynn Wichary&#10;Anastasiia Zhdanova&#10;&#10;as a group project for&#10;Europaschule Schulzentrum SII Utbremen -&#10;Mittelstufenprojekt"/>-->
+<!--    <Button fx:id="backButton" mnemonicParsing="false" text="back" BorderPane.alignment="CENTER_LEFT"/>-->
+<!--</VBox>-->
+<!--</center>-->
+
+<!--<bottom>-->
+<!--<ImageView  pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER_RIGHT">-->
+<!--    <image>-->
+<!--        <Image  url="@textures/corner.png" />-->
+<!--    </image>-->
+<!--</ImageView>-->
+<!--</bottom>-->

@@ -239,14 +239,14 @@ Button {
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0,1,1);
 }
 
-#corner1{
-    -fx-translate-y: 50px;
-    -fx-translate-x: 50px;
+#cornerTop{
+    -fx-translate-y: 25px;
+    -fx-translate-x: 25px;
     -fx-rotate: 180deg;
 }
-#corner2{
-    -fx-translate-y: -50px;
-    -fx-translate-x: -50px;
+#cornerBottom{
+    -fx-translate-y: -25px;
+    -fx-translate-x: -25px;
 }
 
 .rounded-progress {
