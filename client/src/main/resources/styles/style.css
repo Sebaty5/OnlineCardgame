@@ -51,8 +51,8 @@
     -fx-font-family: 'Orbitron';
     -fx-text-fill: #FFD3FF;
 }
-
-.root {
+/*StartupScreen*/
+#Startup{
     -fx-alignment: center;
     -fx-margin: 0;
     -fx-background-color: linear-gradient(to right top , #B81FA1, #0F042C, #0F042C, #0F042C,#4E34C1);
@@ -185,4 +185,52 @@
 
 .background2 {
     -fx-background-color: #0F042C;
+}
+/*QuitGameScreen*/
+#QuitGameBox{
+    -fx-min-width: 581px;
+    -fx-min-height: 100px;
+    -fx-margin: 0;
+    -fx-background-color: #0F042C;
+}
+
+#quitGame {
+    -fx-padding: 50px;
+    -fx-width: 100px;
+    -fx-height: 200px;
+    -fx-min-width: 400px;
+    -fx-min-height: 300px;
+    -fx-border-radius: 30px;
+    -fx-border-width: 6px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 40px;
+    -fx-text-fill: #FFFFFF;
+    -fx-text-alignment: center;
+    -fx-background-color: #000000;
+    -fx-background-radius: 24px;
+    -fx-effect:
+            dropshadow(gaussian, #FFD3FF, 13, 0, -1, -1), /* Top-left shadow */
+            dropshadow(gaussian, #FFD3FF, 13, 0, 1, -1),  /* Top-right shadow */
+            dropshadow(gaussian, #FFD3FF, 13, 0, -1, 1),  /* Bottom-left shadow */
+            dropshadow(gaussian, #FFD3FF, 13, 0, 1, 1);   /* Bottom-right shadow */
+}
+
+Button {
+    -fx-min-width: 446px;
+    -fx-min-height: 82px;
+    -fx-margin: 100px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-background-color: #0F042C;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0,1,1);
+}
+
+#corner1{
+    -fx-translate-y: 50px;
+    -fx-translate-x: 50px;
+    -fx-rotate: 180deg;
+}
+#corner2{
+    -fx-translate-y: -50px;
+    -fx-translate-x: -50px;
 }
