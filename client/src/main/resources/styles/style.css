@@ -191,6 +191,10 @@
             dropshadow(gaussian, #FFD3FF, 13, 0, 1, 1);   /* Bottom-right shadow */
 }
 
+.background {
+    -fx-background-color: linear-gradient(to right top , #B81FA1, #0F042C, #0F042C, #0F042C,#4E34C1);
+}
+
 .background2 {
     -fx-background-color: #0F042C;
 }
