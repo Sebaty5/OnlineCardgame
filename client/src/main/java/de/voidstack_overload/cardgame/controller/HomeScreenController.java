@@ -11,13 +11,12 @@ public class HomeScreenController extends BaseController {
         System.out.println("Settings");
     }
 
-    public void switchToLobbys() {
-        System.out.println("Lobbys");
+    public void onPlayClicked() {
         ConnectionManager.getInstance().setServerUri(Config.getInstance().getServerUri());
         ConnectionManager.getInstance().connect();
 
         try {
-            sceneManager.switchScene("CreateLobbyScreen.fxml");
+            sceneManager.switchScene("LoginScreen.fxml");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
