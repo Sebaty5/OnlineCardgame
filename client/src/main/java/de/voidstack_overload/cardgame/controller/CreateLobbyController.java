@@ -2,9 +2,10 @@ package de.voidstack_overload.cardgame.controller;
 
 import de.voidstack_overload.cardgame.connection.ConnectionManager;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import java.io.IOException;
 
 public class CreateLobbyController extends BaseController {
 
@@ -12,24 +13,28 @@ public class CreateLobbyController extends BaseController {
     private TextField lobbyName;
 
     @FXML
-    private TextField lobbyPassword;
+    private PasswordField lobbyPassword;
 
     @FXML
-    private Slider maxPlayerSlider;
+    private Slider maxPlayers;
 
     @FXML
-    private Slider botAmountSlider;
+    private Slider botAmount;
 
-    @FXML
-    private Button createLobbyButton;
-
-    @FXML
-    public void handleCreateLobby() {
+    public void createLobby() {
         String name = lobbyName.getText();
         String password = lobbyPassword.getText();
-        int maxPlayers = (int) maxPlayerSlider.getValue();
-        int botAmount = (int) botAmountSlider.getValue();
+        int maxPlayers = (int) this.maxPlayers.getValue();
+        int botAmount = (int) this.botAmount.getValue();
         System.out.println("Create Lobby");
         ConnectionManager.getInstance().lobbyCreate(name, password, maxPlayers, botAmount);
+    }
+
+    public void switchToHome() {
+        try {
+            sceneManager.switchScene("HomeScreen.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

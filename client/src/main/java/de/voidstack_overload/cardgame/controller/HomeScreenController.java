@@ -1,10 +1,9 @@
 package de.voidstack_overload.cardgame.controller;
 
+import java.io.IOException;
 import de.voidstack_overload.cardgame.configuration.Config;
 import de.voidstack_overload.cardgame.connection.ConnectionManager;
 import javafx.application.Platform;
-
-import java.io.IOException;
 
 public class HomeScreenController extends BaseController {
 
@@ -16,6 +15,7 @@ public class HomeScreenController extends BaseController {
         System.out.println("Lobbys");
         ConnectionManager.getInstance().setServerUri(Config.getInstance().getServerUri());
         ConnectionManager.getInstance().connect();
+
         try {
             sceneManager.switchScene("CreateLobbyScreen.fxml");
         } catch (IOException e) {
@@ -28,7 +28,7 @@ public class HomeScreenController extends BaseController {
     }
 
     public void exitGame() {
-        if(ConnectionManager.getInstance().isConnected()) ConnectionManager.getInstance().disconnect();
+        if (ConnectionManager.getInstance().isConnected()) ConnectionManager.getInstance().disconnect();
         Platform.exit();
     }
 }
