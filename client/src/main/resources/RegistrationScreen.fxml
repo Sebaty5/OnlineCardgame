@@ -8,18 +8,19 @@
 <?import javafx.scene.control.PasswordField?>
 <Pane stylesheets="@styles/cardGameStyle.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
       minWidth="-Infinity"
-      prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+      prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="de.voidstack_overload.cardgame.controller.RegistrationScreenController">
     <Pane prefHeight="400.0" prefWidth="200.0" styleClass="pane">
-        <Label alignment="CENTER" layoutX="55.0" layoutY="25.0" styleClass="labelHead" text="Login or Die lolol"/>
+        <Label alignment="CENTER" layoutX="55.0" layoutY="25.0" styleClass="labelHead" text="Register or Die lolol"/>
         <TextField fx:id="name" layoutX="10.0" layoutY="80.0" prefHeight="20.0" prefWidth="180.0"
                    promptText="username"/>
         <TextField fx:id="email" layoutX="10.0" layoutY="130.0" prefHeight="20.0" prefWidth="180.0"
-                       promptText="password"/>
+                   promptText="password"/>
         <TextField fx:id="username" layoutX="10.0" layoutY="80.0" prefHeight="20.0" prefWidth="180.0"
                    promptText="username"/>
         <PasswordField fx:id="password" layoutX="10.0" layoutY="130.0" prefHeight="20.0" prefWidth="180.0"
-                   promptText="password"/>
+                       promptText="password"/>
         <Button layoutX="10.0" layoutY="290.0" mnemonicParsing="false" prefHeight="20.0"
-                prefWidth="180.0" text="Login"/>
+                prefWidth="180.0" text="Register" onAction="#confirmRegistration"/>
     </Pane>
 </Pane>
