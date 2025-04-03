@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class SceneManager {
+
     private final Stage stage;
 
     public SceneManager(Stage stage) {
@@ -21,8 +22,18 @@ public class SceneManager {
         BaseController controller = loader.getController();
         controller.setSceneManager(this);
 
-        Scene scene = new Scene(root, stage.getWidth(), stage.getHeight());
+        double[] sceneSize = getSceneSize(stage);
+        Scene scene = new Scene(root, sceneSize[0], sceneSize[1]);
+
         stage.setScene(scene);
         stage.show();
+    }
+
+    private double[] getSceneSize(Stage stage) {
+        if (stage.getScene() == null) {
+            return new double[]{stage.getWidth(), stage.getHeight()};
+        } else {
+            return new double[]{stage.getScene().getWidth(), stage.getScene().getHeight()};
+        }
     }
 }
