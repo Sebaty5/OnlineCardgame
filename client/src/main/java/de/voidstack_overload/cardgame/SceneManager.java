@@ -21,7 +21,13 @@ public class SceneManager {
         BaseController controller = loader.getController();
         controller.setSceneManager(this);
 
-        Scene scene = new Scene(root, stage.getWidth(), stage.getHeight());
+
+        Scene scene;
+        if(stage.getScene() != null) {
+            scene = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
+        } else {
+            scene = new Scene(root, stage.getWidth(), stage.getHeight());
+        }
         stage.setScene(scene);
         stage.show();
     }
