@@ -1,5 +1,6 @@
 package de.voidstack_overload.cardgame.controller;
 
+import de.voidstack_overload.cardgame.SceneFXML;
 import de.voidstack_overload.cardgame.connection.ConnectionManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -30,9 +31,9 @@ public class CreateLobbyController extends BaseController {
         ConnectionManager.getInstance().lobbyCreate(name, password, maxPlayers, botAmount);
     }
 
-    public void switchToHome() {
+    public void switchToMenu() {
         try {
-            sceneManager.switchScene("HomeScreen.fxml");
+            sceneManager.switchScene(SceneFXML.MENU);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

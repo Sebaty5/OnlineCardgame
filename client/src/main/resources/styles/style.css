@@ -1,0 +1,223 @@
+@font-face {
+    font-family: 'Orbitron';
+    src: url('../fonts/Orbitron-Regular.ttf');
+}
+
+* {
+    -fx-margin: 0;
+    -fx-box-sizing: border-box;
+    -fx-font-family: 'Orbitron';
+    -fx-text-fill: #FFD3FF;
+}
+
+/*StartupScreen*/
+#Startup {
+    -fx-alignment: center;
+    -fx-margin: 0;
+    -fx-background-color: linear-gradient(to right top, #B81FA1, #0F042C, #0F042C, #0F042C, #4E34C1);
+}
+
+#start {
+    -fx-pref-width: 581px;
+    -fx-pref-height: 100px;
+    -fx-border-radius: 24px;
+    -fx-border-width: 6px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 60px;
+    -fx-text-alignment: center;
+    -fx-background-color: #0F042C;
+    -fx-background-radius: 24px;
+    -fx-translate-y: -150px;
+    -fx-background-insets: 6px;
+    -fx-wrap-text: true;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
+}
+
+#start .text {
+    -fx-effect: dropshadow(gaussian, #60239F, 3, 1, -1, -1), /* Top-left shadow */ dropshadow(gaussian, #60239F, 3, 1, 1, -1), /* Top-right shadow */ dropshadow(gaussian, #60239F, 3, 1, -1, 1), /* Bottom-left shadow */ dropshadow(gaussian, #60239F, 3, 1, 1, 1); /* Bottom-right shadow */
+}
+
+#logo {
+    -fx-pref-width: 470px;
+    -fx-pref-height: 435px;
+    -fx-background-image: url('../textures/logo.png');
+}
+
+#subtext {
+    -fx-font-size: 35px;
+    -fx-text-alignment: center;
+    -fx-fill: #FFFFFF;
+}
+
+.header {
+    -fx-alignment: center;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 100px;
+    -fx-font-weight: bold;
+    -fx-fill: #0F042C; /* Fill color */
+    -fx-stroke: #FFD3FF; /* Border color */
+    -fx-stroke-width: 2px;
+}
+
+#backButton {
+    -fx-min-width: 446px;
+    -fx-min-height: 83px;
+    -fx-border-radius: 24px;
+    -fx-border-width: 6px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 40px;
+    -fx-text-alignment: center;
+    -fx-background-color: #0F042C;
+    -fx-background-radius: 24px;
+    -fx-background-insets: 6px;
+    -fx-wrap-text: true;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
+}
+
+#backButton .text {
+    -fx-effect: dropshadow(gaussian, #60239F, 3, 1, -1, -1), /* Top-left shadow */ dropshadow(gaussian, #60239F, 3, 1, 1, -1), /* Top-right shadow */ dropshadow(gaussian, #60239F, 3, 1, -1, 1), /* Bottom-left shadow */ dropshadow(gaussian, #60239F, 3, 1, 1, 1); /* Bottom-right shadow */
+}
+
+.normalButton {
+    -fx-pref-width: 350px;
+    -fx-pref-height: 60px;
+    -fx-border-radius: 24px;
+    -fx-border-width: 6px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 40px;
+    -fx-text-fill: #FFD3FF;
+    -fx-text-alignment: center;
+    -fx-background-color: #0F042C;
+    -fx-background-radius: 24px;
+    -fx-background-insets: 6px;
+    -fx-wrap-text: true;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
+}
+
+/*.normalButton .text{
+    -fx-effect:
+            dropshadow(gaussian, #60239F, 3, 1, -1, -1), !* Top-left shadow *!
+            dropshadow(gaussian, #60239F, 3, 1, 1, -1),  !* Top-right shadow *!
+            dropshadow(gaussian, #60239F, 3, 1, -1, 1),  !* Bottom-left shadow *!
+            dropshadow(gaussian, #60239F, 3, 1, 1, 1);   !* Bottom-right shadow *!
+}*/
+
+#loadingBar {
+    -fx-pref-width: 600px;
+    -fx-pref-height: 40px;
+    -fx-fill: #0F042C; /* Fill color */
+    -fx-border-color: #FFD3FF;
+    -fx-border-width: 3px;
+    -fx-effect: dropshadow(gaussian, #60239F, 3, 1, -1, -1), /* Top-left shadow */ dropshadow(gaussian, #60239F, 3, 1, 1, -1), /* Top-right shadow */ dropshadow(gaussian, #60239F, 3, 1, -1, 1), /* Bottom-left shadow */ dropshadow(gaussian, #60239F, 3, 1, 1, 1); /* Bottom-right shadow */
+}
+
+#loadingText {
+    -fx-font-size: 40px;
+    -fx-text-fill: #FFFFFF;
+}
+
+#box {
+    -fx-pref-height: 700px;
+    -fx-pref-width: 400px;
+    -fx-padding: 50px;
+    -fx-width: 100px;
+    -fx-height: 200px;
+    -fx-min-width: 400px;
+    -fx-min-height: 300px;
+    -fx-border-radius: 30px;
+    -fx-border-width: 6px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 40px;
+    -fx-text-fill: #FFFFFF;
+    -fx-text-alignment: center;
+    -fx-background-color: #000000;
+    -fx-background-radius: 24px;
+    -fx-effect: dropshadow(gaussian, #FFD3FF, 13, 0, -1, -1), /* Top-left shadow */ dropshadow(gaussian, #FFD3FF, 13, 0, 1, -1), /* Top-right shadow */ dropshadow(gaussian, #FFD3FF, 13, 0, -1, 1), /* Bottom-left shadow */ dropshadow(gaussian, #FFD3FF, 13, 0, 1, 1); /* Bottom-right shadow */
+}
+
+.background {
+    -fx-background-color: linear-gradient(to right top, #B81FA1, #0F042C, #0F042C, #0F042C, #4E34C1);
+}
+
+.background2 {
+    -fx-background-color: #0F042C;
+}
+
+/*QuitGameScreen*/
+#QuitGameBox {
+    -fx-min-width: 581px;
+    -fx-min-height: 100px;
+    -fx-margin: 0;
+    -fx-background-color: #0F042C;
+}
+
+#quitGame {
+    -fx-padding: 50px;
+    -fx-width: 100px;
+    -fx-height: 200px;
+    -fx-min-width: 400px;
+    -fx-min-height: 300px;
+    -fx-border-radius: 30px;
+    -fx-border-width: 6px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 40px;
+    -fx-text-alignment: center;
+    -fx-background-color: #000000;
+    -fx-background-radius: 24px;
+    -fx-effect: dropshadow(gaussian, #FFD3FF, 13, 0, -1, -1), /* Top-left shadow */ dropshadow(gaussian, #FFD3FF, 13, 0, 1, -1), /* Top-right shadow */ dropshadow(gaussian, #FFD3FF, 13, 0, -1, 1), /* Bottom-left shadow */ dropshadow(gaussian, #FFD3FF, 13, 0, 1, 1); /* Bottom-right shadow */
+}
+
+#quitGameText {
+    -fx-text-fill: #FFFFFF;
+}
+
+#quitGameButton, #dontQuitGameButton, #normalButton {
+    -fx-min-width: 446px;
+    -fx-min-height: 82px;
+    -fx-margin: 100px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-background-color: #0F042C;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
+}
+
+#cornerTop {
+    -fx-translate-y: 25px;
+    -fx-translate-x: 25px;
+    -fx-rotate: 180deg;
+}
+
+#cornerBottom {
+    -fx-translate-y: -25px;
+    -fx-translate-x: -25px;
+}
+
+.rounded-progress {
+    -fx-background-radius: 24px;
+    -fx-border-radius: 24px;
+    -fx-padding: 2px;
+}
+
+.rounded-progress .track {
+    -fx-background-radius: 24px;
+    -fx-background-color: #0F042C;
+}
+
+.rounded-progress .bar {
+    -fx-background-radius: 24px;
+    -fx-background-color: #FFD3FF;
+}
+
+#menuPanel {
+    -fx-background-color: rgb(0, 0, 0, 0.4);
+    -fx-translate-x: 150px;
+    -fx-background-radius: 24px;
+    -fx-padding: 20px;
+    -fx-border-color: #FFD3FF;
+    -fx-border-radius: 24px;
+    -fx-border-width: 1px;
+}
+
+Region {
+    -fx-min-height: 20px;
+}

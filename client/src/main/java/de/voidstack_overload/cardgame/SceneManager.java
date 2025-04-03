@@ -14,8 +14,8 @@ public class SceneManager {
         this.stage = stage;
     }
 
-    public void switchScene(String fxmlFile) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(fxmlFile));
+    public void switchScene(SceneFXML fxmlFile) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(fxmlFile.getFxmlFile()));
         Pane root = loader.load();
 
         BaseController controller = loader.getController();

@@ -1,5 +1,6 @@
 package de.voidstack_overload.cardgame.application;
 
+import de.voidstack_overload.cardgame.SceneFXML;
 import de.voidstack_overload.cardgame.SceneManager;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -15,7 +16,7 @@ public class GameClient extends Application {
         primaryStage.setMinWidth(800);
         primaryStage.setMinHeight(600);
 
-        sceneManager.switchScene("TitleScreen.fxml");
+        sceneManager.switchScene(SceneFXML.STARTUP);
     }
 
     public static void main(String[] args) {

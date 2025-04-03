@@ -1,5 +1,6 @@
 package de.voidstack_overload.cardgame.controller;
 
+import de.voidstack_overload.cardgame.SceneFXML;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.ProgressBar;
@@ -30,7 +31,7 @@ public class LoadingScreenController extends BaseController {
                         pauseTransition.playFromStart();
                     } else {
                         try {
-                            sceneManager.switchScene("HomeScreen.fxml");
+                            sceneManager.switchScene(SceneFXML.MENU);
                         } catch (IOException ex) {
                             throw new RuntimeException(ex);
                         }

@@ -1,6 +1,5 @@
 package de.voidstack_overload.cardgame.application;
 
-
 import de.voidstack_overload.cardgame.configuration.Config;
 
 public class Main {

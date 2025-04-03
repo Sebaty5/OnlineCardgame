@@ -4,14 +4,30 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane stylesheets="@styles/cardGameStyle.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity"
-      prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="de.voidstack_overload.cardgame.controller.LoadingScreenController">
-    <ProgressBar fx:id="loadingBar" layoutX="150.0" layoutY="200.0" prefHeight="20.0" prefWidth="300.0" progress="0.0"/>
-    <Text fx:id="LoadingTitle" layoutX="270.0" layoutY="160.0" styleClass="label" text="Loading">
-        <font>
-            <Font size="16.0"/>
-        </font>
-    </Text>
-</Pane>
+<?import javafx.scene.shape.Ellipse?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<BorderPane fx:id="Loading" stylesheets="@styles/style.css" styleClass="background2" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="de.voidstack_overload.cardgame.controller.LoadingScreenController">
+    <top>
+        <ImageView BorderPane.alignment="CENTER_LEFT" fx:id="cornerTop" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@textures/corner.png" />
+            </image>
+        </ImageView>
+    </top>
+    <center>
+        <VBox alignment="CENTER" spacing="35.0">
+            <Label fx:id = "loadingText" text="loading"/>
+            <ProgressBar fx:id="loadingBar" styleClass="rounded-progress">
+            </ProgressBar>
+        </VBox>
+    </center>
+    <bottom>
+        <ImageView fx:id="cornerBottom" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER_RIGHT">
+            <image>
+                <Image  url="@textures/corner.png" />
+            </image>
+        </ImageView>
+    </bottom>
+</BorderPane>

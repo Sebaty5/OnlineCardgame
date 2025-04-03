@@ -26,6 +26,6 @@
         <Button layoutX="10.0" layoutY="290.0" mnemonicParsing="false" prefHeight="20.0"
                 prefWidth="180.0" text="Play" onAction="#createLobby"/>
         <Button layoutX="10.0" layoutY="345.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="180.0"
-                text="Back" onAction="#switchToHome"/>
+                text="Back" onAction="#switchToMenu"/>
     </Pane>
 </Pane>
