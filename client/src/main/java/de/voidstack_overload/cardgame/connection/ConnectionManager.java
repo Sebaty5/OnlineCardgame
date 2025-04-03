@@ -103,7 +103,6 @@ public class ConnectionManager {
                 case "ACCOUNT_LOGIN_DENY":
                     String errorMessage = jsonNode.get("errorMessage").getAsString();
                     LOGGER.log("Login fehlgeschlagen: " + errorMessage);
-                    System.out.println("test");
                     Platform.runLater(() -> {
                         if (loginController != null) {
                             loginController.showError(errorMessage);
@@ -117,6 +116,7 @@ public class ConnectionManager {
 
                 case "ACCOUNT_REGISTER_DENY":
                     LOGGER.log("Registrierung fehlgeschlagen: " + jsonNode.get("errorMessage").getAsString());
+
                     break;
 
                 case "LOBBY_CREATE_ACCEPT":

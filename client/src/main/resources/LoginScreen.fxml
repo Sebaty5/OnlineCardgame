@@ -20,6 +20,6 @@
         <Button layoutX="10.0" layoutY="290.0" mnemonicParsing="false" prefHeight="20.0"
                 prefWidth="180.0" text="Login" onAction="#confirmLogin"/>
         <Button layoutX="10.0" layoutY="345.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="180.0"
-                text="Register" onAction="#switchToRegister"/>
+                text="Register" onAction="#switchToRegistration"/>
     </Pane>
 </Pane>

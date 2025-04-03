@@ -28,9 +28,9 @@ public class LoginController extends BaseController {
         ConnectionManager.getInstance().login(username, password);
     }
 
-    public void switchToRegister() {
+    public void switchToRegistration() {
         try {
-            sceneManager.switchScene("RegisterScreen.fxml");
+            sceneManager.switchScene("RegistrationScreen.fxml");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -51,7 +51,4 @@ public class LoginController extends BaseController {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
-
-
 }

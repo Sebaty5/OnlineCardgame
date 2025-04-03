@@ -11,7 +11,7 @@ public class HomeScreenController extends BaseController {
         System.out.println("Settings");
     }
 
-    public void onPlayClicked() {
+    public void switchToLogin() {
         ConnectionManager.getInstance().setServerUri(Config.getInstance().getServerUri());
         ConnectionManager.getInstance().connect();
 
