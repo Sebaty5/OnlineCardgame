@@ -13,11 +13,15 @@
             xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="de.voidstack_overload.cardgame.controller.MenuScreenController">
 
-    <VBox fx:id="menuPanel" spacing="15"  alignment="CENTER" VBox.vgrow="ALWAYS" GridPane.rowIndex="0" GridPane.columnIndex="0">
-        <Button styleClass="normalButton" mnemonicParsing="false" text="Play" />
-        <Button styleClass="normalButton" mnemonicParsing="false" text="Settings" />
-        <Button styleClass="normalButton" mnemonicParsing="false" text="Credits" />
-        <Button styleClass="normalButton" mnemonicParsing="false" text="Quit" />
+    <VBox alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="0">
+        <VBox fx:id="menuPanel" spacing="15" >
+            <Region/>
+            <Button styleClass="normalButton" mnemonicParsing="false" text="Play" />
+            <Button styleClass="normalButton" mnemonicParsing="false" text="Settings" />
+            <Button styleClass="normalButton" mnemonicParsing="false" text="Credits" />
+            <Button styleClass="normalButton" mnemonicParsing="false" text="Quit" />
+            <Region/>
+        </VBox>
     </VBox>
 
     <VBox GridPane.rowIndex="0" GridPane.columnIndex="1">
@@ -27,5 +31,6 @@
             </image>
         </ImageView>
     </VBox>
+
 </GridPane>
 
