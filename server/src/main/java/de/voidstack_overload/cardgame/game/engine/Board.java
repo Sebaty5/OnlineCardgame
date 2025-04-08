@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import de.voidstack_overload.cardgame.game.engine.cards.Card;
 import de.voidstack_overload.cardgame.game.engine.cards.CardColor;
 import de.voidstack_overload.cardgame.messages.OutgoingMessageType;
+import de.voidstack_overload.cardgame.network.User;
 import de.voidstack_overload.cardgame.utility.JsonBuilder;
 import de.voidstack_overload.cardgame.utility.ResponseBuilder;
 
@@ -14,15 +15,22 @@ import java.util.List;
 
 public class Board {
     private List<Player> playerList;
+    public Player getPlayerFromUser(User user) {
+        for (Player player : playerList) {
+            if(player == user) return player;
+        }
+        return null;
+    }
     private List<Player> spectatorList;
     private int mainAttackerIndex;
     private Player activePlayer;
     private Player attacker;
     private Player secondAttacker;
-    private Player defender = null;
+    private Player defender;
     private List<Card> drawPile;
     private CardColor trumpColor;
     private Card[][] stacks = new Card[6][2];
+    private boolean throwingIn = false;
 
     public Board(List<Player> players) {
         resetBoard(players);
@@ -60,6 +68,9 @@ public class Board {
         } else if (activePlayer == defender) {
             validPlay = defensePlay(card, player);
         }
+        if(validPlay) {
+            sendGameState();
+        }
         return validPlay;
     }
     private boolean attackPlay(Card card, Player player) {
@@ -74,6 +85,9 @@ public class Board {
                 playerList.remove(player);
                 spectatorList.add(player);
             }
+            if(!throwingIn) {
+                activePlayer = defender;
+            }
         }
         return validPlay;
     }
@@ -84,14 +98,15 @@ public class Board {
         }
         boolean validPlay = false;
         for(Card[] stack : stacks) {
-            if(stack[0] != null && stack[1] != null && (stack[0].cardValue() == card.cardValue() || stack[1].cardValue() == card.cardValue())) {
+            if(!validPlay && stack[0] != null && stack[0].cardValue() == card.cardValue()) {
                 validPlay = true;
+            } else if(!validPlay && stack[1] != null && stack[1].cardValue() == card.cardValue()) {
+                validPlay = true;
+            } else if(validPlay && stack[0] == null) {
+                stack[0] = card;
+                return true;
             } else if(stack[0] == null) {
-                if(validPlay) {
-                    stack[0] = card;
-                    return true;
-                }
-                break;
+                return false;
             }
         }
         return false;
@@ -99,6 +114,9 @@ public class Board {
     private boolean defensePlay(Card card, Player player) {
         boolean validPlay = playDefenseCard(card);
         if(validPlay) {
+            if(secondAttacker != null) {
+                secondAttacker.setSkipped(false);
+            }
             player.getHand().remove(card);
             if(player.getHand().isEmpty()) {
                 if(drawPile.isEmpty()) {
@@ -107,6 +125,7 @@ public class Board {
                 }
                 defenseWon();
             }
+            activePlayer = attacker;
         }
         return validPlay;
     }
@@ -147,16 +166,28 @@ public class Board {
         emptyStacks();
     }
 
-    private boolean skip(Player player) {
-        if(player.equals(attacker)) {
+    public boolean skip(Player player) {
+        if (!player.equals(activePlayer)) {
+            return false;
+        }
 
+        if(player.equals(attacker)) {
+            if(playerList.size() > 2 && !secondAttacker.getSkipped()) {
+                if(!togglePrimaryAttacker()) throw new RuntimeException("game logic error");
+                player.setSkipped(true);
+            } else if (throwingIn) {
+                defenseLost();
+            } else {
+                defenseWon();
+            }
+            sendGameState();
+            return true;
         } else if(player.equals(defender)) {
-            //TODO add handling of additional card throws
-            defenseLost();
+            throwingIn = true;
+            return true;
         }
         return false;
     }
-
     private void defenseLost() {
         addStacksToDefenderHand();
         redraw();

@@ -1,5 +1,6 @@
 package de.voidstack_overload.cardgame.game.lobby;
 
+import de.voidstack_overload.cardgame.game.engine.Board;
 import de.voidstack_overload.cardgame.game.engine.bots.Bot;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
 import de.voidstack_overload.cardgame.messages.OutgoingMessageType;
@@ -10,9 +11,7 @@ import de.voidstack_overload.cardgame.utility.JsonBuilder;
 import de.voidstack_overload.cardgame.utility.ResponseBuilder;
 import org.java_websocket.WebSocket;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Represents a game lobby
@@ -60,6 +59,13 @@ public class Lobby {
 
     private boolean isFull = false;
     private boolean isInGame = false;
+    public boolean isInGame() {
+        return isInGame;
+    }
+    Board board = new Board(new ArrayList<>(this.getPlayers()));
+    public Board getBoard() {
+        return board;
+    }
 
     public Lobby(String id, String lobbyName, String lobbyPassword, int maxPlayers, int botCount, User host) {
         this.id = id;

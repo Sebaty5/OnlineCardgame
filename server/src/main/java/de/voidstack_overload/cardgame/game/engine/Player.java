@@ -10,6 +10,8 @@ public class Player extends User {
     private final List<Card> handCards = new ArrayList<>();
 
     private boolean isBot = false;
+    private boolean skipped = false;
+
     public void setBot(boolean bot) {
         isBot = bot;
     }
@@ -28,5 +30,13 @@ public class Player extends User {
 
     public void addCard(Card card) {
         handCards.add(card);
+    }
+
+    public void setSkipped(boolean b) {
+        this.skipped = b;
+    }
+
+    public boolean getSkipped() {
+        return skipped;
     }
 }

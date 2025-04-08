@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 import de.voidstack_overload.cardgame.actions.messages.account.LoginAction;
 import de.voidstack_overload.cardgame.actions.messages.account.LogoutAction;
 import de.voidstack_overload.cardgame.actions.messages.account.RegisterAction;
+import de.voidstack_overload.cardgame.actions.messages.game.PlayAction;
+import de.voidstack_overload.cardgame.actions.messages.game.PassAction;
 import de.voidstack_overload.cardgame.actions.messages.lobby.*;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
 import de.voidstack_overload.cardgame.messages.IncomingMessageType;
@@ -31,6 +33,8 @@ public class ActionManager {
         actions.put(IncomingMessageType.LOBBY_UPDATE, new LobbyUpdateAction());
         actions.put(IncomingMessageType.LOBBY_LIST, new LobbyListAction());
         //Game actions
+        actions.put(IncomingMessageType.GAME_PLAY, new PlayAction());
+        actions.put(IncomingMessageType.GAME_PASS, new PassAction());
     }
 
     public static Response handleAction(IncomingMessageType type, JsonObject json, WebSocket connection) {
