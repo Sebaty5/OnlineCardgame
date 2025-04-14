@@ -5,7 +5,7 @@ import de.voidstack_overload.cardgame.configuration.Config;
 import de.voidstack_overload.cardgame.connection.ConnectionManager;
 import javafx.application.Platform;
 
-public class HomeScreenController extends BaseController {
+public class HomeController extends BaseController {
 
     public void switchToSettings() {
         System.out.println("Settings");

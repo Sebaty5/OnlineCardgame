@@ -3,6 +3,7 @@ package de.voidstack_overload.cardgame.connection;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import de.voidstack_overload.cardgame.controller.LoginController;
+import de.voidstack_overload.cardgame.controller.RegistrationController;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
 import de.voidstack_overload.cardgame.utility.JsonBuilder;
 import javafx.application.Platform;
@@ -22,6 +23,7 @@ public class ConnectionManager {
     private boolean isConnected;
 
     private LoginController loginController;
+    private RegistrationController registrationController;
 
     private ConnectionManager() {
         isConnected = false;
@@ -84,12 +86,13 @@ public class ConnectionManager {
     public void setLoginController(LoginController loginController) {
         this.loginController = loginController;
     }
+    public void setRegistrationController(RegistrationController registrationController) { this.registrationController = registrationController;}
 
     private void handleServerMessage(String message) {
         try {
             JsonObject jsonNode = JsonParser.parseString(message).getAsJsonObject();
             String type = jsonNode.get("type").getAsString();
-
+            String errorMessage;
             switch (type) {
                 case "ACCOUNT_LOGIN_ACCEPT":
                     LOGGER.log("Login erfolgreich! Benutzername: " + jsonNode.get("username").getAsString());
@@ -101,7 +104,7 @@ public class ConnectionManager {
                     break;
 
                 case "ACCOUNT_LOGIN_DENY":
-                    String errorMessage = jsonNode.get("errorMessage").getAsString();
+                    errorMessage = jsonNode.get("errorMessage").getAsString();
                     LOGGER.log("Login fehlgeschlagen: " + errorMessage);
                     Platform.runLater(() -> {
                         if (loginController != null) {
@@ -115,8 +118,13 @@ public class ConnectionManager {
                     break;
 
                 case "ACCOUNT_REGISTER_DENY":
-                    LOGGER.log("Registrierung fehlgeschlagen: " + jsonNode.get("errorMessage").getAsString());
-
+                    errorMessage = jsonNode.get("errorMessage").getAsString();
+                    LOGGER.log("Registrierung fehlgeschlagen: " + errorMessage);
+                    Platform.runLater(() -> {
+                        if (registrationController != null) {
+                            registrationController.showError(errorMessage);
+                        }
+                    });
                     break;
 
                 case "LOBBY_CREATE_ACCEPT":

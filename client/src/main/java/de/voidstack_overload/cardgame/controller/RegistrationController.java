@@ -2,11 +2,10 @@ package de.voidstack_overload.cardgame.controller;
 
 import de.voidstack_overload.cardgame.connection.ConnectionManager;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class RegistrationScreenController extends BaseController {
+public class RegistrationController extends BaseController {
 
     @FXML
     private TextField name;
@@ -21,14 +20,16 @@ public class RegistrationScreenController extends BaseController {
     private PasswordField password;
 
     public void confirmRegistration() {
+        if(username.getLength() == 0 || password.getLength() == 0) {
+            showError("Username or password cannot be empty");
+        }
         ConnectionManager.getInstance().register(username.getText(), password.getText());
     }
 
-    public void showError(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+    @FXML
+    public void initialize() {
+        ConnectionManager.getInstance().setRegistrationController(this);
     }
+
+
 }

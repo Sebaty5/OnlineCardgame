@@ -43,12 +43,4 @@ public class LoginController extends BaseController {
             throw new RuntimeException(e);
         }
     }
-
-    public void showError(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
 }
