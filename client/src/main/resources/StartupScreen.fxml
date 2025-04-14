@@ -12,5 +12,5 @@
             <Image url="@textures/logo.png" />
         </image>
     </ImageView>
-    <Button fx:id="start" mnemonicParsing="false" text="Start" onAction="#continueButtonClicked"/>
+    <Button fx:id="start" mnemonicParsing="false" text="%menu.start" onAction="#continueButtonClicked"/>
 </VBox>

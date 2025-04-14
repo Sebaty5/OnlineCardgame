@@ -1,6 +1,7 @@
 package de.voidstack_overload.cardgame;
 
 import de.voidstack_overload.cardgame.controller.BaseController;
+import de.voidstack_overload.cardgame.manager.LanguageManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -17,6 +18,7 @@ public class SceneManager {
 
     public void switchScene(SceneFXML fxmlFile) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(fxmlFile.getFxmlFile()));
+        loader.setResources(LanguageManager.getBundle());
         Pane root = loader.load();
 
         BaseController controller = loader.getController();
