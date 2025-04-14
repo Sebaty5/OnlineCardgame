@@ -10,6 +10,8 @@ import java.io.IOException;
 public class SceneManager {
 
     private final Stage stage;
+    private static int width = 800;
+    private static int height = 600;
 
     public SceneManager(Stage stage) {
         this.stage = stage;
@@ -22,8 +24,7 @@ public class SceneManager {
         BaseController controller = loader.getController();
         controller.setSceneManager(this);
 
-        double[] sceneSize = getSceneSize(stage);
-        Scene scene = new Scene(root, sceneSize[0], sceneSize[1]);
+        Scene scene = new Scene(root, width, height);
 
         stage.setScene(scene);
         stage.show();
@@ -36,4 +37,25 @@ public class SceneManager {
             return new double[]{stage.getScene().getWidth(), stage.getScene().getHeight()};
         }
     }
+
+    public static void setWidth(int width) {
+        SceneManager.width = width;
+    }
+
+    public static void setHeight(int height) {
+        SceneManager.height = height;
+    }
+
+    public static void setSize(int width, int height) {
+        SceneManager.width = width;
+        SceneManager.height = height;
+    }
+    public static int getWidth() {
+        return SceneManager.width;
+    }
+
+    public static int getHeight() {
+        return SceneManager.height;
+    }
+
 }

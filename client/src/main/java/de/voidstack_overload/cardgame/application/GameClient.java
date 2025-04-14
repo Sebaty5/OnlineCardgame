@@ -12,9 +12,8 @@ public class GameClient extends Application {
         SceneManager sceneManager = new SceneManager(primaryStage);
 
         primaryStage.setTitle("Durak");
-        primaryStage.setResizable(true);
-        primaryStage.setMinWidth(800);
-        primaryStage.setMinHeight(600);
+        primaryStage.setResizable(false);
+
 
         sceneManager.switchScene(SceneFXML.STARTUP);
     }
