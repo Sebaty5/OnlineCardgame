@@ -222,7 +222,7 @@
     -fx-background-color: #FFD3FF;
 }
 
-#menuPanel{
+#menuPanel, #profilePanel{
     -fx-background-color: rgb(0,0,0,0.4);
     -fx-translate-x: 150px;
     -fx-background-radius: 24px;
@@ -234,4 +234,11 @@
 
 Region{
     -fx-min-height: 20px;
+}
+
+/*Profile*/
+
+#profilePanel .label{
+    -fx-font-size: 80px;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0,1,1);
 }
