@@ -5,15 +5,15 @@ import de.voidstack_overload.cardgame.SceneFXML;
 import de.voidstack_overload.cardgame.configuration.Config;
 import de.voidstack_overload.cardgame.connection.ConnectionManager;
 
-public class MenuScreenController extends BaseController {
 
-    public void switchToLobbys() {
-        System.out.println("Lobbys");
+public class MenuController extends BaseController {
+
+    public void switchToLogin() {
         ConnectionManager.getInstance().setServerUri(Config.getInstance().getServerUri());
         ConnectionManager.getInstance().connect();
 
         try {
-            sceneManager.switchScene(SceneFXML.CREATE_LOBBY);
+            sceneManager.switchScene(SceneFXML.LOGIN);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

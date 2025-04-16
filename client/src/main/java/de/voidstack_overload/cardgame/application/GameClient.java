@@ -12,7 +12,7 @@ public class GameClient extends Application {
         SceneManager sceneManager = new SceneManager(primaryStage);
 
         primaryStage.setTitle("Durak");
-        primaryStage.setResizable(false);
+        primaryStage.setResizable(true);
 
 
         sceneManager.switchScene(SceneFXML.STARTUP);

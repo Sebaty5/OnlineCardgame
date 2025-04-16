@@ -7,12 +7,12 @@
 
 <GridPane hgap="200" stylesheets="@styles/style.css" styleClass="background"
           xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="de.voidstack_overload.cardgame.controller.MenuScreenController">
+          fx:controller="de.voidstack_overload.cardgame.controller.MenuController">
 
     <VBox alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="0">
         <VBox fx:id="menuPanel" spacing="15">
             <Region/>
-            <Button styleClass="normalButton" mnemonicParsing="false" text="Play" onAction="#switchToLobbys"/>
+            <Button styleClass="normalButton" mnemonicParsing="false" text="Play" onAction="#switchToLogin"/>
             <Button styleClass="normalButton" mnemonicParsing="false" text="Settings" onAction="#switchToSettings"/>
             <Button styleClass="normalButton" mnemonicParsing="false" text="Credits" onAction="#switchToCredits"/>
             <Button styleClass="normalButton" mnemonicParsing="false" text="Quit" onAction="#switchToQuitGame"/>

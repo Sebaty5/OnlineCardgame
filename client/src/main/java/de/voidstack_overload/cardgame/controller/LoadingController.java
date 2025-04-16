@@ -7,7 +7,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.util.Duration;
 import java.io.IOException;
 
-public class LoadingScreenController extends BaseController {
+public class LoadingController extends BaseController {
 
     @FXML
     private ProgressBar loadingBar;

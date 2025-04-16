@@ -6,6 +6,8 @@ public enum SceneFXML {
     MENU("MenuScreen.fxml"),
     CREDIT("CreditScreen.fxml"),
     QUIT_GAME("QuitGameScreen.fxml"),
+    LOGIN("LoginScreen.fxml"),
+    REGISTRATION("RegistrationScreen.fxml"),
     CREATE_LOBBY("CreateLobbyScreen.fxml");
 
     private final String fxmlFile;

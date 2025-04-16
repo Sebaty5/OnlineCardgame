@@ -1,7 +1,12 @@
 package de.voidstack_overload.cardgame.connection;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import de.voidstack_overload.cardgame.controller.LoginController;
+import de.voidstack_overload.cardgame.controller.RegistrationController;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
 import de.voidstack_overload.cardgame.utility.JsonBuilder;
+import javafx.application.Platform;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 
@@ -16,6 +21,9 @@ public class ConnectionManager {
     private WebSocketClient client;
     private String serverUri;
     private boolean isConnected;
+
+    private LoginController loginController;
+    private RegistrationController registrationController;
 
     private ConnectionManager() {
         isConnected = false;
@@ -47,7 +55,8 @@ public class ConnectionManager {
 
                 @Override
                 public void onMessage(String message) {
-                    LOGGER.log("Server: " + message);
+                    LOGGER.log(message);
+                    handleServerMessage(message);
                 }
 
                 @Override
@@ -74,6 +83,96 @@ public class ConnectionManager {
         LOGGER.log("Disconnected from server");
     }
 
+    public void setLoginController(LoginController loginController) {
+        this.loginController = loginController;
+    }
+    public void setRegistrationController(RegistrationController registrationController) { this.registrationController = registrationController;}
+
+    private void handleServerMessage(String message) {
+        try {
+            JsonObject jsonNode = JsonParser.parseString(message).getAsJsonObject();
+            String type = jsonNode.get("type").getAsString();
+            String errorMessage;
+            switch (type) {
+                case "ACCOUNT_LOGIN_ACCEPT":
+                    LOGGER.log("Login erfolgreich! Benutzername: " + jsonNode.get("username").getAsString());
+                    Platform.runLater(() -> {
+                        if (loginController != null) {
+                            loginController.acceptLogin();
+                        }
+                    });
+                    break;
+
+                case "ACCOUNT_LOGIN_DENY":
+                    errorMessage = jsonNode.get("errorMessage").getAsString();
+                    LOGGER.log("Login fehlgeschlagen: " + errorMessage);
+                    Platform.runLater(() -> {
+                        if (loginController != null) {
+                            loginController.showError(errorMessage);
+                        }
+                    });
+                    break;
+
+                case "ACCOUNT_REGISTER_ACCEPT":
+                    LOGGER.log("Registrierung erfolgreich! Benutzername: " + jsonNode.get("username").getAsString());
+                    break;
+
+                case "ACCOUNT_REGISTER_DENY":
+                    errorMessage = jsonNode.get("errorMessage").getAsString();
+                    LOGGER.log("Registrierung fehlgeschlagen: " + errorMessage);
+                    Platform.runLater(() -> {
+                        if (registrationController != null) {
+                            registrationController.showError(errorMessage);
+                        }
+                    });
+                    break;
+
+                case "LOBBY_CREATE_ACCEPT":
+                    LOGGER.log("Lobby erstellt! Lobby-ID: " + jsonNode.get("lobbyID").getAsString());
+                    break;
+
+                case "LOBBY_CREATE_DENY":
+                    LOGGER.log("Lobby konnte nicht erstellt werden.");
+                    break;
+
+                case "LOBBY_JOIN_ACCEPT":
+                    LOGGER.log("Lobby beigetreten.");
+                    break;
+
+                case "LOBBY_JOIN_DENY":
+                    LOGGER.log("Lobby-Beitritt fehlgeschlagen: " + jsonNode.get("errorMessage").getAsString());
+                    break;
+
+                case "LOBBY_LIST_REPLY":
+                    LOGGER.log("Lobbys erhalten.");
+                    for (var lobbyElement : jsonNode.getAsJsonArray("lobbyList")) {
+                        JsonObject lobby = lobbyElement.getAsJsonObject();
+                        LOGGER.log("ID: " + lobby.get("lobbyID").getAsString() +
+                                ", Name: " + lobby.get("lobbyName").getAsString() +
+                                ", Spieler: " + lobby.get("currentPlayerCount").getAsInt() + "/" +
+                                lobby.get("maxPlayerCount").getAsInt() +
+                                ", Passwortgeschützt: " + lobby.get("isPasswordProtected").getAsBoolean());
+                    }
+                    break;
+
+                case "GAME_STATE":
+                    LOGGER.log("Spielstatus aktualisiert! Aktiver Spieler: " + jsonNode.get("activePlayer").getAsString());
+                    break;
+
+                case "UNKNOWN_CASE":
+                case "ERROR":
+                case "INSUFFICIENT_PERMISSIONS":
+                    LOGGER.log("Serverfehler: " + jsonNode.get("errorMessage").getAsString());
+                    break;
+
+                default:
+                    LOGGER.log("Unbekannter Nachrichtentyp: " + type);
+                    break;
+            }
+        } catch (Exception e) {
+            LOGGER.log("Fehler beim Verarbeiten der Nachricht: " + e.getMessage());
+        }
+    }
 
 
     public void sendMessage(String message) {

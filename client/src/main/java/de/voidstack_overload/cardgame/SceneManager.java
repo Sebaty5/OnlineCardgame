@@ -10,8 +10,8 @@ import java.io.IOException;
 public class SceneManager {
 
     private final Stage stage;
-    private static int width = 800;
-    private static int height = 600;
+    private static int width = 1280;
+    private static int height = 720;
 
     public SceneManager(Stage stage) {
         this.stage = stage;
