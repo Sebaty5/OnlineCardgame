@@ -251,3 +251,41 @@ Region{
     -fx-min-height: 20px;
 }
 
+/*Profile*/
+#profilePaneltext{
+    -fx-font-size: 80px;
+    -fx-text-fill: #0F042C;
+    -fx-effect:
+            dropshadow(gaussian, #FFD3FF, 3, 1, -1, -1), /* Top-left shadow */
+            dropshadow(gaussian, #FFD3FF, 3, 1, 1, -1),  /* Top-right shadow */
+            dropshadow(gaussian, #FFD3FF, 3, 1, -1, 1),  /* Bottom-left shadow */
+            dropshadow(gaussian, #FFD3FF, 3, 1, 1, 1);   /* Bottom-right shadow */
+}
+
+#profilePanellogin{
+    -fx-font-size: 20px;
+}
+
+#profilePanel{
+    -fx-background-color: rgb(0,0,0,0.4);
+    -fx-background-radius: 24px;
+    -fx-padding: 20px;
+    -fx-border-color: #FFD3FF;
+    -fx-border-radius: 24px;
+    -fx-border-width: 1px;
+}
+
+#profileText{
+    -fx-pref-width: 350px;
+    -fx-pref-height: 60px;
+    -fx-border-radius: 24px;
+    -fx-font-size: 40px;
+    -fx-text-fill: #FFD3FF;
+    -fx-text-alignment: left;
+    -fx-background-color: #0F042C;
+    -fx-background-radius: 24px;
+    -fx-background-insets: 6px;
+    -fx-wrap-text: true;
+    -fx-alignment: center;
+}
+

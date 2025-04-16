@@ -7,10 +7,13 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <GridPane hgap ="50" stylesheets="@styles/style.css" styleClass="background" xmlns="http://javafx.com/javafx/11.0.1"
           xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="de.voidstack_overload.cardgame.controller.ProfileScreenController" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0"
+          fx:controller="de.voidstack_overload.cardgame.controller.ProfileScreenController" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400" prefWidth="600"
         >
+        <Button styleClass="backButton" text="&lt;" />
         <VBox fx:id="hostPanel" spacing="15" alignment="CENTER"  GridPane.rowIndex="0" GridPane.columnIndex="1" >
             <Button styleClass="normalButton" mnemonicParsing="false" text="Host"/>
             <Button styleClass="normalButton" mnemonicParsing="false" text="Join"  />
@@ -18,14 +21,10 @@
 
         <VBox fx:id="profilePanel" spacing="15" alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="2" >
             <Region/>
-            <Label text="Profile" />
-            <Text text="Logged in as:"/>
-            <TextArea fx:id="profileText" wrapText="true" editable="false" text="Username" />
+            <Label fx:id="profilePaneltext" text="Profile" />
+            <Label fx:id="profilePanellogin" text="Logged in as:"/>
+            <TextField fx:id="profileText" editable="false" text="Username" />
             <Button styleClass="normalButton" mnemonicParsing="false" text="Log out" />
             <Region/>
         </VBox>
-
-
-
-
 </GridPane>
