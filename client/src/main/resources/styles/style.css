@@ -73,7 +73,6 @@
     -fx-background-radius: 24px;
     -fx-background-insets: 6px;
     -fx-wrap-text: true;
-    -fx-translate-x: 100px;
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0,1,1);
 }
 #backButton .text {
@@ -241,7 +240,6 @@
 
 #menuPanel{
     -fx-background-color: rgb(0,0,0,0.4);
-    -fx-translate-x: 150px;
     -fx-background-radius: 24px;
     -fx-padding: 20px;
     -fx-border-color: #FFD3FF;
@@ -253,6 +251,3 @@ Region{
     -fx-min-height: 20px;
 }
 
-.hRegion {
-    -fx-min-width: 20px;
-}
