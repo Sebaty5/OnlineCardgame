@@ -171,6 +171,14 @@
 .background2 {
     -fx-background-color: #0F042C;
 }
+
+.background3 {
+     -fx-background-color: linear-gradient(to right top , #B81FA1, #0F042C, #0F042C, #0F042C,#4E34C1);
+     -fx-background-image: url('../textures/vector2.png');
+     -fx-background-size: 100% 120%; /* Adjust the size of the background image */
+     -fx-background-repeat: no-repeat; /* Prevent the image from repeating */
+     -fx-background-position: center; /* Center the image */
+ }
 /*QuitGameScreen*/
 #QuitGameBox{
     -fx-min-width: 581px;
@@ -267,7 +275,7 @@ Region{
 }
 
 #profilePanel{
-    -fx-background-color: rgb(0,0,0,0.4);
+    -fx-background-color: rgb(0,0,0,0.8);
     -fx-background-radius: 24px;
     -fx-padding: 20px;
     -fx-border-color: #FFD3FF;
@@ -288,4 +296,23 @@ Region{
     -fx-wrap-text: true;
     -fx-alignment: center;
 }
+.einstllBtn{
+    -fx-pref-width: 60px;
+    -fx-pref-height: 60px;
+    -fx-border-radius: 24px;
+    -fx-border-width: 2px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 40px;
+    -fx-text-fill: #FFD3FF;
+    -fx-text-alignment: center;
+    -fx-background-color: #0F042C;
+    -fx-background-radius: 24px;
+    -fx-border-color: #FFD3FF;
+    -fx-background-insets: 6px;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0,1,1);
+}
 
+.einstllBtn ImageView{
+    -fx-fit-width: 30px;
+    -fx-fit-height: 30px;
+}

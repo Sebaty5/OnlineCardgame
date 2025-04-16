@@ -9,16 +9,14 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
-<GridPane hgap ="50" stylesheets="@styles/style.css" styleClass="background" xmlns="http://javafx.com/javafx/11.0.1"
+<GridPane hgap ="50" stylesheets="@styles/style.css" styleClass="background3" xmlns="http://javafx.com/javafx/11.0.1"
           xmlns:fx="http://javafx.com/fxml/1"
           fx:controller="de.voidstack_overload.cardgame.controller.ProfileScreenController" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400" prefWidth="600"
         >
-        <Button styleClass="backButton" text="&lt;" />
         <VBox fx:id="hostPanel" spacing="15" alignment="CENTER"  GridPane.rowIndex="0" GridPane.columnIndex="1" >
             <Button styleClass="normalButton" mnemonicParsing="false" text="Host"/>
             <Button styleClass="normalButton" mnemonicParsing="false" text="Join"  />
         </VBox>
-
         <VBox fx:id="profilePanel" spacing="15" alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="2" >
             <Region/>
             <Label fx:id="profilePaneltext" text="Profile" />
@@ -27,4 +25,16 @@
             <Button styleClass="normalButton" mnemonicParsing="false" text="Log out" />
             <Region/>
         </VBox>
+    <VBox GridPane.rowIndex="1" GridPane.columnIndex="3">
+        <Region/>
+        <Button styleClass="einstllBtn" mnemonicParsing="false">
+            <graphic>
+                <ImageView fitWidth="20" fitHeight="20">
+                    <image>
+                        <Image url="@textures/einstellungen.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+    </VBox>
 </GridPane>
