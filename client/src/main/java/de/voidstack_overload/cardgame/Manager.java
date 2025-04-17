@@ -17,7 +17,7 @@ public class Manager extends Application {
         stage.setMinWidth(800);
         stage.setMinHeight(600);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("ProfileScreen.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("LobbyListeScreen.fxml"));
         Pane mainPane = fxmlLoader.load();
 
         stage.setScene(new Scene(mainPane, stage.getWidth(), stage.getHeight()));

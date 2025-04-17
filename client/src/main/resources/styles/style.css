@@ -301,6 +301,7 @@ Region{
     -fx-pref-height: 60px;
     -fx-border-radius: 24px;
     -fx-border-width: 2px;
+    -fx-translate-x: 50px;
     -fx-font-family: 'Orbitron';
     -fx-font-size: 40px;
     -fx-text-fill: #FFD3FF;
@@ -315,4 +316,21 @@ Region{
 .einstllBtn ImageView{
     -fx-fit-width: 30px;
     -fx-fit-height: 30px;
+}
+
+.lobby{
+    -fx-background-color: rgb(0,0,0,0.4);
+    -fx-padding: 20px;
+    -fx-border-color: #FFD3FF;
+    -fx-text-fill: white;
+}
+
+.joinButton{
+    -fx-min-width: 100px;
+    -fx-min-height: 22px;
+    -fx-margin: 20px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-background-color: #0F042C;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0,1,1);
 }
