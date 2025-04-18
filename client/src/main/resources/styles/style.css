@@ -85,6 +85,7 @@
 
 .normalButton {
     -fx-pref-width: 350px;
+    -fx-min-width: 350px;
     -fx-pref-height: 60px;
     -fx-border-radius: 24px;
     -fx-border-width: 6px;
@@ -101,6 +102,7 @@
 
 .inputField {
     -fx-pref-width: 350px;
+    -fx-min-width: 350px;
     -fx-pref-height: 60px;
     -fx-border-radius: 24px;
     -fx-border-width: 3px;
@@ -180,7 +182,7 @@
      -fx-background-position: center; /* Center the image */
  }
 /*QuitGameScreen*/
-#QuitGameBox{
+ #QuitGameBox{
     -fx-min-width: 581px;
     -fx-min-height: 100px;
     -fx-margin: 0;
@@ -253,6 +255,16 @@
     -fx-border-color: #FFD3FF;
     -fx-border-radius: 24px;
     -fx-border-width: 1px;
+}
+
+#menuPanelHeader{
+    -fx-alignment: center;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 60px;
+    -fx-font-weight: bold;
+    -fx-fill: #0F042C; /* Fill color */
+    -fx-stroke: #FFD3FF; /* Border color */
+    -fx-stroke-width: 2px;
 }
 
 Region{
