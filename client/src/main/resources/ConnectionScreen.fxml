@@ -11,7 +11,7 @@
 <GridPane hgap="50" stylesheets="@styles/style.css" styleClass="background"
           prefHeight="400" prefWidth="600"
           xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="de.voidstack_overload.cardgame.controller.LoginScreenController">
+          fx:controller="de.voidstack_overload.cardgame.controller.ConnectionScreenController">
 
     <VBox alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="0">
         <HBox spacing="15">
