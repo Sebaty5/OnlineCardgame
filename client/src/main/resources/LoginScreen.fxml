@@ -21,7 +21,7 @@
                 <Text fx:id="menuPanelHeader" text="Login"/>
                 <TextField styleClass="inputField" text="Username" />
                 <TextField styleClass="inputField" text="Password" />
-                <Button styleClass="normalButton" mnemonicParsing="false" text="Log In" />
+                <Button styleClass="normalButton" mnemonicParsing="false" text="Log in" />
                 <Button styleClass="normalButton" mnemonicParsing="false" text="Register" />
                 <Region/>
             </VBox>
