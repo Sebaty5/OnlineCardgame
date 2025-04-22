@@ -11,18 +11,19 @@
 <GridPane hgap="50" stylesheets="@styles/style.css" styleClass="background"
           prefHeight="400" prefWidth="600"
           xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="de.voidstack_overload.cardgame.controller.LoginScreenController">
+          fx:controller="de.voidstack_overload.cardgame.controller.RegisterScreenController">
 
     <VBox alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="0">
         <HBox spacing="15">
             <Region />
             <Button styleClass="backButton" text="&lt;"/>
             <VBox alignment="CENTER" fx:id="menuPanel" spacing="15" >
-                <Text fx:id="menuPanelHeader" text="Login"/>
+                <Text fx:id="menuPanelHeader" text="Register"/>
+                <TextField styleClass="inputField" text="Name" />
+                <TextField styleClass="inputField" text="Email" />
                 <TextField styleClass="inputField" text="Username" />
                 <TextField styleClass="inputField" text="Password" />
-                <Button styleClass="normalButton" mnemonicParsing="false" text="Log in" />
-                <Button styleClass="normalButton" mnemonicParsing="false" text="Register" />
+                <Button styleClass="normalButton" mnemonicParsing="false" text="Submit" />
                 <Region/>
             </VBox>
             <Region/>

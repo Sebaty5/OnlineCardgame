@@ -85,7 +85,9 @@
 
 .normalButton {
     -fx-pref-width: 350px;
-    -fx-pref-height: 60px;
+    -fx-min-width: 350px;
+    -fx-pref-height: 80px;
+    -fx-min-height: 80px;
     -fx-border-radius: 24px;
     -fx-border-width: 6px;
     -fx-font-family: 'Orbitron';
@@ -101,11 +103,13 @@
 
 .inputField {
     -fx-pref-width: 350px;
-    -fx-pref-height: 60px;
+    -fx-min-width: 350px;
+    -fx-pref-height: 80px;
+    -fx-min-height: 80px;
     -fx-border-radius: 24px;
     -fx-border-width: 3px;
     -fx-font-family: 'Orbitron';
-    -fx-font-size: 40px;
+    -fx-font-size: 34px;
     -fx-text-fill: #A8A8A8;
     -fx-text-alignment: left;
     -fx-background-color: #0F042C;
@@ -180,7 +184,7 @@
      -fx-background-position: center; /* Center the image */
  }
 /*QuitGameScreen*/
-#QuitGameBox{
+ #QuitGameBox{
     -fx-min-width: 581px;
     -fx-min-height: 100px;
     -fx-margin: 0;
@@ -253,6 +257,16 @@
     -fx-border-color: #FFD3FF;
     -fx-border-radius: 24px;
     -fx-border-width: 1px;
+}
+
+#menuPanelHeader{
+    -fx-alignment: center;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 60px;
+    -fx-font-weight: bold;
+    -fx-fill: #0F042C; /* Fill color */
+    -fx-stroke: #FFD3FF; /* Border color */
+    -fx-stroke-width: 2px;
 }
 
 Region{
@@ -348,4 +362,10 @@ Region{
     -fx-wrap-text: true;
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
     -fx-translate-x: -100px;
+}
+
+.panelText{
+    -fx-font-size: 48px;
+    -fx-font-family: Orbitron;
+    -fx-text-fill: #FFD3FF;
 }
