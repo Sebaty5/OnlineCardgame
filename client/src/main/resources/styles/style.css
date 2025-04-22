@@ -334,3 +334,18 @@ Region{
     -fx-background-color: #0F042C;
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0,1,1);
 }
+.backButton2 {
+    -fx-min-width: 83px;
+    -fx-min-height: 83px;
+    -fx-border-radius: 24px;
+    -fx-border-width: 6px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 40px;
+    -fx-text-alignment: center;
+    -fx-background-color: #0F042C;
+    -fx-background-radius: 24px;
+    -fx-background-insets: 6px;
+    -fx-wrap-text: true;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
+    -fx-translate-x: -100px;
+}
