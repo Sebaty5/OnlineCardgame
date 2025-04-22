@@ -1,52 +1,56 @@
 package de.voidstack_overload.cardgame.connection;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import de.voidstack_overload.cardgame.controller.LoginController;
-import de.voidstack_overload.cardgame.controller.RegisterController;
+import de.voidstack_overload.cardgame.connection.handler.LobbyCreateHandler;
+import de.voidstack_overload.cardgame.connection.handler.LoginResponseHandler;
+import de.voidstack_overload.cardgame.connection.handler.RegisterResponseHandler;
+import de.voidstack_overload.cardgame.connection.handler.ServerResponseHandler;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
+import de.voidstack_overload.cardgame.model.request.BaseRequest;
 import de.voidstack_overload.cardgame.utility.JsonBuilder;
-import javafx.application.Platform;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
-
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
 public class ConnectionManager {
 
     private static ConnectionManager INSTANCE;
-    protected final StandardLogger LOGGER = new StandardLogger("Client");
-
+    protected final StandardLogger LOGGER;
     private WebSocketClient client;
+    private final List<ServerResponseHandler> responseHandlers;
     private String serverUri;
     private boolean isConnected;
-
-    private LoginController loginController;
-    private RegisterController registrationController;
+    private CompletableFuture<ResponseEntity<?>> pendingRequests;
 
     private ConnectionManager() {
         isConnected = false;
+        LOGGER = new StandardLogger("Client");
+        responseHandlers = Arrays.asList(new LoginResponseHandler(), new RegisterResponseHandler(), new LobbyCreateHandler());
     }
 
     public static ConnectionManager getInstance() {
-        if(INSTANCE == null) {
+        if (INSTANCE == null) {
             INSTANCE = new ConnectionManager();
         }
         return INSTANCE;
-    }
-
-    public void setServerUri(String serverUri) {
-        this.serverUri = serverUri;
     }
 
     public boolean isConnected() {
         return this.isConnected;
     }
 
-    public void connect() {
-        if(isConnected ||serverUri.isEmpty()) return;
+    public void connect(String serverUri) {
+        if (isConnected || serverUri.isEmpty()) return;
+
         try {
+            this.serverUri = serverUri;
             client = new WebSocketClient(new URI(serverUri)) {
                 @Override
                 public void onOpen(ServerHandshake handshake) {
@@ -56,7 +60,8 @@ public class ConnectionManager {
                 @Override
                 public void onMessage(String message) {
                     LOGGER.log(message);
-                    handleServerMessage(message);
+
+                    handleMessage(message);
                 }
 
                 @Override
@@ -76,56 +81,92 @@ public class ConnectionManager {
         }
     }
 
+    private void handleMessage(String message) {
+        try {
+            JsonObject json = JsonParser.parseString(message).getAsJsonObject();
+            String type = json.get("type").getAsString();
+
+            for (ServerResponseHandler handler : responseHandlers) {
+                if (handler.canHandle(type)) {
+                    ResponseEntity<?> response = handler.handle(json);
+                    pendingRequests.complete(response);
+                    return;
+                }
+            }
+
+            LOGGER.log("Unbekannter Nachrichtentyp: " + type);
+        } catch (Exception e) {
+            LOGGER.log("Fehler beim Verarbeiten der Nachricht: " + e.getMessage());
+        }
+    }
+
     public void disconnect() {
-        if(client == null || !client.isOpen()) return;
+        if (client == null || !client.isOpen()) return;
         client.close();
         isConnected = false;
         LOGGER.log("Disconnected from server");
     }
 
-    public void setLoginController(LoginController loginController) {
-        this.loginController = loginController;
-    }
-    public void setRegistrationController(RegisterController registrationController) { this.registrationController = registrationController;}
+    public <T> ResponseEntity<T> sendRequest(BaseRequest requestBody) {
+        if (client == null || !client.isOpen()) {
+            connect(serverUri);
+        }
+        if (client.isOpen()) {
+            CompletableFuture<ResponseEntity<?>> future = new CompletableFuture<>();
+            pendingRequests = future;
+            client.send(new Gson().toJson(requestBody));
 
+            try {
+                return (ResponseEntity<T>) future.get(30, TimeUnit.SECONDS);
+            } catch (Exception e) {
+                LOGGER.log("Fehler bei Anfrage: " + e.getMessage());
+                return ResponseEntity.error("Zeitüberschreitung oder Verbindungsfehler");
+            }
+        } else {
+            LOGGER.log("Connection not established.");
+            return ResponseEntity.error("Nicht mit Server verbunden");
+        }
+    }
+
+    //Wird noch weiter refaktored bei den nächsten Tickets
     private void handleServerMessage(String message) {
         try {
             JsonObject jsonNode = JsonParser.parseString(message).getAsJsonObject();
             String type = jsonNode.get("type").getAsString();
             String errorMessage;
             switch (type) {
-                case "ACCOUNT_LOGIN_ACCEPT":
-                    LOGGER.log("Login erfolgreich! Benutzername: " + jsonNode.get("username").getAsString());
-                    Platform.runLater(() -> {
-                        if (loginController != null) {
-                            loginController.acceptLogin();
-                        }
-                    });
-                    break;
-
-                case "ACCOUNT_LOGIN_DENY":
-                    errorMessage = jsonNode.get("errorMessage").getAsString();
-                    LOGGER.log("Login fehlgeschlagen: " + errorMessage);
-                    Platform.runLater(() -> {
-                        if (loginController != null) {
-                            loginController.showError(errorMessage);
-                        }
-                    });
-                    break;
-
-                case "ACCOUNT_REGISTER_ACCEPT":
-                    LOGGER.log("Registrierung erfolgreich! Benutzername: " + jsonNode.get("username").getAsString());
-                    break;
-
-                case "ACCOUNT_REGISTER_DENY":
-                    errorMessage = jsonNode.get("errorMessage").getAsString();
-                    LOGGER.log("Registrierung fehlgeschlagen: " + errorMessage);
-                    Platform.runLater(() -> {
-                        if (registrationController != null) {
-                            registrationController.showError(errorMessage);
-                        }
-                    });
-                    break;
+//                case "ACCOUNT_LOGIN_ACCEPT":
+//                    LOGGER.log("Login erfolgreich! Benutzername: " + jsonNode.get("username").getAsString());
+//                    Platform.runLater(() -> {
+//                        if (loginController != null) {
+//                            loginController.acceptLogin();
+//                        }
+//                    });
+//                    break;
+//
+//                case "ACCOUNT_LOGIN_DENY":
+//                    errorMessage = jsonNode.get("errorMessage").getAsString();
+//                    LOGGER.log("Login fehlgeschlagen: " + errorMessage);
+//                    Platform.runLater(() -> {
+//                        if (loginController != null) {
+//                            loginController.showError(errorMessage);
+//                        }
+//                    });
+//                    break;
+//
+//                case "ACCOUNT_REGISTER_ACCEPT":
+//                    LOGGER.log("Registrierung erfolgreich! Benutzername: " + jsonNode.get("username").getAsString());
+//                    break;
+//
+//                case "ACCOUNT_REGISTER_DENY":
+//                    errorMessage = jsonNode.get("errorMessage").getAsString();
+//                    LOGGER.log("Registrierung fehlgeschlagen: " + errorMessage);
+//                    Platform.runLater(() -> {
+//                        if (registrationController != null) {
+//                            registrationController.showError(errorMessage);
+//                        }
+//                    });
+//                    break;
 
                 case "LOBBY_CREATE_ACCEPT":
                     LOGGER.log("Lobby erstellt! Lobby-ID: " + jsonNode.get("lobbyID").getAsString());
@@ -172,79 +213,5 @@ public class ConnectionManager {
         } catch (Exception e) {
             LOGGER.log("Fehler beim Verarbeiten der Nachricht: " + e.getMessage());
         }
-    }
-
-
-    public void sendMessage(String message) {
-        if (client == null || !client.isOpen()) {
-            connect();
-        }
-        if (client.isOpen()) {
-            client.send(message);
-        } else {
-            LOGGER.log("Connection not established.");
-        }
-    }
-
-    public void login(String username, String password) {
-        JsonBuilder jsonBuilder = new JsonBuilder();
-        jsonBuilder.add("type", "ACCOUNT_LOGIN");
-        jsonBuilder.add("username", username);
-        jsonBuilder.add("password", password);
-        sendMessage(jsonBuilder.toString());
-    }
-
-    public void logout() {
-        JsonBuilder jsonBuilder = new JsonBuilder();
-        jsonBuilder.add("type", "ACCOUNT_LOGOUT");
-        sendMessage(jsonBuilder.toString());
-    }
-
-    public void register(String username, String password) {
-        JsonBuilder jsonBuilder = new JsonBuilder();
-        jsonBuilder.add("type", "ACCOUNT_REGISTER");
-        jsonBuilder.add("username", username);
-        jsonBuilder.add("password", password);
-        sendMessage(jsonBuilder.toString());
-    }
-
-    public void lobbyCreate(String lobbyName, String password, int maxPlayers, int botAmount) {
-        JsonBuilder jsonBuilder = new JsonBuilder();
-        jsonBuilder.add("type", "LOBBY_CREATE");
-        jsonBuilder.add("lobbyName", lobbyName);
-        jsonBuilder.add("password", password);
-        jsonBuilder.add("maxPlayers", maxPlayers);
-        jsonBuilder.add("botCount", botAmount);
-        sendMessage(jsonBuilder.toString());
-    }
-
-    public void lobbyJoin(String lobbyID, String password) {
-        JsonBuilder jsonBuilder = new JsonBuilder();
-        jsonBuilder.add("type", "LOBBY_JOIN");
-        jsonBuilder.add("lobbyID", lobbyID);
-        jsonBuilder.add("lobbyPassword", password);
-        sendMessage(jsonBuilder.toString());
-    }
-
-    public void lobbyLeave() {
-        JsonBuilder jsonBuilder = new JsonBuilder();
-        jsonBuilder.add("type", "LOBBY_LEAVE");
-        sendMessage(jsonBuilder.toString());
-    }
-
-    public void lobbyUpdate(String lobbyName, String lobbyPassword, int maxPlayers, int botAmount) {
-        JsonBuilder jsonBuilder = new JsonBuilder();
-        jsonBuilder.add("type", "LOBBY_UPDATE");
-        jsonBuilder.add("lobbyName", lobbyName);
-        jsonBuilder.add("lobbyPassword", lobbyPassword);
-        jsonBuilder.add("maxPlayers", maxPlayers);
-        jsonBuilder.add("botCount", botAmount);
-        sendMessage(jsonBuilder.toString());
-    }
-
-    public void lobbyList() {
-        JsonBuilder jsonBuilder = new JsonBuilder();
-        jsonBuilder.add("type", "LOBBY_LIST");
-        sendMessage(jsonBuilder.toString());
     }
 }

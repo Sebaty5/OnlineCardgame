@@ -1,7 +1,9 @@
 package de.voidstack_overload.cardgame.controller;
 
 import de.voidstack_overload.cardgame.SceneFXML;
-import de.voidstack_overload.cardgame.connection.ConnectionManager;
+import de.voidstack_overload.cardgame.connection.ResponseEntity;
+import de.voidstack_overload.cardgame.model.response.AuthenticationResponse;
+import de.voidstack_overload.cardgame.service.AuthenticationService;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -21,21 +23,30 @@ public class RegisterController extends BaseController {
     @FXML
     private PasswordField password;
 
+    private final AuthenticationService authenticationService = new AuthenticationService();
+
     public void confirmRegistration() {
-        if (username.getLength() == 0 || password.getLength() == 0) {
+        String username = this.username.getText();
+        String password = this.password.getText();
+        if (username.isEmpty() || password.isEmpty()) {
             showError("Username or password cannot be empty");
             return;
         }
-        ConnectionManager.getInstance().register(username.getText(), password.getText());
-        try {
-            sceneManager.switchScene(SceneFXML.PROFILE);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+
+        ResponseEntity<AuthenticationResponse> response = authenticationService.register(username, password);
+
+        if (response.isSuccess()) {
+            acceptRegister();
+        } else {
+            showError(response.getErrorMessage());
         }
     }
 
-    @FXML
-    public void initialize() {
-        ConnectionManager.getInstance().setRegistrationController(this);
+    private void acceptRegister() {
+        try {
+            sceneManager.switchScene(SceneFXML.CREATE_LOBBY);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
