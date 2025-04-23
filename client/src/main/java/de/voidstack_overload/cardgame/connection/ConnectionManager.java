@@ -3,19 +3,10 @@ package de.voidstack_overload.cardgame.connection;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import de.voidstack_overload.cardgame.connection.handler.LobbyCreateHandler;
-import de.voidstack_overload.cardgame.connection.handler.LoginResponseHandler;
-import de.voidstack_overload.cardgame.connection.handler.RegisterResponseHandler;
-import de.voidstack_overload.cardgame.connection.handler.ServerResponseHandler;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
 import de.voidstack_overload.cardgame.model.request.BaseRequest;
-import de.voidstack_overload.cardgame.utility.JsonBuilder;
-import org.java_websocket.client.WebSocketClient;
-import org.java_websocket.handshake.ServerHandshake;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Arrays;
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
@@ -23,16 +14,13 @@ public class ConnectionManager {
 
     private static ConnectionManager INSTANCE;
     protected final StandardLogger LOGGER;
-    private WebSocketClient client;
-    private final List<ServerResponseHandler> responseHandlers;
+    private ServerWebSocketClient client;
     private String serverUri;
     private boolean isConnected;
-    private CompletableFuture<ResponseEntity<?>> pendingRequests;
 
     private ConnectionManager() {
         isConnected = false;
         LOGGER = new StandardLogger("Client");
-        responseHandlers = Arrays.asList(new LoginResponseHandler(), new RegisterResponseHandler(), new LobbyCreateHandler());
     }
 
     public static ConnectionManager getInstance() {
@@ -51,60 +39,12 @@ public class ConnectionManager {
 
         try {
             this.serverUri = serverUri;
-            client = new WebSocketClient(new URI(serverUri)) {
-                @Override
-                public void onOpen(ServerHandshake handshake) {
-                    LOGGER.log("Connected to server");
-                }
-
-                @Override
-                public void onMessage(String message) {
-                    LOGGER.log(message);
-
-                    handleMessage(message);
-                }
-
-                @Override
-                public void onClose(int code, String reason, boolean remote) {
-                    LOGGER.log("Disconnected: " + reason);
-                }
-
-                @Override
-                public void onError(Exception ex) {
-                    LOGGER.log("Error: " + ex.getMessage());
-                }
-            };
-            client.connectBlocking();
+            this.client = new ServerWebSocketClient(new URI(serverUri));
+            this.client.connectBlocking();
             isConnected = true;
         } catch (URISyntaxException | InterruptedException e) {
             LOGGER.log("Failed to connect: " + e.getMessage());
         }
-    }
-
-    private void handleMessage(String message) {
-        try {
-            JsonObject json = JsonParser.parseString(message).getAsJsonObject();
-            String type = json.get("type").getAsString();
-
-            for (ServerResponseHandler handler : responseHandlers) {
-                if (handler.canHandle(type)) {
-                    ResponseEntity<?> response = handler.handle(json);
-                    pendingRequests.complete(response);
-                    return;
-                }
-            }
-
-            LOGGER.log("Unbekannter Nachrichtentyp: " + type);
-        } catch (Exception e) {
-            LOGGER.log("Fehler beim Verarbeiten der Nachricht: " + e.getMessage());
-        }
-    }
-
-    public void disconnect() {
-        if (client == null || !client.isOpen()) return;
-        client.close();
-        isConnected = false;
-        LOGGER.log("Disconnected from server");
     }
 
     public <T> ResponseEntity<T> sendRequest(BaseRequest requestBody) {
@@ -113,8 +53,7 @@ public class ConnectionManager {
         }
         if (client.isOpen()) {
             CompletableFuture<ResponseEntity<?>> future = new CompletableFuture<>();
-            pendingRequests = future;
-            client.send(new Gson().toJson(requestBody));
+            this.client.onTransmit(new Gson().toJson(requestBody), future);
 
             try {
                 return (ResponseEntity<T>) future.get(30, TimeUnit.SECONDS);
@@ -126,6 +65,13 @@ public class ConnectionManager {
             LOGGER.log("Connection not established.");
             return ResponseEntity.error("Nicht mit Server verbunden");
         }
+    }
+
+    public void disconnect() {
+        if (client == null || !client.isOpen()) return;
+        client.close();
+        isConnected = false;
+        LOGGER.log("Disconnected from server");
     }
 
     //Wird noch weiter refaktored bei den nächsten Tickets

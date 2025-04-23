@@ -20,10 +20,9 @@ public class ServerWebSocketClient extends WebSocketClient {
     private final List<ServerResponseHandler> responseHandlers;
     private CompletableFuture<ResponseEntity<?>> pendingRequest;
 
-    public ServerWebSocketClient(URI serverUri, CompletableFuture<ResponseEntity<?>> pendingRequest) {
+    public ServerWebSocketClient(URI serverUri) {
         super(serverUri);
         this.logger = new StandardLogger("Client");
-        this.pendingRequest = pendingRequest;
         this.responseHandlers = Arrays.asList(
                 new LoginResponseHandler(),
                 new RegisterResponseHandler(),
@@ -47,7 +46,7 @@ public class ServerWebSocketClient extends WebSocketClient {
                 if (handler.canHandle(type)) {
                     ResponseEntity<?> response = handler.handle(json);
 
-                    if (!pendingRequest.isDone()) {
+                    if (pendingRequest != null) {
                         pendingRequest.complete(response);
                     }
                     return;
@@ -68,5 +67,10 @@ public class ServerWebSocketClient extends WebSocketClient {
     @Override
     public void onError(Exception e) {
         logger.log("Error: " + e.getMessage());
+    }
+
+    public void onTransmit(String json, CompletableFuture<ResponseEntity<?>> future) {
+        this.pendingRequest = future;
+        this.send(json);
     }
 }

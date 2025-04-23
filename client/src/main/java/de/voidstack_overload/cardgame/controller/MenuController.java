@@ -8,8 +8,8 @@ import de.voidstack_overload.cardgame.connection.ConnectionManager;
 public class MenuController extends BaseController {
 
     public void switchToLogin() {
-        ConnectionManager.getInstance().setServerUri(Config.getInstance().getServerUri());
-        ConnectionManager.getInstance().connect();
+        String serverUri = Config.getInstance().getServerUri();
+        ConnectionManager.getInstance().connect(serverUri);
 
         try {
             sceneManager.switchScene(SceneFXML.LOGIN);

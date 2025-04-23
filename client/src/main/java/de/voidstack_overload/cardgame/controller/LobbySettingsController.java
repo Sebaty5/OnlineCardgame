@@ -2,6 +2,9 @@ package de.voidstack_overload.cardgame.controller;
 
 import de.voidstack_overload.cardgame.SceneFXML;
 import de.voidstack_overload.cardgame.connection.ConnectionManager;
+import de.voidstack_overload.cardgame.connection.ResponseEntity;
+import de.voidstack_overload.cardgame.model.response.LobbyResponse;
+import de.voidstack_overload.cardgame.service.LobbyService;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Slider;
@@ -22,13 +25,16 @@ public class LobbySettingsController extends BaseController {
     @FXML
     private Slider botAmount;
 
+    private final LobbyService lobbyService = new LobbyService();
+
     public void createLobby() {
         String name = lobbyName.getText();
         String password = lobbyPassword.getText();
         int maxPlayers = (int) this.maxPlayers.getValue();
         int botAmount = (int) this.botAmount.getValue();
         System.out.println("Create Lobby");
-        ConnectionManager.getInstance().lobbyCreate(name, password, maxPlayers, botAmount);
+
+        lobbyService.lobbyCreate(name, password, maxPlayers, botAmount);
     }
 
     public void switchToProfile() {
