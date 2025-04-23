@@ -16,28 +16,9 @@
                         <ColumnConstraints halignment="CENTER" minWidth="100" />
                         <ColumnConstraints halignment="CENTER" minWidth="100" />
                     </columnConstraints>
-                <Label styleClass="lobbyListeLabel" text="Name" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                <Label styleClass="lobbyListeLabel" text="Players" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                <Label styleClass="lobbyListeLabel" text="Blocked" GridPane.columnIndex="3" GridPane.rowIndex="0" />
-                <Label styleClass="Join" text="Join" GridPane.columnIndex="4" GridPane.rowIndex="0" />
-         <rowConstraints>
-            <RowConstraints />
-         </rowConstraints>
-                </GridPane>
-            </StackPane>
-    <StackPane GridPane.columnSpan="4" GridPane.rowIndex="1">
-                <GridPane alignment="CENTER" hgap="50" styleClass="lobby">
-                    <columnConstraints>
-                        <ColumnConstraints halignment="CENTER" minWidth="100" />
-                        <ColumnConstraints halignment="CENTER" minWidth="100" />
-                        <ColumnConstraints halignment="CENTER" minWidth="100" />
-                        <ColumnConstraints halignment="CENTER" minWidth="100" />
-                        <ColumnConstraints halignment="CENTER" minWidth="100" />
-                    </columnConstraints>
-                <Label styleClass="lobbyListeLabel" text="Game1" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                <Label styleClass="lobbyListeLabel" text="3" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <Label styleClass="lobbyListeLabel" text="/6" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                <ImageView fitHeight="30" fitWidth="30" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                <Label styleClass="lobbyListeLabel" text="Game1" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <Label styleClass="lobbyListeLabel" text="3/6" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                <ImageView fitHeight="30" fitWidth="30" GridPane.columnIndex="3" GridPane.rowIndex="0">
                     <image>
                         <Image url="@textures/lock.png" />
                     </image>
@@ -45,12 +26,12 @@
                <Blend />
             </effect>
                 </ImageView>
-                <Button styleClass="joinButton" text="Join" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                <Button styleClass="joinButton" text="Join" GridPane.columnIndex="4" GridPane.rowIndex="0" />
          <rowConstraints>
             <RowConstraints />
             <RowConstraints />
          </rowConstraints>
-                </GridPane>
+        </GridPane>
     </StackPane>
     <StackPane GridPane.columnSpan="4" GridPane.rowIndex="2">
         <GridPane alignment="CENTER" hgap="50" styleClass="lobby">
@@ -62,8 +43,7 @@
                 <ColumnConstraints halignment="CENTER" minWidth="100" />
             </columnConstraints>
             <Label styleClass="lobbyListeLabel" text="Game1" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-            <Label styleClass="lobbyListeLabel" text="3" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label styleClass="lobbyListeLabel" text="/6" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label styleClass="lobbyListeLabel" text="3/6" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <ImageView fitHeight="30" fitWidth="30" GridPane.columnIndex="3" GridPane.rowIndex="2">
                 <image>
                     <Image url="@textures/lock.png" />
@@ -89,8 +69,7 @@
                 <ColumnConstraints halignment="CENTER" minWidth="100" />
             </columnConstraints>
             <Label styleClass="lobbyListeLabel" text="Game1" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-            <Label styleClass="lobbyListeLabel" text="3" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label styleClass="lobbyListeLabel" text="/6" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Label styleClass="lobbyListeLabel" text="3/6" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <ImageView fitHeight="30" fitWidth="30" GridPane.columnIndex="3" GridPane.rowIndex="3">
                 <image>
                     <Image url="@textures/lock.png" />
@@ -116,8 +95,7 @@
                 <ColumnConstraints halignment="CENTER" minWidth="100" />
             </columnConstraints>
             <Label styleClass="lobbyListeLabel" text="Game1" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-            <Label styleClass="lobbyListeLabel" text="3" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Label styleClass="lobbyListeLabel" text="/6" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Label styleClass="lobbyListeLabel" text="3/6" GridPane.columnIndex="2" GridPane.rowIndex="4" />
             <ImageView fitHeight="30" fitWidth="30" GridPane.columnIndex="3" GridPane.rowIndex="4">
                 <image>
                     <Image url="@textures/lock.png" />
