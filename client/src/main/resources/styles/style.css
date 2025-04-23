@@ -365,7 +365,25 @@ Region{
 }
 
 .panelText{
-    -fx-font-size: 48px;
-    -fx-font-family: Orbitron;
-    -fx-text-fill: #FFD3FF;
+    -fx-font-size: 34px;
+    -fx-fill: #FFD3FF;
+}
+
+.slider .track{
+    -fx-background-color: #0F042C;
+    -fx-pref-height: 40px;
+    -fx-border-radius: 50px;
+    -fx-border-width: 3px;
+    -fx-border-color: #FFD3FF;
+}
+.slider .thumb{
+    -fx-background-color:  #FFD3FF;
+    -fx-pref-width: 25px;
+    -fx-pref-height: 25px;
+    -fx-border-radius: 50px;
+}
+
+.slider .tick-mark{
+    -fx-font-size: 20px;
+    -fx-fill: #FFD3FF;
 }
