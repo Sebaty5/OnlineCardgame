@@ -404,7 +404,7 @@ Region{
 .slider .track{
     -fx-background-color: #0F042C;
     -fx-pref-height: 40px;
-    -fx-border-radius: 50px;
+    -fx-border-radius: 20px;
     -fx-border-width: 3px;
     -fx-border-color: #FFD3FF;
 }
@@ -412,10 +412,64 @@ Region{
     -fx-background-color:  #FFD3FF;
     -fx-pref-width: 25px;
     -fx-pref-height: 25px;
-    -fx-border-radius: 50px;
+    -fx-border-radius: 20px;
 }
 
 .slider .tick-mark{
     -fx-font-size: 20px;
     -fx-fill: #FFD3FF;
+}
+
+.choice-box {
+    -fx-pref-width: 350px;
+    -fx-min-width: 350px;
+    -fx-pref-height: 60px;
+    -fx-min-height: 60px;
+    -fx-background-color: #0F042C;
+    -fx-fill: #FFD3FF;
+    -fx-border-width: 3px;
+    -fx-border-radius: 20px;
+    -fx-border-color: #FFD3FF;
+    -fx-background-radius: 20px;
+    -fx-font-size: 24px;
+}
+
+.choice-box .menu-item {
+    -fx-background-color: #0F042C;
+    -fx-text-fill: #FFD3FF;
+    -fx-border-color: #FFD3FF;
+    -fx-pref-width: 350px;
+    -fx-pref-height: 60px;
+    -fx-font-size: 24px;
+}
+
+.choice-box .menu-item:focused {
+    -fx-background-color: #5d26ab;
+}
+
+.choice-box .context-menu {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.check-box {
+    -fx-pref-height: 60px;
+    -fx-pref-width: 60px;
+    -fx-background-color: #0F042C;
+    -fx-text-fill: #FFD3FF;
+    -fx-border-color: #FFD3FF;
+    -fx-border-width: 3px;
+    -fx-border-radius: 20px;
+    -fx-font-size: 20px;
+    -fx-background-radius: 20px;
+}
+
+.check-box .box{
+    -fx-background-color: transparent;
+    -fx-pref-height: 60px;
+    -fx-pref-width: 60px;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #FFD3FF;
 }
