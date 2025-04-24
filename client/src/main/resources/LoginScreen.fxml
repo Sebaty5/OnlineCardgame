@@ -1,25 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 
 
-<Pane stylesheets="@styles/cardGameStyle.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity"
-      prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="de.voidstack_overload.cardgame.controller.LoginController">
-    <Pane prefHeight="400.0" prefWidth="200.0" styleClass="pane">
-        <Label alignment="CENTER" layoutX="55.0" layoutY="25.0" styleClass="labelHead" text="Login or Die lolol"/>
-        <TextField fx:id="usernameField" layoutX="10.0" layoutY="80.0" prefHeight="20.0" prefWidth="180.0"
-                   promptText="username"/>
-        <PasswordField fx:id="passwordField" layoutX="10.0" layoutY="130.0" prefHeight="20.0" prefWidth="180.0"
-                       promptText="password"/>
-        <Button layoutX="10.0" layoutY="290.0" mnemonicParsing="false" prefHeight="20.0"
-                prefWidth="180.0" text="Login" onAction="#confirmLogin"/>
-        <Button layoutX="10.0" layoutY="345.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="180.0"
-                text="Register" onAction="#switchToRegistration"/>
-    </Pane>
-</Pane>
+<?import javafx.scene.text.Text?>
+<GridPane hgap="50" stylesheets="@styles/style.css" styleClass="background"
+          prefHeight="400" prefWidth="600"
+          xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="de.voidstack_overload.cardgame.controller.LoginScreenController">
+
+    <VBox alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="0">
+        <HBox spacing="15">
+            <Region />
+            <Button styleClass="backButton" text="&lt;"/>
+            <VBox alignment="CENTER" fx:id="menuPanel" spacing="15" >
+                <Text fx:id="menuPanelHeader" text="Login"/>
+                <TextField styleClass="inputField" text="Username" />
+                <TextField styleClass="inputField" text="Password" />
+                <Button styleClass="normalButton" mnemonicParsing="false" text="Log in" />
+                <Button styleClass="normalButton" mnemonicParsing="false" text="Register" />
+                <Region/>
+            </VBox>
+            <Region/>
+        </HBox>
+    </VBox>
+
+    <VBox GridPane.rowIndex="0" GridPane.columnIndex="1" >
+        <ImageView pickOnBounds="true" preserveRatio="true" >
+            <image>
+                <Image url="@textures/logo.png" />
+            </image>
+        </ImageView>
+    </VBox>
+
+</GridPane>
