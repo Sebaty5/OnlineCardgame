@@ -1,14 +1,5 @@
 package de.voidstack_overload.cardgame.model.response;
 
-public class AuthenticationResponse {
+public record AuthenticationResponse(String username) {
 
-    private final String username;
-
-    public AuthenticationResponse(String username) {
-        this.username = username;
-    }
-
-    public String getUsername() {
-        return username;
-    }
 }

@@ -24,6 +24,7 @@ public class AuthenticationService {
         return connectionManager.sendRequest(request);
     }
 
+    //TODO
     public void logout() {
 //        JsonBuilder jsonBuilder = new JsonBuilder();
 //        jsonBuilder.add("type", "ACCOUNT_LOGOUT");

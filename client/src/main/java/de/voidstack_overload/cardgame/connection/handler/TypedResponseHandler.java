@@ -19,6 +19,7 @@ public abstract class TypedResponseHandler implements ServerResponseHandler {
         if (type.startsWith(typePrefix)) {
             this.messageType = MessageType.valueOf(type);
             return true;
-        } else return false;
+        }
+        return false;
     }
 }

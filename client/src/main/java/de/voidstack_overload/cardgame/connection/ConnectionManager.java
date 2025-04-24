@@ -5,6 +5,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
 import de.voidstack_overload.cardgame.model.request.BaseRequest;
+import de.voidstack_overload.cardgame.utility.GsonUtil;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.concurrent.CompletableFuture;
@@ -53,7 +55,7 @@ public class ConnectionManager {
         }
         if (client.isOpen()) {
             CompletableFuture<ResponseEntity<?>> future = new CompletableFuture<>();
-            this.client.onTransmit(new Gson().toJson(requestBody), future);
+            this.client.onTransmit(GsonUtil.toJson(requestBody), future);
 
             try {
                 return (ResponseEntity<T>) future.get(30, TimeUnit.SECONDS);

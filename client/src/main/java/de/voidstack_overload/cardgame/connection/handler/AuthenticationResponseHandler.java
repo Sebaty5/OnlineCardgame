@@ -35,13 +35,13 @@ public class AuthenticationResponseHandler extends TypedResponseHandler {
 
     private ResponseEntity<AuthenticationResponse> handleAccept(JsonObject message, String logPrefix) {
         AuthenticationResponse response = GsonUtil.toObject(message, AuthenticationResponse.class);
-        logger.log(logPrefix + " erfolgreich! Benutzername: " + response.getUsername());
+        logger.log(logPrefix + " erfolgreich! Benutzername: " + response.username());
         return ResponseEntity.ok(response);
     }
 
     private ResponseEntity<ErrorResponse> handleDeny(JsonObject message, String logPrefix) {
         ErrorResponse response = GsonUtil.toObject(message, ErrorResponse.class);
-        logger.log(logPrefix + "fehlgeschlagen: " + response.getErrorMessage());
-        return ResponseEntity.error(response.getErrorMessage());
+        logger.log(logPrefix + " fehlgeschlagen: " + response.errorMessage());
+        return ResponseEntity.error(response.errorMessage());
     }
 }

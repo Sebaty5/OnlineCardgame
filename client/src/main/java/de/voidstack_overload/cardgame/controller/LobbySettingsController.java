@@ -1,9 +1,6 @@
 package de.voidstack_overload.cardgame.controller;
 
 import de.voidstack_overload.cardgame.SceneFXML;
-import de.voidstack_overload.cardgame.connection.ConnectionManager;
-import de.voidstack_overload.cardgame.connection.ResponseEntity;
-import de.voidstack_overload.cardgame.model.response.LobbyResponse;
 import de.voidstack_overload.cardgame.service.LobbyService;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -32,7 +29,6 @@ public class LobbySettingsController extends BaseController {
         String password = lobbyPassword.getText();
         int maxPlayers = (int) this.maxPlayers.getValue();
         int botAmount = (int) this.botAmount.getValue();
-        System.out.println("Create Lobby");
 
         lobbyService.lobbyCreate(name, password, maxPlayers, botAmount);
     }
