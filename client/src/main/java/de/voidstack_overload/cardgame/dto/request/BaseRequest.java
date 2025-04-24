@@ -1,4 +1,4 @@
-package de.voidstack_overload.cardgame.model.request;
+package de.voidstack_overload.cardgame.dto.request;
 
 import de.voidstack_overload.cardgame.connection.MessageType;
 

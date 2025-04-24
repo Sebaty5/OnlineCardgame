@@ -2,8 +2,8 @@ package de.voidstack_overload.cardgame.connection.handler;
 
 import com.google.gson.JsonObject;
 import de.voidstack_overload.cardgame.connection.ResponseEntity;
-import de.voidstack_overload.cardgame.model.response.AuthenticationResponse;
-import de.voidstack_overload.cardgame.model.response.ErrorResponse;
+import de.voidstack_overload.cardgame.dto.response.AuthenticationResponse;
+import de.voidstack_overload.cardgame.dto.response.ErrorResponse;
 import de.voidstack_overload.cardgame.utility.GsonUtil;
 
 public class AuthenticationResponseHandler extends TypedResponseHandler {

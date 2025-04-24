@@ -1,4 +1,4 @@
-package de.voidstack_overload.cardgame.model.response;
+package de.voidstack_overload.cardgame.dto.response;
 
 public record AuthenticationResponse(String username) {
 

@@ -1,14 +1,14 @@
-package de.voidstack_overload.cardgame.model.request;
+package de.voidstack_overload.cardgame.dto.request;
 
 import de.voidstack_overload.cardgame.connection.MessageType;
 
-public class LoginRequest extends BaseRequest {
+public class RegisterRequest extends BaseRequest {
 
     private final String username;
     private final String password;
 
-    public LoginRequest(String username, String password) {
-        super(MessageType.ACCOUNT_LOGIN);
+    public RegisterRequest(String username, String password) {
+        super(MessageType.ACCOUNT_REGISTER);
         this.username = username;
         this.password = password;
     }

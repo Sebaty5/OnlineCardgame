@@ -1,8 +1,8 @@
 package de.voidstack_overload.cardgame.service;
 
 import de.voidstack_overload.cardgame.connection.ResponseEntity;
-import de.voidstack_overload.cardgame.model.request.LobbyCreateRequest;
-import de.voidstack_overload.cardgame.model.response.LobbyResponse;
+import de.voidstack_overload.cardgame.dto.request.LobbyCreateRequest;
+import de.voidstack_overload.cardgame.dto.response.LobbyResponse;
 
 public class LobbyService extends BaseService {
 

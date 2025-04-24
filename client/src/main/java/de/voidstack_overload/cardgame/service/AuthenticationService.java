@@ -2,9 +2,9 @@ package de.voidstack_overload.cardgame.service;
 
 import de.voidstack_overload.cardgame.connection.ConnectionManager;
 import de.voidstack_overload.cardgame.connection.ResponseEntity;
-import de.voidstack_overload.cardgame.model.request.LoginRequest;
-import de.voidstack_overload.cardgame.model.request.RegisterRequest;
-import de.voidstack_overload.cardgame.model.response.AuthenticationResponse;
+import de.voidstack_overload.cardgame.dto.request.LoginRequest;
+import de.voidstack_overload.cardgame.dto.request.RegisterRequest;
+import de.voidstack_overload.cardgame.dto.response.AuthenticationResponse;
 
 public class AuthenticationService {
 

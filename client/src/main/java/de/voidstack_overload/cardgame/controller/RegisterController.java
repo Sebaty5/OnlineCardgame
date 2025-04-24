@@ -2,7 +2,7 @@ package de.voidstack_overload.cardgame.controller;
 
 import de.voidstack_overload.cardgame.SceneFXML;
 import de.voidstack_overload.cardgame.connection.ResponseEntity;
-import de.voidstack_overload.cardgame.model.response.AuthenticationResponse;
+import de.voidstack_overload.cardgame.dto.response.AuthenticationResponse;
 import de.voidstack_overload.cardgame.service.AuthenticationService;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;

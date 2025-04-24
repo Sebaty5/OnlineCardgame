@@ -1,13 +1,10 @@
 package de.voidstack_overload.cardgame.connection.handler;
 
 import com.google.gson.JsonObject;
-import de.voidstack_overload.cardgame.connection.MessageType;
 import de.voidstack_overload.cardgame.connection.ResponseEntity;
-import de.voidstack_overload.cardgame.model.response.ErrorResponse;
-import de.voidstack_overload.cardgame.model.response.LobbyResponse;
+import de.voidstack_overload.cardgame.dto.response.ErrorResponse;
+import de.voidstack_overload.cardgame.dto.response.LobbyResponse;
 import de.voidstack_overload.cardgame.utility.GsonUtil;
-
-import java.util.EnumSet;
 
 public class LobbyResponseHandler extends TypedResponseHandler {
 

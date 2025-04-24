@@ -1,10 +1,9 @@
 package de.voidstack_overload.cardgame.connection;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
-import de.voidstack_overload.cardgame.model.request.BaseRequest;
+import de.voidstack_overload.cardgame.dto.request.BaseRequest;
 import de.voidstack_overload.cardgame.utility.GsonUtil;
 
 import java.net.URI;
