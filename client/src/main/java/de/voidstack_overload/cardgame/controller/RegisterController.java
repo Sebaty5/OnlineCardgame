@@ -44,7 +44,7 @@ public class RegisterController extends BaseController {
 
     private void acceptRegister() {
         try {
-            sceneManager.switchScene(SceneFXML.CREATE_LOBBY);
+            sceneManager.switchScene(SceneFXML.LOBBY_SETTINGS);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
