@@ -6,14 +6,14 @@ import de.voidstack_overload.cardgame.connection.ResponseEntity;
 import de.voidstack_overload.cardgame.model.response.LobbyResponse;
 import java.util.EnumSet;
 
-public class LobbyCreateHandler extends TypedResponseHandler {
+public class LobbyResponseHandler extends TypedResponseHandler {
 
-    public LobbyCreateHandler() {
-        super(EnumSet.of(MessageType.LOBBY_CREATE_ACCEPT, MessageType.LOBBY_CREATE_DENY));
+    public LobbyResponseHandler() {
+        super("LOBBY");
     }
 
     @Override
-    public ResponseEntity<LobbyResponse> handle(JsonObject message) {
+    public ResponseEntity<LobbyResponse> handleMessage(JsonObject message) {
         switch (messageType) {
             case LOBBY_CREATE_ACCEPT -> {
                 String lobbyID = message.get("lobbyID").getAsString();

@@ -2,25 +2,22 @@ package de.voidstack_overload.cardgame.connection.handler;
 
 import de.voidstack_overload.cardgame.connection.MessageType;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
-import java.util.Set;
 
 public abstract class TypedResponseHandler implements ServerResponseHandler {
 
-    private final Set<MessageType> supportedTypes;
+    private final String typePrefix;
     protected final StandardLogger logger;
     protected MessageType messageType;
 
-    protected TypedResponseHandler(Set<MessageType> supportedTypes) {
-        this.supportedTypes = supportedTypes;
+    protected TypedResponseHandler(String typePrefix) {
+        this.typePrefix = typePrefix;
         this.logger = new StandardLogger("Client");
     }
 
     @Override
     public boolean canHandle(String type) {
-        MessageType messageType = MessageType.valueOf(type);
-
-        if (supportedTypes.contains(messageType)) {
-            this.messageType = messageType;
+        if (type.startsWith(typePrefix)) {
+            this.messageType = MessageType.valueOf(type);
             return true;
         } else return false;
     }

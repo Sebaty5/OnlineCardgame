@@ -2,9 +2,8 @@ package de.voidstack_overload.cardgame.connection;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import de.voidstack_overload.cardgame.connection.handler.LobbyCreateHandler;
-import de.voidstack_overload.cardgame.connection.handler.LoginResponseHandler;
-import de.voidstack_overload.cardgame.connection.handler.RegisterResponseHandler;
+import de.voidstack_overload.cardgame.connection.handler.AuthenticationResponseHandler;
+import de.voidstack_overload.cardgame.connection.handler.LobbyResponseHandler;
 import de.voidstack_overload.cardgame.connection.handler.ServerResponseHandler;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
 import org.java_websocket.client.WebSocketClient;
@@ -12,6 +11,7 @@ import org.java_websocket.handshake.ServerHandshake;
 import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 public class ServerWebSocketClient extends WebSocketClient {
@@ -24,9 +24,8 @@ public class ServerWebSocketClient extends WebSocketClient {
         super(serverUri);
         this.logger = new StandardLogger("Client");
         this.responseHandlers = Arrays.asList(
-                new LoginResponseHandler(),
-                new RegisterResponseHandler(),
-                new LobbyCreateHandler()
+                new AuthenticationResponseHandler(),
+                new LobbyResponseHandler()
         );
     }
 
@@ -40,20 +39,13 @@ public class ServerWebSocketClient extends WebSocketClient {
         logger.log("Nachricht erhalten: " + message);
         try {
             JsonObject json = JsonParser.parseString(message).getAsJsonObject();
-            String type = json.get("type").getAsString();
 
-            for (ServerResponseHandler handler : responseHandlers) {
-                if (handler.canHandle(type)) {
-                    ResponseEntity<?> response = handler.handle(json);
+            MessageDispatcher dispatcher = new MessageDispatcher(responseHandlers);
+            Optional<ResponseEntity<?>> response = dispatcher.dispatch(json);
 
-                    if (pendingRequest != null) {
-                        pendingRequest.complete(response);
-                    }
-                    return;
-                }
+            if (pendingRequest != null && response.isPresent()) {
+                pendingRequest.complete(response.get());
             }
-
-            logger.log("Unbekannter Nachrichtentyp: " + type);
         } catch (Exception e) {
             logger.log("Fehler beim Verarbeiten der Nachricht: " + e.getMessage());
         }

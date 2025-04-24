@@ -5,5 +5,5 @@ import de.voidstack_overload.cardgame.connection.ResponseEntity;
 
 public interface ServerResponseHandler {
     boolean canHandle(String type);
-    ResponseEntity<?> handle(JsonObject message);
+    ResponseEntity<?> handleMessage(JsonObject message);
 }
