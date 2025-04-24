@@ -3,11 +3,11 @@ package de.voidstack_overload.cardgame.controller;
 import de.voidstack_overload.cardgame.SceneFXML;
 import java.io.IOException;
 
-public class ProfileScreenController extends BaseController {
+public class SettingsController extends BaseController {
 
-    public void switchToLobbySettings() {
+    public void switchToMenu() {
         try {
-            sceneManager.switchScene(SceneFXML.LOBBY_SETTINGS);
+            sceneManager.switchScene(SceneFXML.MENU);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

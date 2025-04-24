@@ -2,17 +2,19 @@
     font-family: 'Orbitron';
     src: url('../fonts/Orbitron-Regular.ttf');
 }
+
 * {
     -fx-margin: 0;
     -fx-box-sizing: border-box;
     -fx-font-family: 'Orbitron';
     -fx-text-fill: #FFD3FF;
 }
+
 /*StartupScreen*/
-#Startup{
+#Startup {
     -fx-alignment: center;
     -fx-margin: 0;
-    -fx-background-color: linear-gradient(to right top , #B81FA1, #0F042C, #0F042C, #0F042C,#4E34C1);
+    -fx-background-color: linear-gradient(to right top, #B81FA1, #0F042C, #0F042C, #0F042C, #4E34C1);
 }
 
 #start {
@@ -28,15 +30,15 @@
     -fx-translate-y: -150px;
     -fx-background-insets: 6px;
     -fx-wrap-text: true;
-    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0,1,1);
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
 }
 
-#start .text{
+#start .text {
     -fx-effect:
             dropshadow(gaussian, #60239F, 3, 1, -1, -1), /* Top-left shadow */
-            dropshadow(gaussian, #60239F, 3, 1, 1, -1),  /* Top-right shadow */
-            dropshadow(gaussian, #60239F, 3, 1, -1, 1),  /* Bottom-left shadow */
-            dropshadow(gaussian, #60239F, 3, 1, 1, 1);   /* Bottom-right shadow */
+            dropshadow(gaussian, #60239F, 3, 1, 1, -1), /* Top-right shadow */
+            dropshadow(gaussian, #60239F, 3, 1, -1, 1), /* Bottom-left shadow */
+            dropshadow(gaussian, #60239F, 3, 1, 1, 1); /* Bottom-right shadow */
 }
 
 #logo {
@@ -73,14 +75,15 @@
     -fx-background-radius: 24px;
     -fx-background-insets: 6px;
     -fx-wrap-text: true;
-    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0,1,1);
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
 }
+
 #backButton .text {
     -fx-effect:
             dropshadow(gaussian, #60239F, 3, 1, -1, -1), /* Top-left shadow */
-            dropshadow(gaussian, #60239F, 3, 1, 1, -1),  /* Top-right shadow */
-            dropshadow(gaussian, #60239F, 3, 1, -1, 1),  /* Bottom-left shadow */
-            dropshadow(gaussian, #60239F, 3, 1, 1, 1);   /* Bottom-right shadow */
+            dropshadow(gaussian, #60239F, 3, 1, 1, -1), /* Top-right shadow */
+            dropshadow(gaussian, #60239F, 3, 1, -1, 1), /* Bottom-left shadow */
+            dropshadow(gaussian, #60239F, 3, 1, 1, 1); /* Bottom-right shadow */
 }
 
 .normalButton {
@@ -98,7 +101,7 @@
     -fx-background-radius: 24px;
     -fx-background-insets: 6px;
     -fx-wrap-text: true;
-    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0,1,1);
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
 }
 
 .inputField {
@@ -135,9 +138,9 @@
     -fx-border-width: 3px;
     -fx-effect:
             dropshadow(gaussian, #60239F, 3, 1, -1, -1), /* Top-left shadow */
-            dropshadow(gaussian, #60239F, 3, 1, 1, -1),  /* Top-right shadow */
-            dropshadow(gaussian, #60239F, 3, 1, -1, 1),  /* Bottom-left shadow */
-            dropshadow(gaussian, #60239F, 3, 1, 1, 1);   /* Bottom-right shadow */
+            dropshadow(gaussian, #60239F, 3, 1, 1, -1), /* Top-right shadow */
+            dropshadow(gaussian, #60239F, 3, 1, -1, 1), /* Bottom-left shadow */
+            dropshadow(gaussian, #60239F, 3, 1, 1, 1); /* Bottom-right shadow */
 }
 
 #loadingText {
@@ -163,13 +166,13 @@
     -fx-background-radius: 24px;
     -fx-effect:
             dropshadow(gaussian, #FFD3FF, 13, 0, -1, -1), /* Top-left shadow */
-            dropshadow(gaussian, #FFD3FF, 13, 0, 1, -1),  /* Top-right shadow */
-            dropshadow(gaussian, #FFD3FF, 13, 0, -1, 1),  /* Bottom-left shadow */
-            dropshadow(gaussian, #FFD3FF, 13, 0, 1, 1);   /* Bottom-right shadow */
+            dropshadow(gaussian, #FFD3FF, 13, 0, 1, -1), /* Top-right shadow */
+            dropshadow(gaussian, #FFD3FF, 13, 0, -1, 1), /* Bottom-left shadow */
+            dropshadow(gaussian, #FFD3FF, 13, 0, 1, 1); /* Bottom-right shadow */
 }
 
 .background {
-    -fx-background-color: linear-gradient(to right top , #B81FA1, #0F042C, #0F042C, #0F042C,#4E34C1);
+    -fx-background-color: linear-gradient(to right top, #B81FA1, #0F042C, #0F042C, #0F042C, #4E34C1);
 }
 
 .background2 {
@@ -177,14 +180,15 @@
 }
 
 .background3 {
-     -fx-background-color: linear-gradient(to right top , #B81FA1, #0F042C, #0F042C, #0F042C,#4E34C1);
-     -fx-background-image: url('../textures/vector2.png');
-     -fx-background-size: 100% 120%; /* Adjust the size of the background image */
-     -fx-background-repeat: no-repeat; /* Prevent the image from repeating */
-     -fx-background-position: center; /* Center the image */
- }
+    -fx-background-color: linear-gradient(to right top, #B81FA1, #0F042C, #0F042C, #0F042C, #4E34C1);
+    -fx-background-image: url('../textures/vector2.png');
+    -fx-background-size: 100% 120%; /* Adjust the size of the background image */
+    -fx-background-repeat: no-repeat; /* Prevent the image from repeating */
+    -fx-background-position: center; /* Center the image */
+}
+
 /*QuitGameScreen*/
- #QuitGameBox{
+#QuitGameBox {
     -fx-min-width: 581px;
     -fx-min-height: 100px;
     -fx-margin: 0;
@@ -206,30 +210,32 @@
     -fx-background-radius: 24px;
     -fx-effect:
             dropshadow(gaussian, #FFD3FF, 13, 0, -1, -1), /* Top-left shadow */
-            dropshadow(gaussian, #FFD3FF, 13, 0, 1, -1),  /* Top-right shadow */
-            dropshadow(gaussian, #FFD3FF, 13, 0, -1, 1),  /* Bottom-left shadow */
-            dropshadow(gaussian, #FFD3FF, 13, 0, 1, 1);   /* Bottom-right shadow */
+            dropshadow(gaussian, #FFD3FF, 13, 0, 1, -1), /* Top-right shadow */
+            dropshadow(gaussian, #FFD3FF, 13, 0, -1, 1), /* Bottom-left shadow */
+            dropshadow(gaussian, #FFD3FF, 13, 0, 1, 1); /* Bottom-right shadow */
 }
-#quitGameText{
+
+#quitGameText {
     -fx-text-fill: #FFFFFF;
 }
 
-#quitGameButton, #dontQuitGameButton, #normalButton{
+#quitGameButton, #dontQuitGameButton, #normalButton {
     -fx-min-width: 446px;
     -fx-min-height: 82px;
     -fx-margin: 100px;
     -fx-border-radius: 30px;
     -fx-background-radius: 30px;
     -fx-background-color: #0F042C;
-    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0,1,1);
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
 }
 
-#cornerTop{
+#cornerTop {
     -fx-translate-y: 25px;
     -fx-translate-x: 25px;
     -fx-rotate: 180deg;
 }
-#cornerBottom{
+
+#cornerBottom {
     -fx-translate-y: -25px;
     -fx-translate-x: -25px;
 }
@@ -250,8 +256,8 @@
     -fx-background-color: #FFD3FF;
 }
 
-#menuPanel{
-    -fx-background-color: rgb(0,0,0,0.4);
+#menuPanel {
+    -fx-background-color: rgb(0, 0, 0, 0.4);
     -fx-background-radius: 24px;
     -fx-padding: 20px;
     -fx-border-color: #FFD3FF;
@@ -259,7 +265,7 @@
     -fx-border-width: 1px;
 }
 
-#menuPanelHeader{
+#menuPanelHeader {
     -fx-alignment: center;
     -fx-font-family: 'Orbitron';
     -fx-font-size: 60px;
@@ -269,27 +275,27 @@
     -fx-stroke-width: 2px;
 }
 
-Region{
+Region {
     -fx-min-height: 20px;
 }
 
 /*Profile*/
-#profilePaneltext{
+#profilePaneltext {
     -fx-font-size: 80px;
     -fx-text-fill: #0F042C;
     -fx-effect:
             dropshadow(gaussian, #FFD3FF, 3, 1, -1, -1), /* Top-left shadow */
-            dropshadow(gaussian, #FFD3FF, 3, 1, 1, -1),  /* Top-right shadow */
-            dropshadow(gaussian, #FFD3FF, 3, 1, -1, 1),  /* Bottom-left shadow */
-            dropshadow(gaussian, #FFD3FF, 3, 1, 1, 1);   /* Bottom-right shadow */
+            dropshadow(gaussian, #FFD3FF, 3, 1, 1, -1), /* Top-right shadow */
+            dropshadow(gaussian, #FFD3FF, 3, 1, -1, 1), /* Bottom-left shadow */
+            dropshadow(gaussian, #FFD3FF, 3, 1, 1, 1); /* Bottom-right shadow */
 }
 
-#profilePanellogin{
+#profilePanellogin {
     -fx-font-size: 20px;
 }
 
-#profilePanel{
-    -fx-background-color: rgb(0,0,0,0.8);
+#profilePanel {
+    -fx-background-color: rgb(0, 0, 0, 0.8);
     -fx-background-radius: 24px;
     -fx-padding: 20px;
     -fx-border-color: #FFD3FF;
@@ -297,7 +303,7 @@ Region{
     -fx-border-width: 1px;
 }
 
-#profileText{
+#profileText {
     -fx-pref-width: 350px;
     -fx-pref-height: 60px;
     -fx-border-radius: 24px;
@@ -310,7 +316,8 @@ Region{
     -fx-wrap-text: true;
     -fx-alignment: center;
 }
-.einstllBtn{
+
+.einstllBtn {
     -fx-pref-width: 60px;
     -fx-pref-height: 60px;
     -fx-border-radius: 24px;
@@ -324,44 +331,29 @@ Region{
     -fx-background-radius: 24px;
     -fx-border-color: #FFD3FF;
     -fx-background-insets: 6px;
-    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0,1,1);
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
 }
 
-.einstllBtn ImageView{
+.einstllBtn ImageView {
     -fx-fit-width: 30px;
     -fx-fit-height: 30px;
 }
 
-.lobby{
-    -fx-background-color: rgb(0,0,0,0.4);
+.lobby {
+    -fx-background-color: rgb(0, 0, 0, 0.4);
     -fx-padding: 20px;
     -fx-border-color: #FFD3FF;
     -fx-text-fill: white;
 }
 
-.joinButton{
+.joinButton {
     -fx-min-width: 100px;
     -fx-min-height: 22px;
     -fx-margin: 20px;
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
     -fx-background-color: #0F042C;
-    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0,1,1);
-}
-.backButton2 {
-    -fx-min-width: 83px;
-    -fx-min-height: 83px;
-    -fx-border-radius: 24px;
-    -fx-border-width: 6px;
-    -fx-font-family: 'Orbitron';
-    -fx-font-size: 40px;
-    -fx-text-alignment: center;
-    -fx-background-color: #0F042C;
-    -fx-background-radius: 24px;
-    -fx-background-insets: 6px;
-    -fx-wrap-text: true;
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
-    -fx-translate-x: -100px;
 }
 
 .backButton2 {
@@ -396,26 +388,43 @@ Region{
     -fx-translate-x: -100px;
 }
 
-.panelText{
+.backButton2 {
+    -fx-min-width: 83px;
+    -fx-min-height: 83px;
+    -fx-border-radius: 24px;
+    -fx-border-width: 6px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 40px;
+    -fx-text-alignment: center;
+    -fx-background-color: #0F042C;
+    -fx-background-radius: 24px;
+    -fx-background-insets: 6px;
+    -fx-wrap-text: true;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
+    -fx-translate-x: -100px;
+}
+
+.panelText {
     -fx-font-size: 34px;
     -fx-fill: #FFD3FF;
 }
 
-.slider .track{
+.slider .track {
     -fx-background-color: #0F042C;
     -fx-pref-height: 40px;
     -fx-border-radius: 20px;
     -fx-border-width: 3px;
     -fx-border-color: #FFD3FF;
 }
-.slider .thumb{
-    -fx-background-color:  #FFD3FF;
+
+.slider .thumb {
+    -fx-background-color: #FFD3FF;
     -fx-pref-width: 25px;
     -fx-pref-height: 25px;
     -fx-border-radius: 20px;
 }
 
-.slider .tick-mark{
+.slider .tick-mark {
     -fx-font-size: 20px;
     -fx-fill: #FFD3FF;
 }
@@ -464,7 +473,7 @@ Region{
     -fx-background-radius: 20px;
 }
 
-.check-box .box{
+.check-box .box {
     -fx-background-color: transparent;
     -fx-pref-height: 60px;
     -fx-pref-width: 60px;

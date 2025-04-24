@@ -10,10 +10,10 @@ import java.io.IOException;
 public class LoginController extends BaseController {
 
     @FXML
-    private TextField usernameField;
+    private TextField username;
 
     @FXML
-    private PasswordField passwordField;
+    private PasswordField password;
 
     @FXML
     public void initialize() {
@@ -21,8 +21,8 @@ public class LoginController extends BaseController {
     }
 
     public void confirmLogin() {
-        String username = usernameField.getText();
-        String password = passwordField.getText();
+        String username = this.username.getText();
+        String password = this.password.getText();
         if (username.isEmpty() || password.isEmpty()) {
             showError("Username or password cannot be empty");
             return;
@@ -32,7 +32,7 @@ public class LoginController extends BaseController {
 
     public void switchToRegistration() {
         try {
-            sceneManager.switchScene(SceneFXML.REGISTRATION);
+            sceneManager.switchScene(SceneFXML.REGISTER);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -40,7 +40,7 @@ public class LoginController extends BaseController {
 
     public void acceptLogin() {
         try {
-            sceneManager.switchScene(SceneFXML.CREATE_LOBBY);
+            sceneManager.switchScene(SceneFXML.PROFILE);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

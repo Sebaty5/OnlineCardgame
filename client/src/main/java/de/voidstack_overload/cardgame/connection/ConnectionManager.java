@@ -3,7 +3,7 @@ package de.voidstack_overload.cardgame.connection;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import de.voidstack_overload.cardgame.controller.LoginController;
-import de.voidstack_overload.cardgame.controller.RegistrationController;
+import de.voidstack_overload.cardgame.controller.RegisterController;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
 import de.voidstack_overload.cardgame.utility.JsonBuilder;
 import javafx.application.Platform;
@@ -23,7 +23,7 @@ public class ConnectionManager {
     private boolean isConnected;
 
     private LoginController loginController;
-    private RegistrationController registrationController;
+    private RegisterController registrationController;
 
     private ConnectionManager() {
         isConnected = false;
@@ -86,7 +86,7 @@ public class ConnectionManager {
     public void setLoginController(LoginController loginController) {
         this.loginController = loginController;
     }
-    public void setRegistrationController(RegistrationController registrationController) { this.registrationController = registrationController;}
+    public void setRegistrationController(RegisterController registrationController) { this.registrationController = registrationController;}
 
     private void handleServerMessage(String message) {
         try {

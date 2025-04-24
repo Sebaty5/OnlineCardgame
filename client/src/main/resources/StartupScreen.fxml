@@ -4,6 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
+
 <VBox fx:id="Startup" stylesheets="@styles/style.css" alignment="CENTER" spacing="5.0"
       xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="de.voidstack_overload.cardgame.controller.StartupScreenController">

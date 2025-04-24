@@ -2,35 +2,34 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
-
-
 <?import javafx.scene.text.Text?>
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
+
 <GridPane hgap="50" stylesheets="@styles/style.css" styleClass="background"
           prefHeight="400" prefWidth="600"
           xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="de.voidstack_overload.cardgame.controller.SettingsScreenController">
+          fx:controller="de.voidstack_overload.cardgame.controller.SettingsController">
 
     <VBox alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="0">
         <HBox spacing="15">
-            <Region />
-            <Button styleClass="backButton" text="&lt;"/>
-            <VBox alignment="CENTER" fx:id="menuPanel" spacing="15" >
+            <Region/>
+            <Button styleClass="backButton" text="&lt;" onAction="#switchToMenu"/>
+            <VBox alignment="CENTER" fx:id="menuPanel" spacing="15">
                 <Text fx:id="menuPanelHeader" text="Settings"/>
                 <HBox alignment="CENTER_LEFT">
                     <Text styleClass="panelText" text="Sound"/>
                 </HBox>
-                <Slider min="0" max="100" value="50" showTickLabels="true" showTickMarks="true" blockIncrement="10" majorTickUnit="10" minorTickCount="0" snapToTicks="true"/>
+                <Slider min="0" max="100" value="50" showTickLabels="true" showTickMarks="true" blockIncrement="10"
+                        majorTickUnit="10" minorTickCount="0" snapToTicks="true"/>
                 <HBox alignment="CENTER_LEFT">
                     <Text styleClass="panelText" text="Language"/>
                 </HBox>
-                <ChoiceBox fx:id="choiceBoxLanguage" >
+                <ChoiceBox fx:id="choiceBoxLanguage">
                     <items>
-                        <FXCollections fx:factory="observableArrayList"  >
+                        <FXCollections fx:factory="observableArrayList">
                             <String fx:value="German"/>
                             <String fx:value="English"/>
                         </FXCollections>
@@ -39,9 +38,9 @@
                 <HBox alignment="CENTER_LEFT">
                     <Text styleClass="panelText" text="Resulotion"/>
                 </HBox>
-                <ChoiceBox fx:id="choiceBoxResulotion" >
+                <ChoiceBox fx:id="choiceBoxResulotion">
                     <items>
-                        <FXCollections fx:factory="observableArrayList"  >
+                        <FXCollections fx:factory="observableArrayList">
                             <String fx:value="1920x1080"/>
                             <String fx:value="1280x720"/>
                         </FXCollections>
@@ -58,12 +57,11 @@
         </HBox>
     </VBox>
 
-    <VBox GridPane.rowIndex="0" GridPane.columnIndex="1" >
-        <ImageView pickOnBounds="true" preserveRatio="true" >
+    <VBox GridPane.rowIndex="0" GridPane.columnIndex="1">
+        <ImageView pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@textures/logo.png" />
+                <Image url="@textures/logo.png"/>
             </image>
         </ImageView>
     </VBox>
-
 </GridPane>

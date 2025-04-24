@@ -8,7 +8,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import java.io.IOException;
 
-public class CreateLobbyController extends BaseController {
+public class LobbySettingsController extends BaseController {
 
     @FXML
     private TextField lobbyName;
@@ -31,9 +31,9 @@ public class CreateLobbyController extends BaseController {
         ConnectionManager.getInstance().lobbyCreate(name, password, maxPlayers, botAmount);
     }
 
-    public void switchToMenu() {
+    public void switchToProfile() {
         try {
-            sceneManager.switchScene(SceneFXML.MENU);
+            sceneManager.switchScene(SceneFXML.PROFILE);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
