@@ -48,6 +48,7 @@ public class SettingsController extends BaseController {
         choiceBoxResolution.getSelectionModel().selectedItemProperty()
                 .addListener((obs, oldVal, newVal) -> {
                     if (newVal == null) return;
+                    if (checkFullScreen.isSelected()) return;
                     Pair<Integer,Integer> s = parse(newVal);
                     applyWindowedSize(s.getKey(), s.getValue());
                 });
