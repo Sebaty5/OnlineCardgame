@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import de.voidstack_overload.cardgame.game.engine.cards.Card;
 import de.voidstack_overload.cardgame.game.engine.cards.CardColor;
+import de.voidstack_overload.cardgame.logging.StandardLogger;
 import de.voidstack_overload.cardgame.messages.OutgoingMessageType;
 import de.voidstack_overload.cardgame.network.User;
 import de.voidstack_overload.cardgame.utility.JsonBuilder;
@@ -14,6 +15,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class Board {
+    private static final StandardLogger LOGGER = new StandardLogger("Board");
+
     private List<Player> playerList;
     public Player getPlayerFromUser(User user) {
         for (Player player : playerList) {
@@ -37,6 +40,7 @@ public class Board {
     }
 
     public void resetBoard(List<Player> players) {
+        LOGGER.log("Resetting board");
         emptyStacks();
         this.drawPile = createDrawPile();
         this.trumpColor = drawPile.getLast().cardColor();
@@ -47,6 +51,7 @@ public class Board {
     }
 
     private List<Card> createDrawPile() {
+        LOGGER.log("Creating draw pile");
         List<Card> drawPile = new ArrayList<>();
         for(int i = 1; i <= 4; i++) {
             for(int j = 0; j < 13; j++) {
@@ -58,7 +63,9 @@ public class Board {
     }
 
     public boolean playCard(Card card, Player player) {
+        LOGGER.log(player.getUsername() + " is attempting to play card " + card);
         if (!player.equals(activePlayer) || !player.getHand().contains(card)) {
+            LOGGER.log("Player " + player.getUsername() + " is not active.");
             return false;
         }
 
@@ -74,11 +81,14 @@ public class Board {
         return validPlay;
     }
     private boolean attackPlay(Card card, Player player) {
+        LOGGER.log(player.getUsername() + " is attempting to attack with card " + card);
         boolean validPlay = playAttackCard(card);
         if(validPlay) {
             player.getHand().remove(card);
             if(drawPile.isEmpty() && player.getHand().isEmpty()) {
+                LOGGER.log("Player " + player.getUsername() + " has played last card. Adding them as spectator.");
                 if(playerList.size() > 2) {
+                    LOGGER.log("Changing attacker due to original attacker playing their last card.");
                     attacker = secondAttacker;
                     secondAttacker = null;
                 }
@@ -86,6 +96,7 @@ public class Board {
                 spectatorList.add(player);
             }
             if(!throwingIn) {
+                LOGGER.log("Switching active player to defender");
                 activePlayer = defender;
             }
         }
@@ -93,19 +104,24 @@ public class Board {
     }
     private boolean playAttackCard(Card card) {
         if(stacks[0][0] == null) {
+            LOGGER.log("No card was played yet. Any card is valid");
             stacks[0][0] = card;
             return true;
         }
         boolean validPlay = false;
         for(Card[] stack : stacks) {
             if(!validPlay && stack[0] != null && stack[0].cardValue() == card.cardValue()) {
+                LOGGER.log("Found a card with equal value");
                 validPlay = true;
             } else if(!validPlay && stack[1] != null && stack[1].cardValue() == card.cardValue()) {
                 validPlay = true;
+                LOGGER.log("Found a card with equal value");
             } else if(validPlay && stack[0] == null) {
+                LOGGER.log("Valid play was found. Adding card to stack");
                 stack[0] = card;
                 return true;
             } else if(stack[0] == null) {
+                LOGGER.log("Valid play was not found.");
                 return false;
             }
         }
@@ -114,17 +130,21 @@ public class Board {
     private boolean defensePlay(Card card, Player player) {
         boolean validPlay = playDefenseCard(card);
         if(validPlay) {
-            if(secondAttacker != null) {
+            if(secondAttacker != null && secondAttacker.getSkipped()) {
+                LOGGER.log("Resetting skipped flag of second attacker.");
                 secondAttacker.setSkipped(false);
             }
             player.getHand().remove(card);
             if(player.getHand().isEmpty()) {
+                LOGGER.log("Hand is empty.");
                 if(drawPile.isEmpty()) {
+                    LOGGER.log("Player " + player.getUsername() + " has played last card. Adding them as spectator.");
                     playerList.remove(player);
                     spectatorList.add(player);
                 }
                 defenseWon();
             }
+            LOGGER.log("Setting active player to attacker");
             activePlayer = attacker;
         }
         return validPlay;
@@ -133,25 +153,34 @@ public class Board {
         for(Card[] stack : stacks) {
             if(stack[1] == null) {
                 if(card.cardColor() == trumpColor) {
+                    LOGGER.log("Playing trump as defense");
                     if(stack[0].cardColor() == trumpColor) {
+                        LOGGER.log("Defending against another trump");
                         if(stack[0].cardValue() < card.cardValue()) {
+                            LOGGER.log("Value of defense was higher.");
                             stack[1] = card;
                             return true;
                         } else {
+                            LOGGER.log("Value of defense was lower.");
                             return false;
                         }
                     } else {
+                        LOGGER.log("Defending against non trump. Trump automatically beats.");
                         stack[1] = card;
                         return true;
                     }
                 } else {
+                    LOGGER.log("Playing non trump as defense");
                     if(stack[0].cardColor() == trumpColor) {
+                        LOGGER.log("Defending against a trump. Defense fails.");
                         return false;
                     } else {
                         if(card.cardColor() == stack[0].cardColor() && stack[0].cardValue() < card.cardValue()) {
+                            LOGGER.log("Playing same color and value of defense was higher.");
                             stack[1] = card;
                             return true;
                         } else {
+                            LOGGER.log("Value of defense was lower or defense played incorrect color.");
                             return false;
                         }
                     }
@@ -161,6 +190,7 @@ public class Board {
         return false;
     }
     private void defenseWon() {
+        LOGGER.log("Defense won.");
         redraw();
         selectPlayerArea(mainAttackerIndex + 1);
         emptyStacks();
@@ -168,10 +198,12 @@ public class Board {
 
     public boolean skip(Player player) {
         if (!player.equals(activePlayer)) {
+            LOGGER.log("Player " + player.getUsername() + " is not active.");
             return false;
         }
 
         if(player.equals(attacker)) {
+            LOGGER.log("Player " + player.getUsername() + " skipped as attacker.");
             if(playerList.size() > 2 && !secondAttacker.getSkipped()) {
                 if(!togglePrimaryAttacker()) throw new RuntimeException("game logic error");
                 player.setSkipped(true);

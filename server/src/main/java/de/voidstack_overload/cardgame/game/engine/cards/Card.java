@@ -17,4 +17,9 @@ public record Card(CardColor cardColor, int cardValue) {
         int cardValue = (value - 11) % 13;
         return new Card(color, cardValue);
     }
+
+    @Override
+    public String toString() {
+        return cardValue + " of " + cardColor.toString();
+    }
 }

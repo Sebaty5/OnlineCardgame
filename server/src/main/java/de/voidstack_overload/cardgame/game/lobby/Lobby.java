@@ -62,7 +62,7 @@ public class Lobby {
     public boolean isInGame() {
         return isInGame;
     }
-    Board board = new Board(new ArrayList<>(this.getPlayers()));
+    Board board;
     public Board getBoard() {
         return board;
     }
@@ -88,49 +88,61 @@ public class Lobby {
         } else {
             this.lobbyName = lobbyName.length() > 50 ? lobbyName.substring(0, 50) : lobbyName;
         }
+        LOGGER.log("Updated lobby Name. New name: " + this.lobbyName);
     }
 
     public void updateLobbyPassword(String password) {
         this.password = password;
+        LOGGER.log("Updated lobby password. New password: " + this.password);
     }
 
     public void updateMaxPlayers(Integer maxPlayers) {
         this.maxPlayers = Math.max(2, Math.min(maxPlayers, 8));
+        LOGGER.log("Updated max player count. New max player count: " + this.maxPlayers);
     }
 
     public void updateBotCount(Integer botCount) {
         this.botCount = Math.max(1, Math.min(botCount, 8));
+
+        LOGGER.log("Updated bot count. New bot count: " + this.botCount);
     }
 
     public Response addPlayer(User user, String password) {
         JsonBuilder jsonBuilder = new JsonBuilder();
 
         if(isFull) {
+            LOGGER.log("Lobby is already full.");
             jsonBuilder.add("errorMessage", "The lobby is already full.");
             return ResponseBuilder.build(OutgoingMessageType.LOBBY_JOIN_DENY, jsonBuilder);
         }
 
         if(isInGame) {
+            LOGGER.log("Lobby is already in game.");
             jsonBuilder.add("errorMessage", "The lobby is already in a game.");
             return ResponseBuilder.build(OutgoingMessageType.LOBBY_JOIN_DENY, jsonBuilder);
         }
 
         if(!password.equals(this.password)) {
+            LOGGER.log("Passwords do not match.");
             jsonBuilder.add("errorMessage","Invalid Password, connection declined.");
             return ResponseBuilder.build(OutgoingMessageType.LOBBY_JOIN_DENY, jsonBuilder);
         }
 
         Player player = new Player(user);
-
         players.add(player);
-        broadcast("Player joined lobby: " + id);
+        LOGGER.log("Added new player to lobby.");
+        broadcast("Player " + player.getUsername() + " joined lobby: " + id);
         if(players.size() >= maxPlayers) {
+            LOGGER.log("Max player count reached.");
             isFull = true;
+            board = new Board(new ArrayList<>(this.getPlayers()));
+            isInGame = true;
         }
         return ResponseBuilder.build(OutgoingMessageType.LOBBY_JOIN_ACCEPT);
     }
 
     public void removePlayer(User user) {
+        LOGGER.log("Removing player from lobby.");
         players.remove(user);
         isFull = false;
         if (user == host && !players.isEmpty()) {
@@ -150,6 +162,7 @@ public class Lobby {
     }
 
     private void broadcast(String message) {
+        LOGGER.log("Broadcasting message: " + message);
         JsonBuilder json = new JsonBuilder();
         json.add("message", message);
         players.forEach(player -> {
