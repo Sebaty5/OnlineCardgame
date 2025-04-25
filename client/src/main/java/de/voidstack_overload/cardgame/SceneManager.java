@@ -1,6 +1,7 @@
 package de.voidstack_overload.cardgame;
 
 import de.voidstack_overload.cardgame.controller.BaseController;
+
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.fxml.FXMLLoader;
@@ -82,11 +83,6 @@ public class SceneManager {
             return new double[]{stage.getScene().getWidth(), stage.getScene().getHeight()};
         }
     }
-
-
-    /* ------------------------------------------------------------------ */
-    /* Private helpers                                                    */
-    /* ------------------------------------------------------------------ */
 
     private void bindScale() {
         scale.xProperty().bind(scaleFactor);

@@ -23,7 +23,7 @@
                     <Text styleClass="panelText" text="Sound"/>
                 </HBox>
                 <Slider min="0" max="100" value="50" showTickLabels="true" showTickMarks="true" blockIncrement="10"
-                        majorTickUnit="10" minorTickCount="1" snapToTicks="true"/>
+                        majorTickUnit="10" minorTickCount="0" snapToTicks="true"/>
                 <HBox alignment="CENTER_LEFT">
                     <Text styleClass="panelText" text="Language"/>
                 </HBox>
