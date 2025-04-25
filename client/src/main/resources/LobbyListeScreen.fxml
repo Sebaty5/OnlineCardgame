@@ -5,7 +5,9 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="background" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.voidstack_overload.cardgame.controller.LobbyListeScreenController">
+<GridPane alignment="CENTER"
+          prefWidth="1920" prefHeight="1080"
+          maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="background" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.voidstack_overload.cardgame.controller.LobbyListeScreenController">
     <Button styleClass="backButton2" text="&lt;" GridPane.columnSpan="4" GridPane.rowIndex="0"/>
     <StackPane GridPane.columnSpan="4" GridPane.rowIndex="0">
                 <GridPane alignment="CENTER" hgap="50" styleClass="lobby">
