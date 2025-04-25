@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.scene.shape.Ellipse?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<BorderPane fx:id="Loading" stylesheets="@styles/style.css" styleClass="background2" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="de.voidstack_overload.cardgame_semiold.controller.LoadingScreenController">
+    <top>
+        <ImageView BorderPane.alignment="CENTER_LEFT" fx:id="cornerTop" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@textures/corner.png" />
+            </image>
+        </ImageView>
+    </top>
+    <center>
+        <VBox alignment="CENTER" spacing="35.0">
+            <Label fx:id = "loadingText" text="loading"/>
+            <ProgressBar fx:id="loadingBar" styleClass="rounded-progress">
+            </ProgressBar>
+        </VBox>
+    </center>
+    <bottom>
+        <ImageView fx:id="cornerBottom" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER_RIGHT">
+            <image>
+                <Image  url="@textures/corner.png" />
+            </image>
+        </ImageView>
+    </bottom>
+</BorderPane>

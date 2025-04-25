@@ -7,10 +7,11 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane fx:id="QuitGameBox"
+            prefWidth="1920" prefHeight="1080"
             xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="de.voidstack_overload.cardgame.controller.QuitGameScreenController"
-            stylesheets="@styles/style.css" maxWidth="1200" maxHeight="400">
+            stylesheets="@styles/style.css" >
     <top>
         <ImageView BorderPane.alignment="CENTER_LEFT" fx:id="cornerTop" pickOnBounds="true" preserveRatio="true">
             <image>

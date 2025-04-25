@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.*?>
 
 <GridPane hgap="200" stylesheets="@styles/style.css" styleClass="background"
+          prefWidth="1920" prefHeight="1080"
           xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
           fx:controller="de.voidstack_overload.cardgame.controller.MenuController" alignment="CENTER">
 

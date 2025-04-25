@@ -59,10 +59,11 @@ public class UserManager {
      * @return whether the operation was successful.
      */
     public boolean addUser(User user) {
-        LOGGER.log("Adding user " + user.getUsername() + " with IP " + user.getWebSocket().getRemoteSocketAddress());
         if(connectedUsers.contains(user.getUsername())) {
+            LOGGER.log("User " + user.getUsername() + " is already connected");
             return false;
         }
+        LOGGER.log("Adding user " + user.getUsername() + " with IP " + user.getWebSocket().getRemoteSocketAddress());
         connectedUsers.add(user.getUsername());
         return users.putIfAbsent(user.getWebSocket(), user) == null;
     }

@@ -7,14 +7,14 @@
 <?import javafx.scene.text.Text?>
 
 <GridPane hgap="50" stylesheets="@styles/style.css" styleClass="background"
-          prefHeight="400" prefWidth="600"
+          prefWidth="1920" prefHeight="1080"
           xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
           fx:controller="de.voidstack_overload.cardgame.controller.RegisterController">
 
     <VBox alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="0">
         <HBox spacing="15">
             <Region/>
-            <Button styleClass="backButton" text="&lt;"/>
+            <Button styleClass="backButton" text="&lt;" onAction="#switchToMainMenu"/>
             <VBox alignment="CENTER" fx:id="menuPanel" spacing="15">
                 <Text fx:id="menuPanelHeader" text="Register"/>
                 <TextField fx:id="name" styleClass="inputField" text="Name"/>

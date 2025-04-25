@@ -1,6 +1,7 @@
 package de.voidstack_overload.cardgame.controller;
 
 import de.voidstack_overload.cardgame.SceneFXML;
+
 import de.voidstack_overload.cardgame.service.AuthenticationService;
 import de.voidstack_overload.cardgame.connection.ResponseEntity;
 import de.voidstack_overload.cardgame.dto.response.AuthenticationResponse;
@@ -16,8 +17,9 @@ public class LoginController extends BaseController {
 
     @FXML
     private PasswordField password;
-
+    
     private final AuthenticationService authenticationService = new AuthenticationService();
+
 
     public void confirmLogin() {
         String username = this.username.getText();
@@ -26,7 +28,6 @@ public class LoginController extends BaseController {
             showError("Username or password cannot be empty");
             return;
         }
-
         ResponseEntity<AuthenticationResponse> response = authenticationService.login(username, password);
 
         if (response.isSuccess()) {

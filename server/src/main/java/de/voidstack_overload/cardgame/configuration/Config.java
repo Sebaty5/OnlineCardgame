@@ -18,7 +18,7 @@ public class Config extends JsonHandler<Config.Data> {
         }
     }
 
-    private int serverPort = 8080;
+    private int serverPort;
 
     private Config() throws IOException {
         super(Paths.get("server/config/config.json"), 600_000L, Data.class, Data::new);

@@ -23,6 +23,7 @@ public class MessageHandler {
         JsonObject json = parseMessage(messageString);
         Response invalidMessageResponse = validateMessage(json);
         if (invalidMessageResponse != null){
+            LOGGER.log("Invalid message received: " + messageString);
             return invalidMessageResponse;
         }
         String type = json != null ? json.get("type").getAsString() : null;

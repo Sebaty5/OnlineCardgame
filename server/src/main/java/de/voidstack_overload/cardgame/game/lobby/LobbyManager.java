@@ -92,4 +92,8 @@ public class LobbyManager {
     public boolean isPlayerInLobby(User user) {
         return clientLobbyMap.containsKey(user);
     }
+
+    public Lobby getLobbyOfPlayer(User user) {
+        return lobbies.get(clientLobbyMap.get(user));
+    }
 }

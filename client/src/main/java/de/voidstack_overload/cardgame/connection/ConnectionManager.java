@@ -2,6 +2,7 @@ package de.voidstack_overload.cardgame.connection;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+
 import de.voidstack_overload.cardgame.logging.StandardLogger;
 import de.voidstack_overload.cardgame.dto.request.BaseRequest;
 import de.voidstack_overload.cardgame.utility.GsonUtil;
@@ -11,8 +12,8 @@ import java.net.URISyntaxException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
-public class ConnectionManager {
 
+public class ConnectionManager {
     private static ConnectionManager INSTANCE;
     protected final StandardLogger LOGGER;
     private ServerWebSocketClient client;
@@ -75,7 +76,6 @@ public class ConnectionManager {
         LOGGER.log("Disconnected from server");
     }
 
-    //Wird noch weiter refaktored bei den nächsten Tickets
     private void handleServerMessage(String message) {
         try {
             JsonObject jsonNode = JsonParser.parseString(message).getAsJsonObject();

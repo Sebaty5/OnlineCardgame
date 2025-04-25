@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.shape.Rectangle?>
+<GridPane hgap ="200" stylesheets="@styles/style.css" styleClass="background"
+          xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="de.voidstack_overload.cardgame_semiold.controller.MenuScreenController" alignment="CENTER">
+
+    <VBox alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="0">
+        <VBox fx:id="menuPanel" spacing="15" >
+            <Region/>
+            <Button styleClass="normalButton" mnemonicParsing="false" text="Play" />
+            <Button styleClass="normalButton" mnemonicParsing="false" text="Settings" />
+            <Button styleClass="normalButton" mnemonicParsing="false" text="Credits" />
+            <Button styleClass="normalButton" mnemonicParsing="false" text="Quit" />
+            <Region/>
+        </VBox>
+    </VBox>
+
+    <VBox GridPane.rowIndex="0" GridPane.columnIndex="1">
+        <ImageView fx:id="logo" pickOnBounds="true" preserveRatio="true" >
+            <image >
+                <Image url="@textures/logo.png" />
+            </image>
+        </ImageView>
+    </VBox>
+
+</GridPane>
+

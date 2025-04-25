@@ -1,14 +1,17 @@
 package de.voidstack_overload.cardgame.game.engine;
 
+import de.voidstack_overload.cardgame.game.engine.cards.Card;
 import de.voidstack_overload.cardgame.network.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Player extends User {
-    private final List<Integer> handCards = new ArrayList<>();
+    private final List<Card> handCards = new ArrayList<>();
 
     private boolean isBot = false;
+    private boolean skipped = false;
+
     public void setBot(boolean bot) {
         isBot = bot;
     }
@@ -21,7 +24,19 @@ public class Player extends User {
     }
 
 
-    public List<Integer> getHand() {
+    public List<Card> getHand() {
         return handCards;
+    }
+
+    public void addCard(Card card) {
+        handCards.add(card);
+    }
+
+    public void setSkipped(boolean b) {
+        this.skipped = b;
+    }
+
+    public boolean getSkipped() {
+        return skipped;
     }
 }

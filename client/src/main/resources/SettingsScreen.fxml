@@ -9,7 +9,7 @@
 <?import java.lang.String?>
 
 <GridPane hgap="50" stylesheets="@styles/style.css" styleClass="background"
-          prefHeight="400" prefWidth="600"
+          prefWidth="1920" prefHeight="1080"
           xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
           fx:controller="de.voidstack_overload.cardgame.controller.SettingsController">
 
@@ -38,7 +38,7 @@
                 <HBox alignment="CENTER_LEFT">
                     <Text styleClass="panelText" text="Resulotion"/>
                 </HBox>
-                <ChoiceBox fx:id="choiceBoxResulotion">
+                <ChoiceBox fx:id="choiceBoxResolution" value="1920x1080">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="1920x1080"/>
@@ -47,7 +47,7 @@
                     </items>
                 </ChoiceBox>
                 <HBox alignment="CENTER_LEFT" spacing="10">
-                    <CheckBox/>
+                    <CheckBox fx:id="checkFullScreen"/>
                     <Region/>
                     <Text styleClass="panelText" text="Fullscreen"/>
                 </HBox>

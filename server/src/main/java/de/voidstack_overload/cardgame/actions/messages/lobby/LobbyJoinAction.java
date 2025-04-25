@@ -17,12 +17,12 @@ public class LobbyJoinAction extends LobbyAction {
         }
 
         User user = UserManager.INSTANCE.getUser(connection);
-        if(json.get("lobbyID") == null || json.get("LobbyPassword") == null) {
+        if(json.get("lobbyID") == null || json.get("lobbyPassword") == null) {
             return ResponseBuilder.errorResponse("Missing arguments for joining a lobby.");
         }
 
         String lobbyID = json.get("lobbyID").getAsString();
-        String lobbyPassword = json.get("maxLobbyPassword").getAsString();
+        String lobbyPassword = json.get("lobbyPassword").getAsString();
 
         return LobbyManager.INSTANCE.joinLobby(user, lobbyID, lobbyPassword);
     }
