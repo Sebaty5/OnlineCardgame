@@ -224,6 +224,16 @@
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0,1,1);
 }
 
+.quitGameButton, .dontQuitGameButton{
+    -fx-min-width: 80px;
+    -fx-min-height: 40px;
+    -fx-margin: 10px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-background-color: #0F042C;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0,1,1);
+}
+
 #cornerTop{
     -fx-translate-y: 25px;
     -fx-translate-x: 25px;
@@ -494,4 +504,14 @@ Region{
 
 .check-box:selected .mark {
     -fx-background-color: #FFD3FF;
+}
+
+.popupQuitGame{
+    -fx-background-color: #0F042C;
+    -fx-border-color: #FFD3FF;
+    -fx-border-radius: 24px;
+    -fx-border-width: 3px;
+    -fx-padding: 20px;
+    -fx-font-size: 15px;
+    -fx-background-radius: 24px;
 }
