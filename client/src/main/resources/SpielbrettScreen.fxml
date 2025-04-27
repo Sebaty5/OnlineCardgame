@@ -4,6 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.text.Text?>
 <BorderPane prefHeight="381.0" prefWidth="809.0" styleClass="background" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.voidstack_overload.cardgame.controller.SpielbrettScreenController">
     <top>
         <VBox maxHeight="400" maxWidth="600" prefHeight="101.0" prefWidth="358.0" spacing="15.0" styleClass="popupQuitGame" BorderPane.alignment="TOP_LEFT">
@@ -29,7 +30,22 @@
         </HBox>
     </center>
     <right>
+        <VBox BorderPane.alignment="CENTER_RIGHT" fx:id="menuPanel" spacing="15" alignment="TOP_CENTER">
+            <Text styleClass="chatPanelText" text="Waiting" />
+            <HBox>
 
+            </HBox>
+            <HBox>
+                <Button styleClass="chatPanelText" text="Chat" textAlignment="LEFT"/>
+            </HBox>
+            <ListView />
+            <TextField styleClass="chatInput"/>
+            <HBox alignment="CENTER_RIGHT">
+                <Button styleClass="sendButton" text="send" />
+            </HBox>
+            <BorderPane.margin>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </BorderPane.margin>
+        </VBox>
     </right>
-
 </BorderPane>

@@ -1,4 +1,4 @@
-@font-face {
+@font-face{
     font-family: 'Orbitron';
     src: url('../fonts/Orbitron-Regular.ttf');
 }
@@ -15,7 +15,7 @@
     -fx-background-color: linear-gradient(to right top , #B81FA1, #0F042C, #0F042C, #0F042C,#4E34C1);
 }
 
-#start {
+#start{
     -fx-pref-width: 581px;
     -fx-pref-height: 100px;
     -fx-border-radius: 24px;
@@ -39,19 +39,19 @@
             dropshadow(gaussian, #60239F, 3, 1, 1, 1);   /* Bottom-right shadow */
 }
 
-#logo {
+#logo{
     -fx-pref-width: 470px;
     -fx-pref-height: 435px;
     -fx-background-image: url('../textures/logo.png');
 }
 
-#subtext {
+#subtext{
     -fx-font-size: 35px;
     -fx-text-alignment: center;
     -fx-fill: #FFFFFF;
 }
 
-.header {
+.header{
     -fx-alignment: center;
     -fx-font-family: 'Orbitron';
     -fx-font-size: 100px;
@@ -61,7 +61,7 @@
     -fx-stroke-width: 2px;
 }
 
-.backButton {
+.backButton{
     -fx-min-width: 83px;
     -fx-min-height: 83px;
     -fx-border-radius: 24px;
@@ -75,7 +75,7 @@
     -fx-wrap-text: true;
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0,1,1);
 }
-#backButton .text {
+#backButton .text{
     -fx-effect:
             dropshadow(gaussian, #60239F, 3, 1, -1, -1), /* Top-left shadow */
             dropshadow(gaussian, #60239F, 3, 1, 1, -1),  /* Top-right shadow */
@@ -83,7 +83,7 @@
             dropshadow(gaussian, #60239F, 3, 1, 1, 1);   /* Bottom-right shadow */
 }
 
-.normalButton {
+.normalButton{
     -fx-pref-width: 350px;
     -fx-min-width: 350px;
     -fx-pref-height: 80px;
@@ -101,7 +101,7 @@
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0,1,1);
 }
 
-.inputField {
+.inputField{
     -fx-pref-width: 350px;
     -fx-min-width: 350px;
     -fx-pref-height: 80px;
@@ -127,7 +127,7 @@
             dropshadow(gaussian, #60239F, 3, 1, 1, 1);   !* Bottom-right shadow *!
 }*/
 
-#loadingBar {
+#loadingBar{
     -fx-pref-width: 600px;
     -fx-pref-height: 40px;
     -fx-fill: #0F042C; /* Fill color */
@@ -140,12 +140,12 @@
             dropshadow(gaussian, #60239F, 3, 1, 1, 1);   /* Bottom-right shadow */
 }
 
-#loadingText {
+#loadingText{
     -fx-font-size: 40px;
     -fx-text-fill: #FFFFFF;
 }
 
-#box {
+#box{
     -fx-pref-height: 700px;
     -fx-pref-width: 400px;
     -fx-padding: 50px;
@@ -168,15 +168,15 @@
             dropshadow(gaussian, #FFD3FF, 13, 0, 1, 1);   /* Bottom-right shadow */
 }
 
-.background {
+.background{
     -fx-background-color: linear-gradient(to right top , #B81FA1, #0F042C, #0F042C, #0F042C,#4E34C1);
 }
 
-.background2 {
+.background2{
     -fx-background-color: #0F042C;
 }
 
-.background3 {
+.background3{
      -fx-background-color: linear-gradient(to right top , #B81FA1, #0F042C, #0F042C, #0F042C,#4E34C1);
      -fx-background-image: url('../textures/vector2.png');
      -fx-background-size: 100% 120%; /* Adjust the size of the background image */
@@ -191,7 +191,7 @@
     -fx-background-color: #0F042C;
 }
 
-#quitGame {
+#quitGame{
     -fx-padding: 50px;
     -fx-width: 100px;
     -fx-height: 200px;
@@ -250,12 +250,12 @@
     -fx-padding: 2px;
 }
 
-.rounded-progress .track {
+.rounded-progress .track{
     -fx-background-radius: 24px;
     -fx-background-color: #0F042C;
 }
 
-.rounded-progress .bar {
+.rounded-progress .bar{
     -fx-background-radius: 24px;
     -fx-background-color: #FFD3FF;
 }
@@ -359,7 +359,7 @@ Region{
     -fx-background-color: #0F042C;
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0,1,1);
 }
-.backButton2 {
+.backButton2{
     -fx-pref-width: 83px;
     -fx-pref-height: 83px;
     -fx-border-radius: 24px;
@@ -373,7 +373,7 @@ Region{
     -fx-wrap-text: true;
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
 }
-.backButton3 {
+.backButton3{
     -fx-pref-width: 83px;
     -fx-pref-height: 83px;
     -fx-border-radius: 24px;
@@ -388,7 +388,7 @@ Region{
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
 }
 
-.backButton2 {
+.backButton2{
     -fx-min-width: 83px;
     -fx-min-height: 83px;
     -fx-border-radius: 24px;
@@ -404,7 +404,7 @@ Region{
     -fx-translate-x: -100px;
 }
 
-.backButton2 {
+.backButton2{
     -fx-min-width: 83px;
     -fx-min-height: 83px;
     -fx-border-radius: 24px;
@@ -422,6 +422,12 @@ Region{
 
 .panelText{
     -fx-font-size: 34px;
+    -fx-fill: #FFD3FF;
+}
+
+.chatPanelText{
+    -fx-background-color: transparent;
+    -fx-font-size: 30px;
     -fx-fill: #FFD3FF;
 }
 
@@ -452,7 +458,7 @@ Region{
 }
 
 
-.choice-box {
+.choice-box{
     -fx-pref-width: 350px;
     -fx-min-width: 350px;
     -fx-pref-height: 60px;
@@ -466,7 +472,7 @@ Region{
     -fx-font-size: 24px;
 }
 
-.choice-box .menu-item {
+.choice-box .menu-item{
     -fx-background-color: #0F042C;
     -fx-text-fill: #FFD3FF;
     -fx-border-color: #FFD3FF;
@@ -475,7 +481,7 @@ Region{
     -fx-font-size: 24px;
 }
 
-.choice-box .menu-item:focused {
+.choice-box .menu-item:focused{
     -fx-background-color: #5d26ab;
 }
 
@@ -484,7 +490,7 @@ Region{
     -fx-border-color: transparent;
 }
 
-.check-box {
+.check-box{
     -fx-pref-height: 60px;
     -fx-pref-width: 60px;
     -fx-background-color: #0F042C;
@@ -502,7 +508,7 @@ Region{
     -fx-pref-width: 60px;
 }
 
-.check-box:selected .mark {
+.check-box:selected .mark{
     -fx-background-color: #FFD3FF;
 }
 
@@ -514,4 +520,35 @@ Region{
     -fx-padding: 20px;
     -fx-font-size: 15px;
     -fx-background-radius: 24px;
+}
+
+.chatInput{
+    -fx-background-color: #5d26ab;
+    -fx-pref-height: 40px;
+    -fx-border-width: 3px;
+    -fx-border-color: #FFD3FF;
+}
+
+.list-view{
+    -fx-background-color: #5d26ab;
+    -fx-min-height: 100px;
+    -fx-max-height: 150px;
+    -fx-border-width: 3px;
+    -fx-border-color: #FFD3FF;
+}
+
+.sendButton{
+    -fx-pref-width: 115px;
+    -fx-pref-height: 30px;
+    -fx-border-radius: 14px;
+    -fx-border-width: 3px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 15px;
+    -fx-text-fill: #FFD3FF;
+    -fx-text-alignment: left;
+    -fx-background-color: #0F042C;
+    -fx-background-radius: 24px;
+    -fx-background-insets: 6px;
+    -fx-wrap-text: true;
+    -fx-border-color: #FFD3FF;
 }
