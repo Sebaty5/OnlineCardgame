@@ -34,7 +34,14 @@
         </HBox>
     </top>
     <left>
-
+        <VBox alignment="CENTER" prefHeight="516.0" prefWidth="290.0" spacing="10" BorderPane.alignment="CENTER_RIGHT">
+            <ImageView fitHeight="139.0" fitWidth="277.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@textures/card.png" />
+                </image>
+            </ImageView>
+            <Text text="40"/>
+        </VBox>
     </left>
     <center>
         <VBox>
@@ -103,7 +110,7 @@
                 </ImageView>
             </HBox>
             <HBox alignment="CENTER" prefHeight="57.0" prefWidth="1175.0" spacing="5" BorderPane.alignment="CENTER_RIGHT">
-                <Button styleClass="passGameButton" prefHeight="43.0" prefWidth="231.0" text="Pass" />
+                <Button prefHeight="43.0" prefWidth="231.0" styleClass="passGameButton" text="Pass" />
             </HBox>
         </VBox>
     </center>
