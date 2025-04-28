@@ -3,13 +3,14 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.text.Text?>
-<BorderPane prefHeight="381.0" prefWidth="809.0" styleClass="background" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.voidstack_overload.cardgame.controller.SpielbrettScreenController">
+<BorderPane prefHeight="637.0" prefWidth="977.0" styleClass="background" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.voidstack_overload.cardgame.controller.SpielbrettScreenController">
     <top>
-        <VBox maxHeight="400" maxWidth="600" prefHeight="101.0" prefWidth="358.0" spacing="15.0" styleClass="popupQuitGame" BorderPane.alignment="TOP_LEFT">
-            <Label alignment="CENTER" prefHeight="19.0" prefWidth="671.0" styleClass="quitGameText" text="Are you sure you want to quit the Game?" />
-            <TilePane alignment="CENTER" hgap="20" prefHeight="33.0" prefWidth="358.0">
+        <HBox alignment="CENTER" prefHeight="105.0" prefWidth="977.0" spacing="20">
+        <VBox maxHeight="400" maxWidth="600" prefHeight="121.0" prefWidth="478.0" spacing="15.0" styleClass="popupQuitGame" BorderPane.alignment="TOP_LEFT">
+            <Label alignment="CENTER" prefHeight="19.0" prefWidth="671.0" styleClass="quitGameText" text="Are you sure you want to quit?" />
+            <TilePane alignment="CENTER" hgap="20" prefHeight="40.0" prefWidth="441.0">
                 <Button styleClass="quitGameButton" text="Yes" />
                 <Button styleClass="dontQuitGameButton" text="No" />
             </TilePane>
@@ -17,6 +18,19 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </BorderPane.margin>
         </VBox>
+         <Region fx:id="spacer" prefHeight="121.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+            <!-- HBox on the right -->
+         <HBox alignment="CENTER" prefHeight="121.0" prefWidth="338.0" spacing="10">
+            <Button prefHeight="40.0" prefWidth="140.0" styleClass="quitGameButton" text="Settings" />
+            <Button prefHeight="40.0" prefWidth="140.0" styleClass="quitGameButton" text="Leave" />
+             <BorderPane.margin>
+                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+             </BorderPane.margin>
+         </HBox>
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </BorderPane.margin>
+        </HBox>
     </top>
     <left>
 
@@ -30,16 +44,16 @@
         </HBox>
     </center>
     <right>
-        <VBox BorderPane.alignment="CENTER_RIGHT" fx:id="menuPanel" spacing="15" alignment="TOP_CENTER">
+        <VBox fx:id="menuPanel" alignment="TOP_CENTER" spacing="15" BorderPane.alignment="CENTER_RIGHT">
             <Text styleClass="chatPanelText" text="Waiting" />
             <HBox>
 
             </HBox>
             <HBox>
-                <Button styleClass="chatPanelText" text="Chat" textAlignment="LEFT"/>
+                <Button styleClass="chatPanelText" text="Chat" textAlignment="LEFT" />
             </HBox>
             <ListView />
-            <TextField styleClass="chatInput"/>
+            <TextField styleClass="chatInput" />
             <HBox alignment="CENTER_RIGHT">
                 <Button styleClass="sendButton" text="send" />
             </HBox>
