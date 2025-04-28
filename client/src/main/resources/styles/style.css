@@ -552,3 +552,22 @@ Region{
     -fx-wrap-text: true;
     -fx-border-color: #FFD3FF;
 }
+
+.passGameButton{
+    -fx-pref-width: 350px;
+    -fx-min-width: 350px;
+    -fx-pref-height: 80px;
+    -fx-min-height: 80px;
+    -fx-border-radius: 24px;
+    -fx-border-width: 6px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 40px;
+    -fx-text-fill: #FFD3FF;
+    -fx-text-alignment: center;
+    -fx-background-color: #0F042C;
+    -fx-background-radius: 24px;
+    -fx-background-insets: 6px;
+    -fx-wrap-text: true;
+    -fx-translate-y: -50px;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0,1,1);
+}

@@ -2,10 +2,11 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="637.0" prefWidth="977.0" styleClass="background" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.voidstack_overload.cardgame.controller.SpielbrettScreenController">
+<BorderPane prefHeight="677.0" prefWidth="1505.0" styleClass="background" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.voidstack_overload.cardgame.controller.SpielbrettScreenController">
     <top>
         <HBox alignment="CENTER" prefHeight="105.0" prefWidth="977.0" spacing="20">
         <VBox maxHeight="400" maxWidth="600" prefHeight="121.0" prefWidth="478.0" spacing="15.0" styleClass="popupQuitGame" BorderPane.alignment="TOP_LEFT">
@@ -36,12 +37,75 @@
 
     </left>
     <center>
-        <HBox>
-
-        </HBox>
-        <HBox>
-
-        </HBox>
+        <VBox>
+            <HBox alignment="CENTER" prefHeight="392.0" prefWidth="893.0" spacing="10" BorderPane.alignment="CENTER_RIGHT">
+                <ImageView pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@textures/frame.png" />
+                    </image>
+                </ImageView>
+                <ImageView pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@textures/frame.png" />
+                    </image>
+                </ImageView>
+                <ImageView pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@textures/frame.png" />
+                    </image>
+                </ImageView>
+                <ImageView pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@textures/frame.png" />
+                    </image>
+                </ImageView>
+                <ImageView pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@textures/frame.png" />
+                    </image>
+                </ImageView>
+                <ImageView pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@textures/frame.png" />
+                    </image>
+                </ImageView>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="392.0" prefWidth="893.0" spacing="5" BorderPane.alignment="CENTER_RIGHT">
+                <ImageView pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@textures/card.png" />
+                    </image>
+                </ImageView>
+                <ImageView pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@textures/card.png" />
+                    </image>
+                </ImageView>
+                <ImageView pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@textures/card.png" />
+                    </image>
+                </ImageView>
+                <ImageView pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@textures/card.png" />
+                    </image>
+                </ImageView>
+                <ImageView pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@textures/card.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@textures/card.png" />
+                    </image>
+                </ImageView>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="57.0" prefWidth="1175.0" spacing="5" BorderPane.alignment="CENTER_RIGHT">
+                <Button styleClass="passGameButton" prefHeight="43.0" prefWidth="231.0" text="Pass" />
+            </HBox>
+        </VBox>
     </center>
     <right>
         <VBox fx:id="menuPanel" alignment="TOP_CENTER" spacing="15" BorderPane.alignment="CENTER_RIGHT">
