@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="677.0" prefWidth="1505.0" styleClass="background" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.voidstack_overload.cardgame.controller.SpielbrettScreenController">
+<BorderPane prefHeight="677.0" prefWidth="1505.0" styleClass="background3" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.voidstack_overload.cardgame.controller.SpielbrettScreenController">
     <top>
         <HBox alignment="CENTER" prefHeight="105.0" prefWidth="977.0" spacing="20">
         <VBox maxHeight="400" maxWidth="600" prefHeight="121.0" prefWidth="478.0" spacing="15.0" styleClass="popupQuitGame" BorderPane.alignment="TOP_LEFT">
@@ -22,8 +22,8 @@
          <Region fx:id="spacer" prefHeight="121.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
             <!-- HBox on the right -->
          <HBox alignment="CENTER" prefHeight="121.0" prefWidth="338.0" spacing="10">
-            <Button prefHeight="40.0" prefWidth="140.0" styleClass="quitGameButton" text="Settings" />
-            <Button prefHeight="40.0" prefWidth="140.0" styleClass="quitGameButton" text="Leave" />
+            <Button prefHeight="40.0" prefWidth="140.0" styleClass="settingsButton" text="Settings" />
+            <Button prefHeight="40.0" prefWidth="140.0" styleClass="settingsButton" text="Leave" />
              <BorderPane.margin>
                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
              </BorderPane.margin>
@@ -34,18 +34,26 @@
         </HBox>
     </top>
     <left>
-        <VBox alignment="CENTER" prefHeight="516.0" prefWidth="290.0" spacing="10" BorderPane.alignment="CENTER_RIGHT">
+        <VBox alignment="CENTER" prefHeight="195.0" prefWidth="290.0" spacing="10" BorderPane.alignment="CENTER_RIGHT" styleClass="cardStapel">
+            <ImageView fitHeight="106.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@textures/club.png" />
+                </image>
+            </ImageView>
             <ImageView fitHeight="139.0" fitWidth="277.0" pickOnBounds="true" preserveRatio="true">
                 <image>
                     <Image url="@textures/card.png" />
                 </image>
             </ImageView>
-            <Text text="40"/>
+            <Text fill="WHITE" text="40">
+            <font>
+               <Font size="20.0" />
+            </font></Text>
         </VBox>
     </left>
     <center>
         <VBox>
-            <HBox alignment="CENTER" prefHeight="392.0" prefWidth="893.0" spacing="10" BorderPane.alignment="CENTER_RIGHT">
+            <HBox alignment="CENTER" prefHeight="392.0" prefWidth="893.0" spacing="15" BorderPane.alignment="CENTER_RIGHT">
                 <ImageView pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@textures/frame.png" />

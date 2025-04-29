@@ -183,6 +183,11 @@
      -fx-background-repeat: no-repeat; /* Prevent the image from repeating */
      -fx-background-position: center; /* Center the image */
  }
+.cardStapel{
+    -fx-effect: dropshadow(gaussian, #14E3E3, 150, 0.5, 0, 0);
+    -fx-background-size: 100% 120%; /* Adjust the size of the background image */
+    -fx-background-position: center; /* Center the image */
+}
 /*QuitGameScreen*/
  #QuitGameBox{
     -fx-min-width: 581px;
@@ -569,5 +574,16 @@ Region{
     -fx-background-insets: 6px;
     -fx-wrap-text: true;
     -fx-translate-y: -50px;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0,1,1);
+}
+
+.settingsButton{
+    -fx-min-width: 160px;
+    -fx-min-height: 60px;
+    -fx-margin: 100px;
+    -fx-font-size: 20px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 30px;
+    -fx-background-color: #0F042C;
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0,1,1);
 }
