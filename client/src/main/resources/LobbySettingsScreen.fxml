@@ -1,48 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
+<GridPane hgap="50" prefHeight="400" prefWidth="600" styleClass="background" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.voidstack_overload.cardgame.controller.LobbySettingsScreenController">
 
-
-<?import javafx.scene.text.Text?>
-<GridPane hgap="50" stylesheets="@styles/style.css" styleClass="background"
-          prefHeight="400" prefWidth="600"
-          xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="de.voidstack_overload.cardgame.controller.LobbySettingsScreenController">
-
-    <VBox alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="0">
+    <VBox alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="0">
         <HBox spacing="15">
             <Region />
-            <Button styleClass="backButton" text="&lt;"/>
-            <VBox alignment="CENTER" fx:id="menuPanel" spacing="15" >
-                <Text fx:id="menuPanelHeader" text="  Lobby&#10;Settings"/>
+            <Button styleClass="backButton" text="&lt;" />
+            <VBox fx:id="menuPanel" alignment="CENTER" spacing="15">
+                <Text fx:id="menuPanelHeader" text="  Lobby&#10;Settings" />
                 <TextField styleClass="inputField" text="lobby name" />
                 <TextField styleClass="inputField" text="lobby password" />
+                <Text styleClass="info" text="To create a public lobby leave the password field clear"/>
                 <HBox alignment="CENTER_LEFT">
-                    <Text styleClass="panelText" text="max players"/>
+                    <Text styleClass="panelText" text="max players" />
                 </HBox>
-                <Slider min="0" max="6" value="0" showTickLabels="true" showTickMarks="true" blockIncrement="1" majorTickUnit="1" minorTickCount="0" snapToTicks="true"/>
+                <Slider blockIncrement="1" majorTickUnit="1" max="6" min="0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="0" />
                 <HBox alignment="CENTER_LEFT">
-                    <Text styleClass="panelText" text="bots"/>
+                    <Text styleClass="panelText" text="bots" />
                 </HBox>
-                <Slider styleClass="panelSlider"  min="0" max="5" value="0" showTickLabels="true" showTickMarks="true" blockIncrement="1" majorTickUnit="1" minorTickCount="0" snapToTicks="true"/>
-                <Button styleClass="normalButton" mnemonicParsing="false" text="create lobby" />
-                <Region/>
+                <Slider blockIncrement="1" majorTickUnit="1" max="5" min="0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" styleClass="panelSlider" value="0" />
+                <Button mnemonicParsing="false" styleClass="normalButton" text="create lobby" />
+                <Region />
             </VBox>
-            <Region/>
+            <Region />
         </HBox>
     </VBox>
 
-    <VBox GridPane.rowIndex="0" GridPane.columnIndex="1" >
-        <ImageView pickOnBounds="true" preserveRatio="true" >
+    <VBox GridPane.columnIndex="1" GridPane.rowIndex="0">
+        <ImageView pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@textures/logo.png" />
             </image>
         </ImageView>
     </VBox>
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
 
 </GridPane>
-

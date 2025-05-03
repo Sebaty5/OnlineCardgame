@@ -119,6 +119,11 @@
     -fx-border-color: #FFD3FF;
 }
 
+.info{
+    -fx-font-size: 13px;
+    -fx-fill: #FFD3FF;
+}
+
 /*.normalButton .text{
     -fx-effect:
             dropshadow(gaussian, #60239F, 3, 1, -1, -1), !* Top-left shadow *!
