@@ -5,6 +5,7 @@ import de.voidstack_overload.cardgame.SceneManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Slider;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Pair;
@@ -12,6 +13,10 @@ import javafx.util.Pair;
 import java.io.IOException;
 
 public class SettingsController extends BaseController {
+    @FXML
+    private Slider volumeSlider;
+    @FXML
+    private ChoiceBox<String> choiceBoxLanguage;
     @FXML
     private ChoiceBox<String> choiceBoxResolution;
     @FXML

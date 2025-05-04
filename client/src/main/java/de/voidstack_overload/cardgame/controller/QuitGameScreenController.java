@@ -18,5 +18,6 @@ public class QuitGameScreenController extends BaseController {
     public void quitGame() {
         if (ConnectionManager.getInstance().isConnected()) ConnectionManager.getInstance().disconnect();
         Platform.exit();
+        System.exit(0);
     }
 }
