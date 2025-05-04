@@ -10,8 +10,8 @@ public enum SceneFXML {
     LOGIN("LoginScreen.fxml"),
     REGISTER("RegisterScreen.fxml"),
     PROFILE("ProfileScreen.fxml"),
-    LOBBY_SETTINGS("LobbySettingsScreen.fxml");
-
+    LOBBY_SETTINGS("LobbySettingsScreen.fxml"),
+    LOBBY_LIST("LobbyListScreen.fxml");
     private final String fxmlFile;
 
     SceneFXML(String fxmlFile) {
