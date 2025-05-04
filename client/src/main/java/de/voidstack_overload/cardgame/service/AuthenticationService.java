@@ -5,8 +5,10 @@ import de.voidstack_overload.cardgame.connection.ResponseEntity;
 import de.voidstack_overload.cardgame.dto.request.LoginRequest;
 import de.voidstack_overload.cardgame.dto.request.RegisterRequest;
 import de.voidstack_overload.cardgame.dto.response.AuthenticationResponse;
+import de.voidstack_overload.cardgame.utility.User;
 
 public class AuthenticationService {
+    User user;
 
     private final ConnectionManager connectionManager;
 
@@ -24,8 +26,17 @@ public class AuthenticationService {
         return connectionManager.sendRequest(request);
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
     //TODO
     public void logout() {
+        this.user = null;
 //        JsonBuilder jsonBuilder = new JsonBuilder();
 //        jsonBuilder.add("type", "ACCOUNT_LOGOUT");
 //        sendMessage(jsonBuilder.toString());
