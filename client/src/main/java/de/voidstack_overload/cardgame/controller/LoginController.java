@@ -45,6 +45,14 @@ public class LoginController extends BaseController {
         }
     }
 
+    public void switchToMainMenu() {
+        try {
+            sceneManager.switchScene(SceneFXML.MENU);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void acceptLogin() {
         try {
             sceneManager.switchScene(SceneFXML.PROFILE);
