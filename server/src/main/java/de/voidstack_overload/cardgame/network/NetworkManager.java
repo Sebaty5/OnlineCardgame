@@ -41,6 +41,7 @@ public class NetworkManager extends WebSocketServer {
         if (user != null) {
             LOGGER.log("Player disconnected: " + user.getUsername()+ " " + clientConnection.getRemoteSocketAddress());
             LobbyManager.INSTANCE.leaveLobby(user);
+            UserManager.INSTANCE.removeUser(user);
             return;
         }
         LOGGER.log("Client disconnected: " + clientConnection.getRemoteSocketAddress());
