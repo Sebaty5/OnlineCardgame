@@ -1,4 +1,4 @@
 package de.voidstack_overload.cardgame.controller;
 
-public class LobbyListeScreenController {
+public class LobbyListScreenController {
 }
