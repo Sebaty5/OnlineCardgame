@@ -42,9 +42,17 @@ public class RegisterController extends BaseController {
         }
     }
 
+    public void switchToLogin() {
+        try {
+            sceneManager.switchScene(SceneFXML.LOGIN);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private void acceptRegister() {
         try {
-            sceneManager.switchScene(SceneFXML.LOBBY_SETTINGS);
+            sceneManager.switchScene(SceneFXML.PROFILE);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
