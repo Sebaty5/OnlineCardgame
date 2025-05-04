@@ -24,7 +24,7 @@ public class RegisterController extends BaseController {
     @FXML
     private PasswordField password;
 
-    private final AuthenticationService authenticationService = new AuthenticationService();
+    private final AuthenticationService authenticationService = AuthenticationService.getInstance();
 
     public void confirmRegistration() {
         String username = this.username.getText();

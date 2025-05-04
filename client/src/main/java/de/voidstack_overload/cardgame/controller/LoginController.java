@@ -19,7 +19,7 @@ public class LoginController extends BaseController {
     @FXML
     private PasswordField password;
     
-    private final AuthenticationService authenticationService = new AuthenticationService();
+    private final AuthenticationService authenticationService = AuthenticationService.getInstance();
 
 
     public void confirmLogin() {

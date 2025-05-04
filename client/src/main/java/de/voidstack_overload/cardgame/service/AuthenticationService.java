@@ -8,11 +8,19 @@ import de.voidstack_overload.cardgame.dto.response.AuthenticationResponse;
 import de.voidstack_overload.cardgame.utility.User;
 
 public class AuthenticationService {
-    User user;
+    private User user;
 
     private final ConnectionManager connectionManager;
 
-    public AuthenticationService() {
+    private static AuthenticationService INSTANCE;
+    public static AuthenticationService getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new AuthenticationService();
+        }
+        return INSTANCE;
+    }
+
+    private AuthenticationService() {
         this.connectionManager = ConnectionManager.getInstance();
     }
 
