@@ -41,3 +41,4 @@ build/
 /.idea/encodings.xml
 /server/config/
 /server/database/
+/client/config/
