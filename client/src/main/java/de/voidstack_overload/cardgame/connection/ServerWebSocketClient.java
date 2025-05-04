@@ -53,6 +53,7 @@ public class ServerWebSocketClient extends WebSocketClient {
 
     @Override
     public void onClose(int code, String reason, boolean remote) {
+        ConnectionManager.getInstance().disconnect();
         logger.log("Disconnected: " + reason);
     }
 

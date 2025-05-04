@@ -70,9 +70,9 @@ public class ConnectionManager {
     }
 
     public void disconnect() {
+        isConnected = false;
         if (client == null || !client.isOpen()) return;
         client.close();
-        isConnected = false;
         LOGGER.log("Disconnected from server");
     }
 
