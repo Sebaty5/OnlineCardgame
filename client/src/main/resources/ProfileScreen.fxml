@@ -14,14 +14,14 @@
 
     <VBox fx:id="hostPanel" spacing="15" alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="1">
         <Button styleClass="normalButton" mnemonicParsing="false" text="Host" onAction="#switchToLobbySettings"/>
-        <Button styleClass="normalButton" mnemonicParsing="false" text="Join"/>
+        <Button styleClass="normalButton" mnemonicParsing="false" text="Join" onAction="#switchToLobbyList"/>
     </VBox>
     <VBox fx:id="profilePanel" spacing="15" alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="2">
         <Region/>
         <Label fx:id="profilePaneltext" text="Profile"/>
         <Label fx:id="profilePanellogin" text="Logged in as:"/>
         <TextField fx:id="profileText" editable="false" text="Username"/>
-        <Button styleClass="normalButton" mnemonicParsing="false" text="Log out"/>
+        <Button styleClass="normalButton" mnemonicParsing="false" text="Log out" onAction="#switchToMainMenuAndLogout"/>
         <Region/>
     </VBox>
     <VBox GridPane.rowIndex="0" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.valignment="TOP">

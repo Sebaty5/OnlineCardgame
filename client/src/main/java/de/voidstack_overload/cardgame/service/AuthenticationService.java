@@ -42,11 +42,8 @@ public class AuthenticationService {
         return user;
     }
 
-    //TODO
     public void logout() {
         this.user = null;
-//        JsonBuilder jsonBuilder = new JsonBuilder();
-//        jsonBuilder.add("type", "ACCOUNT_LOGOUT");
-//        sendMessage(jsonBuilder.toString());
+        connectionManager.disconnect();
     }
 }
