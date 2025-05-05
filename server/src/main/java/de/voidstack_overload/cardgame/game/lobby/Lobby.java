@@ -154,7 +154,7 @@ public class Lobby {
     }
 
     public boolean isEmpty() {
-        return players.isEmpty();
+        return players.isEmpty() || players.size() - botCount == 0;
     }
 
     public void toggleInGame() {
