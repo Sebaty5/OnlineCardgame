@@ -10,7 +10,7 @@ import org.java_websocket.server.WebSocketServer;
 import java.net.InetSocketAddress;
 
 public class NetworkManager extends WebSocketServer {
-    private static final StandardLogger LOGGER = new StandardLogger("NetworkManager");
+    private static final StandardLogger LOGGER = new StandardLogger();
 
     public static final NetworkManager INSTANCE = new NetworkManager(Config.INSTANCE.getServerPort());
 

@@ -9,7 +9,7 @@ import de.voidstack_overload.cardgame.network.Response;
 import org.java_websocket.WebSocket;
 
 public class LogoutAction extends AccountAction {
-    private static final StandardLogger LOGGER = new StandardLogger("LogoutAction");
+    private static final StandardLogger LOGGER = new StandardLogger();
 
     @Override
     public Response execute(JsonObject json, WebSocket connection) {

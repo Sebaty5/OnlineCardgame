@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Board {
-    private static final StandardLogger LOGGER = new StandardLogger("Board");
+    private static final StandardLogger LOGGER = new StandardLogger();
 
     private List<Player> playerList;
     public Player getPlayerFromUser(User user) {

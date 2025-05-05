@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ActionManager {
-    private static final StandardLogger LOGGER = new StandardLogger("ActionManager");
+    private static final StandardLogger LOGGER = new StandardLogger();
 
     private static final Map<IncomingMessageType, Action> actions = new HashMap<>();
 

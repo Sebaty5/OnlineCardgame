@@ -2,14 +2,12 @@ package de.voidstack_overload.cardgame.controller;
 
 import java.io.IOException;
 import de.voidstack_overload.cardgame.SceneFXML;
-import de.voidstack_overload.cardgame.configuration.Config;
-import de.voidstack_overload.cardgame.connection.ConnectionManager;
+import de.voidstack_overload.cardgame.network.NetworkManager;
 
 public class MenuController extends BaseController {
 
     public void switchToLogin() {
-        String serverUri = Config.getInstance().getServerUri();
-        ConnectionManager.getInstance().connect(serverUri);
+        NetworkManager.INSTANCE.connect();
 
         try {
             sceneManager.switchScene(SceneFXML.LOGIN);

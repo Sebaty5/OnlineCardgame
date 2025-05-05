@@ -13,7 +13,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class LobbyManager {
-    private static final StandardLogger LOGGER = new StandardLogger("LobbyManager");
+    private static final StandardLogger LOGGER = new StandardLogger();
 
     public static final LobbyManager INSTANCE = new LobbyManager();
 

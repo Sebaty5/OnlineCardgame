@@ -11,7 +11,7 @@ import de.voidstack_overload.cardgame.utility.ResponseBuilder;
 import org.java_websocket.WebSocket;
 
 public class MessageHandler {
-    private static final StandardLogger LOGGER = new StandardLogger("NetworkManager");
+    private static final StandardLogger LOGGER = new StandardLogger();
 
     public static final MessageHandler INSTANCE = new MessageHandler();
 

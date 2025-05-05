@@ -16,7 +16,7 @@ public class UserManager {
     /**
      * The logger for this class.
      */
-    private static final StandardLogger LOGGER = new StandardLogger("UserManager");
+    private static final StandardLogger LOGGER = new StandardLogger();
 
     /**
      * The instance of the user manager singleton.

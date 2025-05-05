@@ -18,7 +18,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.function.Supplier;
 
 public abstract class JsonHandler<T> {
-    private static final StandardLogger LOGGER = new StandardLogger("JsonHandler");
+    private static final StandardLogger LOGGER = new StandardLogger();
     protected static final Gson GSON = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
 
     protected final Path file;

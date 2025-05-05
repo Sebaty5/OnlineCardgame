@@ -6,6 +6,10 @@ import org.slf4j.LoggerFactory;
 public class StandardLogger{
     private final Logger logger;
 
+    public StandardLogger() {
+        this.logger = LoggerFactory.getLogger(getClass().getSimpleName());
+    }
+
     public StandardLogger(String name) {
         this.logger = LoggerFactory.getLogger(name);
     }

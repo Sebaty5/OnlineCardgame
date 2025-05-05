@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.List;
 
 public class DataBaseHandler {
-    private static final StandardLogger LOGGER = new StandardLogger("Database Handler");
+    private static final StandardLogger LOGGER = new StandardLogger();
     private static final String path = "./server/database/database.db";
     private static final String dbUrl = "jdbc:sqlite:" + path;
 

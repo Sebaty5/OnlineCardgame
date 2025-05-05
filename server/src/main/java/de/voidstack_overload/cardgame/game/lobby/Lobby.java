@@ -17,7 +17,7 @@ import java.util.*;
  * Represents a game lobby
  */
 public class Lobby {
-    protected static final StandardLogger LOGGER = new StandardLogger("Lobby");
+    protected static final StandardLogger LOGGER = new StandardLogger();
 
     private final String id;
     public String getId() {
