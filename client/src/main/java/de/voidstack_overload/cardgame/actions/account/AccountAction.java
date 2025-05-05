@@ -34,7 +34,9 @@ public abstract class AccountAction extends BaseAction {
 
             password = json.get("password").getAsString();
         }
-        validateServerResponse(username, password, type);
+        if(!validateServerResponse(username, password, type)) {
+            return;
+        }
         AuthenticationService.INSTANCE.setUser(new User(username));
         Platform.runLater(() -> {
             try {
@@ -45,16 +47,22 @@ public abstract class AccountAction extends BaseAction {
         });
     }
 
-    protected void validateServerResponse(String username, String password, OutgoingMessageType type) {
+    protected boolean validateServerResponse(String username, String password, OutgoingMessageType type) {
         JsonObject lastMessageBody = JsonBuilder.parseJsonString(this.lastSendMessage.messageBody());
-        if(lastMessageBody != null && lastMessageBody.has("username") && lastMessageBody.has("password")) {
+        if(lastMessageBody == null) {
+            return false;
+        }
+        if(lastMessageBody.has("username") && lastMessageBody.has("password")) {
             if(!username.equals(lastMessageBody.get("username").getAsString())) {
                 LOGGER.error("Server returned incorrect username: " + username);
+                return false;
             }
             if(!password.equals(lastMessageBody.get("password").getAsString()) && type == OutgoingMessageType.ACCOUNT_REGISTER) {
                 LOGGER.error("Server returned incorrect password: " + password);
+                return false;
             }
         }
+        return true;
     }
 
     protected void denied(JsonObject json, OutgoingMessageType type) {
