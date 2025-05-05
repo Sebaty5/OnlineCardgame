@@ -1,10 +1,7 @@
 package de.voidstack_overload.cardgame.controller;
 
 import de.voidstack_overload.cardgame.SceneFXML;
-import de.voidstack_overload.cardgame.connection.ResponseEntity;
-import de.voidstack_overload.cardgame.dto.response.AuthenticationResponse;
 import de.voidstack_overload.cardgame.service.AuthenticationService;
-import de.voidstack_overload.cardgame.utility.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -24,8 +21,6 @@ public class RegisterController extends BaseController {
     @FXML
     private PasswordField password;
 
-    private final AuthenticationService authenticationService = AuthenticationService.getInstance();
-
     public void confirmRegistration() {
         String username = this.username.getText();
         String password = this.password.getText();
@@ -34,28 +29,12 @@ public class RegisterController extends BaseController {
             return;
         }
 
-        ResponseEntity<AuthenticationResponse> response = authenticationService.register(username, password);
-
-        if (response.isSuccess()) {
-            acceptRegister(response.getBody());
-        } else {
-            showError(response.getErrorMessage());
-        }
+        AuthenticationService.INSTANCE.register(username, password);
     }
 
     public void switchToLogin() {
         try {
             sceneManager.switchScene(SceneFXML.LOGIN);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private void acceptRegister(AuthenticationResponse authenticationResponse) {
-        try {
-            String username = authenticationResponse.username();
-            authenticationService.setUser(new User(username));
-            sceneManager.switchScene(SceneFXML.PROFILE);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

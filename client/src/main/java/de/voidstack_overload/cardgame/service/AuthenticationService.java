@@ -1,37 +1,31 @@
 package de.voidstack_overload.cardgame.service;
 
-import de.voidstack_overload.cardgame.connection.ConnectionManager;
-import de.voidstack_overload.cardgame.connection.ResponseEntity;
-import de.voidstack_overload.cardgame.dto.request.LoginRequest;
-import de.voidstack_overload.cardgame.dto.request.RegisterRequest;
-import de.voidstack_overload.cardgame.dto.response.AuthenticationResponse;
+import de.voidstack_overload.cardgame.messages.OutgoingMessageType;
+import de.voidstack_overload.cardgame.network.NetworkManager;
+import de.voidstack_overload.cardgame.utility.JsonBuilder;
+import de.voidstack_overload.cardgame.utility.MessageBuilder;
 import de.voidstack_overload.cardgame.utility.User;
 
 public class AuthenticationService {
     private User user;
 
-    private final ConnectionManager connectionManager;
-
-    private static AuthenticationService INSTANCE;
-    public static AuthenticationService getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new AuthenticationService();
-        }
-        return INSTANCE;
-    }
+    public static AuthenticationService INSTANCE = new AuthenticationService();
 
     private AuthenticationService() {
-        this.connectionManager = ConnectionManager.getInstance();
     }
 
-    public ResponseEntity<AuthenticationResponse> login(String username, String password) {
-        LoginRequest request = new LoginRequest(username, password);
-        return connectionManager.sendRequest(request);
+    public void login(String username, String password) {
+        JsonBuilder request = new JsonBuilder();
+        request.add("username", username);
+        request.add("password", password);
+        NetworkManager.INSTANCE.sendMessage(MessageBuilder.build(OutgoingMessageType.ACCOUNT_LOGIN ,request));
     }
 
-    public ResponseEntity<AuthenticationResponse> register(String username, String password) {
-        RegisterRequest request = new RegisterRequest(username, password);
-        return connectionManager.sendRequest(request);
+    public void register(String username, String password) {
+        JsonBuilder request = new JsonBuilder();
+        request.add("username", username);
+        request.add("password", password);
+        NetworkManager.INSTANCE.sendMessage(MessageBuilder.build(OutgoingMessageType.ACCOUNT_REGISTER ,request));
     }
 
     public void setUser(User user) {
@@ -44,6 +38,6 @@ public class AuthenticationService {
 
     public void logout() {
         this.user = null;
-        connectionManager.disconnect();
+        NetworkManager.INSTANCE.disconnect();
     }
 }

@@ -9,14 +9,13 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 
 public class ProfileScreenController extends BaseController {
-    private final AuthenticationService authenticationService = AuthenticationService.getInstance();
 
     @FXML
     TextField profileText;
 
     @FXML
     public void initialize() {
-        profileText.setText(authenticationService.getUser() != null ? authenticationService.getUser().username() : "unknown");
+        profileText.setText(AuthenticationService.INSTANCE.getUser() != null ? AuthenticationService.INSTANCE.getUser().username() : "unknown");
     }
 
     public void switchToLobbySettings() {
@@ -37,7 +36,7 @@ public class ProfileScreenController extends BaseController {
 
     public void switchToMainMenuAndLogout() {
         try {
-            authenticationService.logout();
+            AuthenticationService.INSTANCE.logout();
             sceneManager.switchScene(SceneFXML.MENU);
         } catch (IOException e) {
             throw new RuntimeException(e);

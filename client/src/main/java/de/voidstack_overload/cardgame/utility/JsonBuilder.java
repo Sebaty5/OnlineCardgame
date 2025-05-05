@@ -1,8 +1,6 @@
 package de.voidstack_overload.cardgame.utility;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.google.gson.*;
 
 public class JsonBuilder {
     private final JsonObject jsonObject;
@@ -43,5 +41,17 @@ public class JsonBuilder {
     @Override
     public String toString() {
         return jsonObject.toString(); // Return JSON string
+    }
+
+    public static JsonObject parseJsonString(String message) {
+        try {
+            JsonElement jsonElement = JsonParser.parseString(message);
+            if (jsonElement.isJsonObject()) {
+                return jsonElement.getAsJsonObject();
+            }
+        } catch (JsonSyntaxException | NullPointerException e) {
+            return null;
+        }
+        return null;
     }
 }

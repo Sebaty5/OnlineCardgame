@@ -6,10 +6,15 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class GameClient extends Application {
+    private static SceneManager sceneManager;
+
+    public static SceneManager getSceneManager() {
+        return sceneManager;
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        SceneManager sceneManager = new SceneManager(primaryStage);
+        sceneManager = new SceneManager(primaryStage);
 
         primaryStage.setTitle("Durak");
         primaryStage.setResizable(false);

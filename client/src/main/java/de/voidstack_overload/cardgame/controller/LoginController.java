@@ -2,10 +2,8 @@ package de.voidstack_overload.cardgame.controller;
 
 import de.voidstack_overload.cardgame.SceneFXML;
 
+import de.voidstack_overload.cardgame.network.NetworkManager;
 import de.voidstack_overload.cardgame.service.AuthenticationService;
-import de.voidstack_overload.cardgame.connection.ResponseEntity;
-import de.voidstack_overload.cardgame.dto.response.AuthenticationResponse;
-import de.voidstack_overload.cardgame.utility.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -18,9 +16,6 @@ public class LoginController extends BaseController {
 
     @FXML
     private PasswordField password;
-    
-    private final AuthenticationService authenticationService = AuthenticationService.getInstance();
-
 
     public void confirmLogin() {
         String username = this.username.getText();
@@ -29,13 +24,7 @@ public class LoginController extends BaseController {
             showError("Username or password cannot be empty");
             return;
         }
-        ResponseEntity<AuthenticationResponse> response = authenticationService.login(username, password);
-
-        if (response.isSuccess()) {
-            acceptLogin(response.getBody());
-        } else {
-            showError(response.getErrorMessage());
-        }
+        AuthenticationService.INSTANCE.login(username, password);
     }
 
     public void switchToRegistration() {
@@ -49,16 +38,7 @@ public class LoginController extends BaseController {
     public void switchToMainMenu() {
         try {
             sceneManager.switchScene(SceneFXML.MENU);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void acceptLogin(AuthenticationResponse authenticationResponse) {
-        try {
-            String username = authenticationResponse.username();
-            authenticationService.setUser(new User(username));
-            sceneManager.switchScene(SceneFXML.PROFILE);
+            NetworkManager.INSTANCE.disconnect();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

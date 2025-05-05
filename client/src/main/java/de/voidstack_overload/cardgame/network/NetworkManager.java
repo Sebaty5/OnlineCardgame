@@ -1,77 +1,66 @@
-package de.voidstack_overload.cardgame.connection;
+package de.voidstack_overload.cardgame.network;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
+import de.voidstack_overload.cardgame.configuration.Config;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
-import de.voidstack_overload.cardgame.dto.request.BaseRequest;
-import de.voidstack_overload.cardgame.utility.GsonUtil;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
 
+public class NetworkManager {
+    protected static final StandardLogger LOGGER = new StandardLogger("Network Manager");
+    public final static NetworkManager INSTANCE = new NetworkManager();
 
-public class ConnectionManager {
-    private static ConnectionManager INSTANCE;
-    protected final StandardLogger LOGGER;
-    private ServerWebSocketClient client;
-    private String serverUri;
-    private boolean isConnected;
+    private NetworkClient client;
 
-    private ConnectionManager() {
-        isConnected = false;
-        LOGGER = new StandardLogger("Client");
+    private final URI serverUri;
+
+    private Message lastSentMessage = null;
+    public Message getLastSentMessage() {
+        return lastSentMessage;
     }
 
-    public static ConnectionManager getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new ConnectionManager();
-        }
-        return INSTANCE;
-    }
-
-    public boolean isConnected() {
-        return this.isConnected;
-    }
-
-    public void connect(String serverUri) {
-        if (isConnected || serverUri.isEmpty()) return;
-
+    private NetworkManager() {
         try {
-            this.serverUri = serverUri;
-            this.client = new ServerWebSocketClient(new URI(serverUri));
-            this.client.connectBlocking();
-            isConnected = true;
-        } catch (URISyntaxException | InterruptedException e) {
-            LOGGER.log("Failed to connect: " + e.getMessage());
+            serverUri = new URI(Config.getInstance().getServerUri());
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+        client = new NetworkClient(serverUri);
+    }
+
+    public void connect() {
+        client = new NetworkClient(serverUri);
+        try {
+        this.client.connectBlocking();
+        } catch (InterruptedException e) {
+            LOGGER.error("Failed to connect: " + e.getMessage());
         }
     }
 
-    public <T> ResponseEntity<T> sendRequest(BaseRequest requestBody) {
+    public void sendMessage(Message message) {
         if (client == null || !client.isOpen()) {
-            connect(serverUri);
+            connect();
         }
-        if (client.isOpen()) {
-            CompletableFuture<ResponseEntity<?>> future = new CompletableFuture<>();
-            this.client.onTransmit(GsonUtil.toJson(requestBody), future);
-
-            try {
-                return (ResponseEntity<T>) future.get(30, TimeUnit.SECONDS);
-            } catch (Exception e) {
-                LOGGER.log("Fehler bei Anfrage: " + e.getMessage());
-                return ResponseEntity.error("Zeitüberschreitung oder Verbindungsfehler");
+        if (client != null && client.isOpen()) {
+            String jsonMessage = message.messageBody();
+            if(jsonMessage != null) {
+                client.send(jsonMessage);
+                lastSentMessage = message;
+            } else {
+                LOGGER.error("Message not send due to being NULL");
             }
         } else {
-            LOGGER.log("Connection not established.");
-            return ResponseEntity.error("Nicht mit Server verbunden");
+            LOGGER.error("Connection not established.");
         }
     }
 
     public void disconnect() {
-        isConnected = false;
-        if (client == null || !client.isOpen()) return;
+        if (client == null || !client.isOpen()) {
+            LOGGER.log("Client was no connected");
+            return;
+        }
         client.close();
         LOGGER.log("Disconnected from server");
     }

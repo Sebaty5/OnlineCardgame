@@ -1,14 +1,19 @@
 package de.voidstack_overload.cardgame.service;
 
-import de.voidstack_overload.cardgame.connection.ResponseEntity;
-import de.voidstack_overload.cardgame.dto.request.LobbyCreateRequest;
-import de.voidstack_overload.cardgame.dto.response.LobbyResponse;
+import de.voidstack_overload.cardgame.messages.OutgoingMessageType;
+import de.voidstack_overload.cardgame.network.NetworkManager;
+import de.voidstack_overload.cardgame.utility.JsonBuilder;
+import de.voidstack_overload.cardgame.utility.MessageBuilder;
 
-public class LobbyService extends BaseService {
+public class LobbyService {
 
-    public ResponseEntity<LobbyResponse> lobbyCreate(String lobbyName, String password, int maxPlayers, int botAmount) {
-        LobbyCreateRequest request = new LobbyCreateRequest(lobbyName, password, maxPlayers, botAmount);
-        return getConnectionManager().sendRequest(request);
+    public void lobbyCreate(String lobbyName, String password, int maxPlayers, int botAmount) {
+        JsonBuilder jsonBuilder = new JsonBuilder();
+        jsonBuilder.add("lobbyName", lobbyName);
+        jsonBuilder.add("password", password);
+        jsonBuilder.add("maxPlayers", maxPlayers);
+        jsonBuilder.add("botAmount", botAmount);
+        NetworkManager.INSTANCE.sendMessage(MessageBuilder.build(OutgoingMessageType.LOBBY_CREATE, jsonBuilder));
     }
 
 //    public void lobbyCreate(String lobbyName, String password, int maxPlayers, int botAmount) {
