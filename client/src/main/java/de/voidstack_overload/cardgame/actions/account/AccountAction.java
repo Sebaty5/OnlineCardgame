@@ -3,15 +3,11 @@ package de.voidstack_overload.cardgame.actions.account;
 import com.google.gson.JsonObject;
 import de.voidstack_overload.cardgame.SceneFXML;
 import de.voidstack_overload.cardgame.actions.BaseAction;
-import de.voidstack_overload.cardgame.application.GameClient;
 import de.voidstack_overload.cardgame.messages.OutgoingMessageType;
 import de.voidstack_overload.cardgame.service.AuthenticationService;
+import de.voidstack_overload.cardgame.utility.FxUtility;
 import de.voidstack_overload.cardgame.utility.JsonBuilder;
-import de.voidstack_overload.cardgame.utility.User;
-import javafx.application.Platform;
-import javafx.scene.control.Alert;
-
-import java.io.IOException;
+import de.voidstack_overload.cardgame.records.User;
 
 public abstract class AccountAction extends BaseAction {
 
@@ -38,13 +34,7 @@ public abstract class AccountAction extends BaseAction {
             return;
         }
         AuthenticationService.INSTANCE.setUser(new User(username));
-        Platform.runLater(() -> {
-            try {
-                GameClient.getSceneManager().switchScene(SceneFXML.PROFILE);
-            } catch (IOException ex) {
-                LOGGER.error(ex.getMessage());
-            }
-        });
+        FxUtility.switchScene(SceneFXML.PROFILE);
     }
 
     protected boolean validateServerResponse(String username, String password, OutgoingMessageType type) {
@@ -71,25 +61,10 @@ public abstract class AccountAction extends BaseAction {
             return;
         }
 
+        String message = "Request denied.";
         if(json.has("errorMessage")) {
-            String message = json.get("errorMessage").getAsString();
-            Platform.runLater(() -> {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText(null);
-                alert.setContentText(message);
-                alert.showAndWait();
-            });
-        } else {
-            Platform.runLater(() -> {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText(null);
-                alert.setContentText("Request denied.");
-                alert.showAndWait();
-            });
+             message = json.get("errorMessage").getAsString();
         }
-
-
+        FxUtility.showErrorAlert(message);
     }
 }

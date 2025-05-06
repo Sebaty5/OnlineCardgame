@@ -4,7 +4,7 @@ import de.voidstack_overload.cardgame.messages.OutgoingMessageType;
 import de.voidstack_overload.cardgame.network.NetworkManager;
 import de.voidstack_overload.cardgame.utility.JsonBuilder;
 import de.voidstack_overload.cardgame.utility.MessageBuilder;
-import de.voidstack_overload.cardgame.utility.User;
+import de.voidstack_overload.cardgame.records.User;
 
 public class AuthenticationService {
     private User user;
