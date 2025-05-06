@@ -102,7 +102,7 @@ public class Lobby {
     }
 
     public void updateBotCount(Integer botCount) {
-        this.botCount = Math.max(1, Math.min(botCount, 8));
+        this.botCount = Math.max(0, Math.min(botCount, maxPlayers-1));
 
         LOGGER.log("Updated bot count. New bot count: " + this.botCount);
     }
