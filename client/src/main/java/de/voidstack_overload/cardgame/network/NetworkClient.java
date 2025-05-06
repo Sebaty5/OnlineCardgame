@@ -31,7 +31,7 @@ public class NetworkClient extends WebSocketClient {
         if (remote) {
             LOGGER.log("Server terminated connection.");
             FxUtility.switchScene(SceneFXML.MENU);
-            FxUtility.showAlert("Lost Connection", "", "Lost connection to server.");
+            FxUtility.showAlert("Lost connection to server.");
         } else {
             LOGGER.log("Client terminated connection.");
         }

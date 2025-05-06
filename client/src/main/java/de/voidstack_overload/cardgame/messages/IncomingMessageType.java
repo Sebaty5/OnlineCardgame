@@ -1,6 +1,6 @@
 package de.voidstack_overload.cardgame.messages;
 
-public enum IncomingMessageType{
+public enum IncomingMessageType {
     //Account
     ACCOUNT_LOGIN_ACCEPT,
     ACCOUNT_LOGIN_DENY,

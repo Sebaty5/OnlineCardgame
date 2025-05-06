@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<DialogPane stylesheets="@styles/style.css" >
+    <content>
+        <VBox fx:id="root" alignment="CENTER" spacing="28"
+              xmlns:fx="http://javafx.com/fxml">
+            <Label fx:id="message" wrapText="true"/>
+            <HBox fx:id="buttonBox" alignment="CENTER" spacing="36"/>
+        </VBox>
+    </content>
+</DialogPane>

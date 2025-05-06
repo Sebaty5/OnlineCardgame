@@ -1,7 +1,7 @@
 package de.voidstack_overload.cardgame.controller;
 
 import de.voidstack_overload.cardgame.SceneManager;
-import javafx.scene.control.Alert;
+import de.voidstack_overload.cardgame.utility.FxUtility;
 
 public abstract class BaseController {
     protected SceneManager sceneManager;
@@ -11,10 +11,6 @@ public abstract class BaseController {
     }
 
     public void showError(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+        FxUtility.showCustomDialog(message);
     }
 }

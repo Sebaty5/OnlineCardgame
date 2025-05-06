@@ -6,40 +6,32 @@ import de.voidstack_overload.cardgame.utility.JsonBuilder;
 import de.voidstack_overload.cardgame.utility.MessageBuilder;
 
 public class LobbyService {
-
-    public void lobbyCreate(String lobbyName, String password, int maxPlayers, int botAmount) {
+    public static void lobbyCreate(String lobbyName, String password, int maxPlayers, int botAmount) {
         JsonBuilder jsonBuilder = new JsonBuilder();
         jsonBuilder.add("lobbyName", lobbyName);
-        jsonBuilder.add("password", password);
+        jsonBuilder.add("lobbyPassword", password);
         jsonBuilder.add("maxPlayers", maxPlayers);
-        jsonBuilder.add("botAmount", botAmount);
+        jsonBuilder.add("botCount", botAmount);
         NetworkManager.INSTANCE.sendMessage(MessageBuilder.build(OutgoingMessageType.LOBBY_CREATE, jsonBuilder));
     }
 
-//    public void lobbyCreate(String lobbyName, String password, int maxPlayers, int botAmount) {
+    public static void requestLobbyList() {
+        NetworkManager.INSTANCE.sendMessage(MessageBuilder.build(OutgoingMessageType.LOBBY_LIST));
+    }
 
-//        JsonBuilder jsonBuilder = new JsonBuilder();
-//        jsonBuilder.add("type", "LOBBY_CREATE");
-//        jsonBuilder.add("lobbyName", lobbyName);
-//        jsonBuilder.add("password", password);
-//        jsonBuilder.add("maxPlayers", maxPlayers);
-//        jsonBuilder.add("botCount", botAmount);
-//        sendMessage(jsonBuilder.toString());
-//    }
+
+   public static void lobbyJoin(String lobbyID, String password) {
+       JsonBuilder jsonBuilder = new JsonBuilder();
+       jsonBuilder.add("lobbyID", lobbyID);
+       jsonBuilder.add("lobbyPassword", password);
+       NetworkManager.INSTANCE.sendMessage(MessageBuilder.build(OutgoingMessageType.LOBBY_JOIN,jsonBuilder));
+   }
+
+    public static void lobbyLeave() {
+        NetworkManager.INSTANCE.sendMessage(MessageBuilder.build(OutgoingMessageType.LOBBY_LEAVE));
+    }
 //
-//    public void lobbyJoin(String lobbyID, String password) {
-////        JsonBuilder jsonBuilder = new JsonBuilder();
-////        jsonBuilder.add("type", "LOBBY_JOIN");
-////        jsonBuilder.add("lobbyID", lobbyID);
-////        jsonBuilder.add("lobbyPassword", password);
-////        sendMessage(jsonBuilder.toString());
-//    }
-//
-//    public void lobbyLeave() {
-//        JsonBuilder jsonBuilder = new JsonBuilder();
-//        jsonBuilder.add("type", "LOBBY_LEAVE");
-//        sendMessage(jsonBuilder.toString());
-//    }
+
 //
 //    public void lobbyUpdate(String lobbyName, String lobbyPassword, int maxPlayers, int botAmount) {
 //        JsonBuilder jsonBuilder = new JsonBuilder();

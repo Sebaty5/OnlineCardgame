@@ -369,39 +369,6 @@ Region {
     -fx-background-insets: 6px;
     -fx-wrap-text: true;
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
-    -fx-translate-x: -100px;
-}
-
-.backButton2 {
-    -fx-min-width: 83px;
-    -fx-min-height: 83px;
-    -fx-border-radius: 24px;
-    -fx-border-width: 6px;
-    -fx-font-family: 'Orbitron';
-    -fx-font-size: 40px;
-    -fx-text-alignment: center;
-    -fx-background-color: #0F042C;
-    -fx-background-radius: 24px;
-    -fx-background-insets: 6px;
-    -fx-wrap-text: true;
-    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
-    -fx-translate-x: -100px;
-}
-
-.backButton2 {
-    -fx-min-width: 83px;
-    -fx-min-height: 83px;
-    -fx-border-radius: 24px;
-    -fx-border-width: 6px;
-    -fx-font-family: 'Orbitron';
-    -fx-font-size: 40px;
-    -fx-text-alignment: center;
-    -fx-background-color: #0F042C;
-    -fx-background-radius: 24px;
-    -fx-background-insets: 6px;
-    -fx-wrap-text: true;
-    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
-    -fx-translate-x: -100px;
 }
 
 .panelText {
@@ -481,4 +448,128 @@ Region {
 
 .check-box:selected .mark {
     -fx-background-color: #FFD3FF;
+}
+
+/* === LISTVIEW ===================================================== */
+.list-view {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.list-view .scroll-bar:vertical .thumb {
+    -fx-background-color: #FFD3FF66;
+}
+
+/* === ROW / CARD =================================================== */
+.list-cell,
+.list-cell:hover,
+.list-cell:selected,
+.list-cell:selected:hover {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+
+
+}
+
+.list-grid {
+    -fx-background-color: transparent;
+    -fx-border-width: 0 0 4 0;
+    -fx-border-color: transparent transparent #FFD3FF transparent;
+    -fx-padding: 0 8 0 0;
+}
+
+.lobby {
+    -fx-background-color: rgba(255,255,255,0.07);
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+}
+
+.list-cell:empty {
+    -fx-background-color: transparent;
+}
+
+.list-area {
+    -fx-background-color: rgba(255,255,255,0.08);
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-border-width: 5;
+    -fx-border-color: #FFD3FF55;
+    -fx-effect: dropshadow(gaussian,#FFD3FF,30,0.30,0,0);
+}
+
+.list-view > .virtual-flow > .clipped-container > .sheet > .list-cell {
+    -fx-background-color: transparent;
+}
+
+.list-view .scroll-bar:vertical {
+    -fx-pref-width: 10;
+    -fx-background-color: transparent;
+}
+
+.list-view .scroll-bar:vertical .track {
+    -fx-background-color: rgba(255,255,255,0.15);
+    -fx-background-radius: 5;
+
+}
+
+.list-view .scroll-bar:vertical .thumb {
+    -fx-background-color: linear-gradient(#FFC8FF 0%, #FD74FF 100%);
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian,#FFD6FF,10,0.8,0,0);
+}
+
+.list-view .scroll-bar:vertical .increment-button,
+.list-view .scroll-bar:vertical .decrement-button {
+    -fx-opacity: 0;
+    -fx-padding: 0;
+}
+
+.list-label {
+    -fx-font-size: 2em;
+}
+
+.lobby-join-button {
+    -fx-pref-width: 40px;
+    -fx-pref-height: 20px;
+    -fx-border-radius: 24px;
+    -fx-border-width: 6px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 2em;
+    -fx-text-fill: #FFD3FF;
+    -fx-text-alignment: center;
+    -fx-background-color: #0F042C;
+    -fx-background-radius: 24px;
+    -fx-background-insets: 6px;
+    -fx-wrap-text: true;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
+}
+
+/* === DIALOGS =================================================== */
+.dialog-pane {
+    -fx-background-color: rgb(15, 4, 44, 0.98), transparent, transparent, transparent;
+    -fx-background-radius: 18, 18, 18, 18;
+    -fx-border-color: #FFB9FF;
+    -fx-border-width: 3;
+    -fx-border-radius: 18;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
+    -fx-padding: 36 50;
+}
+
+.neon-btn {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10;
+    -fx-border-color: #FFB9FF;
+    -fx-text-fill: white;
+    -fx-border-radius: 10;
+    -fx-padding: 4 28;
+}
+.neon-btn:hover   {
+    -fx-background-color: #FFB9FF44;
+    -fx-background-radius: 10;
+}
+
+.neon-btn:pressed {
+    -fx-background-color: #FFB9FF66;
+    -fx-background-radius: 10;
 }

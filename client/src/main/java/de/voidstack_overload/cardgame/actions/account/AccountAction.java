@@ -21,7 +21,7 @@ public abstract class AccountAction extends BaseAction {
             LOGGER.error("Server acknowledged " + type + " without client having requested " + type +".");
             AuthenticationService.INSTANCE.logout();
             FxUtility.switchScene(SceneFXML.MENU);
-            FxUtility.showAlert("Disconnected", "", "Server accepted" + type + " without request.\nDisconnecting to clear connection.");
+            FxUtility.showAlert("Server accepted" + type + " without request.\nDisconnecting to clear connection.");
             return;
         }
         String username = "";
@@ -63,7 +63,7 @@ public abstract class AccountAction extends BaseAction {
             LOGGER.error("Server denied " + type + " without client having requested " + type +".");
             AuthenticationService.INSTANCE.logout();
             FxUtility.switchScene(SceneFXML.MENU);
-            FxUtility.showAlert("Disconnected", "", "Server denied " + type + " without request.\nDisconnecting to clear connection.");
+            FxUtility.showAlert("Server denied " + type + " without request.\nDisconnecting to clear connection.");
             return;
         }
 

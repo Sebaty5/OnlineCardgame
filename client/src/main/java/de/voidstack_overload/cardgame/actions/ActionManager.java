@@ -2,9 +2,12 @@ package de.voidstack_overload.cardgame.actions;
 
 import com.google.gson.JsonObject;
 import de.voidstack_overload.cardgame.actions.account.LoginAcceptedAction;
-import de.voidstack_overload.cardgame.actions.account.LoginDeniedAction;
+import de.voidstack_overload.cardgame.actions.account.LoginDenyAction;
 import de.voidstack_overload.cardgame.actions.account.RegisterAcceptedAction;
-import de.voidstack_overload.cardgame.actions.account.RegisterDeniedAction;
+import de.voidstack_overload.cardgame.actions.account.RegisterDenyAction;
+import de.voidstack_overload.cardgame.actions.invalidHandeling.InsufficientPermissionAction;
+import de.voidstack_overload.cardgame.actions.invalidHandeling.InvalidAction;
+import de.voidstack_overload.cardgame.actions.lobby.active.*;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
 import de.voidstack_overload.cardgame.messages.IncomingMessageType;
 
@@ -19,12 +22,25 @@ public class ActionManager {
     static {
         // ACCOUNT
         actions.put(IncomingMessageType.ACCOUNT_LOGIN_ACCEPT, new LoginAcceptedAction());
+        actions.put(IncomingMessageType.ACCOUNT_LOGIN_DENY, new LoginDenyAction());
         actions.put(IncomingMessageType.ACCOUNT_REGISTER_ACCEPT, new RegisterAcceptedAction());
-        actions.put(IncomingMessageType.ACCOUNT_LOGIN_DENY, new LoginDeniedAction());
-        actions.put(IncomingMessageType.ACCOUNT_REGISTER_DENY, new RegisterDeniedAction());
+        actions.put(IncomingMessageType.ACCOUNT_REGISTER_DENY, new RegisterDenyAction());
         // LOBBY
+        actions.put(IncomingMessageType.LOBBY_CREATE_ACCEPT, new LobbyCreateAcceptAction());
+        actions.put(IncomingMessageType.LOBBY_CREATE_DENY, new LobbyCreateDenyAction());
+        actions.put(IncomingMessageType.LOBBY_JOIN_ACCEPT, new LobbyJoinAcceptAction());
+        actions.put(IncomingMessageType.LOBBY_JOIN_DENY, new LobbyJoinDenyAction());
+        actions.put(IncomingMessageType.LOBBY_LEAVE_ACKNOWLEDGE, new LobbyLeaveAcknowledgeAction());
+        actions.put(IncomingMessageType.LOBBY_LIST_REPLY, new LobbyListReplyAction());
+        // TODO LOBBY_UPDATE ONCE RELEVANT
+        // LOBBY BROADCAST
 
+        // GAME
 
+        // INVALID
+        actions.put(IncomingMessageType.INVALID, new InvalidAction());
+        actions.put(IncomingMessageType.ERROR, new InvalidAction());
+        actions.put(IncomingMessageType.INSUFFICIENT_PERMISSIONS, new InsufficientPermissionAction());
     }
 
     public static void handleAction(IncomingMessageType type, JsonObject json) {

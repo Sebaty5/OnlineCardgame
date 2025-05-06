@@ -23,14 +23,12 @@ public class LobbySettingsController extends BaseController {
     @FXML
     private Slider botAmount;
 
-    private final LobbyService lobbyService = new LobbyService();
-
     public void createLobby() {
         String name = lobbyName.getText();
         String password = lobbyPassword.getText();
         int maxPlayers = (int) this.maxPlayers.getValue();
         int botAmount = (int) this.botAmount.getValue();
-        lobbyService.lobbyCreate(name, password, maxPlayers, botAmount);
+        LobbyService.lobbyCreate(name, password, maxPlayers, botAmount);
     }
 
     public void switchToProfile() {
