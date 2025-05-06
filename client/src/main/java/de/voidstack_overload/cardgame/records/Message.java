@@ -1,4 +1,4 @@
-package de.voidstack_overload.cardgame.network;
+package de.voidstack_overload.cardgame.records;
 
 import de.voidstack_overload.cardgame.messages.OutgoingMessageType;
 
