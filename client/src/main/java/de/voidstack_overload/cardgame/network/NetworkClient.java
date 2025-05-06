@@ -1,6 +1,8 @@
 package de.voidstack_overload.cardgame.network;
 
+import de.voidstack_overload.cardgame.SceneFXML;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
+import de.voidstack_overload.cardgame.utility.FxUtility;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 
@@ -27,9 +29,11 @@ public class NetworkClient extends WebSocketClient {
     @Override
     public void onClose(int code, String reason, boolean remote) {
         if (remote) {
-            LOGGER.log("Server terminated connection." + reason);
+            LOGGER.log("Server terminated connection.");
+            FxUtility.switchScene(SceneFXML.MENU);
+            FxUtility.showAlert("Lost Connection", "", "Lost connection to server.");
         } else {
-            LOGGER.log("Client terminated connection." + reason);
+            LOGGER.log("Client terminated connection.");
         }
     }
 
