@@ -18,7 +18,7 @@
             <VBox alignment="CENTER" fx:id="menuPanel" spacing="15">
                 <Text fx:id="menuPanelHeader" text="  Lobby&#10;Settings"/>
                 <TextField fx:id="lobbyName" styleClass="inputField" promptText="Lobby Name"/>
-                <PasswordField fx:id="lobbyPassword" styleClass="inputField" promptText="Lobby Password"/>
+                <PasswordField fx:id="lobbyPassword" styleClass="inputField" promptText="Password"/>
                 <HBox alignment="CENTER_LEFT">
                     <Text styleClass="panelText" text="max players"/>
                 </HBox>
