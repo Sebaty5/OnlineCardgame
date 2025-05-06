@@ -19,6 +19,9 @@ public abstract class AccountAction extends BaseAction {
     protected void accepted(JsonObject json, OutgoingMessageType type) {
         if(this.lastSendMessage.messageType() != type) {
             LOGGER.error("Server acknowledged " + type + " without client having requested " + type +".");
+            AuthenticationService.INSTANCE.logout();
+            FxUtility.switchScene(SceneFXML.MENU);
+            FxUtility.showAlert("Disconnected", "", "Server denied " + type + " without request.\nDisconnecting to clear connection.");
             return;
         }
         String username = "";
@@ -58,6 +61,9 @@ public abstract class AccountAction extends BaseAction {
     protected void denied(JsonObject json, OutgoingMessageType type) {
         if(this.lastSendMessage.messageType() != type) {
             LOGGER.error("Server denied " + type + " without client having requested " + type +".");
+            AuthenticationService.INSTANCE.logout();
+            FxUtility.switchScene(SceneFXML.MENU);
+            FxUtility.showAlert("Disconnected", "", "Server denied " + type + " without request.\nDisconnecting to clear connection.");
             return;
         }
 
