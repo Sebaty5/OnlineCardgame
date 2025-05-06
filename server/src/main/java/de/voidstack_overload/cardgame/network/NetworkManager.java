@@ -29,6 +29,7 @@ public class NetworkManager extends WebSocketServer {
 
     @Override
     public void onMessage(WebSocket clientConnection, String message) {
+        LOGGER.log("Received message: " + message);
         Response response = MessageHandler.INSTANCE.handleMessage(message, clientConnection);
         if(response != null) {
             clientConnection.send(response.response());
