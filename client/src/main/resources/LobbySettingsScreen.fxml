@@ -13,9 +13,9 @@
             <Button styleClass="backButton" text="&lt;" onAction="#switchToProfile" />
             <VBox fx:id="menuPanel" alignment="CENTER" spacing="15">
                 <Text fx:id="menuPanelHeader" text="  Lobby&#10;Settings" />
-                <TextField styleClass="inputField" promptText="Lobby Name" />
-                <TextField styleClass="inputField" promptText="Lobby Password" />
-                <Text styleClass="info" text="To create a public lobby leave the password field clear"/>
+                <TextField fx:id="lobbyName" styleClass="inputField" promptText="Lobby Name"/>
+                <PasswordField fx:id="lobbyPassword" styleClass="inputField" promptText="Lobby Password"/>
+                <Text styleClass="info" text="To create a public lobby leave the password field empty"/>
                 <HBox alignment="CENTER_LEFT">
                     <Text styleClass="panelText" text="max players" />
                 </HBox>
