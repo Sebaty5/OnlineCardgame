@@ -1,5 +1,6 @@
 package de.voidstack_overload.cardgame.controller;
 
+import de.voidstack_overload.cardgame.service.LobbyService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,6 +9,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 
 public class GameBoardScreenController extends BaseController
 {
@@ -34,11 +36,11 @@ public class GameBoardScreenController extends BaseController
     @FXML
     private ImageView smallStack6;
     @FXML
-    private StackPane lobbyInfoPane;
+    private VBox lobbyInfoPane;
     @FXML
     private Label lobbyActionInfoLabel;
     @FXML
-    private StackPane playerInfoPane;
+    private VBox playerInfoPane;
     @FXML
     private Label chatLabel;
     @FXML
@@ -62,8 +64,8 @@ public class GameBoardScreenController extends BaseController
     }
 
     @FXML
-    private void lobbyLeave(ActionEvent actionEvent)
-    {
+    private void lobbyLeave(ActionEvent actionEvent) {
+        LobbyService.lobbyLeave();
     }
 
     @FXML
