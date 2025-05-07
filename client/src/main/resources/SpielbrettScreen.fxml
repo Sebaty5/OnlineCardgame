@@ -123,13 +123,43 @@
         </VBox>
     </center>
     <right>
-        <VBox fx:id="menuPanel" alignment="TOP_CENTER" spacing="15" BorderPane.alignment="CENTER_RIGHT">
+        <VBox fx:id="menuPanel" alignment="TOP_CENTER" spacing="15" BorderPane.alignment="CENTER_RIGHT" >
             <Text styleClass="chatPanelText" text="Waiting" />
+            <VBox alignment="CENTER" spacing="20">
+                <HBox spacing="15">
+                    <HBox>
+                        <Label styleClass="playerLabel" text="Player1" />
+                        <Button styleClass="close" text="X" />
+                    </HBox>
+                    <HBox>
+                        <Label styleClass="playerLabel" text="Player2" />
+                        <Button styleClass="close" text="X" />
+                    </HBox>
+                </HBox>
+                <HBox spacing="15">
+                    <HBox>
+                        <Label styleClass="playerLabel" text="Player3" />
+                        <Button styleClass="close" text="X" />
+                    </HBox>
+                    <HBox>
+                        <Label styleClass="playerLabel" text="Player4" />
+                        <Button styleClass="close" text="X" />
+                    </HBox>
+                </HBox>
+                <HBox spacing="15">
+                    <HBox>
+                        <Label styleClass="playerLabel" text="Player5" />
+                        <Button styleClass="close" text="X" />
+                    </HBox>
+                    <HBox>
+                        <Label styleClass="playerLabel" text="Player6" />
+                        <Button styleClass="close" text="X" />
+                    </HBox>
+                </HBox>
+            </VBox>
+            <Region/>
             <HBox>
-
-            </HBox>
-            <HBox>
-                <Button styleClass="chatPanelText" text="Chat" textAlignment="LEFT" />
+                <Button styleClass="chatPanelText" text="Chat" />
             </HBox>
             <ListView />
             <TextField styleClass="chatInput" />

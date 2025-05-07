@@ -467,7 +467,6 @@ Region{
     -fx-effect: innershadow(gaussian, #FFAFFA, 50, 0.2,1,1);
 }
 
-
 .choice-box{
     -fx-pref-width: 350px;
     -fx-min-width: 350px;
@@ -542,7 +541,7 @@ Region{
 .list-view{
     -fx-background-color: #5d26ab;
     -fx-min-height: 100px;
-    -fx-max-height: 150px;
+    -fx-max-height: 250px;
     -fx-border-width: 3px;
     -fx-border-color: #FFD3FF;
 }
@@ -591,4 +590,30 @@ Region{
     -fx-background-radius: 30px;
     -fx-background-color: #0F042C;
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0,1,1);
+}
+
+.close{
+    -fx-background-color: #5d26ab;
+    -fx-border-radius: 0px 10px 10px 0px;
+    -fx-background-radius: 0px 10px 10px 0px;
+    -fx-border-width: 2px 2px 2px 0px;
+    -fx-pref-height: 33px;
+    -fx-pref-width: 30px;
+    -fx-border-color: #5d26ab;
+    -fx-translate-x: -2px;
+    -fx-background-insets: 0;
+}
+
+.playerLabel{
+    -fx-background-color: #5d26ab;
+    -fx-border-radius: 10px 0px 0px 10px;
+    -fx-background-radius: 10px 0px 0px 10px;
+    -fx-fill: #FFD3FF;
+    -fx-text-alignment: Center;
+    -fx-font-size: 18px;
+    -fx-border-width: 2px 0px 2px 2px;
+    -fx-pref-height: 30px;
+    -fx-max-width: 160px;
+    -fx-padding: 3px;
+    -fx-border-color: #5d26ab;
 }
