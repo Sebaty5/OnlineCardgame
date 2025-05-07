@@ -1,10 +1,11 @@
 package de.voidstack_overload.cardgame.controller;
 
 import de.voidstack_overload.cardgame.SceneFXML;
-import javafx.animation.PauseTransition;
+import de.voidstack_overload.cardgame.service.RessourceService;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.ProgressBar;
-import javafx.util.Duration;
+
 import java.io.IOException;
 
 public class LoadingController extends BaseController {
@@ -12,32 +13,36 @@ public class LoadingController extends BaseController {
     @FXML
     private ProgressBar loadingBar;
 
-    private double progressbarValue = 0.0;
-    private int texturesLoaded = 0;
-
     @FXML
     private void initialize() {
-        loadingBar.setProgress(0.0);
-        int textureAmount = 5;
+        Task<Void> loaderTask = createLoaderTask();
+        loadingBar.progressProperty().bind(loaderTask.progressProperty());
 
-        PauseTransition pauseTransition = new PauseTransition(Duration.millis(100));
-        pauseTransition.setOnFinished(
-                e -> {
-                    if (texturesLoaded < textureAmount) {
-                        //loading texture
-                        texturesLoaded++;
-                        progressbarValue = (1.0 / textureAmount) * texturesLoaded;
-                        loadingBar.setProgress(progressbarValue);
-                        pauseTransition.playFromStart();
-                    } else {
-                        try {
-                            sceneManager.switchScene(SceneFXML.MENU);
-                        } catch (IOException ex) {
-                            throw new RuntimeException(ex);
-                        }
-                    }
+        loaderTask.setOnSucceeded(e -> {
+            try {
+                sceneManager.switchScene(SceneFXML.MENU);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        Thread worker = new Thread(loaderTask, "texture‑loader");
+        worker.setDaemon(true);
+        worker.start();
+    }
+
+    private static Task<Void> createLoaderTask() {
+        int textureAmount = RessourceService.getImageBufferSize();
+        Task<Void> loaderTask = new Task<>() {
+            @Override
+            protected Void call() {
+                for (int i = 0; i < textureAmount;) {
+                    RessourceService.getImage(i);
+                    updateProgress(++i , textureAmount);
                 }
-        );
-        pauseTransition.play();
+                return null;
+            }
+        };
+        return loaderTask;
     }
 }
