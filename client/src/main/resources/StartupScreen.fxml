@@ -13,7 +13,7 @@
       fx:controller="de.voidstack_overload.cardgame.controller.StartupScreenController">
     <ImageView fx:id="logo" pickOnBounds="true" preserveRatio="true">
         <image>
-            <Image url="@textures/logo.png" />
+            <Image url="@textures/logo/logo.png" />
         </image>
     </ImageView>
     <Button fx:id="start" mnemonicParsing="false" text="Start" onAction="#continueButtonClicked"/>

@@ -44,7 +44,7 @@
 #logo {
     -fx-pref-width: 470px;
     -fx-pref-height: 435px;
-    -fx-background-image: url('../textures/logo.png');
+    -fx-background-image: url('../textures/logo/logo.png');
 }
 
 #subtext {

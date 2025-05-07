@@ -89,7 +89,7 @@ public class LobbyListScreenController extends BaseController {
         private final GridPane grid = new GridPane();
         private final Label name   = new Label();
         private final Label count  = new Label();
-        private final ImageView lock = new ImageView("textures/lock.png");
+        private final ImageView lock = new ImageView("textures/icons/lock.png");
         private final Button join  = new Button("Join");
 
         public LobbyCell() {

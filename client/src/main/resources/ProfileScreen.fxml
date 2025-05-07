@@ -30,7 +30,7 @@
             <graphic>
                 <ImageView>
                     <image>
-                        <Image url="@textures/einstellungen.png"/>
+                        <Image url="@textures/icons/settingIcon.png"/>
                     </image>
                 </ImageView>
             </graphic>

@@ -32,7 +32,7 @@
     <VBox GridPane.rowIndex="0" GridPane.columnIndex="1">
         <ImageView pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@textures/logo.png"/>
+                <Image url="@textures/logo/logo.png"/>
             </image>
         </ImageView>
     </VBox>
