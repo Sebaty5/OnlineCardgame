@@ -38,17 +38,17 @@ public class GameClient extends Application {
                 new Image(GameClient.class.getResourceAsStream("/textures/icons/glow_spade.png"))
         );
 
-        primaryStage.getIcons().add(icons.getFirst());
+        primaryStage.getIcons().setAll(icons.get(0));
 
-        final int[] i = {0};
-        Timeline iconCycler = new Timeline(
-                new KeyFrame(Duration.ZERO, e -> primaryStage.getIcons().set(0, icons.get(i[0]))),
-                new KeyFrame(Duration.millis(250))
+        final int[] idx = {1};
+        Timeline cycler = new Timeline(
+                new KeyFrame(Duration.millis(250), e -> {
+                    primaryStage.getIcons().set(0, icons.get(idx[0]));
+                    idx[0] = (idx[0] + 1) % icons.size();
+                })
         );
-        iconCycler.setCycleCount(Animation.INDEFINITE);
-        iconCycler.currentTimeProperty().addListener((obs, oldT, newT) ->
-                i[0] = (i[0] + 1) % icons.size());
-        iconCycler.play();
+        cycler.setCycleCount(Animation.INDEFINITE);
+        cycler.play();
 
         sceneManager.switchScene(SceneFXML.STARTUP);
     }
