@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="996.0" prefWidth="1664.0" styleClass="background3" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.voidstack_overload.cardgame.controller.GameBoardScreenController">
+    <top>
+        <HBox alignment="CENTER" prefHeight="105.0" prefWidth="977.0" spacing="20">
+        <VBox maxHeight="400" maxWidth="600" prefHeight="121.0" prefWidth="478.0" spacing="15.0" styleClass="popupQuitGame" BorderPane.alignment="TOP_LEFT">
+            <Label alignment="CENTER" prefHeight="19.0" prefWidth="671.0" styleClass="quitGameText" text="Are you sure you want to quit?" />
+            <TilePane alignment="CENTER" hgap="20" prefHeight="40.0" prefWidth="441.0">
+                <Button styleClass="quitGameButton" text="Yes" />
+                <Button styleClass="dontQuitGameButton" text="No" />
+            </TilePane>
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </BorderPane.margin>
+        </VBox>
+         <Region fx:id="spacer" prefHeight="121.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+            <!-- HBox on the right -->
+         <HBox alignment="CENTER" prefHeight="121.0" prefWidth="338.0" spacing="10">
+            <Button prefHeight="40.0" prefWidth="140.0" styleClass="settingsButton" text="Settings" />
+            <Button prefHeight="40.0" prefWidth="140.0" styleClass="settingsButton" text="Leave" />
+             <BorderPane.margin>
+                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+             </BorderPane.margin>
+         </HBox>
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </BorderPane.margin>
+        </HBox>
+    </top>
+    <left>
+        <VBox alignment="CENTER" prefHeight="195.0" prefWidth="290.0" spacing="10" styleClass="cardStapel" BorderPane.alignment="CENTER_RIGHT">
+            <ImageView fitHeight="106.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <!--<Image url="@textures/club.png" />-->
+                </image>
+            </ImageView>
+            <ImageView fitHeight="139.0" fitWidth="277.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@textures/card.png" />
+                </image>
+            </ImageView>
+            <Text fill="WHITE" text="40">
+            <font>
+               <Font size="20.0" />
+            </font></Text>
+        </VBox>
+    </left>
+    <center>
+        <VBox>
+            <HBox alignment="CENTER" prefHeight="392.0" prefWidth="893.0" spacing="15" BorderPane.alignment="CENTER_RIGHT">
+                <ImageView pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@textures/frame.png" />
+                    </image>
+                </ImageView>
+                <ImageView pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@textures/frame.png" />
+                    </image>
+                </ImageView>
+                <ImageView pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@textures/frame.png" />
+                    </image>
+                </ImageView>
+                <ImageView pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@textures/frame.png" />
+                    </image>
+                </ImageView>
+                <ImageView pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@textures/frame.png" />
+                    </image>
+                </ImageView>
+                <ImageView pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@textures/frame.png" />
+                    </image>
+                </ImageView>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="392.0" prefWidth="893.0" spacing="5" BorderPane.alignment="CENTER_RIGHT">
+                <ImageView pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@textures/card.png" />
+                    </image>
+                </ImageView>
+                <ImageView pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@textures/card.png" />
+                    </image>
+                </ImageView>
+                <ImageView pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@textures/card.png" />
+                    </image>
+                </ImageView>
+                <ImageView pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@textures/card.png" />
+                    </image>
+                </ImageView>
+                <ImageView pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@textures/card.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@textures/card.png" />
+                    </image>
+                </ImageView>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="57.0" prefWidth="1175.0" spacing="5" BorderPane.alignment="CENTER_RIGHT">
+                <Button prefHeight="43.0" prefWidth="231.0" styleClass="passGameButton" text="Pass" />
+            </HBox>
+        </VBox>
+    </center>
+    <right>
+        <VBox fx:id="menuPanel" alignment="TOP_CENTER" spacing="15" BorderPane.alignment="CENTER_RIGHT" >
+            <Text styleClass="chatPanelText" text="Waiting" />
+            <VBox alignment="CENTER" spacing="20">
+                <HBox spacing="15">
+                    <HBox>
+                        <Label styleClass="playerLabel" text="Player1" />
+                        <Button styleClass="close" text="X" />
+                    </HBox>
+                    <HBox>
+                        <Label styleClass="playerLabel" text="Player2" />
+                        <Button styleClass="close" text="X" />
+                    </HBox>
+                </HBox>
+                <HBox spacing="15">
+                    <HBox>
+                        <Label styleClass="playerLabel" text="Player3" />
+                        <Button styleClass="close" text="X" />
+                    </HBox>
+                    <HBox>
+                        <Label styleClass="playerLabel" text="Player4" />
+                        <Button styleClass="close" text="X" />
+                    </HBox>
+                </HBox>
+                <HBox spacing="15">
+                    <HBox>
+                        <Label styleClass="playerLabel" text="Player5" />
+                        <Button styleClass="close" text="X" />
+                    </HBox>
+                    <HBox>
+                        <Label styleClass="playerLabel" text="Player6" />
+                        <Button styleClass="close" text="X" />
+                    </HBox>
+                </HBox>
+            </VBox>
+            <Region/>
+            <HBox>
+                <Button styleClass="chatPanelText" text="Chat" />
+            </HBox>
+            <ListView />
+            <TextField styleClass="chatInput" />
+            <HBox alignment="CENTER_RIGHT">
+                <Button styleClass="sendButton" text="send" />
+            </HBox>
+            <BorderPane.margin>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </BorderPane.margin>
+        </VBox>
+    </right>
+</BorderPane>

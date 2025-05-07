@@ -131,9 +131,9 @@ public class LobbyListScreenController extends BaseController {
         protected void updateItem(Lobby lobby, boolean empty) {
             super.updateItem(lobby, empty);
 
-            if (empty || lobby == null) {               // ← cell being recycled or off‑screen
+            if (empty || lobby == null) {
                 setGraphic(null);
-                join.setDisable(false);                 // ① reset all mutable state!
+                join.setDisable(false);
                 join.setOnAction(null);
                 return;
             }
