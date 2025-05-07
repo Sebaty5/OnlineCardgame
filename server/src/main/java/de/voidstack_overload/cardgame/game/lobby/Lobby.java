@@ -145,12 +145,12 @@ public class Lobby {
         LOGGER.log("Removing player from lobby.");
         players.remove(user);
         isFull = false;
-        if (user == host && !players.isEmpty()) {
+        if (user.equals(host) && !players.isEmpty()) {
             host = players.iterator().next(); // Assign new host
             broadcast(host.getUsername() + " is the new host.");
             LOGGER.log(host.getUsername() + " has been assigned host.");
         }
-        broadcast("Player left lobby: " + id);
+        broadcast("Player " + user.getUsername() + "  left lobby: " + id);
     }
 
     public boolean isEmpty() {
