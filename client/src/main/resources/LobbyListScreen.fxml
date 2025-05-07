@@ -23,10 +23,11 @@
 
 
 
-    <Button text="&lt;"
+    <Button fx:id="backButton"
+            text="&lt;"
             GridPane.rowIndex="0"
             GridPane.columnIndex="0"
-            styleClass="backButton2"
+            styleClass="backButton"
             onAction="#switchToMenu"/>
 
     <StackPane GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
@@ -41,34 +42,3 @@
         </BorderPane>
     </StackPane>
 </GridPane>
-
-<!--
-<GridPane fx:id="masterPane"
-          prefWidth="1920" prefHeight="1080"
-          alignment="CENTER"
-          styleClass="background" stylesheets="@styles/style.css"
-          xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="de.voidstack_overload.cardgame.controller.LobbyListScreenController">
-
-    <Button styleClass="backButton2" text="&lt;" GridPane.columnSpan="4" GridPane.rowIndex="0" onAction="#switchToMenu"/>
-    <StackPane GridPane.columnSpan="4" GridPane.rowIndex="0">
-        <GridPane alignment="CENTER" hgap="50" styleClass="lobby">
-            <columnConstraints>
-                <ColumnConstraints halignment="CENTER" minWidth="100" />
-                <ColumnConstraints halignment="CENTER" minWidth="100" />
-                <ColumnConstraints halignment="CENTER" minWidth="100" />
-                <ColumnConstraints halignment="CENTER" minWidth="100" />
-                <ColumnConstraints halignment="CENTER" minWidth="100" />
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints />
-                <RowConstraints />
-            </rowConstraints>
-        </GridPane>
-    </StackPane>
-    <StackPane GridPane.columnSpan="4" GridPane.rowIndex="1" styleClass="background">
-        <ListView fx:id="listView">
-        </ListView>
-    </StackPane>
-</GridPane>
--->

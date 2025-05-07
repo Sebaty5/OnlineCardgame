@@ -36,8 +36,11 @@ public class LobbyListScreenController extends BaseController {
     @FXML
     private ListView<Lobby> listView;
 
+    @FXML Button backButton;
+
     @FXML
     private void initialize() {
+        backButton.toFront();
         listView.setFixedCellSize(80);
         listView.setCellFactory(v -> new LobbyCell());
 

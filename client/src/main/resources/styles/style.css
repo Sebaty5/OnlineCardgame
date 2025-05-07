@@ -122,13 +122,10 @@
     -fx-border-color: #FFD3FF;
 }
 
-/*.normalButton .text{
-    -fx-effect:
-            dropshadow(gaussian, #60239F, 3, 1, -1, -1), !* Top-left shadow *!
-            dropshadow(gaussian, #60239F, 3, 1, 1, -1),  !* Top-right shadow *!
-            dropshadow(gaussian, #60239F, 3, 1, -1, 1),  !* Bottom-left shadow *!
-            dropshadow(gaussian, #60239F, 3, 1, 1, 1);   !* Bottom-right shadow *!
-}*/
+.info{
+    -fx-font-size: 13px;
+    -fx-fill: #FFD3FF;
+}
 
 #loadingBar {
     -fx-pref-width: 600px;
