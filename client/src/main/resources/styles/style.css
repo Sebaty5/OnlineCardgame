@@ -78,12 +78,12 @@
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
 }
 
-#backButton .text {
+.backButton .text {
     -fx-effect:
-            dropshadow(gaussian, #60239F, 3, 1, -1, -1), /* Top-left shadow */
+            dropshadow(gaussian, #60239F, 3, 1, -1, -1),/* Top-left shadow */
             dropshadow(gaussian, #60239F, 3, 1, 1, -1), /* Top-right shadow */
             dropshadow(gaussian, #60239F, 3, 1, -1, 1), /* Bottom-left shadow */
-            dropshadow(gaussian, #60239F, 3, 1, 1, 1); /* Bottom-right shadow */
+            dropshadow(gaussian, #60239F, 3, 1, 1, 1);  /* Bottom-right shadow */
 }
 
 .normalButton {
