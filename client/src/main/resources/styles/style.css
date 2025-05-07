@@ -468,11 +468,9 @@ Region {
     -fx-font-size: 20px;
     -fx-fill: #FFD3FF;
 }
-.listBox{
-    -fx-background-color: #0F042C;
-}
 
-.scrollPane{
+.listBox {
+    -fx-background-color: #0F042C;
     -fx-effect: innershadow(gaussian, #FFAFFA, 50, 0.2,1,1);
 }
 
@@ -672,11 +670,12 @@ Region {
 }
 
 .list-view{
-    -fx-background-color: #5d26ab;
     -fx-min-height: 100px;
     -fx-max-height: 250px;
     -fx-border-width: 3px;
     -fx-border-color: #FFD3FF;
+    -fx-background-color: #0F042C;
+    -fx-effect: innershadow(gaussian, #FFAFFA, 50, 0.2,1,1);
 }
 
 .sendButton{

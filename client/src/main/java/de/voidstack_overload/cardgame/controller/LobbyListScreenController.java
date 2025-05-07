@@ -94,10 +94,10 @@ public class LobbyListScreenController extends BaseController {
             grid.setHgap(50);
             grid.setVgap(0);
             grid.setAlignment(Pos.CENTER_LEFT);
-            grid.getStyleClass().add("lobby");
+            grid.getStyleClass().add("list-grid");
 
-            name.getStyleClass().add("lobbyListeLabel");
-            count.getStyleClass().add("lobbyListeLabel");
+            name.getStyleClass().add("list-label");
+            count.getStyleClass().add("list-label");
 
             double[] widths = {78, 5, 5, 10};
             for (double w : widths) {
