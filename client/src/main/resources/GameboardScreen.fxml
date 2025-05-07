@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.layout.BorderPane?>
-
-<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            prefWidth="1920" prefHeight="1080"
-            fx:controller="de.voidstack_overload.cardgame.controller.GameboardScreenController">
-</BorderPane>
