@@ -91,13 +91,13 @@ public class LobbyListScreenController extends BaseController {
 
         public LobbyCell() {
             //grid.getStyleClass().add("lobby");            // neon background
-            grid.setHgap(20);
+            grid.setHgap(50);
             grid.setVgap(0);
             grid.setAlignment(Pos.CENTER_LEFT);
-            grid.getStyleClass().add("list-grid");
+            grid.getStyleClass().add("lobby");
 
-            name.getStyleClass().add("list-label");
-            count.getStyleClass().add("list-label");
+            name.getStyleClass().add("lobbyListeLabel");
+            count.getStyleClass().add("lobbyListeLabel");
 
             double[] widths = {78, 5, 5, 10};
             for (double w : widths) {
@@ -116,7 +116,7 @@ public class LobbyListScreenController extends BaseController {
             GridPane.setHalignment(lock, HPos.CENTER);
             grid.add(lock, 2, 0);
 
-            join.getStyleClass().add("lobby-join-button");
+            join.getStyleClass().add("joinButton");
             join.setMaxWidth(Double.MAX_VALUE);
             GridPane.setHalignment(join, HPos.RIGHT);
             grid.add(join, 3, 0);
