@@ -10,8 +10,9 @@
 <?import javafx.scene.image.ImageView?>
 
 <GridPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="de.voidstack_overload.cardgame.controller.CreditScreenController" stylesheets="@styles/style.css" styleClass="background2" >
+          prefWidth="1920" prefHeight="1080"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="de.voidstack_overload.cardgame.controller.CreditScreenController" stylesheets="@styles/style.css" styleClass="background2" >
     <StackPane alignment="TOP_LEFT" >
         <ImageView fx:id="cornerTop" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -25,7 +26,7 @@
             <Region/>
             <HBox >
                 <Region prefWidth="100"/>
-                <Button styleClass="backButton" text="&lt;"/>
+                <Button styleClass="backButton" text="&lt;" onAction="#switchToMenu"/>
                 <VBox alignment="CENTER" spacing="50">
                     <Text fx:id="header" styleClass="header" text="Credits" />
                     <Text fx:id="subtext"

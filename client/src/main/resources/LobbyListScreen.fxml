@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<GridPane fx:id="masterPane"
+          fx:controller="de.voidstack_overload.cardgame.controller.LobbyListScreenController"
+          prefWidth="1920" prefHeight="1080"
+          stylesheets="@styles/style.css" styleClass="background"
+          xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <padding>
+        <Insets top="40" right="40" bottom="40" left="40"/>
+    </padding>
+
+    <columnConstraints>
+        <ColumnConstraints hgrow="ALWAYS"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="80"/>
+        <RowConstraints vgrow="ALWAYS"/>
+    </rowConstraints>
+
+
+
+    <Button text="&lt;"
+            GridPane.rowIndex="0"
+            GridPane.columnIndex="0"
+            styleClass="backButton2"
+            onAction="#switchToMenu"/>
+
+    <StackPane GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+        <BorderPane styleClass="list-area"
+            GridPane.rowIndex="1" GridPane.columnIndex="0"
+            GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+            <padding><Insets top="14" right="14" bottom="14" left="14"/></padding>
+
+            <center>
+                <ListView fx:id="listView" BorderPane.alignment="CENTER" prefHeight="0" prefWidth="0"/>
+            </center>
+        </BorderPane>
+    </StackPane>
+</GridPane>
+
+<!--
+<GridPane fx:id="masterPane"
+          prefWidth="1920" prefHeight="1080"
+          alignment="CENTER"
+          styleClass="background" stylesheets="@styles/style.css"
+          xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="de.voidstack_overload.cardgame.controller.LobbyListScreenController">
+
+    <Button styleClass="backButton2" text="&lt;" GridPane.columnSpan="4" GridPane.rowIndex="0" onAction="#switchToMenu"/>
+    <StackPane GridPane.columnSpan="4" GridPane.rowIndex="0">
+        <GridPane alignment="CENTER" hgap="50" styleClass="lobby">
+            <columnConstraints>
+                <ColumnConstraints halignment="CENTER" minWidth="100" />
+                <ColumnConstraints halignment="CENTER" minWidth="100" />
+                <ColumnConstraints halignment="CENTER" minWidth="100" />
+                <ColumnConstraints halignment="CENTER" minWidth="100" />
+                <ColumnConstraints halignment="CENTER" minWidth="100" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints />
+                <RowConstraints />
+            </rowConstraints>
+        </GridPane>
+    </StackPane>
+    <StackPane GridPane.columnSpan="4" GridPane.rowIndex="1" styleClass="background">
+        <ListView fx:id="listView">
+        </ListView>
+    </StackPane>
+</GridPane>
+-->
