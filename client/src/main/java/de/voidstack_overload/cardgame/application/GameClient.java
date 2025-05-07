@@ -2,10 +2,17 @@ package de.voidstack_overload.cardgame.application;
 
 import de.voidstack_overload.cardgame.SceneFXML;
 import de.voidstack_overload.cardgame.SceneManager;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import javafx.util.Duration;
+
+import java.util.List;
 
 public class GameClient extends Application {
     private static SceneManager sceneManager;
@@ -24,6 +31,24 @@ public class GameClient extends Application {
 
         primaryStage.setTitle("Durak");
         primaryStage.setResizable(false);
+        List<Image> icons = List.of(
+                new Image(GameClient.class.getResourceAsStream("/textures/icons/glow_club.png")),
+                new Image(GameClient.class.getResourceAsStream("/textures/icons/glow_diamond.png")),
+                new Image(GameClient.class.getResourceAsStream("/textures/icons/glow_heart.png")),
+                new Image(GameClient.class.getResourceAsStream("/textures/icons/glow_spade.png"))
+        );
+
+        primaryStage.getIcons().add(icons.getFirst());
+
+        final int[] i = {0};
+        Timeline iconCycler = new Timeline(
+                new KeyFrame(Duration.ZERO, e -> primaryStage.getIcons().set(0, icons.get(i[0]))),
+                new KeyFrame(Duration.millis(250))
+        );
+        iconCycler.setCycleCount(Animation.INDEFINITE);
+        iconCycler.currentTimeProperty().addListener((obs, oldT, newT) ->
+                i[0] = (i[0] + 1) % icons.size());
+        iconCycler.play();
 
         sceneManager.switchScene(SceneFXML.STARTUP);
     }
