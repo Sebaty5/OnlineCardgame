@@ -5,9 +5,11 @@ import org.slf4j.LoggerFactory;
 
 public class StandardLogger{
     private final Logger logger;
+    private static final StackWalker WALKER = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE);
 
     public StandardLogger() {
-        this.logger = LoggerFactory.getLogger(getClass().getSimpleName());
+        Class<?> caller = WALKER.getCallerClass();
+        this.logger = LoggerFactory.getLogger(caller.getSimpleName());
     }
 
     public StandardLogger(String name) {
