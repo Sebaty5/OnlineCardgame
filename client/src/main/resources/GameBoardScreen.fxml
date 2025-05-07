@@ -15,6 +15,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.image.Image?>
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
             prefWidth="1920" prefHeight="1080"
             fx:controller="de.voidstack_overload.cardgame.controller.GameBoardScreenController"
@@ -48,13 +49,25 @@
             </StackPane>
 
             <!-- six small stacks under trump -->
-            <FlowPane fx:id="smallStacks" hgap="8" vgap="8">
-                <ImageView fx:id="smallStack1" fitWidth="64" preserveRatio="true"/>
-                <ImageView fx:id="smallStack2" fitWidth="64" preserveRatio="true"/>
-                <ImageView fx:id="smallStack3" fitWidth="64" preserveRatio="true"/>
-                <ImageView fx:id="smallStack4" fitWidth="64" preserveRatio="true"/>
-                <ImageView fx:id="smallStack5" fitWidth="64" preserveRatio="true"/>
-                <ImageView fx:id="smallStack6" fitWidth="64" preserveRatio="true"/>
+            <FlowPane hgap="8" vgap="8">
+                <ImageView fx:id="smallStack1" fitWidth="64" preserveRatio="true">
+                    <Image url="@textures/frame.png"/>
+                </ImageView>
+                <ImageView fx:id="smallStack2" fitWidth="64" preserveRatio="true">
+                    <Image url="@textures/frame.png"/>
+                </ImageView>
+                <ImageView fx:id="smallStack3" fitWidth="64" preserveRatio="true">
+                    <Image url="@textures/frame.png"/>
+                </ImageView>
+                <ImageView fx:id="smallStack4" fitWidth="64" preserveRatio="true">
+                    <Image url="@textures/frame.png"/>
+                </ImageView>
+                <ImageView fx:id="smallStack5" fitWidth="64" preserveRatio="true">
+                    <Image url="@textures/frame.png"/>
+                </ImageView>
+                <ImageView fx:id="smallStack6" fitWidth="64" preserveRatio="true">
+                    <Image url="@textures/frame.png"/>
+                </ImageView>
             </FlowPane>
         </VBox>
     </left>
@@ -83,8 +96,7 @@
             <StackPane fx:id="playerHand" maxHeight="180"/>
 
             <HBox spacing="60" alignment="CENTER">
-                <Button fx:id="takeButton" text="Take" styleClass="actionButton"/>
-                <Button fx:id="passButton" text="Pass" styleClass="actionButton"/>
+                <Button fx:id="takeOrPassButton" text="Take" styleClass="actionButton" onAction="#takeOrPassAction"/>
             </HBox>
         </VBox>
     </bottom>

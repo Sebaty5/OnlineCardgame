@@ -1,5 +1,6 @@
 package de.voidstack_overload.cardgame.controller;
 
+import de.voidstack_overload.cardgame.service.GameService;
 import de.voidstack_overload.cardgame.service.LobbyService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,8 +12,18 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 public class GameBoardScreenController extends BaseController
 {
+    public static GameBoardScreenController INSTANCE = null;
+
+    public GameBoardScreenController() {
+        INSTANCE = this;
+    }
+
+
     @FXML
     private Button settingsButton;
     @FXML
@@ -54,9 +65,9 @@ public class GameBoardScreenController extends BaseController
     @FXML
     private StackPane playerHand;
     @FXML
-    private Button takeButton;
-    @FXML
-    private Button passButton;
+    private Button takeOrPassButton;
+
+    private final Deque<String> history = new ArrayDeque<>(16);
 
     @FXML
     private void openSettings(ActionEvent actionEvent)
@@ -79,14 +90,25 @@ public class GameBoardScreenController extends BaseController
     }
 
     @FXML
-    private void playCard(ActionEvent actionEvent)
-    {
+    private void playCard(ActionEvent actionEvent) {
         //This method is called via each card, so get the corresponding card button via the action event to assess the value of card
         Button source = (Button) actionEvent.getSource();
-        if (source == null)
-        {
+        if (source == null) {
             return;
         }
         //you now have the source Button of this event to work with
+    }
+
+    @FXML
+    private void takeOrPassAction(ActionEvent actionEvent) {
+        GameService.pass();
+    }
+
+    public void attachToChatHistory(String message) {
+        if (history.size() == 15) {
+            history.pollFirst();
+        }
+        history.addLast(message);
+        chatHistory.setText(String.join("\n", history));
     }
 }

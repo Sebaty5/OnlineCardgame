@@ -1,8 +1,12 @@
 package de.voidstack_overload.cardgame.service;
 
 import com.google.gson.JsonObject;
+import de.voidstack_overload.cardgame.messages.OutgoingMessageType;
+import de.voidstack_overload.cardgame.network.NetworkManager;
 import de.voidstack_overload.cardgame.records.GameState;
 import de.voidstack_overload.cardgame.records.Player;
+import de.voidstack_overload.cardgame.utility.JsonBuilder;
+import de.voidstack_overload.cardgame.utility.MessageBuilder;
 
 import java.util.ArrayList;
 
@@ -52,6 +56,16 @@ public class GameService {
         int[][] cardStacks = cardStackArray.toArray(int[][]::new);
 
         return new GameState(activePlayer, attackers, defender, players, drawPileHeight, trumpColor, hand, cardStacks);
+    }
+
+    public static void sendPlayedCard(int card) {
+        JsonBuilder jsonBuilder = new JsonBuilder();
+        jsonBuilder.add("card", card);
+        NetworkManager.INSTANCE.sendMessage(MessageBuilder.build(OutgoingMessageType.GAME_PLAY, jsonBuilder));
+    }
+
+    public static void pass() {
+        NetworkManager.INSTANCE.sendMessage(MessageBuilder.build(OutgoingMessageType.GAME_PASS));
     }
 
 

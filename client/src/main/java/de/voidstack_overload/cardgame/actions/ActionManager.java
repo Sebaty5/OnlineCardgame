@@ -8,6 +8,7 @@ import de.voidstack_overload.cardgame.actions.account.RegisterDenyAction;
 import de.voidstack_overload.cardgame.actions.invalidHandeling.InsufficientPermissionAction;
 import de.voidstack_overload.cardgame.actions.invalidHandeling.InvalidAction;
 import de.voidstack_overload.cardgame.actions.lobby.active.*;
+import de.voidstack_overload.cardgame.actions.lobby.passive.LobbyBroadcastAction;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
 import de.voidstack_overload.cardgame.messages.IncomingMessageType;
 
@@ -34,6 +35,7 @@ public class ActionManager {
         actions.put(IncomingMessageType.LOBBY_LIST_REPLY, new LobbyListReplyAction());
         // TODO LOBBY_UPDATE ONCE RELEVANT
         // LOBBY BROADCAST
+        actions.put(IncomingMessageType.LOBBY_BROADCAST, new LobbyBroadcastAction());
 
         // GAME
 
