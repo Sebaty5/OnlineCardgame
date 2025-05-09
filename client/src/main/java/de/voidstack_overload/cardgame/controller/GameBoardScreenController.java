@@ -1,23 +1,25 @@
 package de.voidstack_overload.cardgame.controller;
 
+import de.voidstack_overload.cardgame.fxNodes.HandPane;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
 import de.voidstack_overload.cardgame.service.GameService;
 import de.voidstack_overload.cardgame.service.LobbyService;
 import de.voidstack_overload.cardgame.records.GameState;
 
 import de.voidstack_overload.cardgame.service.RessourceService;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.DoubleBinding;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.FlowPane;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -74,59 +76,64 @@ public class GameBoardScreenController extends BaseController
     @FXML
     private Label defendOrTakeLabel;
     @FXML
-    private FlowPane playerHand;
+    private HandPane playerHand;
     @FXML
     private Button takeOrPassButton;
 
     @FXML
     public void initialize() {
+        playerHand.prefWidthProperty().bind(stackArea.widthProperty());
+        playerHand.minWidthProperty().bind(stackArea.widthProperty());
+        playerHand.maxWidthProperty().bind(stackArea.widthProperty());
+
         cardStack.setImage(RessourceService.getImage(RessourceService.ImageKey.CARD_BACK_LOW_SAT));
+        playerHand.setPadding(new Insets(10, 500, 10, 500));
         // TODO: Remove default initialization when no longer templating layout
         trumpColorImage.setImage(RessourceService.getImage(RessourceService.ImageKey.CLUB_GLOW_SYMBOL));
 
-        for (int i = 0; i < 20; i++) {
-            ImageView imageView = new ImageView();
-            imageView.setImage(RessourceService.getImage(RessourceService.ImageKey.CARD_BLANK));
-            playerHand.getChildren().add(imageView);
-        }
-
-        int handStart = 120;
-        int handEnd = 480;
-        int cardSize = 55;
-        int handSpace = handEnd - handStart - cardSize;
-
-        int handSize = 20;
+        int handSize = 52;
+        playerHand.getChildren().clear();
         for (int i = 0; i < handSize; i++)
         {
-            int x = handStart + i * (handSpace / handSize);
-            int y = 315;
-            drawHandCard(RessourceService.ImageKey.CARD_BLANK.getIndex(), x, y);
+            drawHandCard(i + 11);
         }
-
-
-
     }
 
-    public void drawHandCard(int cardNumber, int x, int y)
-    {
-        playerHand.getChildren().clear();
+    public void drawHandCard(int cardNumber) {
+        StackPane stackPane = new StackPane();
+        stackPane.setPadding(new Insets(20, 0, 0, 0));
+
         ImageView imageView = new ImageView();
         Image image = RessourceService.getImage(cardNumber);
         imageView.setImage(image);
         imageView.setCache(true);
-        imageView.setLayoutX(x);
-        imageView.setLayoutY(y);
         imageView.setPreserveRatio(true);
-        imageView.setFitWidth(55);
+        imageView.setFitWidth(128);
         imageView.setOnMouseClicked(event -> {
            GameService.sendPlayedCard(cardNumber);
         });
-        //imageView.setOnMouseEntered(this::cardOnHover);         //Listener for onHoverEntered
-        //imageView.setOnMouseExited(event -> draw(originalMessage));     //Listener for onHoverExited //For fast travel across all cards: exit is always before entrance, confirmed in testing
-        playerHand.getChildren().add(imageView);
+        stackPane.setOnMouseEntered(e -> {
+            imageView.setViewOrder(-1);
+            imageView.setTranslateY(-20);
+            imageView.setScaleX(1.1);
+            imageView.setScaleY(1.1);
+        });
+        stackPane.setOnMouseExited(e -> {
+            imageView.setViewOrder(0);
+            imageView.setTranslateY(0);
+            imageView.setScaleX(1);
+            imageView.setScaleY(1);
+        });
+        stackPane.getChildren().add(imageView);
+        playerHand.getChildren().add(stackPane);
     }
 
     public void updateGameState(GameState state) {
+        updateTrumpColor(state);
+        updateHand(state);
+    }
+
+    private void updateTrumpColor(GameState state) {
         switch (state.trumpColor()) {
             // Club
             case 0 -> {
@@ -148,6 +155,14 @@ public class GameBoardScreenController extends BaseController
             default -> {
                 // no change
             }
+        }
+    }
+
+    private void updateHand(GameState state) {
+        playerHand.getChildren().clear();
+        for (int i = 0; i < state.hand().length; i++)
+        {
+            drawHandCard(state.hand()[i]);
         }
     }
 
