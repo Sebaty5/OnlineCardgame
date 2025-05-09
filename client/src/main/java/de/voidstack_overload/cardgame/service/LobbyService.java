@@ -30,6 +30,10 @@ public class LobbyService {
     public static void lobbyLeave() {
         NetworkManager.INSTANCE.sendMessage(MessageBuilder.build(OutgoingMessageType.LOBBY_LEAVE));
     }
+
+    public static void lobbyBroadcast(String message){
+
+    }
 //
 
 //
