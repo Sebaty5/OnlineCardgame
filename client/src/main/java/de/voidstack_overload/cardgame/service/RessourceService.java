@@ -1,10 +1,13 @@
 package de.voidstack_overload.cardgame.service;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.WritableImage;
+
 public class RessourceService {
     /**
      * This member resembles all images that can be used throughout the game
      */
-    private static final javafx.scene.image.Image[] imageBuffer = new javafx.scene.image.Image[ImageKey.values().length];
+    private static final Image[] imageBuffer = new Image[ImageKey.values().length];
 
     /**
      * Getter image buffer size.
@@ -22,11 +25,11 @@ public class RessourceService {
      * @param imKey     The ImageKey enum of a given Image
      * @return          the newly cached image
      */
-    public static javafx.scene.image.Image getImage(ImageKey imKey)
+    public static Image getImage(ImageKey imKey)
     {
         if (imageBuffer[imKey.index] == null)
         {
-            javafx.scene.image.Image image = new javafx.scene.image.Image(imKey.getPath(), 200, 10000, true, true);
+            Image image = new Image(imKey.getPath(), 200, 10000, true, true);
             imageBuffer[imKey.index] = image;
         }
         return imageBuffer[imKey.index];
@@ -38,15 +41,21 @@ public class RessourceService {
      * @param nr    the id of the image
      * @return      the newly cached image
      */
-    public static javafx.scene.image.Image getImage(int nr)
+    public static Image getImage(int nr)
     {
+        if(nr < 0 || nr >= imageBuffer.length || nr == 66) {
+            nr = 66;
+            Image BLANK = new WritableImage(128,192);
+            imageBuffer[nr] = BLANK;
+            return imageBuffer[nr];
+        }
         if (imageBuffer[nr] == null)
         {
             for (ImageKey imKey : ImageKey.values())
             {
                 if (imKey.index == nr)
                 {
-                    javafx.scene.image.Image image = new javafx.scene.image.Image(imKey.getPath(), 200, 10000, true, true);
+                    Image image = new Image(imKey.getPath(), 200, 10000, true, true);
                     imageBuffer[nr] = image;
                     break;
                 }
@@ -130,7 +139,8 @@ public class RessourceService {
         // ADD ADDITIONAL TEXTURES HERE (DO NOT REUSE KEYS)
         LOCK ("/textures/icons/lock.png", 63),
         LOGO ("/textures/logo/logo.png", 64),
-        SETTING_ICON ("/textures/icons/settingIcon.png", 65);
+        SETTING_ICON ("/textures/icons/settingIcon.png", 65),
+        EMPTY_IMAGE ("DO NOT TOUCH", 66);
 
 
         private final String  path;

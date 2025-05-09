@@ -2,6 +2,7 @@ package de.voidstack_overload.cardgame.application;
 
 import de.voidstack_overload.cardgame.SceneFXML;
 import de.voidstack_overload.cardgame.SceneManager;
+import de.voidstack_overload.cardgame.service.RessourceService;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -32,10 +33,10 @@ public class GameClient extends Application {
         primaryStage.setTitle("Durak");
         primaryStage.setResizable(false);
         List<Image> icons = List.of(
-                new Image(GameClient.class.getResourceAsStream("/textures/icons/club_glow.png")),
-                new Image(GameClient.class.getResourceAsStream("/textures/icons/diamond_glow.png")),
-                new Image(GameClient.class.getResourceAsStream("/textures/icons/heart_glow.png")),
-                new Image(GameClient.class.getResourceAsStream("/textures/icons/spade_glow.png"))
+                RessourceService.getImage(RessourceService.ImageKey.CLUB_GLOW_SYMBOL),
+                RessourceService.getImage(RessourceService.ImageKey.DIAMOND_GLOW_SYMBOL),
+                RessourceService.getImage(RessourceService.ImageKey.HEART_GLOW_SYMBOL),
+                RessourceService.getImage(RessourceService.ImageKey.SPADE_GLOW_SYMBOL)
         );
 
         primaryStage.getIcons().setAll(icons.get(0));

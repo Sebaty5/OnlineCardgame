@@ -1,14 +1,14 @@
 package de.voidstack_overload.cardgame.controller;
 
+import de.voidstack_overload.cardgame.fxNodes.CardStackPane;
 import de.voidstack_overload.cardgame.fxNodes.HandPane;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
+import de.voidstack_overload.cardgame.records.Player;
 import de.voidstack_overload.cardgame.service.GameService;
 import de.voidstack_overload.cardgame.service.LobbyService;
 import de.voidstack_overload.cardgame.records.GameState;
 
 import de.voidstack_overload.cardgame.service.RessourceService;
-import javafx.beans.binding.Bindings;
-import javafx.beans.binding.DoubleBinding;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -48,17 +48,17 @@ public class GameBoardScreenController extends BaseController
     @FXML
     private Label cardStackLabel;
     @FXML
-    private ImageView smallStack1;
+    private CardStackPane smallStack1;
     @FXML
-    private ImageView smallStack2;
+    private CardStackPane smallStack2;
     @FXML
-    private ImageView smallStack3;
+    private CardStackPane smallStack3;
     @FXML
-    private ImageView smallStack4;
+    private CardStackPane smallStack4;
     @FXML
-    private ImageView smallStack5;
+    private CardStackPane smallStack5;
     @FXML
-    private ImageView smallStack6;
+    private CardStackPane smallStack6;
     @FXML
     private VBox lobbyInfoPane;
     @FXML
@@ -89,71 +89,48 @@ public class GameBoardScreenController extends BaseController
         cardStack.setImage(RessourceService.getImage(RessourceService.ImageKey.CARD_BACK_LOW_SAT));
         playerHand.setPadding(new Insets(10, 500, 10, 500));
         // TODO: Remove default initialization when no longer templating layout
-        trumpColorImage.setImage(RessourceService.getImage(RessourceService.ImageKey.CLUB_GLOW_SYMBOL));
 
-        int handSize = 52;
-        playerHand.getChildren().clear();
-        for (int i = 0; i < handSize; i++)
-        {
-            drawHandCard(i + 11);
-        }
+        Player sebaty1 = new Player("Sebaty1", 1);
+        Player sebaty2 = new Player("Sebaty2", 2);
+        Player sebaty3 = new Player("Sebaty3", 3);
+        Player sebaty4 = new Player("Sebaty4", 4);
+        Player sebaty5 = new Player("Sebaty5", 5);
+        int[] hand = new int[]{11, 12, 13, 14};
+        int[][] stacks = new int[][]{{15, 16}, {17, 18}, {19, 20}, {21, 22}, {-1, -1}, {-1, -1}};
+
+        GameState gameState = new GameState(sebaty4.name(), new String[]{sebaty4.name(), sebaty2.name()}, sebaty3.name(), new Player[]{sebaty5, sebaty1, sebaty4, sebaty2, sebaty3}, 30, 1, hand, stacks);
+        updateGameState(gameState);
     }
 
-    public void drawHandCard(int cardNumber) {
-        StackPane stackPane = new StackPane();
-        stackPane.setPadding(new Insets(20, 0, 0, 0));
 
-        ImageView imageView = new ImageView();
-        Image image = RessourceService.getImage(cardNumber);
-        imageView.setImage(image);
-        imageView.setCache(true);
-        imageView.setPreserveRatio(true);
-        imageView.setFitWidth(128);
-        imageView.setOnMouseClicked(event -> {
-           GameService.sendPlayedCard(cardNumber);
-        });
-        stackPane.setOnMouseEntered(e -> {
-            imageView.setViewOrder(-1);
-            imageView.setTranslateY(-20);
-            imageView.setScaleX(1.1);
-            imageView.setScaleY(1.1);
-        });
-        stackPane.setOnMouseExited(e -> {
-            imageView.setViewOrder(0);
-            imageView.setTranslateY(0);
-            imageView.setScaleX(1);
-            imageView.setScaleY(1);
-        });
-        stackPane.getChildren().add(imageView);
-        playerHand.getChildren().add(stackPane);
-    }
 
     public void updateGameState(GameState state) {
         updateTrumpColor(state);
         updateHand(state);
+        updateCardStacks(state);
     }
 
     private void updateTrumpColor(GameState state) {
         switch (state.trumpColor()) {
             // Club
             case 0 -> {
-                trumpColorImage.setImage(RessourceService.getImage(66));
+                trumpColorImage.setImage(RessourceService.getImage(RessourceService.ImageKey.CLUB_GLOW_SYMBOL));
             }
             // Diamond
             case 1 -> {
-                trumpColorImage.setImage(RessourceService.getImage(67));
+                trumpColorImage.setImage(RessourceService.getImage(RessourceService.ImageKey.DIAMOND_GLOW_SYMBOL));
             }
             // Heart
             case 2 -> {
-                trumpColorImage.setImage(RessourceService.getImage(68));
+                trumpColorImage.setImage(RessourceService.getImage(RessourceService.ImageKey.HEART_GLOW_SYMBOL));
             }
             // Spade
             case 3 -> {
-                trumpColorImage.setImage(RessourceService.getImage(69));
+                trumpColorImage.setImage(RessourceService.getImage(RessourceService.ImageKey.SPADE_GLOW_SYMBOL));
             }
             // No Color
             default -> {
-                // no change
+                trumpColorImage.setImage(RessourceService.getImage(RessourceService.ImageKey.EMPTY_IMAGE));
             }
         }
     }
@@ -164,6 +141,57 @@ public class GameBoardScreenController extends BaseController
         {
             drawHandCard(state.hand()[i]);
         }
+    }
+
+    public void drawHandCard(int cardNumber) {
+    StackPane stackPane = new StackPane();
+    stackPane.setPadding(new Insets(20, 0, 0, 0));
+
+    ImageView imageView = createImageView(cardNumber);
+    imageView.setOnMouseClicked(event -> {
+        GameService.sendPlayedCard(cardNumber);
+    });
+    stackPane.setOnMouseEntered(e -> {
+        imageView.setViewOrder(-1);
+        imageView.setTranslateY(-20);
+        imageView.setScaleX(1.1);
+        imageView.setScaleY(1.1);
+    });
+    stackPane.setOnMouseExited(e -> {
+        imageView.setViewOrder(0);
+        imageView.setTranslateY(0);
+        imageView.setScaleX(1);
+        imageView.setScaleY(1);
+    });
+    stackPane.getChildren().add(imageView);
+    playerHand.getChildren().add(stackPane);
+}
+
+    private static ImageView createImageView(int cardNumber) {
+        ImageView imageView = new ImageView();
+        Image image = RessourceService.getImage(cardNumber);
+        imageView.setImage(image);
+        imageView.setCache(true);
+        imageView.setPreserveRatio(true);
+        imageView.setFitWidth(128);
+        return imageView;
+    }
+
+    private void updateCardStacks(GameState state) {
+        int[][] stacks = state.cardStacks();
+
+        smallStack1.getChildren().add(createImageView(stacks[0][0]));
+        smallStack1.getChildren().add(createImageView(stacks[0][1]));
+        smallStack2.getChildren().add(createImageView(stacks[1][0]));
+        smallStack2.getChildren().add(createImageView(stacks[1][1]));
+        smallStack3.getChildren().add(createImageView(stacks[2][0]));
+        smallStack3.getChildren().add(createImageView(stacks[2][1]));
+        smallStack4.getChildren().add(createImageView(stacks[3][0]));
+        smallStack4.getChildren().add(createImageView(stacks[3][1]));
+        smallStack5.getChildren().add(createImageView(stacks[4][0]));
+        smallStack5.getChildren().add(createImageView(stacks[4][1]));
+        smallStack6.getChildren().add(createImageView(stacks[5][0]));
+        smallStack6.getChildren().add(createImageView(stacks[5][1]));
     }
 
     @FXML

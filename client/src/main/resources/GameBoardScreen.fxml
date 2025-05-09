@@ -15,11 +15,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import de.voidstack_overload.cardgame.fxNodes.HandPane?>
+<?import de.voidstack_overload.cardgame.fxNodes.CardStackPane?>
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
             prefWidth="1920" prefHeight="1080"
             fx:id="root"
@@ -62,78 +61,38 @@
             <GridPane fx:id="stackArea" hgap="20" vgap="8" alignment="CENTER" style="-fx-background-color: cyan">
                 <padding><Insets top="40" right="40" bottom="20" left="40"/></padding>
                 <columnConstraints>
-                    <ColumnConstraints percentWidth="33"/>
-                    <ColumnConstraints percentWidth="33"/>
-                    <ColumnConstraints percentWidth="34"/>
+
                 </columnConstraints>
                 <rowConstraints>
                     <RowConstraints vgrow="ALWAYS"/>
                     <RowConstraints vgrow="ALWAYS"/>
                 </rowConstraints>
 
+                <CardStackPane fx:id="smallStack1" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="cardStackSection">
+                </CardStackPane>
 
-                <FlowPane hgap="20" vgap="8" alignment="CENTER" styleClass="cardStackSection" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                    <ImageView fx:id="smallStack11" fitWidth="128" preserveRatio="true">
-                        <Image url="@textures/frame.png"/>
-                    </ImageView>
-                    <ImageView fx:id="smallStack12" fitWidth="128" preserveRatio="true">
-                        <Image url="@textures/cards/card_back_lowsat.png"/>
-                    </ImageView>
-                </FlowPane>
+                <CardStackPane fx:id="smallStack2" GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="cardStackSection">
+                </CardStackPane>
 
-                <FlowPane hgap="20" vgap="8" alignment="CENTER" styleClass="cardStackSection" GridPane.columnIndex="1" GridPane.rowIndex="0">
-                    <ImageView fx:id="smallStack21" fitWidth="128" preserveRatio="true">
-                        <Image url="@textures/frame.png"/>
-                    </ImageView>
-                    <ImageView fx:id="smallStack22" fitWidth="128" preserveRatio="true">
-                        <Image url="@textures/cards/card_back_lowsat.png"/>
-                    </ImageView>
-                </FlowPane>
+                <CardStackPane fx:id="smallStack3" GridPane.columnIndex="2" GridPane.rowIndex="0" styleClass="cardStackSection">
+                </CardStackPane>
 
-                <FlowPane hgap="20" vgap="8" alignment="CENTER" styleClass="cardStackSection" GridPane.columnIndex="2" GridPane.rowIndex="0">
-                    <ImageView fx:id="smallStack31" fitWidth="128" preserveRatio="true">
-                        <Image url="@textures/frame.png"/>
-                    </ImageView>
-                    <ImageView fx:id="smallStack32" fitWidth="128" preserveRatio="true">
-                        <Image url="@textures/cards/card_back_lowsat.png"/>
-                    </ImageView>
-                </FlowPane>
+                <CardStackPane fx:id="smallStack4" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="cardStackSection">
+                </CardStackPane>
 
-                <FlowPane hgap="20" vgap="8" alignment="CENTER" styleClass="cardStackSection" GridPane.columnIndex="0" GridPane.rowIndex="1">
-                    <ImageView fx:id="smallStack41" fitWidth="128" preserveRatio="true">
-                        <Image url="@textures/frame.png"/>
-                    </ImageView>
-                    <ImageView fx:id="smallStack42" fitWidth="128" preserveRatio="true">
-                        <Image url="@textures/cards/card_back_lowsat.png"/>
-                    </ImageView>
-                </FlowPane>
+                <CardStackPane fx:id="smallStack5" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="cardStackSection">
+                </CardStackPane>
 
-                <FlowPane hgap="20" vgap="8" alignment="CENTER" styleClass="cardStackSection" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                    <ImageView fx:id="smallStack51" fitWidth="128" preserveRatio="true">
-                        <Image url="@textures/frame.png"/>
-                    </ImageView>
-                    <ImageView fx:id="smallStack52" fitWidth="128" preserveRatio="true">
-                        <Image url="@textures/cards/card_back_lowsat.png"/>
-                    </ImageView>
-                </FlowPane>
-
-                <FlowPane hgap="20" vgap="8" alignment="CENTER" styleClass="cardStackSection" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                    <ImageView fx:id="smallStack61" fitWidth="128" preserveRatio="true">
-                        <Image url="@textures/frame.png"/>
-                    </ImageView>
-                    <ImageView fx:id="smallStack62" fitWidth="128" preserveRatio="true">
-                        <Image url="@textures/cards/card_back_lowsat.png"/>
-                    </ImageView>
-                </FlowPane>
-
+                <CardStackPane fx:id="smallStack6" GridPane.columnIndex="2" GridPane.rowIndex="1" styleClass="cardStackSection">
+                </CardStackPane>
             </GridPane>
-
-            <!-- ❷ defend / take prompt (slightly below row) -->
-            <Label fx:id="defendOrTakeLabel"
-                   StackPane.alignment="BOTTOM_CENTER"
-                   translateY="-160"
-                   styleClass="defendOrTakeLabel"/>
         </StackPane>
+        <!-- ❷ defend / take prompt (slightly below row)
+        <Label fx:id="defendOrTakeLabel"
+               StackPane.alignment="BOTTOM_CENTER"
+               translateY="-160"
+               styleClass="defendOrTakeLabel"/> -->
+
     </center>
 
     <!-- ═════════════ BOTTOM BAR ─ player hand + actions ═════════ -->
