@@ -91,16 +91,29 @@
     -fx-min-width: 350px;
     -fx-pref-height: 80px;
     -fx-min-height: 80px;
-    -fx-border-radius: 24px;
-    -fx-border-width: 6px;
     -fx-font-family: 'Orbitron';
     -fx-font-size: 40px;
     -fx-text-fill: #FFD3FF;
     -fx-text-alignment: center;
     -fx-background-color: #0F042C;
     -fx-background-radius: 24px;
+    -fx-border-radius: 24px;
+    -fx-border-width: 6px;
     -fx-background-insets: 6px;
     -fx-wrap-text: true;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
+}
+
+
+.normalButton:hover   {
+    -fx-background-color: #332557;
+    -fx-background-radius: 24px;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
+}
+
+.normalButton:pressed {
+    -fx-background-color: #231449;
+    -fx-background-radius: 24px;
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
 }
 
@@ -544,29 +557,45 @@ Region {
 
 /* === DIALOGS =================================================== */
 .dialog-pane {
-    -fx-background-color: rgb(15, 4, 44, 0.98), transparent, transparent, transparent;
-    -fx-background-radius: 18, 18, 18, 18;
+    -fx-background-color: rgb(0, 0, 0, 0.98), transparent, transparent, transparent;
+    -fx-background-radius: 24px;
     -fx-border-color: #FFB9FF;
     -fx-border-width: 3;
-    -fx-border-radius: 18;
+    -fx-border-radius: 24;
+    -fx-text-fill: #FFFFFF;
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
     -fx-padding: 36 50;
 }
 
 .neon-btn {
-    -fx-background-color: transparent;
-    -fx-background-radius: 10;
-    -fx-border-color: #FFB9FF;
-    -fx-text-fill: white;
-    -fx-border-radius: 10;
+    -fx-pref-width: 250px;
+    -fx-min-width: 250px;
+    -fx-pref-height: 50px;
+    -fx-min-height: 50px;
+    -fx-font-size: 20px;
+    -fx-border-width: 6px;
+    -fx-background-radius: 24px;
+    -fx-border-radius: 24px;
+    -fx-background-color: #0F042C;
+    -fx-text-fill: #FFD3FF;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
     -fx-padding: 4 28;
 }
+
 .neon-btn:hover   {
-    -fx-background-color: #FFB9FF44;
-    -fx-background-radius: 10;
+    -fx-background-color: #332557;
+    -fx-background-radius: 24px;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
 }
 
 .neon-btn:pressed {
-    -fx-background-color: #FFB9FF66;
-    -fx-background-radius: 10;
+    -fx-background-color: #231449;
+    -fx-background-radius: 24px;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
 }
+
+.dialogLabel{
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 20px;
+}
+
