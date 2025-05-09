@@ -179,7 +179,7 @@
             <HBox>
                 <Button styleClass="chatPanelText" text="Chat" />
             </HBox>
-            <ListView />
+            <ListView styleClass="chatOutput"  />
             <TextField styleClass="chatInput" />
             <HBox alignment="CENTER_RIGHT">
                 <Button styleClass="sendButton" text="send" />

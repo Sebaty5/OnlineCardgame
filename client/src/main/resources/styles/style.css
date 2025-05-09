@@ -406,38 +406,6 @@ Region {
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
 }
 
-.backButton2{
-    -fx-min-width: 83px;
-    -fx-min-height: 83px;
-    -fx-border-radius: 24px;
-    -fx-border-width: 6px;
-    -fx-font-family: 'Orbitron';
-    -fx-font-size: 40px;
-    -fx-text-alignment: center;
-    -fx-background-color: #0F042C;
-    -fx-background-radius: 24px;
-    -fx-background-insets: 6px;
-    -fx-wrap-text: true;
-    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
-    -fx-translate-x: -100px;
-}
-
-.backButton2{
-    -fx-min-width: 83px;
-    -fx-min-height: 83px;
-    -fx-border-radius: 24px;
-    -fx-border-width: 6px;
-    -fx-font-family: 'Orbitron';
-    -fx-font-size: 40px;
-    -fx-text-alignment: center;
-    -fx-background-color: #0F042C;
-    -fx-background-radius: 24px;
-    -fx-background-insets: 6px;
-    -fx-wrap-text: true;
-    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
-    -fx-translate-x: -100px;
-}
-
 .panelText {
     -fx-font-size: 34px;
     -fx-fill: #FFD3FF;
@@ -470,7 +438,9 @@ Region {
 }
 
 .listBox {
-    -fx-background-color: #0F042C;
+    -fx-background-color: rgb(15, 4, 44, 0.98);
+    -fx-border-color: #FFD3FF;
+    -fx-border-width: 3px;
     -fx-effect: innershadow(gaussian, #FFAFFA, 50, 0.2,1,1);
 }
 
@@ -552,7 +522,7 @@ Region {
 
 .list-grid {
     -fx-background-color: transparent;
-    -fx-border-width: 0 0 4 0;
+    -fx-border-width: 0 0 1 0;
     -fx-border-color: transparent transparent #FFD3FF transparent;
     -fx-padding: 0 8 0 0;
 }
@@ -668,14 +638,12 @@ Region {
     -fx-border-width: 3px;
     -fx-border-color: #FFD3FF;
 }
-
-.list-view{
+.chatOutput{
     -fx-min-height: 100px;
     -fx-max-height: 250px;
     -fx-border-width: 3px;
     -fx-border-color: #FFD3FF;
-    -fx-background-color: #0F042C;
-    -fx-effect: innershadow(gaussian, #FFAFFA, 50, 0.2,1,1);
+    -fx-background-color: #5d26ab;
 }
 
 .sendButton{
