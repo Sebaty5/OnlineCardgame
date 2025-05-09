@@ -469,6 +469,15 @@ Region {
 
 }
 
+.listBox {
+    -fx-background-color: rgb(15, 4, 44, 0.98);
+    -fx-background-radius: 18px;
+    -fx-border-color: #FFD3FF;
+    -fx-border-width: 3px;
+    -fx-border-radius: 18px;
+    -fx-effect: innershadow(gaussian, #FFAFFA, 50, 0.2,1,1);
+}
+
 .list-grid {
     -fx-background-color: transparent;
     -fx-border-width: 0 0 4 0;
@@ -569,4 +578,24 @@ Region {
 .neon-btn:pressed {
     -fx-background-color: #FFB9FF66;
     -fx-background-radius: 10;
+}
+
+/* Gameboard */
+
+.cardStackSection {
+    -fx-background-color: rgb(15, 4, 44, 0.98), transparent, transparent, transparent;
+    -fx-background-radius: 18, 18, 18, 18;
+    -fx-border-color: #FFB9FF;
+    -fx-border-width: 3;
+    -fx-border-radius: 18;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
+    -fx-padding: 36 50;
+}
+
+.chatOutput {
+    -fx-min-height: 100px;
+    -fx-max-height: 250px;
+    -fx-border-width: 3px;
+    -fx-border-color: #FFD3FF;
+    -fx-background-color: #5d26ab;
 }

@@ -94,7 +94,7 @@ public class LobbyListScreenController extends BaseController {
 
         public LobbyCell() {
             //grid.getStyleClass().add("lobby");            // neon background
-            grid.setHgap(20);
+            grid.setHgap(50);
             grid.setVgap(0);
             grid.setAlignment(Pos.CENTER_LEFT);
             grid.getStyleClass().add("list-grid");

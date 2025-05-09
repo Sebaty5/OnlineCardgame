@@ -31,7 +31,7 @@
             onAction="#switchToMenu"/>
 
     <StackPane GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
-        <BorderPane styleClass="list-area"
+        <BorderPane styleClass="listBox"
             GridPane.rowIndex="1" GridPane.columnIndex="0"
             GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
             <padding><Insets top="14" right="14" bottom="14" left="14"/></padding>
