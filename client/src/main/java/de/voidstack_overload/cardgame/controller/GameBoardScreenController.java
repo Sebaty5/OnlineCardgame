@@ -1,7 +1,11 @@
 package de.voidstack_overload.cardgame.controller;
 
+import de.voidstack_overload.cardgame.logging.StandardLogger;
 import de.voidstack_overload.cardgame.service.GameService;
 import de.voidstack_overload.cardgame.service.LobbyService;
+import de.voidstack_overload.cardgame.records.GameState;
+
+import de.voidstack_overload.cardgame.service.RessourceService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,20 +13,25 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.FlowPane;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
 
+
 public class GameBoardScreenController extends BaseController
 {
+    private static final StandardLogger LOGGER = new StandardLogger();
+
     public static GameBoardScreenController INSTANCE = null;
 
     public GameBoardScreenController() {
         INSTANCE = this;
     }
-
 
     @FXML
     private Button settingsButton;
@@ -30,6 +39,8 @@ public class GameBoardScreenController extends BaseController
     private Button leaveButton;
     @FXML
     private ImageView trumpColorImage;
+    @FXML
+    public GridPane stackArea;
     @FXML
     private ImageView cardStack;
     @FXML
@@ -63,15 +74,85 @@ public class GameBoardScreenController extends BaseController
     @FXML
     private Label defendOrTakeLabel;
     @FXML
-    private StackPane playerHand;
+    private FlowPane playerHand;
     @FXML
     private Button takeOrPassButton;
 
-    private final Deque<String> history = new ArrayDeque<>(16);
+    @FXML
+    public void initialize() {
+        cardStack.setImage(RessourceService.getImage(RessourceService.ImageKey.CARD_BACK_LOW_SAT));
+        // TODO: Remove default initialization when no longer templating layout
+        trumpColorImage.setImage(RessourceService.getImage(RessourceService.ImageKey.CLUB_GLOW_SYMBOL));
+
+        for (int i = 0; i < 20; i++) {
+            ImageView imageView = new ImageView();
+            imageView.setImage(RessourceService.getImage(RessourceService.ImageKey.CARD_BLANK));
+            playerHand.getChildren().add(imageView);
+        }
+
+        int handStart = 120;
+        int handEnd = 480;
+        int cardSize = 55;
+        int handSpace = handEnd - handStart - cardSize;
+
+        int handSize = 20;
+        for (int i = 0; i < handSize; i++)
+        {
+            int x = handStart + i * (handSpace / handSize);
+            int y = 315;
+            drawHandCard(RessourceService.ImageKey.CARD_BLANK.getIndex(), x, y);
+        }
+
+
+
+    }
+
+    public void drawHandCard(int cardNumber, int x, int y)
+    {
+        playerHand.getChildren().clear();
+        ImageView imageView = new ImageView();
+        Image image = RessourceService.getImage(cardNumber);
+        imageView.setImage(image);
+        imageView.setCache(true);
+        imageView.setLayoutX(x);
+        imageView.setLayoutY(y);
+        imageView.setPreserveRatio(true);
+        imageView.setFitWidth(55);
+        imageView.setOnMouseClicked(event -> {
+           GameService.sendPlayedCard(cardNumber);
+        });
+        //imageView.setOnMouseEntered(this::cardOnHover);         //Listener for onHoverEntered
+        //imageView.setOnMouseExited(event -> draw(originalMessage));     //Listener for onHoverExited //For fast travel across all cards: exit is always before entrance, confirmed in testing
+        playerHand.getChildren().add(imageView);
+    }
+
+    public void updateGameState(GameState state) {
+        switch (state.trumpColor()) {
+            // Club
+            case 0 -> {
+                trumpColorImage.setImage(RessourceService.getImage(66));
+            }
+            // Diamond
+            case 1 -> {
+                trumpColorImage.setImage(RessourceService.getImage(67));
+            }
+            // Heart
+            case 2 -> {
+                trumpColorImage.setImage(RessourceService.getImage(68));
+            }
+            // Spade
+            case 3 -> {
+                trumpColorImage.setImage(RessourceService.getImage(69));
+            }
+            // No Color
+            default -> {
+                // no change
+            }
+        }
+    }
 
     @FXML
-    private void openSettings(ActionEvent actionEvent)
-    {
+    private void openSettings(ActionEvent actionEvent) {
     }
 
     @FXML
@@ -80,29 +161,30 @@ public class GameBoardScreenController extends BaseController
     }
 
     @FXML
-    private void checkButtonAvailability(ActionEvent actionEvent)
-    {
+    private void checkButtonAvailability(ActionEvent actionEvent) {
     }
 
     @FXML
-    private void sendChatMessage(ActionEvent actionEvent)
-    {
+    private void sendChatMessage(ActionEvent actionEvent) {
     }
 
     @FXML
-    private void playCard(ActionEvent actionEvent) {
-        //This method is called via each card, so get the corresponding card button via the action event to assess the value of card
-        Button source = (Button) actionEvent.getSource();
+    private void playCard(MouseEvent actionEvent)
+    {
+        ImageView source = (ImageView) actionEvent.getSource();
         if (source == null) {
-            return;
+            LOGGER.error("Tried to play a card but source is null?");
         }
-        //you now have the source Button of this event to work with
+        LOGGER.log("Playing card: " + source);
+        // TODO: Call play card method
     }
 
     @FXML
     private void takeOrPassAction(ActionEvent actionEvent) {
         GameService.pass();
     }
+
+    private final Deque<String> history = new ArrayDeque<>(16);
 
     public void attachToChatHistory(String message) {
         if (history.size() == 15) {

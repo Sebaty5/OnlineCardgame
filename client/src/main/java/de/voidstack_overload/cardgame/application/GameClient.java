@@ -32,10 +32,10 @@ public class GameClient extends Application {
         primaryStage.setTitle("Durak");
         primaryStage.setResizable(false);
         List<Image> icons = List.of(
-                new Image(GameClient.class.getResourceAsStream("/textures/icons/glow_club.png")),
-                new Image(GameClient.class.getResourceAsStream("/textures/icons/glow_diamond.png")),
-                new Image(GameClient.class.getResourceAsStream("/textures/icons/glow_heart.png")),
-                new Image(GameClient.class.getResourceAsStream("/textures/icons/glow_spade.png"))
+                new Image(GameClient.class.getResourceAsStream("/textures/icons/club_glow.png")),
+                new Image(GameClient.class.getResourceAsStream("/textures/icons/diamond_glow.png")),
+                new Image(GameClient.class.getResourceAsStream("/textures/icons/heart_glow.png")),
+                new Image(GameClient.class.getResourceAsStream("/textures/icons/spade_glow.png"))
         );
 
         primaryStage.getIcons().setAll(icons.get(0));
