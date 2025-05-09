@@ -55,6 +55,6 @@ public class NetworkManager extends WebSocketServer {
 
     @Override
     public void onStart() {
-        LOGGER.log("Game server started successfully.");
+        LOGGER.log("Game server started successfully. Listening on port: " + getPort());
     }
 }
