@@ -19,6 +19,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import de.voidstack_overload.cardgame.fxNodes.HandPane?>
 <?import de.voidstack_overload.cardgame.fxNodes.CardStackPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
             prefWidth="1920" prefHeight="1080"
             fx:id="root"
@@ -118,11 +119,26 @@
             <VBox>
                 <!-- header -->
                 <Label fx:id="LobbyInfoLabel" text="Waiting 1/6" styleClass="panelHeader"/>
+                <Label text="SPACER" style="-fx-text-fill: transparent"/>
 
-                <!-- players (labels added dynamically) -->
-                <VBox fx:id="playerInfoPane" spacing="10">
+                <GridPane prefWidth="300" fx:id="playerList" styleClass="list-area">
+                    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="10"/>
+                        <ColumnConstraints percentWidth="30"/>
+                        <ColumnConstraints percentWidth="50"/>
+                        <ColumnConstraints percentWidth="10"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints vgrow="ALWAYS"/>
+                        <RowConstraints vgrow="ALWAYS"/>
+                        <RowConstraints vgrow="ALWAYS"/>
+                        <RowConstraints vgrow="ALWAYS"/>
+                        <RowConstraints vgrow="ALWAYS"/>
+                        <RowConstraints vgrow="ALWAYS"/>
+                    </rowConstraints>
 
-                </VBox>
+                </GridPane>
 
                 <!-- close‑lobby ( X ) button, optional -->
                 <Button fx:id="closeSlotBtn" text="×" styleClass="closeSlotButton" visible="false"/>

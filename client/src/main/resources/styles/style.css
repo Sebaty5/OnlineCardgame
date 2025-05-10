@@ -657,3 +657,76 @@ Region {
     -fx-wrap-text: true;
     -fx-border-color: #FFD3FF;
 }
+
+/* 1) The outer frame */
+.player-table {
+    -fx-background-color: transparent;       /* let the parent show through */
+    -fx-border-color: #E67FFF;               /* neon-pink outline */
+    -fx-border-width: 1.5;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+/* 2) Column header bar */
+.player-table .column-header-background {
+    -fx-background-color: rgba(255,255,255,0.05);
+    -fx-border-color: transparent transparent #9FDCEE transparent;
+    -fx-border-width: 0 0 1 0;                /* subtle bottom rule */
+}
+
+/* 3) Header text */
+.player-table .column-header,
+.player-table .column-header .label {
+    -fx-font-family: "Orbitron", sans-serif;
+    -fx-font-size: 13px;
+    -fx-text-fill: #9FDCEE;                  /* icy-blue headers */
+    -fx-alignment: CENTER;
+}
+
+/* 4) Row backgrounds */
+.player-table .table-row-cell {
+    -fx-background-color: transparent;
+}
+.player-table .table-row-cell:filled:hover {
+    -fx-background-color: rgba(159,220,255,0.10);
+}
+.player-table .table-row-cell:filled:selected {
+    -fx-background-color: rgba(159,220,255,0.20);
+}
+
+/* 5) Cell text */
+.player-table .table-cell {
+    -fx-font-family: "Ubuntu Mono", monospace;
+    -fx-font-size: 12px;
+    -fx-text-fill: #F0F0F0;
+    -fx-padding: 4 8;                        /* tight padding */
+    -fx-alignment: CENTER_LEFT;
+}
+
+/* 6) “Active” dot column: center the bullet */
+.player-table .table-column > .table-cell:selected {
+    -fx-text-fill: #E67FFF;                  /* neon-pink when selected */
+}
+.active-col .table-cell {
+    -fx-alignment: CENTER;                   /* dot in center */
+}
+
+/* 7) Scrollbar styling */
+.player-table .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-padding: 0 2 0 0;
+}
+.player-table .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-padding: 2 0 0 0;
+}
+.player-table .thumb {
+    -fx-background-color: rgba(159,220,255,0.4);
+    -fx-background-insets: 0;
+    -fx-background-radius: 4;
+}
+.player-table .increment-button,
+.player-table .decrement-button {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+}
