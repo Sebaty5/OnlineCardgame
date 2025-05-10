@@ -8,25 +8,21 @@ import java.nio.file.Paths;
 public class Settings extends JsonHandler<Settings.Data> {
     private static final StandardLogger LOGGER = new StandardLogger("Settings");
 
-    private static Settings INSTANCE;
+    public static Settings INSTANCE;
+
+    static {
+        try {
+            INSTANCE = new Settings();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     private int volume = 50;
     private String language = "English";
     private int width = 1280;
     private int height = 720;
     private boolean fullscreen = false;
-
-    public static Settings getInstance() {
-        if(INSTANCE == null) {
-            try {
-                INSTANCE = new Settings();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        return INSTANCE;
-    }
-
 
     private Settings() throws IOException {
         super(Paths.get("client/config/settings.json"), 600_000L, Data.class, Data::new);
@@ -36,6 +32,7 @@ public class Settings extends JsonHandler<Settings.Data> {
             throw new RuntimeException(e);
         }
     }
+
     @Override
     public void init() {
         this.volume = fetchVolume();

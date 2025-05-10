@@ -1,5 +1,7 @@
 package de.voidstack_overload.cardgame;
 
+import de.voidstack_overload.cardgame.configuration.SettingData;
+import de.voidstack_overload.cardgame.configuration.Settings;
 import de.voidstack_overload.cardgame.controller.BaseController;
 
 import javafx.beans.property.DoubleProperty;
@@ -11,6 +13,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
+
+import java.awt.*;
 import java.io.IOException;
 
 public class SceneManager {
@@ -34,15 +38,9 @@ public class SceneManager {
     private final DoubleProperty targetW = new SimpleDoubleProperty(width);
     private final DoubleProperty targetH = new SimpleDoubleProperty(height);
 
-    private static int width = 1920;
-    private static int height = 1080;
+    private static int width = Math.max(Toolkit.getDefaultToolkit().getScreenSize().width, 1920);
+    private static int height = Math.max(Toolkit.getDefaultToolkit().getScreenSize().height, 1080);
 
-    public static void setWidth (int w) {
-        width  = w;
-    }
-    public static void setHeight(int h) {
-        height = h;
-    }
     public static void setSize(int w, int h) {
         width = w;
         height = h;
@@ -54,8 +52,27 @@ public class SceneManager {
         return height;
     }
 
+    private boolean isFullScreen = false;
+
+    public void setFullScreen(boolean fs)
+    {
+        this.isFullScreen = fs;
+    }
+
     public SceneManager(Stage stage) {
         this.stage = stage;
+
+        stage.fullScreenProperty().addListener((obs, oldVal, newVal) -> {
+            SettingData settingData = Settings.INSTANCE.getSettingData();
+            setSize(settingData.width(), settingData.height());
+            setFullScreen(newVal);
+            Settings.INSTANCE.setSettingData(new SettingData(settingData.volume(), settingData.language(), settingData.width(), settingData.height(), newVal));
+            resizeStageIfNeeded();
+            if (!newVal)
+            {
+                stage.centerOnScreen();
+            }
+        });
 
         scalableRoot.getTransforms().add(scale);
         sceneRoot.getChildren().add(scalableRoot);
@@ -73,7 +90,13 @@ public class SceneManager {
         BaseController controller = loader.getController();
         controller.setSceneManager(this);
         scalableRoot.getChildren().setAll(view);
-        resizeStageIfNeeded();
+        SettingData data = Settings.INSTANCE.getSettingData();
+        setFullScreen(data.fullscreen());
+        if (!isFullScreen)
+        {
+            setSize(data.width(), data.height());
+            resizeStageIfNeeded();
+        }
     }
 
     private double[] getSceneSize(Stage stage) {
@@ -112,18 +135,11 @@ public class SceneManager {
         scaleFactor.set(Math.min(kUser, kWindow));
     }
 
-    private void resizeStageIfNeeded() {
-        double decoW = stage.getWidth()  - scene.getWidth();
-        double decoH = stage.getHeight() - scene.getHeight();
-
-        double needW = getWidth()  + decoW;
-        double needH = getHeight() + decoH;
-
-        if (Math.round(stage.getWidth())  != Math.round(needW) ||
-                Math.round(stage.getHeight()) != Math.round(needH)) {
-
-            stage.setWidth (needW);
-            stage.setHeight(needH);
+    public void resizeStageIfNeeded() {
+        if (!isFullScreen) {
+            stage.setWidth(width);
+            //TODO: Better calculate offset
+            stage.setHeight(height + 30);
         }
     }
 }

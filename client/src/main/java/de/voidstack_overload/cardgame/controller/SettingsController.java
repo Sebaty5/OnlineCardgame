@@ -2,6 +2,9 @@ package de.voidstack_overload.cardgame.controller;
 
 import de.voidstack_overload.cardgame.SceneFXML;
 import de.voidstack_overload.cardgame.SceneManager;
+import de.voidstack_overload.cardgame.configuration.SettingData;
+import de.voidstack_overload.cardgame.configuration.Settings;
+import de.voidstack_overload.cardgame.logging.StandardLogger;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
@@ -13,6 +16,8 @@ import javafx.util.Pair;
 import java.io.IOException;
 
 public class SettingsController extends BaseController {
+    private static final StandardLogger LOGGER = new StandardLogger();
+
     @FXML
     private Slider volumeSlider;
     @FXML
@@ -33,30 +38,32 @@ public class SettingsController extends BaseController {
         super.setSceneManager(sm);
         stage = sm.getStage();
 
-        int  w = SceneManager.getWidth();
-        int  h = SceneManager.getHeight();
-        boolean fs = stage.isFullScreen();
+        SettingData data = Settings.INSTANCE.getSettingData();
 
-        String key = w + "x" + h;
-        if (!choiceBoxResolution.getItems().contains(key)) {
-            choiceBoxResolution.getItems().add(key);   // in case user typed odd size
-        }
-        choiceBoxResolution.setValue(key);
-        checkFullScreen.setSelected(fs);
+        volumeSlider.setValue(data.volume());
 
-        lastWindowedW = w;
-        lastWindowedH = h;
+        choiceBoxLanguage.setValue(data.language());
+
+        choiceBoxResolution.setValue(data.width() + "x" + data.height());
+        checkFullScreen.setSelected(data.fullscreen());
+
+        lastWindowedW = data.width();
+        lastWindowedH = data.height();
+
+        sceneManager.getStage().fullScreenProperty().addListener((obs, oldVal, newVal) -> checkFullScreen.setSelected(newVal));
     }
 
     @FXML
     private void initialize() {
-        choiceBoxResolution.getSelectionModel().selectedItemProperty()
-                .addListener((obs, oldVal, newVal) -> {
-                    if (newVal == null) return;
-                    if (checkFullScreen.isSelected()) return;
-                    Pair<Integer,Integer> s = parse(newVal);
-                    applyWindowedSize(s.getKey(), s.getValue());
-                });
+        choiceBoxResolution.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
+            if (newVal == null) return;
+            if (checkFullScreen.isSelected()) return;
+            Pair<Integer,Integer> s = parse(newVal);
+            applyWindowedSize(s.getKey(), s.getValue());
+            LOGGER.log("Saving Values: choiceBoxResolution ComboBox");
+            saveValues();
+            sceneManager.getStage().centerOnScreen();
+        });
 
         checkFullScreen.selectedProperty().addListener((obs, was, is) -> {
             if (is) {
@@ -75,18 +82,50 @@ public class SettingsController extends BaseController {
                 applyWindowedSize(lastWindowedW, lastWindowedH);
                 choiceBoxResolution.setDisable(false);
                 choiceBoxResolution.setValue(lastWindowedW + "x" + lastWindowedH);
+                sceneManager.getStage().centerOnScreen();
             }
+            LOGGER.log("Saving Values: checkFullScreen Checkbox");
+            saveValues();
+            sceneManager.setFullScreen(is);
         });
+
+        volumeSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
+            LOGGER.log("Saving Values: VolumeSlider Slider");
+            saveValues();
+        });
+
+        choiceBoxLanguage.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
+            LOGGER.log("Saving Values: choiceBoxLanguage ComboBox");
+            saveValues();
+        });
+    }
+
+    private void saveValues()
+    {
+        int volume = (int)volumeSlider.getValue();
+        String language = choiceBoxLanguage.getValue();
+        int width;
+        int height;
+        try
+        {
+            width = Integer.parseInt(choiceBoxResolution.getValue().split("x")[0]);
+            height = Integer.parseInt(choiceBoxResolution.getValue().split("x")[1]);
+        }
+        catch (NumberFormatException ex)
+        {
+            width = Settings.INSTANCE.getWidth();
+            height = Settings.INSTANCE.getHeight();
+        }
+        boolean fullscreen = checkFullScreen.isSelected();
+
+        SettingData data = new SettingData(volume, language, width, height, fullscreen);
+        Settings.INSTANCE.setSettingData(data);
     }
 
     private void applyWindowedSize(int w, int h) {
         SceneManager.setSize(w, h);
 
-        double borderW = stage.getWidth()  - stage.getScene().getWidth();
-        double borderH = stage.getHeight() - stage.getScene().getHeight();
-
-        stage.setWidth (w + borderW);
-        stage.setHeight(h + borderH);
+        sceneManager.resizeStageIfNeeded();
     }
 
     private static Pair<Integer,Integer> parse(String s) {
