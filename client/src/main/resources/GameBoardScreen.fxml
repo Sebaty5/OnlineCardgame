@@ -57,8 +57,8 @@
     </left>
 
     <center>
-        <StackPane BorderPane.alignment="TOP_CENTER" style="-fx-background-color: green">
-            <GridPane fx:id="stackArea" hgap="20" vgap="8" alignment="CENTER" style="-fx-background-color: cyan">
+        <StackPane BorderPane.alignment="TOP_CENTER">
+            <GridPane fx:id="stackArea" hgap="20" vgap="8" alignment="CENTER">
                 <padding><Insets top="40" right="40" bottom="20" left="40"/></padding>
                 <columnConstraints>
 
@@ -113,31 +113,27 @@
 
     <!-- ═════════════ RIGHT PANEL ─ lobby + chat ═════════════════ -->
     <right>
-        <VBox fx:id="lobbyInfoPane" spacing="24" prefWidth="360" BorderPane.alignment="CENTER" styleClass="chatOutput" style="-fx-background-color: purple" >
+        <VBox fx:id="lobbyInfoPane" spacing="24" prefWidth="360" BorderPane.alignment="CENTER" styleClass="playerList" style="-fx-background-color: purple" >
             <padding><Insets top="40" right="40" bottom="40" left="40"/></padding>
+            <VBox>
+                <!-- header -->
+                <Label fx:id="LobbyInfoLabel" text="Waiting 1/6" styleClass="panelHeader"/>
 
-            <!-- header -->
-            <Label text="Waiting 1/6" styleClass="panelHeader"/>
+                <!-- players (labels added dynamically) -->
+                <VBox fx:id="playerInfoPane" spacing="10">
 
-            <!-- players (labels added dynamically) -->
-            <VBox fx:id="playerInfoPane" spacing="10"/>
+                </VBox>
 
-            <!-- close‑lobby ( X ) button, optional -->
-            <Button fx:id="closeSlotBtn" text="×" styleClass="closeSlotButton"
-                    visible="false"/>
+                <!-- close‑lobby ( X ) button, optional -->
+                <Button fx:id="closeSlotBtn" text="×" styleClass="closeSlotButton" visible="false"/>
 
-            <!-- chat -->
-            <Label fx:id="chatLabel" text="Chat" styleClass="panelHeader"/>
-            <TextArea fx:id="chatHistory" editable="false" prefRowCount="6"/>
+                <!-- chat -->
+                <Label fx:id="chatLabel" text="Chat" styleClass="panelHeader"/>
+                <TextArea fx:id="chatHistory" editable="false" prefRowCount="6" styleClass="chatPanelOutput"/>
+                <TextField fx:id="chatTextInputField" promptText="Write something…" onAction="#checkButtonAvailability" styleClass="chatSendField"/>
+                <Button fx:id="sendText" text="Send" onAction="#sendChatMessage" styleClass="chatSendButton"/>
+            </VBox>
 
-            <TextField fx:id="chatTextInputField"
-                       promptText="Write something…"
-                       onAction="#checkButtonAvailability"/>
-
-            <Button fx:id="sendText"
-                    text="Send"
-                    onAction="#sendChatMessage"
-                    styleClass="chatSendButton"/>
         </VBox>
     </right>
 

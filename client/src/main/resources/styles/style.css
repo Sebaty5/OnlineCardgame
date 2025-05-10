@@ -592,9 +592,68 @@ Region {
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
 }
 
-.chatOutput {
+.playerList {
     -fx-min-height: 100px;
     -fx-border-width: 3px;
+    -fx-border-radius: 18px;
     -fx-border-color: #FFD3FF;
     -fx-background-color: #5d26ab;
+    -fx-background-radius: 18px;
+}
+
+.chatSendButton {
+    -fx-pref-width: 120px;
+    -fx-min-width: 120px;
+    -fx-pref-height: 50px;
+    -fx-min-height: 50px;
+    -fx-border-radius: 18px;
+    -fx-border-width: 3px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 16px;
+    -fx-text-fill: #FFD3FF;
+    -fx-text-alignment: center;
+    -fx-background-color: #0F042C;
+    -fx-background-radius: 24px;
+    -fx-background-insets: 6px;
+    -fx-wrap-text: true;
+    -fx-effect: innershadow(gaussian, #0F042C, 15, 0, 1, 1);
+}
+
+.button:hover {
+    -fx-background-color: #FFB0FF;
+    -fx-text-fill: #0F042C;
+    -fx-effect: innershadow(gaussian, #0F042C, 15, 0, 1, 1);
+}
+
+.chatPanelOutput {
+    -fx-pref-width: 350px;
+    -fx-pref-height: 500px;
+    -fx-background-color: rgba(15, 4, 44, 0.92);
+    -fx-background-radius: 18px;
+    -fx-control-inner-background: rgba(15, 4, 44, 0.92);
+    -fx-control-inner-background-radius: 18px;
+    -fx-padding: 10px;
+    -fx-border-radius: 18px;
+    -fx-border-width: 3px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 10px;
+    -fx-text-fill: #FFD3FF;
+    -fx-text-alignment: left;
+    -fx-background-insets: 6px;
+    -fx-wrap-text: true;
+}
+
+.chatSendField {
+    -fx-pref-width: 350px;
+    -fx-pref-height: 50px;
+    -fx-border-radius: 18px;
+    -fx-border-width: 3px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 24px;
+    -fx-text-fill: #FFD3FF;
+    -fx-text-alignment: left;
+    -fx-background-color: #0F042C;
+    -fx-background-radius: 24px;
+    -fx-wrap-text: true;
+    -fx-border-color: #FFD3FF;
 }

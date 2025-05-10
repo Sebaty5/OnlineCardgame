@@ -62,6 +62,8 @@ public class GameBoardScreenController extends BaseController
     @FXML
     private VBox lobbyInfoPane;
     @FXML
+    public Label LobbyInfoLabel;
+    @FXML
     private Label lobbyActionInfoLabel;
     @FXML
     private VBox playerInfoPane;
@@ -108,6 +110,7 @@ public class GameBoardScreenController extends BaseController
         updateTrumpColor(state);
         updateHand(state);
         updateCardStacks(state);
+        updatePlayerList(state);
     }
 
     private void updateTrumpColor(GameState state) {
@@ -143,6 +146,35 @@ public class GameBoardScreenController extends BaseController
         }
     }
 
+    private void updateCardStacks(GameState state) {
+    int[][] stacks = state.cardStacks();
+
+    smallStack1.getChildren().add(createImageView(stacks[0][0]));
+    smallStack1.getChildren().add(createImageView(stacks[0][1]));
+    smallStack2.getChildren().add(createImageView(stacks[1][0]));
+    smallStack2.getChildren().add(createImageView(stacks[1][1]));
+    smallStack3.getChildren().add(createImageView(stacks[2][0]));
+    smallStack3.getChildren().add(createImageView(stacks[2][1]));
+    smallStack4.getChildren().add(createImageView(stacks[3][0]));
+    smallStack4.getChildren().add(createImageView(stacks[3][1]));
+    smallStack5.getChildren().add(createImageView(stacks[4][0]));
+    smallStack5.getChildren().add(createImageView(stacks[4][1]));
+    smallStack6.getChildren().add(createImageView(stacks[5][0]));
+    smallStack6.getChildren().add(createImageView(stacks[5][1]));
+}
+
+    private void updatePlayerList(GameState state) {
+        playerInfoPane.getChildren().clear();
+        Player[] players = state.players();
+        for(int i = 0; i < players.length; i++) {
+            FlowPane playerInfo = new FlowPane();
+            String playerLableText = players[i].name() + ": " + players[i].handSize() + " cards";
+
+            playerInfo.getChildren().add(new Label(playerLableText));
+            playerInfoPane.getChildren().add(playerInfo);
+        }
+    }
+
     public void drawHandCard(int cardNumber) {
     StackPane stackPane = new StackPane();
     stackPane.setPadding(new Insets(20, 0, 0, 0));
@@ -166,7 +198,6 @@ public class GameBoardScreenController extends BaseController
     stackPane.getChildren().add(imageView);
     playerHand.getChildren().add(stackPane);
 }
-
     private static ImageView createImageView(int cardNumber) {
         ImageView imageView = new ImageView();
         Image image = RessourceService.getImage(cardNumber);
@@ -177,22 +208,7 @@ public class GameBoardScreenController extends BaseController
         return imageView;
     }
 
-    private void updateCardStacks(GameState state) {
-        int[][] stacks = state.cardStacks();
 
-        smallStack1.getChildren().add(createImageView(stacks[0][0]));
-        smallStack1.getChildren().add(createImageView(stacks[0][1]));
-        smallStack2.getChildren().add(createImageView(stacks[1][0]));
-        smallStack2.getChildren().add(createImageView(stacks[1][1]));
-        smallStack3.getChildren().add(createImageView(stacks[2][0]));
-        smallStack3.getChildren().add(createImageView(stacks[2][1]));
-        smallStack4.getChildren().add(createImageView(stacks[3][0]));
-        smallStack4.getChildren().add(createImageView(stacks[3][1]));
-        smallStack5.getChildren().add(createImageView(stacks[4][0]));
-        smallStack5.getChildren().add(createImageView(stacks[4][1]));
-        smallStack6.getChildren().add(createImageView(stacks[5][0]));
-        smallStack6.getChildren().add(createImageView(stacks[5][1]));
-    }
 
     @FXML
     private void openSettings(ActionEvent actionEvent) {
