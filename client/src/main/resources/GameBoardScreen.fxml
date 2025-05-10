@@ -15,14 +15,19 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import de.voidstack_overload.cardgame.fxNodes.HandPane?>
+<?import de.voidstack_overload.cardgame.fxNodes.CardStackPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
             prefWidth="1920" prefHeight="1080"
+            fx:id="root"
             fx:controller="de.voidstack_overload.cardgame.controller.GameBoardScreenController"
             stylesheets="@styles/style.css" styleClass="background">
 
     <top>
-        <AnchorPane minHeight="80" prefHeight="80" style="-fx-background-color: blue">
+        <AnchorPane minHeight="80" prefHeight="100" style="-fx-background-color: blue">
             <HBox spacing="28" AnchorPane.rightAnchor="40" AnchorPane.topAnchor="16">
                 <Button fx:id="settingsButton"
                         text="Settings"
@@ -38,96 +43,113 @@
 
     <!-- ═════════════ LEFT COLUMN ─ score + stacks ════════════════ -->
     <left>
-        <VBox spacing="12" alignment="TOP_CENTER" BorderPane.alignment="CENTER" style="-fx-background-color: red">
+        <VBox fx:id="leftPane" spacing="12" alignment="TOP_CENTER" BorderPane.alignment="CENTER" style="-fx-background-color: red" prefWidth="100" prefHeight="Infinity">
             <padding><Insets top="40" right="20" bottom="0" left="40"/></padding>
 
-            <ImageView fx:id="trumpColorImage" fitWidth="72" preserveRatio="true"/>
-
-            <StackPane>
-                <ImageView fx:id="cardStack" fitWidth="96" preserveRatio="true"/>
-                <Label fx:id="cardStackLabel" text="42" styleClass="stackLabel"/>
-            </StackPane>
-
-            <!-- six small stacks under trump -->
-            <FlowPane hgap="8" vgap="8">
-                <ImageView fx:id="smallStack1" fitWidth="64" preserveRatio="true">
-                    <Image url="@textures/frame.png"/>
-                </ImageView>
-                <ImageView fx:id="smallStack2" fitWidth="64" preserveRatio="true">
-                    <Image url="@textures/frame.png"/>
-                </ImageView>
-                <ImageView fx:id="smallStack3" fitWidth="64" preserveRatio="true">
-                    <Image url="@textures/frame.png"/>
-                </ImageView>
-                <ImageView fx:id="smallStack4" fitWidth="64" preserveRatio="true">
-                    <Image url="@textures/frame.png"/>
-                </ImageView>
-                <ImageView fx:id="smallStack5" fitWidth="64" preserveRatio="true">
-                    <Image url="@textures/frame.png"/>
-                </ImageView>
-                <ImageView fx:id="smallStack6" fitWidth="64" preserveRatio="true">
-                    <Image url="@textures/frame.png"/>
-                </ImageView>
+            <FlowPane alignment="CENTER"  style="-fx-background-color: orange">
+                <ImageView fx:id="trumpColorImage" fitWidth="72" preserveRatio="true"/>
+                <StackPane>
+                    <ImageView fx:id="cardStack" fitWidth="182" preserveRatio="true">
+                    </ImageView>
+                    <Label fx:id="cardStackLabel" text="42" styleClass="stackLabel"/>
+                </StackPane>
             </FlowPane>
         </VBox>
     </left>
 
     <center>
-        <StackPane BorderPane.alignment="CENTER" style="-fx-background-color: green">
-            <!-- ❶ defender / attacker placeholders (table row) -->
-            <HBox fx:id="tableRow" spacing="28" alignment="CENTER">
-                <!-- seven face‑down slots generated in code -->
-            </HBox>
+        <StackPane BorderPane.alignment="TOP_CENTER">
+            <GridPane fx:id="stackArea" hgap="20" vgap="8" alignment="CENTER">
+                <padding><Insets top="40" right="40" bottom="20" left="40"/></padding>
+                <columnConstraints>
 
-            <!-- ❷ defend / take prompt (slightly below row) -->
-            <Label fx:id="defendOrTakeLabel"
-                   StackPane.alignment="BOTTOM_CENTER"
-                   translateY="-160"
-                   styleClass="defendOrTakeLabel"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints vgrow="ALWAYS"/>
+                    <RowConstraints vgrow="ALWAYS"/>
+                </rowConstraints>
+
+                <CardStackPane fx:id="smallStack1" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="cardStackSection">
+                </CardStackPane>
+
+                <CardStackPane fx:id="smallStack2" GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="cardStackSection">
+                </CardStackPane>
+
+                <CardStackPane fx:id="smallStack3" GridPane.columnIndex="2" GridPane.rowIndex="0" styleClass="cardStackSection">
+                </CardStackPane>
+
+                <CardStackPane fx:id="smallStack4" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="cardStackSection">
+                </CardStackPane>
+
+                <CardStackPane fx:id="smallStack5" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="cardStackSection">
+                </CardStackPane>
+
+                <CardStackPane fx:id="smallStack6" GridPane.columnIndex="2" GridPane.rowIndex="1" styleClass="cardStackSection">
+                </CardStackPane>
+            </GridPane>
         </StackPane>
+        <!-- ❷ defend / take prompt (slightly below row)
+        <Label fx:id="defendOrTakeLabel"
+               StackPane.alignment="BOTTOM_CENTER"
+               translateY="-160"
+               styleClass="defendOrTakeLabel"/> -->
+
     </center>
 
     <!-- ═════════════ BOTTOM BAR ─ player hand + actions ═════════ -->
     <bottom>
-        <VBox spacing="20" BorderPane.alignment="CENTER" style="-fx-background-color: yellow">
+        <VBox spacing="20" BorderPane.alignment="CENTER" alignment="CENTER" style="-fx-background-color: yellow">
             <padding><Insets top="0" right="0" bottom="40" left="0"/></padding>
 
             <!-- dynamic card buttons get added here -->
-            <StackPane fx:id="playerHand" maxHeight="180"/>
+            <HandPane fx:id="playerHand" maxHeight="360">
+
+            </HandPane>
 
             <HBox spacing="60" alignment="CENTER">
-                <Button fx:id="takeOrPassButton" text="Take" styleClass="actionButton" onAction="#takeOrPassAction"/>
+                <Button fx:id="takeOrPassButton" text="Take" styleClass="normalButton" onAction="#takeOrPassAction"/>
             </HBox>
         </VBox>
     </bottom>
 
     <!-- ═════════════ RIGHT PANEL ─ lobby + chat ═════════════════ -->
     <right>
-        <VBox fx:id="lobbyInfoPane" spacing="24" prefWidth="360" BorderPane.alignment="CENTER" styleClass="sidePanel" style="-fx-background-color: purple">
+        <VBox fx:id="lobbyInfoPane" spacing="24" prefWidth="360" BorderPane.alignment="CENTER" styleClass="playerList" style="-fx-background-color: purple" >
             <padding><Insets top="40" right="40" bottom="40" left="40"/></padding>
+            <VBox>
+                <!-- header -->
+                <Label fx:id="LobbyInfoLabel" text="Waiting 1/6" styleClass="panelHeader"/>
+                <Label text="SPACER" style="-fx-text-fill: transparent"/>
 
-            <!-- header -->
-            <Label text="Waiting 1/6" styleClass="panelHeader"/>
+                <GridPane prefWidth="300" fx:id="playerList" styleClass="list-area">
+                    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="10"/>
+                        <ColumnConstraints percentWidth="30"/>
+                        <ColumnConstraints percentWidth="50"/>
+                        <ColumnConstraints percentWidth="10"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints vgrow="ALWAYS"/>
+                        <RowConstraints vgrow="ALWAYS"/>
+                        <RowConstraints vgrow="ALWAYS"/>
+                        <RowConstraints vgrow="ALWAYS"/>
+                        <RowConstraints vgrow="ALWAYS"/>
+                        <RowConstraints vgrow="ALWAYS"/>
+                    </rowConstraints>
 
-            <!-- players (labels added dynamically) -->
-            <VBox fx:id="playerInfoPane" spacing="10"/>
+                </GridPane>
 
-            <!-- close‑lobby ( X ) button, optional -->
-            <Button fx:id="closeSlotBtn" text="×" styleClass="closeSlotButton"
-                    visible="false"/>
+                <!-- close‑lobby ( X ) button, optional -->
+                <Button fx:id="closeSlotBtn" text="×" styleClass="closeSlotButton" visible="false"/>
 
-            <!-- chat -->
-            <Label fx:id="chatLabel" text="Chat" styleClass="panelHeader"/>
-            <TextArea fx:id="chatHistory" editable="false" prefRowCount="6"/>
+                <!-- chat -->
+                <Label fx:id="chatLabel" text="Chat" styleClass="panelHeader"/>
+                <TextArea fx:id="chatHistory" editable="false" prefRowCount="6" styleClass="chatPanelOutput"/>
+                <TextField fx:id="chatTextInputField" promptText="Write something…" onAction="#checkButtonAvailability" styleClass="chatSendField"/>
+                <Button fx:id="sendText" text="Send" onAction="#sendChatMessage" styleClass="chatSendButton"/>
+            </VBox>
 
-            <TextField fx:id="chatTextInputField"
-                       promptText="Write something…"
-                       onAction="#checkButtonAvailability"/>
-
-            <Button fx:id="sendText"
-                    text="Send"
-                    onAction="#sendChatMessage"
-                    styleClass="chatSendButton"/>
         </VBox>
     </right>
 

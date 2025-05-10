@@ -2,6 +2,9 @@ package de.voidstack_overload.cardgame.application;
 
 import de.voidstack_overload.cardgame.SceneFXML;
 import de.voidstack_overload.cardgame.SceneManager;
+import de.voidstack_overload.cardgame.configuration.SettingData;
+import de.voidstack_overload.cardgame.configuration.Settings;
+import de.voidstack_overload.cardgame.service.RessourceService;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -31,14 +34,25 @@ public class GameClient extends Application {
 
         primaryStage.setTitle("Durak");
         primaryStage.setResizable(false);
+
+        SettingData data = Settings.INSTANCE.getSettingData();
+
+        SceneManager.setSize(data.width(), data.height());
+        primaryStage.setFullScreen(data.fullscreen());
+
+        sceneManager.setFullScreen(data.fullscreen());
+        sceneManager.resizeStageIfNeeded();
+
+        primaryStage.centerOnScreen();
+
         List<Image> icons = List.of(
-                new Image(GameClient.class.getResourceAsStream("/textures/icons/glow_club.png")),
-                new Image(GameClient.class.getResourceAsStream("/textures/icons/glow_diamond.png")),
-                new Image(GameClient.class.getResourceAsStream("/textures/icons/glow_heart.png")),
-                new Image(GameClient.class.getResourceAsStream("/textures/icons/glow_spade.png"))
+                RessourceService.getImage(RessourceService.ImageKey.CLUB_GLOW_SYMBOL),
+                RessourceService.getImage(RessourceService.ImageKey.DIAMOND_GLOW_SYMBOL),
+                RessourceService.getImage(RessourceService.ImageKey.HEART_GLOW_SYMBOL),
+                RessourceService.getImage(RessourceService.ImageKey.SPADE_GLOW_SYMBOL)
         );
 
-        primaryStage.getIcons().setAll(icons.get(0));
+        primaryStage.getIcons().setAll(icons.getFirst());
 
         final int[] idx = {1};
         Timeline cycler = new Timeline(

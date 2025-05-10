@@ -482,6 +482,15 @@ Region {
 
 }
 
+.listBox {
+    -fx-background-color: rgb(15, 4, 44, 0.98);
+    -fx-background-radius: 18px;
+    -fx-border-color: #FFD3FF;
+    -fx-border-width: 3px;
+    -fx-border-radius: 18px;
+    -fx-effect: innershadow(gaussian, #FFAFFA, 50, 0.2,1,1);
+}
+
 .list-grid {
     -fx-background-color: transparent;
     -fx-border-width: 0 0 4 0;
@@ -599,3 +608,153 @@ Region {
     -fx-font-size: 20px;
 }
 
+/* Gameboard */
+
+.cardStackSection {
+    -fx-background-color: rgb(15, 4, 44, 0.98), transparent, transparent, transparent;
+    -fx-background-radius: 18, 18, 18, 18;
+    -fx-border-color: #FFB9FF;
+    -fx-border-width: 3;
+    -fx-border-radius: 18;
+    -fx-padding: 20;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
+}
+
+.playerList {
+    -fx-min-height: 100px;
+    -fx-border-width: 3px;
+    -fx-border-radius: 18px;
+    -fx-border-color: #FFD3FF;
+    -fx-background-color: #5d26ab;
+    -fx-background-radius: 18px;
+}
+
+.chatSendButton {
+    -fx-pref-width: 120px;
+    -fx-min-width: 120px;
+    -fx-pref-height: 50px;
+    -fx-min-height: 50px;
+    -fx-border-radius: 18px;
+    -fx-border-width: 3px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 16px;
+    -fx-text-fill: #FFD3FF;
+    -fx-text-alignment: center;
+    -fx-background-color: #0F042C;
+    -fx-background-radius: 24px;
+    -fx-background-insets: 6px;
+    -fx-wrap-text: true;
+    -fx-effect: innershadow(gaussian, #0F042C, 15, 0, 1, 1);
+}
+
+.button:hover {
+    -fx-background-color: #FFB0FF;
+    -fx-text-fill: #0F042C;
+    -fx-effect: innershadow(gaussian, #0F042C, 15, 0, 1, 1);
+}
+
+.chatPanelOutput {
+    -fx-pref-width: 350px;
+    -fx-pref-height: 500px;
+    -fx-background-color: rgba(15, 4, 44, 0.92);
+    -fx-background-radius: 18px;
+    -fx-control-inner-background: rgba(15, 4, 44, 0.92);
+    -fx-control-inner-background-radius: 18px;
+    -fx-padding: 10px;
+    -fx-border-radius: 18px;
+    -fx-border-width: 3px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 10px;
+    -fx-text-fill: #FFD3FF;
+    -fx-text-alignment: left;
+    -fx-background-insets: 6px;
+    -fx-wrap-text: true;
+}
+
+.chatSendField {
+    -fx-pref-width: 350px;
+    -fx-pref-height: 50px;
+    -fx-border-radius: 18px;
+    -fx-border-width: 3px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 24px;
+    -fx-text-fill: #FFD3FF;
+    -fx-text-alignment: left;
+    -fx-background-color: #0F042C;
+    -fx-background-radius: 24px;
+    -fx-wrap-text: true;
+    -fx-border-color: #FFD3FF;
+}
+
+/* 1) The outer frame */
+.player-table {
+    -fx-background-color: transparent;       /* let the parent show through */
+    -fx-border-color: #E67FFF;               /* neon-pink outline */
+    -fx-border-width: 1.5;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+/* 2) Column header bar */
+.player-table .column-header-background {
+    -fx-background-color: rgba(255,255,255,0.05);
+    -fx-border-color: transparent transparent #9FDCEE transparent;
+    -fx-border-width: 0 0 1 0;                /* subtle bottom rule */
+}
+
+/* 3) Header text */
+.player-table .column-header,
+.player-table .column-header .label {
+    -fx-font-family: "Orbitron", sans-serif;
+    -fx-font-size: 13px;
+    -fx-text-fill: #9FDCEE;                  /* icy-blue headers */
+    -fx-alignment: CENTER;
+}
+
+/* 4) Row backgrounds */
+.player-table .table-row-cell {
+    -fx-background-color: transparent;
+}
+.player-table .table-row-cell:filled:hover {
+    -fx-background-color: rgba(159,220,255,0.10);
+}
+.player-table .table-row-cell:filled:selected {
+    -fx-background-color: rgba(159,220,255,0.20);
+}
+
+/* 5) Cell text */
+.player-table .table-cell {
+    -fx-font-family: "Ubuntu Mono", monospace;
+    -fx-font-size: 12px;
+    -fx-text-fill: #F0F0F0;
+    -fx-padding: 4 8;                        /* tight padding */
+    -fx-alignment: CENTER_LEFT;
+}
+
+/* 6) “Active” dot column: center the bullet */
+.player-table .table-column > .table-cell:selected {
+    -fx-text-fill: #E67FFF;                  /* neon-pink when selected */
+}
+.active-col .table-cell {
+    -fx-alignment: CENTER;                   /* dot in center */
+}
+
+/* 7) Scrollbar styling */
+.player-table .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-padding: 0 2 0 0;
+}
+.player-table .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-padding: 2 0 0 0;
+}
+.player-table .thumb {
+    -fx-background-color: rgba(159,220,255,0.4);
+    -fx-background-insets: 0;
+    -fx-background-radius: 4;
+}
+.player-table .increment-button,
+.player-table .decrement-button {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+}

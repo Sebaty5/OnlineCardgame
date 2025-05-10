@@ -24,7 +24,7 @@ public class NetworkManager {
 
     private NetworkManager() {
         try {
-            serverUri = new URI(Config.getInstance().getServerUri());
+            serverUri = new URI(Config.INSTANCE.getServerUri());
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }

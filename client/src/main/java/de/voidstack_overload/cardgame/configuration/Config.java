@@ -8,20 +8,17 @@ import java.nio.file.Paths;
 public class Config extends JsonHandler<Config.Data> {
     private static final StandardLogger LOGGER = new StandardLogger("Config");
 
-    private static Config INSTANCE;
+    public static Config INSTANCE;
+
+    static {
+        try {
+            INSTANCE = new Config();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     private String serverUri = "ws://localhost:8080";
-
-    public static Config getInstance() {
-        if(INSTANCE == null) {
-            try {
-                INSTANCE = new Config();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        return INSTANCE;
-    }
 
 
     private Config() throws IOException {
