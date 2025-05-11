@@ -156,6 +156,14 @@ public class Lobby {
     }
 
     public void startGame() {
+        if (players.size() < maxPlayers) {
+            List<Bot> bots = new ArrayList<>();
+            for (int i = 0; i < maxPlayers - players.size();) {
+                Bot bot = new Bot(++i);
+                bots.add(bot);
+            }
+            players.addAll(bots);
+        }
         board = new Board(new ArrayList<>(this.getPlayers()));
         board.sendGameState();
         isInGame = true;

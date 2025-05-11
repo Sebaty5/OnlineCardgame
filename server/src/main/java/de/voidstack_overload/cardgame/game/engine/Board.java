@@ -87,6 +87,7 @@ public class Board {
         }
         return validPlay;
     }
+
     private boolean attackPlay(Card card, Player player) {
         LOGGER.log(player.getUsername() + " is attempting to attack with card " + card);
         boolean validPlay = playAttackCard(card);
@@ -109,6 +110,7 @@ public class Board {
         }
         return validPlay;
     }
+
     private boolean playAttackCard(Card card) {
         if(stacks[0][0] == null) {
             LOGGER.log("No card was played yet. Any card is valid");
@@ -134,6 +136,7 @@ public class Board {
         }
         return false;
     }
+
     private boolean defensePlay(Card card, Player player) {
         boolean validPlay = playDefenseCard(card);
         if(validPlay) {
@@ -156,6 +159,7 @@ public class Board {
         }
         return validPlay;
     }
+
     private boolean playDefenseCard(Card card) {
         for(Card[] stack : stacks) {
             if(stack[1] == null) {
@@ -196,6 +200,7 @@ public class Board {
         }
         return false;
     }
+
     private void defenseWon() {
         LOGGER.log("Defense won.");
         redraw();
@@ -216,6 +221,7 @@ public class Board {
                 player.setSkipped(true);
             } else if (throwingIn) {
                 defenseLost();
+                throwingIn = false;
             } else {
                 defenseWon();
             }
@@ -223,10 +229,13 @@ public class Board {
             return true;
         } else if(player.equals(defender)) {
             throwingIn = true;
+            activePlayer = attacker;
+            sendGameState();
             return true;
         }
         return false;
     }
+
     private void defenseLost() {
         addStacksToDefenderHand();
         redraw();
@@ -236,8 +245,12 @@ public class Board {
 
     private void addStacksToDefenderHand() {
         for(Card[] stack : stacks) {
-            defender.addCard(stack[0]);
-            defender.addCard(stack[1]);
+            if (stack[0] != null) {
+                defender.addCard(stack[0]);
+            }
+            if (stack[1] != null) {
+                defender.addCard(stack[1]);
+            }
         }
     }
 

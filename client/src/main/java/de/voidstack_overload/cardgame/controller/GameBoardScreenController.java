@@ -182,25 +182,25 @@ public class GameBoardScreenController extends BaseController
     }
 
     private void updateCardStacks(int[][] stacks) {
-    smallStack1.getChildren().clear();
-    smallStack1.getChildren().add(createImageView(stacks[0][0]));
-    smallStack1.getChildren().add(createImageView(stacks[0][1]));
-    smallStack2.getChildren().clear();
-    smallStack2.getChildren().add(createImageView(stacks[1][0]));
-    smallStack2.getChildren().add(createImageView(stacks[1][1]));
-    smallStack3.getChildren().clear();
-    smallStack3.getChildren().add(createImageView(stacks[2][0]));
-    smallStack3.getChildren().add(createImageView(stacks[2][1]));
-    smallStack4.getChildren().clear();
-    smallStack4.getChildren().add(createImageView(stacks[3][0]));
-    smallStack4.getChildren().add(createImageView(stacks[3][1]));
-    smallStack5.getChildren().clear();
-    smallStack5.getChildren().add(createImageView(stacks[4][0]));
-    smallStack5.getChildren().add(createImageView(stacks[4][1]));
-    smallStack6.getChildren().clear();
-    smallStack6.getChildren().add(createImageView(stacks[5][0]));
-    smallStack6.getChildren().add(createImageView(stacks[5][1]));
-}
+        smallStack1.getChildren().clear();
+        smallStack1.getChildren().add(createImageView(stacks[0][0]));
+        smallStack1.getChildren().add(createImageView(stacks[0][1]));
+        smallStack2.getChildren().clear();
+        smallStack2.getChildren().add(createImageView(stacks[1][0]));
+        smallStack2.getChildren().add(createImageView(stacks[1][1]));
+        smallStack3.getChildren().clear();
+        smallStack3.getChildren().add(createImageView(stacks[2][0]));
+        smallStack3.getChildren().add(createImageView(stacks[2][1]));
+        smallStack4.getChildren().clear();
+        smallStack4.getChildren().add(createImageView(stacks[3][0]));
+        smallStack4.getChildren().add(createImageView(stacks[3][1]));
+        smallStack5.getChildren().clear();
+        smallStack5.getChildren().add(createImageView(stacks[4][0]));
+        smallStack5.getChildren().add(createImageView(stacks[4][1]));
+        smallStack6.getChildren().clear();
+        smallStack6.getChildren().add(createImageView(stacks[5][0]));
+        smallStack6.getChildren().add(createImageView(stacks[5][1]));
+    }
 
     private void updatePlayerList(GameState state) {
         playerList.getChildren().clear();
@@ -222,26 +222,27 @@ public class GameBoardScreenController extends BaseController
     }
 
     public void drawHandCard(int cardNumber) {
-    StackPane stackPane = new StackPane();
-    stackPane.setPadding(new Insets(20, 0, 0, 0));
+        StackPane stackPane = new StackPane();
+        stackPane.setPadding(new Insets(20, 0, 0, 0));
 
-    ImageView imageView = createImageView(cardNumber);
-    imageView.setOnMouseClicked(event -> playCard(cardNumber));
-    stackPane.setOnMouseEntered(e -> {
-        imageView.setViewOrder(-1);
-        imageView.setTranslateY(-20);
-        imageView.setScaleX(1.1);
-        imageView.setScaleY(1.1);
-    });
-    stackPane.setOnMouseExited(e -> {
-        imageView.setViewOrder(0);
-        imageView.setTranslateY(0);
-        imageView.setScaleX(1);
-        imageView.setScaleY(1);
-    });
-    stackPane.getChildren().add(imageView);
-    playerHand.getChildren().add(stackPane);
-}
+        ImageView imageView = createImageView(cardNumber);
+        imageView.setOnMouseClicked(event -> playCard(cardNumber));
+        stackPane.setOnMouseEntered(e -> {
+            imageView.setViewOrder(-1);
+            imageView.setTranslateY(-20);
+            imageView.setScaleX(1.1);
+            imageView.setScaleY(1.1);
+        });
+        stackPane.setOnMouseExited(e -> {
+            imageView.setViewOrder(0);
+            imageView.setTranslateY(0);
+            imageView.setScaleX(1);
+            imageView.setScaleY(1);
+        });
+        stackPane.getChildren().add(imageView);
+        playerHand.getChildren().add(stackPane);
+    }
+
     private static ImageView createImageView(int cardNumber) {
         ImageView imageView = new ImageView();
         Image image = RessourceService.getImage(cardNumber);
