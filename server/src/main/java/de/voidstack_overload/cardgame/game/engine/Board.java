@@ -20,7 +20,7 @@ public class Board {
     private List<Player> playerList;
     public Player getPlayerFromUser(User user) {
         for (Player player : playerList) {
-            if(player == user) return player;
+            if(player.equals(user)) return player;
         }
         return null;
     }
@@ -45,18 +45,25 @@ public class Board {
         this.drawPile = createDrawPile();
         this.trumpColor = drawPile.getLast().cardColor();
         this.playerList = players;
+        reFillHands(players);
         this.spectatorList = new ArrayList<>();
         Collections.shuffle(playerList);
         selectPlayerArea(0);
     }
 
+    private void reFillHands(List<Player> players) {
+        for (Player player : players) {
+            while (player.getHand().size() < 6) {
+                drawCard(player);
+            }
+        }
+    }
+
     private List<Card> createDrawPile() {
         LOGGER.log("Creating draw pile");
         List<Card> drawPile = new ArrayList<>();
-        for(int i = 1; i <= 4; i++) {
-            for(int j = 0; j < 13; j++) {
-                drawPile.add(new Card(CardColor.getColorFromInt(i), j));
-            }
+        for(int i = 11; i <= 62; i++) {
+                drawPile.add(new Card(CardColor.getColorFromInt(i), (i - 11) % 13));
         }
         Collections.shuffle(drawPile);
         return drawPile;

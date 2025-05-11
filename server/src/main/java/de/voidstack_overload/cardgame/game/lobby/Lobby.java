@@ -135,8 +135,6 @@ public class Lobby {
         if(players.size() >= maxPlayers) {
             LOGGER.log("Max player count reached.");
             isFull = true;
-            board = new Board(new ArrayList<>(this.getPlayers()));
-            isInGame = true;
         }
         return ResponseBuilder.build(OutgoingMessageType.LOBBY_JOIN_ACCEPT);
     }
@@ -157,11 +155,13 @@ public class Lobby {
         return players.isEmpty() || players.size() - botCount == 0;
     }
 
-    public void toggleInGame() {
-        this.isInGame = !this.isInGame;
+    public void startGame() {
+        board = new Board(new ArrayList<>(this.getPlayers()));
+        board.sendGameState();
+        isInGame = true;
     }
 
-    private void broadcast(String message) {
+    public void broadcast(String message) {
         LOGGER.log("Broadcasting message: " + message);
         JsonBuilder json = new JsonBuilder();
         json.add("message", message);

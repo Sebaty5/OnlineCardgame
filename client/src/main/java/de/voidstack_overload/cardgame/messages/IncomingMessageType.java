@@ -15,6 +15,8 @@ public enum IncomingMessageType {
     LOBBY_UPDATE_ACCEPT,
     LOBBY_UPDATE_DENY,
     LOBBY_LIST_REPLY,
+    LOBBY_GAME_START_ACCEPT,
+    LOBBY_GAME_START_DENY,
     //Lobby Broadcasts
     LOBBY_DATA,
     LOBBY_BROADCAST,

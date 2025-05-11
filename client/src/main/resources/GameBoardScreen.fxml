@@ -107,7 +107,8 @@
             </HandPane>
 
             <HBox spacing="60" alignment="CENTER">
-                <Button fx:id="takeOrPassButton" text="Take" styleClass="normalButton" onAction="#takeOrPassAction"/>
+                <Button fx:id="takeOrPassButton" text="Take" styleClass="normalButton" onAction="#takeOrPassAction" disable="true"/>
+                <Button fx:id="startGameButton" text="Start" styleClass="normalButton" onAction="#startGame" disable="true" visible="false"/>
             </HBox>
         </VBox>
     </bottom>

@@ -3,12 +3,19 @@ package de.voidstack_overload.cardgame.controller;
 import de.voidstack_overload.cardgame.fxNodes.CardStackPane;
 import de.voidstack_overload.cardgame.fxNodes.HandPane;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
+import de.voidstack_overload.cardgame.messages.OutgoingMessageType;
+import de.voidstack_overload.cardgame.network.NetworkManager;
+import de.voidstack_overload.cardgame.records.Lobby;
+import de.voidstack_overload.cardgame.records.Message;
 import de.voidstack_overload.cardgame.records.Player;
+import de.voidstack_overload.cardgame.service.AuthenticationService;
 import de.voidstack_overload.cardgame.service.GameService;
 import de.voidstack_overload.cardgame.service.LobbyService;
 import de.voidstack_overload.cardgame.records.GameState;
 
 import de.voidstack_overload.cardgame.service.RessourceService;
+import de.voidstack_overload.cardgame.utility.JsonBuilder;
+import de.voidstack_overload.cardgame.utility.MessageBuilder;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -77,9 +84,14 @@ public class GameBoardScreenController extends BaseController
     private HandPane playerHand;
     @FXML
     private Button takeOrPassButton;
+    @FXML
+    private Button startGameButton;
+
+    private String host;
 
     @FXML
     public void initialize() {
+        initLobby();
         //LEFT
         cardStack.setImage(RessourceService.getImage(RessourceService.ImageKey.CARD_BACK_LOW_SAT));
         //BOTTOM
@@ -87,6 +99,7 @@ public class GameBoardScreenController extends BaseController
         playerHand.minWidthProperty().bind(stackArea.widthProperty());
         playerHand.maxWidthProperty().bind(stackArea.widthProperty());
         playerHand.setPadding(new Insets(10, 500, 10, 500));
+        playerHand.setPrefHeight(200);
         //RIGHT
 
         // TODO: Remove default initialization when no longer templating layout
@@ -105,11 +118,30 @@ public class GameBoardScreenController extends BaseController
     }
 
     public void updateGameState(GameState state) {
+        initGame();
         updateTrumpColor(state);
         setCardStackSize(state);
         updateHand(state);
         updateCardStacks(state);
         updatePlayerList(state);
+    }
+
+    private void initGame() {
+        takeOrPassButton.setDisable(false);
+        startGameButton.setDisable(true);
+        startGameButton.setVisible(false);
+    }
+
+    private void initLobby() {
+        takeOrPassButton.setDisable(true);
+        if(host.equals(AuthenticationService.INSTANCE.getUser().username())) {
+            takeOrPassButton.setVisible(false);
+            startGameButton.setDisable(false);
+            startGameButton.setVisible(true);
+        } else {
+            startGameButton.setDisable(true);
+            startGameButton.setVisible(false);
+        }
     }
 
     private void updateTrumpColor(GameState state) {
@@ -142,16 +174,22 @@ public class GameBoardScreenController extends BaseController
     private void updateCardStacks(GameState state) {
     int[][] stacks = state.cardStacks();
 
+    smallStack1.getChildren().clear();
     smallStack1.getChildren().add(createImageView(stacks[0][0]));
     smallStack1.getChildren().add(createImageView(stacks[0][1]));
+    smallStack2.getChildren().clear();
     smallStack2.getChildren().add(createImageView(stacks[1][0]));
     smallStack2.getChildren().add(createImageView(stacks[1][1]));
+    smallStack3.getChildren().clear();
     smallStack3.getChildren().add(createImageView(stacks[2][0]));
     smallStack3.getChildren().add(createImageView(stacks[2][1]));
+    smallStack4.getChildren().clear();
     smallStack4.getChildren().add(createImageView(stacks[3][0]));
     smallStack4.getChildren().add(createImageView(stacks[3][1]));
+    smallStack5.getChildren().clear();
     smallStack5.getChildren().add(createImageView(stacks[4][0]));
     smallStack5.getChildren().add(createImageView(stacks[4][1]));
+    smallStack6.getChildren().clear();
     smallStack6.getChildren().add(createImageView(stacks[5][0]));
     smallStack6.getChildren().add(createImageView(stacks[5][1]));
 }
@@ -226,6 +264,14 @@ public class GameBoardScreenController extends BaseController
 
     @FXML
     private void sendChatMessage(ActionEvent actionEvent) {
+        String msg = chatTextInputField.getText();
+        if (msg.isEmpty())
+        {
+            return;
+        }
+        Message message = MessageBuilder.build(OutgoingMessageType.LOBBY_SEND_CHAT_MESSAGE, new JsonBuilder().add("message", msg));
+        NetworkManager.INSTANCE.sendMessage(message);
+        chatTextInputField.setText("");
     }
 
     @FXML
@@ -247,5 +293,17 @@ public class GameBoardScreenController extends BaseController
         }
         history.addLast(message);
         chatHistory.setText(String.join("\n", history));
+    }
+
+    public void startGame() {
+        NetworkManager.INSTANCE.sendMessage(MessageBuilder.build(OutgoingMessageType.LOBBY_GAME_START));
+    }
+
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public void updateLobby(Lobby lobby) {
+        // TODO: Draw lobby relevant elements?
     }
 }

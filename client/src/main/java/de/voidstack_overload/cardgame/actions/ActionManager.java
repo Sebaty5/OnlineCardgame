@@ -5,10 +5,12 @@ import de.voidstack_overload.cardgame.actions.account.LoginAcceptedAction;
 import de.voidstack_overload.cardgame.actions.account.LoginDenyAction;
 import de.voidstack_overload.cardgame.actions.account.RegisterAcceptedAction;
 import de.voidstack_overload.cardgame.actions.account.RegisterDenyAction;
+import de.voidstack_overload.cardgame.actions.game.passive.GameStateAction;
 import de.voidstack_overload.cardgame.actions.invalidHandeling.InsufficientPermissionAction;
 import de.voidstack_overload.cardgame.actions.invalidHandeling.InvalidAction;
 import de.voidstack_overload.cardgame.actions.lobby.active.*;
 import de.voidstack_overload.cardgame.actions.lobby.passive.LobbyBroadcastAction;
+import de.voidstack_overload.cardgame.actions.lobby.passive.LobbyDataAction;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
 import de.voidstack_overload.cardgame.messages.IncomingMessageType;
 
@@ -36,8 +38,10 @@ public class ActionManager {
         // TODO LOBBY_UPDATE ONCE RELEVANT
         // LOBBY BROADCAST
         actions.put(IncomingMessageType.LOBBY_BROADCAST, new LobbyBroadcastAction());
+        actions.put(IncomingMessageType.LOBBY_DATA, new LobbyDataAction());
 
         // GAME
+        actions.put(IncomingMessageType.GAME_STATE, new GameStateAction());
 
         // INVALID
         actions.put(IncomingMessageType.INVALID, new InvalidAction());

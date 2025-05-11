@@ -1,4 +1,6 @@
 package de.voidstack_overload.cardgame.actions.lobby.passive;
 
-public abstract class LobbyPassiveAction {
+import de.voidstack_overload.cardgame.actions.lobby.LobbyAction;
+
+public abstract class LobbyPassiveAction extends LobbyAction {
 }

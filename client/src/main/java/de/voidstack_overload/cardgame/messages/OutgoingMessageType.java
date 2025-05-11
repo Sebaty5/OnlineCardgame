@@ -11,6 +11,8 @@ public enum OutgoingMessageType {
     LOBBY_LEAVE,
     LOBBY_UPDATE,
     LOBBY_LIST,
+    LOBBY_GAME_START,
+    LOBBY_SEND_CHAT_MESSAGE,
     //GAME
     GAME_PLAY,
     GAME_PASS,
