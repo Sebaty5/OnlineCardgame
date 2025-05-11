@@ -21,6 +21,7 @@ public enum IncomingMessageType {
     //Lobby Broadcasts
     LOBBY_DATA,
     LOBBY_BROADCAST,
+    LOBBY_GAME_OVER,
     //Game
     GAME_PLAY_ACCEPT,
     GAME_PLAY_DENY,

@@ -87,6 +87,7 @@ public class GameBoardScreenController extends BaseController
 
     private String host;
     private boolean inGame = false;
+    private Lobby lobby;
 
     @FXML
     public void initialize() {
@@ -114,6 +115,7 @@ public class GameBoardScreenController extends BaseController
     }
 
     public void updateLobby(Lobby lobby) {
+        this.lobby = lobby;
         setInfoLable(lobby);
         setInteractionButton();
         updateCardStacks(new int[][]{{-1, -1}, {-1, -1}, {-1, -1}, {-1, -1}, {-1, -1}, {-1, -1}});
@@ -306,5 +308,13 @@ public class GameBoardScreenController extends BaseController
 
     public void setHost(String host) {
         this.host = host;
+    }
+
+    public void setInGame(boolean b) {
+        this.inGame = b;
+    }
+
+    public Lobby getLobby() {
+        return lobby;
     }
 }

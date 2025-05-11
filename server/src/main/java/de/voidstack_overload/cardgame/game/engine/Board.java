@@ -387,7 +387,7 @@ public class Board {
         attackersJson.add("");
         json.add("attackers", attackersJson);
         json.add("defender", "");
-        json.add("players", getPlayersJsonArray());
+        json.add("players", new JsonArray());
         json.add("drawPileHeight", 0);
         json.add("trumpColor", -1);
         JsonArray stacksJson = new JsonArray();
@@ -404,7 +404,7 @@ public class Board {
             player.getWebSocket().send(ResponseBuilder.build(OutgoingMessageType.GAME_STATE, json).response());
         }
         for(Player player : spectatorList) {
-            player.getWebSocket().send(ResponseBuilder.build(OutgoingMessageType.GAME_STATE, toJson()).response());
+            player.getWebSocket().send(ResponseBuilder.build(OutgoingMessageType.GAME_STATE, json).response());
         }
     }
 }

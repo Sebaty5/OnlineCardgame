@@ -34,6 +34,7 @@ public class PlayAction extends GameAction {
             }
         } catch (GameOverException e) {
             lobby.gameOver();
+            return ResponseBuilder.build(OutgoingMessageType.GAME_PLAY_ACCEPT);
         }
         jsonBuilder.add("errorMessage", "Invalid card.");
         return ResponseBuilder.build(OutgoingMessageType.GAME_PLAY_DENY, jsonBuilder);
