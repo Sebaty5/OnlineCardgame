@@ -17,8 +17,8 @@ public class LobbyDataAction  extends LobbyPassiveAction {
         boolean isPasswordProtected = json.has("isPasswordProtected") && json.get("isPasswordProtected").getAsBoolean();
         Lobby lobby = new Lobby(lobbyID, lobbyName, currentPlayerCount, maxPlayerCount, isPasswordProtected);
         Platform.runLater(() -> {
-            GameBoardScreenController.INSTANCE.updateLobby(lobby);
             GameBoardScreenController.INSTANCE.setHost(host);
+            GameBoardScreenController.INSTANCE.updateLobby(lobby);
         });
     }
 }

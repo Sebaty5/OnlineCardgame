@@ -46,14 +46,15 @@ public class Board {
         this.drawPile = createDrawPile();
         this.trumpColor = drawPile.getLast().cardColor();
         this.playerList = players;
-        reFillHands(players);
+        drawFirstHands(players);
         this.spectatorList = new ArrayList<>();
         Collections.shuffle(playerList);
         selectPlayerArea(0);
     }
 
-    private void reFillHands(List<Player> players) {
+    private void drawFirstHands(List<Player> players) {
         for (Player player : players) {
+            player.getHand().clear();
             while (player.getHand().size() < 6) {
                 drawCard(player);
             }

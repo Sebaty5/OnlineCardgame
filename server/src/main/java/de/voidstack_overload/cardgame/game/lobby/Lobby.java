@@ -205,7 +205,14 @@ public class Lobby {
 
 
     public void gameOver() {
+        isInGame = false;
         broadcast("Game Over\nPlayer " + host.getUsername() + " is the durak.");
         board.sendCleanGameState();
+        players.forEach(player -> {
+            WebSocket socket =  player.getWebSocket();
+            if(socket != null) {
+                socket.send(ResponseBuilder.build(OutgoingMessageType.LOBBY_GAME_OVER).response());
+            }
+        });
     }
 }

@@ -5,6 +5,10 @@ import de.voidstack_overload.cardgame.actions.account.LoginAcceptedAction;
 import de.voidstack_overload.cardgame.actions.account.LoginDenyAction;
 import de.voidstack_overload.cardgame.actions.account.RegisterAcceptedAction;
 import de.voidstack_overload.cardgame.actions.account.RegisterDenyAction;
+import de.voidstack_overload.cardgame.actions.game.active.GamePassAcceptAction;
+import de.voidstack_overload.cardgame.actions.game.active.GamePassDenyAction;
+import de.voidstack_overload.cardgame.actions.game.active.GamePlayAcceptAction;
+import de.voidstack_overload.cardgame.actions.game.active.GamePlayDenyAction;
 import de.voidstack_overload.cardgame.actions.game.passive.GameStateAction;
 import de.voidstack_overload.cardgame.actions.invalidHandeling.InsufficientPermissionAction;
 import de.voidstack_overload.cardgame.actions.invalidHandeling.InvalidAction;
@@ -45,6 +49,10 @@ public class ActionManager {
 
         // GAME
         actions.put(IncomingMessageType.GAME_STATE, new GameStateAction());
+        actions.put(IncomingMessageType.GAME_PASS_ACCEPT, new GamePassAcceptAction());
+        actions.put(IncomingMessageType.GAME_PASS_DENY, new GamePassDenyAction());
+        actions.put(IncomingMessageType.GAME_PLAY_ACCEPT, new GamePlayAcceptAction());
+        actions.put(IncomingMessageType.GAME_PLAY_DENY, new GamePlayDenyAction());
 
         // INVALID
         actions.put(IncomingMessageType.INVALID, new InvalidAction());

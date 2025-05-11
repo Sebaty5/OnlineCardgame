@@ -91,7 +91,7 @@ public class GameBoardScreenController extends BaseController
 
     @FXML
     public void initialize() {
-        setInteractionButton();
+        switchToStartGameButton();
         NetworkManager.INSTANCE.sendMessage(MessageBuilder.build(OutgoingMessageType.LOBBY_REQUEST_DATA));
         //LEFT
         cardStack.setImage(RessourceService.getImage(RessourceService.ImageKey.CARD_BACK_LOW_SAT));
@@ -117,7 +117,7 @@ public class GameBoardScreenController extends BaseController
     public void updateLobby(Lobby lobby) {
         this.lobby = lobby;
         setInfoLable(lobby);
-        setInteractionButton();
+        switchToStartGameButton();
         updateCardStacks(new int[][]{{-1, -1}, {-1, -1}, {-1, -1}, {-1, -1}, {-1, -1}, {-1, -1}});
     }
 
@@ -138,14 +138,14 @@ public class GameBoardScreenController extends BaseController
         LobbyInfoLabel.setText(infoLabelText);
     }
 
-    private void setInteractionButton() {
+    private void switchToStartGameButton() {
         takeOrPassButton.setDisable(true);
         if(host != null && host.equals(AuthenticationService.INSTANCE.getUser().username())) {
             takeOrPassButton.setVisible(false);
             startGameButton.setVisible(true);
             startGameButton.setDisable(false);
-
         } else {
+            takeOrPassButton.setVisible(false);
             startGameButton.setVisible(false);
             startGameButton.setDisable(true);
         }
