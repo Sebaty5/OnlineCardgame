@@ -108,6 +108,7 @@ public class GameBoardScreenController extends BaseController
         updateTrumpColor(state);
         setCardStackSize(state);
         updateHand(state);
+        updateTakePassButton(state);
         updateCardStacks(state.cardStacks());
         updatePlayerList(state);
     }
@@ -169,16 +170,15 @@ public class GameBoardScreenController extends BaseController
 
     private void updateHand(GameState state) {
         playerHand.getChildren().clear();
-        for (int i = 0; i < state.hand().length; i++)
-        {
+        for (int i = 0; i < state.hand().length; i++) {
             drawHandCard(state.hand()[i]);
         }
-        if(AuthenticationService.INSTANCE.getUser().username().equals(state.defender())) {
-            takeOrPassButton.setText("Take");
-        } else {
-            takeOrPassButton.setText("Pass");
-        }
+    }
 
+    public void updateTakePassButton(GameState state)
+    {
+        takeOrPassButton.setText(state.defender().equals(AuthenticationService.INSTANCE.getUser().username()) ? "Take" : "Pass");
+        takeOrPassButton.setDisable(!state.activePlayer().equals(AuthenticationService.INSTANCE.getUser().username()));
     }
 
     private void updateCardStacks(int[][] stacks) {

@@ -2,6 +2,7 @@ package de.voidstack_overload.cardgame.game.engine;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import de.voidstack_overload.cardgame.exceptions.GameOverException;
 import de.voidstack_overload.cardgame.game.engine.cards.Card;
 import de.voidstack_overload.cardgame.game.engine.cards.CardColor;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
@@ -69,10 +70,10 @@ public class Board {
         return drawPile;
     }
 
-    public boolean playCard(Card card, Player player) {
+    public boolean playCard(Card card, Player player) throws GameOverException {
         LOGGER.log(player.getUsername() + " is attempting to play card " + card);
         if (!player.equals(activePlayer) || !player.getHand().contains(card)) {
-            LOGGER.log("Player " + player.getUsername() + " is not active.");
+            LOGGER.log("Player " + player.getUsername() + " is not active or is not having the card they want to play.");
             return false;
         }
 
@@ -88,7 +89,7 @@ public class Board {
         return validPlay;
     }
 
-    private boolean attackPlay(Card card, Player player) {
+    private boolean attackPlay(Card card, Player player) throws GameOverException {
         LOGGER.log(player.getUsername() + " is attempting to attack with card " + card);
         boolean validPlay = playAttackCard(card);
         if(validPlay) {
@@ -102,6 +103,9 @@ public class Board {
                 }
                 playerList.remove(player);
                 spectatorList.add(player);
+                if(isGameOver()) {
+                    throw new GameOverException();
+                }
             }
             if(!throwingIn) {
                 LOGGER.log("Switching active player to defender");
@@ -137,7 +141,7 @@ public class Board {
         return false;
     }
 
-    private boolean defensePlay(Card card, Player player) {
+    private boolean defensePlay(Card card, Player player) throws GameOverException {
         boolean validPlay = playDefenseCard(card);
         if(validPlay) {
             if(secondAttacker != null && secondAttacker.getSkipped()) {
@@ -151,6 +155,9 @@ public class Board {
                     LOGGER.log("Player " + player.getUsername() + " has played last card. Adding them as spectator.");
                     playerList.remove(player);
                     spectatorList.add(player);
+                    if(isGameOver()) {
+                        throw new GameOverException();
+                    }
                 }
                 defenseWon();
             }
@@ -276,6 +283,10 @@ public class Board {
         stacks = new Card[6][2];
     }
 
+    private boolean isGameOver() {
+        return playerList.size() < 2;
+    }
+
     private void selectPlayerArea(int startingIndex) {
         if(startingIndex < 0) {
             startingIndex = 0;
@@ -367,5 +378,33 @@ public class Board {
             stacksJson.add(stackJson);
         }
         return stacksJson;
+    }
+
+    public void sendCleanGameState() {
+        JsonBuilder json = new JsonBuilder();
+        json.add("activePlayer", "");
+        JsonArray attackersJson = new JsonArray();
+        attackersJson.add("");
+        json.add("attackers", attackersJson);
+        json.add("defender", "");
+        json.add("players", getPlayersJsonArray());
+        json.add("drawPileHeight", 0);
+        json.add("trumpColor", -1);
+        JsonArray stacksJson = new JsonArray();
+        for(Card[] stack : this.stacks) {
+            JsonArray stackJson = new JsonArray();
+            stackJson.add(-1);
+            stackJson.add(-1);
+            stacksJson.add(stackJson);
+        }
+        json.add("cardStacks", stacksJson);
+
+        for(Player player : playerList) {
+            if(player.isBot()) continue;
+            player.getWebSocket().send(ResponseBuilder.build(OutgoingMessageType.GAME_STATE, json).response());
+        }
+        for(Player player : spectatorList) {
+            player.getWebSocket().send(ResponseBuilder.build(OutgoingMessageType.GAME_STATE, toJson()).response());
+        }
     }
 }

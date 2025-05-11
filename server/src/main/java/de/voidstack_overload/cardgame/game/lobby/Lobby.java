@@ -204,4 +204,8 @@ public class Lobby {
     }
 
 
+    public void gameOver() {
+        broadcast("Game Over\nPlayer " + host.getUsername() + " is the durak.");
+        board.sendCleanGameState();
+    }
 }
