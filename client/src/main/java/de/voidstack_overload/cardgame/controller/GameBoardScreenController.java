@@ -9,7 +9,6 @@ import de.voidstack_overload.cardgame.service.LobbyService;
 import de.voidstack_overload.cardgame.records.GameState;
 
 import de.voidstack_overload.cardgame.service.RessourceService;
-import javafx.beans.property.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -17,7 +16,6 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -80,7 +78,6 @@ public class GameBoardScreenController extends BaseController
     @FXML
     private Button takeOrPassButton;
 
-
     @FXML
     public void initialize() {
         //LEFT
@@ -107,10 +104,9 @@ public class GameBoardScreenController extends BaseController
         updateGameState(gameState);
     }
 
-
-
     public void updateGameState(GameState state) {
         updateTrumpColor(state);
+        setCardStackSize(state);
         updateHand(state);
         updateCardStacks(state);
         updatePlayerList(state);
@@ -119,26 +115,20 @@ public class GameBoardScreenController extends BaseController
     private void updateTrumpColor(GameState state) {
         switch (state.trumpColor()) {
             // Club
-            case 0 -> {
-                trumpColorImage.setImage(RessourceService.getImage(RessourceService.ImageKey.CLUB_GLOW_SYMBOL));
-            }
+            case 0 -> trumpColorImage.setImage(RessourceService.getImage(RessourceService.ImageKey.CLUB_GLOW_SYMBOL));
             // Diamond
-            case 1 -> {
-                trumpColorImage.setImage(RessourceService.getImage(RessourceService.ImageKey.DIAMOND_GLOW_SYMBOL));
-            }
+            case 1 -> trumpColorImage.setImage(RessourceService.getImage(RessourceService.ImageKey.DIAMOND_GLOW_SYMBOL));
             // Heart
-            case 2 -> {
-                trumpColorImage.setImage(RessourceService.getImage(RessourceService.ImageKey.HEART_GLOW_SYMBOL));
-            }
+            case 2 -> trumpColorImage.setImage(RessourceService.getImage(RessourceService.ImageKey.HEART_GLOW_SYMBOL));
             // Spade
-            case 3 -> {
-                trumpColorImage.setImage(RessourceService.getImage(RessourceService.ImageKey.SPADE_GLOW_SYMBOL));
-            }
+            case 3 -> trumpColorImage.setImage(RessourceService.getImage(RessourceService.ImageKey.SPADE_GLOW_SYMBOL));
             // No Color
-            default -> {
-                trumpColorImage.setImage(RessourceService.getImage(RessourceService.ImageKey.EMPTY_IMAGE));
-            }
+            default -> trumpColorImage.setImage(RessourceService.getImage(RessourceService.ImageKey.EMPTY_IMAGE));
         }
+    }
+
+    private void setCardStackSize(GameState state) {
+        cardStackLabel.textProperty().set(String.format("%d", state.drawPileHeight()));
     }
 
     private void updateHand(GameState state) {
@@ -195,9 +185,7 @@ public class GameBoardScreenController extends BaseController
     stackPane.setPadding(new Insets(20, 0, 0, 0));
 
     ImageView imageView = createImageView(cardNumber);
-    imageView.setOnMouseClicked(event -> {
-        GameService.sendPlayedCard(cardNumber);
-    });
+    imageView.setOnMouseClicked(event -> playCard(cardNumber));
     stackPane.setOnMouseEntered(e -> {
         imageView.setViewOrder(-1);
         imageView.setTranslateY(-20);
@@ -223,8 +211,6 @@ public class GameBoardScreenController extends BaseController
         return imageView;
     }
 
-
-
     @FXML
     private void openSettings(ActionEvent actionEvent) {
     }
@@ -243,14 +229,9 @@ public class GameBoardScreenController extends BaseController
     }
 
     @FXML
-    private void playCard(MouseEvent actionEvent)
+    private void playCard(int cardNumber)
     {
-        ImageView source = (ImageView) actionEvent.getSource();
-        if (source == null) {
-            LOGGER.error("Tried to play a card but source is null?");
-        }
-        LOGGER.log("Playing card: " + source);
-        // TODO: Call play card method
+        GameService.sendPlayedCard(cardNumber);
     }
 
     @FXML
@@ -266,37 +247,5 @@ public class GameBoardScreenController extends BaseController
         }
         history.addLast(message);
         chatHistory.setText(String.join("\n", history));
-    }
-
-    private class PlayerInfo {
-        private final StringProperty name       = new SimpleStringProperty();
-        private final BooleanProperty active    = new SimpleBooleanProperty();
-        private final BooleanProperty attacker  = new SimpleBooleanProperty();
-        private final BooleanProperty defender  = new SimpleBooleanProperty();
-        private final IntegerProperty cardCount = new SimpleIntegerProperty();
-
-        public PlayerInfo(String name, boolean active, boolean att, boolean def, int cards) {
-            this.name.set(name);
-            this.active.set(active);
-            this.attacker.set(att);
-            this.defender.set(def);
-            this.cardCount.set(cards);
-        }
-        // getters for the properties
-        public StringProperty nameProperty() {
-            return name;
-        }
-        public BooleanProperty activeProperty() {
-            return active;
-        }
-        public BooleanProperty attackerProperty() {
-            return attacker;
-        }
-        public BooleanProperty defenderProperty() {
-            return defender;
-        }
-        public IntegerProperty cardCountProperty() {
-            return cardCount;
-        }
     }
 }
