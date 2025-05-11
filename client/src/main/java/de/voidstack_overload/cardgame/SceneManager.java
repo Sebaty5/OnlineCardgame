@@ -101,7 +101,6 @@ public class SceneManager {
         stage.show();
 
         String filePath = Objects.requireNonNull(getClass().getClassLoader().getResource("audio/Durak.mp3")).toString();
-        System.out.println(filePath);
         Media media = new Media(filePath);
         player = new MediaPlayer(media);
     }

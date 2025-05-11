@@ -320,13 +320,9 @@ public class Board {
     }
     private JsonArray getAttackerJsonArray() {
         JsonArray attackersJsonArray = new JsonArray();
-        JsonObject attackerJson = new JsonObject();
-        attackerJson.addProperty("playerName", this.attacker.getUsername());
-        attackersJsonArray.add(attackerJson);
+        attackersJsonArray.add(attacker.getUsername());
         if(this.secondAttacker != null) {
-            JsonObject attackerAlternative = new JsonObject();
-            attackerAlternative.addProperty("playerName", secondAttacker.getUsername());
-            attackersJsonArray.add(attackerAlternative);
+            attackersJsonArray.add(secondAttacker.getUsername());
         }
         return attackersJsonArray;
     }
@@ -345,9 +341,9 @@ public class Board {
         for(Card[] stack : this.stacks) {
             JsonArray stackJson = new JsonArray();
             if(stack[0] != null) {
-                stackJson.add(stack[0].cardValue() * (1 + stack[0].cardColor().getColorAsInt()));
+                stackJson.add(stack[0].cardToInt());
                 if(stack[1] != null) {
-                    stackJson.add(stack[1].cardValue() * (1 + stack[1].cardColor().getColorAsInt()));
+                    stackJson.add(stack[1].cardToInt());
                 } else {
                     stackJson.add(-1);
                 }

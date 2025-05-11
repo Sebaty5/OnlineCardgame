@@ -35,6 +35,7 @@ public class ActionManager {
         actions.put(IncomingMessageType.LOBBY_JOIN_DENY, new LobbyJoinDenyAction());
         actions.put(IncomingMessageType.LOBBY_LEAVE_ACKNOWLEDGE, new LobbyLeaveAcknowledgeAction());
         actions.put(IncomingMessageType.LOBBY_LIST_REPLY, new LobbyListReplyAction());
+        actions.put(IncomingMessageType.LOBBY_REQUEST_DATA_ACKNOWLEDGE, new LobbyRequestDataAcknowledgeAction());
         // TODO LOBBY_UPDATE ONCE RELEVANT
         // LOBBY BROADCAST
         actions.put(IncomingMessageType.LOBBY_BROADCAST, new LobbyBroadcastAction());

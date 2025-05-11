@@ -106,10 +106,10 @@
 
             </HandPane>
 
-            <HBox spacing="60" alignment="CENTER">
-                <Button fx:id="takeOrPassButton" text="Take" styleClass="normalButton" onAction="#takeOrPassAction" disable="true"/>
-                <Button fx:id="startGameButton" text="Start" styleClass="normalButton" onAction="#startGame" disable="true" visible="false"/>
-            </HBox>
+            <StackPane>
+                <Button fx:id="takeOrPassButton" text="Take" styleClass="normalButton" onAction="#takeOrPassAction"/>
+                <Button fx:id="startGameButton" text="Start" styleClass="normalButton" onAction="#startGame"/>
+            </StackPane>
         </VBox>
     </bottom>
 
@@ -142,7 +142,7 @@
                 </GridPane>
                 <Button fx:id="closeSlotBtn" text="×" styleClass="closeSlotButton" visible="false"/>
 
-                <Label fx:id="chatLabel" text="Chat" styleClass="panelHeader"/>
+                <Label text="Chat" styleClass="panelHeader"/>
                 <TextArea fx:id="chatHistory" editable="false" prefRowCount="6" styleClass="chatPanelOutput"/>
                 <TextField fx:id="chatTextInputField" promptText="Write something…" onAction="#checkButtonAvailability" styleClass="chatSendField"/>
                 <Button fx:id="sendText" text="Send" onAction="#sendChatMessage" styleClass="chatSendButton"/>

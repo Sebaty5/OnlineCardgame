@@ -7,11 +7,10 @@ import de.voidstack_overload.cardgame.messages.OutgoingMessageType;
 import de.voidstack_overload.cardgame.network.Response;
 import de.voidstack_overload.cardgame.network.User;
 import de.voidstack_overload.cardgame.network.UserManager;
-import de.voidstack_overload.cardgame.utility.JsonBuilder;
 import de.voidstack_overload.cardgame.utility.ResponseBuilder;
 import org.java_websocket.WebSocket;
 
-public class LobbyStartGameAction extends LobbyAction {
+public class LobbyRequestDataAction extends LobbyAction {
     @Override
     public Response execute(JsonObject json, WebSocket connection) {
         Response response = super.execute(json, connection);
@@ -23,15 +22,9 @@ public class LobbyStartGameAction extends LobbyAction {
             response = ResponseBuilder.errorResponse("You are not in a lobby!");
             return response;
         }
-        JsonBuilder builder = new JsonBuilder();
         Lobby lobby = LobbyManager.INSTANCE.getLobbyOfPlayer(user);
-        if(lobby.getHost().equals(user)) {
-            lobby.startGame();
-            response = ResponseBuilder.build(OutgoingMessageType.LOBBY_START_GAME_ACCEPT);
-        } else {
-            builder.add("errorMessage", "You are not the host of your lobby!");
-            response = ResponseBuilder.build(OutgoingMessageType.LOBBY_START_GAME_DENY);
-        }
+        lobby.sendLobbyData();
+        response = ResponseBuilder.build(OutgoingMessageType.LOBBY_REQUEST_DATA_ACKNOWLEDGE);
         return response;
     }
 }

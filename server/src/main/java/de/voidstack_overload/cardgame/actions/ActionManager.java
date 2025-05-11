@@ -34,6 +34,7 @@ public class ActionManager {
         actions.put(IncomingMessageType.LOBBY_LIST, new LobbyListAction());
         actions.put(IncomingMessageType.LOBBY_START_GAME, new LobbyStartGameAction());
         actions.put(IncomingMessageType.LOBBY_SEND_CHAT_MESSAGE, new LobbyChatAction());
+        actions.put(IncomingMessageType.LOBBY_REQUEST_DATA, new LobbyRequestDataAction());
         //Game actions
         actions.put(IncomingMessageType.GAME_PLAY, new PlayAction());
         actions.put(IncomingMessageType.GAME_PASS, new PassAction());

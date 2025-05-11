@@ -17,6 +17,7 @@ public enum OutgoingMessageType {
     LOBBY_LIST_REPLY,
     LOBBY_START_GAME_ACCEPT,
     LOBBY_START_GAME_DENY,
+    LOBBY_REQUEST_DATA_ACKNOWLEDGE,
     //Lobby Broadcasts
     LOBBY_DATA,
     LOBBY_BROADCAST,

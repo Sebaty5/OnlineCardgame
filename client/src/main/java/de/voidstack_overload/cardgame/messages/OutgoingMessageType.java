@@ -10,8 +10,9 @@ public enum OutgoingMessageType {
     LOBBY_JOIN,
     LOBBY_LEAVE,
     LOBBY_UPDATE,
+    LOBBY_REQUEST_DATA,
     LOBBY_LIST,
-    LOBBY_GAME_START,
+    LOBBY_START_GAME,
     LOBBY_SEND_CHAT_MESSAGE,
     //GAME
     GAME_PLAY,

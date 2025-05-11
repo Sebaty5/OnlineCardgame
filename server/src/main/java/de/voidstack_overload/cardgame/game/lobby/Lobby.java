@@ -131,7 +131,7 @@ public class Lobby {
         Player player = new Player(user);
         players.add(player);
         LOGGER.log("Added new player to lobby.");
-        broadcast("Player " + player.getUsername() + " joined lobby: " + id);
+        broadcast("Player " + player.getUsername() + " joined lobby.");
         if(players.size() >= maxPlayers) {
             LOGGER.log("Max player count reached.");
             isFull = true;
@@ -148,7 +148,7 @@ public class Lobby {
             broadcast(host.getUsername() + " is the new host.");
             LOGGER.log(host.getUsername() + " has been assigned host.");
         }
-        broadcast("Player " + user.getUsername() + "  left lobby: " + id);
+        broadcast("Player " + user.getUsername() + "  left lobby.");
     }
 
     public boolean isEmpty() {
@@ -169,6 +169,23 @@ public class Lobby {
             WebSocket socket =  player.getWebSocket();
             if(socket != null) {
                 socket.send(ResponseBuilder.build(OutgoingMessageType.LOBBY_BROADCAST, json).response());
+            }
+        });
+    }
+
+    public void sendLobbyData() {
+        LOGGER.log("Sending lobby data.");
+        JsonBuilder json = new JsonBuilder();
+        json.add("lobbyID", this.id);
+        json.add("lobbyName", this.lobbyName);
+        json.add("host", this.host.getUsername());
+        json.add("currentPlayerCount", players.size());
+        json.add("maxPlayerCount", maxPlayers);
+        json.add("isPasswordProtected", !this.password.isEmpty());
+        players.forEach(player -> {
+            WebSocket socket =  player.getWebSocket();
+            if(socket != null) {
+                socket.send(ResponseBuilder.build(OutgoingMessageType.LOBBY_DATA, json).response());
             }
         });
     }

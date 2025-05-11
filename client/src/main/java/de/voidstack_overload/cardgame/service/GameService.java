@@ -1,5 +1,7 @@
 package de.voidstack_overload.cardgame.service;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import de.voidstack_overload.cardgame.messages.OutgoingMessageType;
 import de.voidstack_overload.cardgame.network.NetworkManager;
@@ -12,9 +14,16 @@ import java.util.ArrayList;
 
 public class GameService {
     public static GameState parseJsonToGameState(JsonObject json) {
-        String activePlayer = json.has("activePlayer") ? json.get( "activePlayer").getAsString() : null;
-
-        String[] attackers = json.has("attackers") ? json.get("attackers").getAsJsonArray().toString().split(",") : null;
+        String activePlayer = json.has("activePlayer") ? json.get("activePlayer").getAsString() : null;
+        JsonArray attackerJsonArray = json.has("attackers") ? json.get("attackers").getAsJsonArray() : null;
+        ArrayList<String> attackerList = new ArrayList<>();
+        if(attackerJsonArray != null) {
+            for (JsonElement attacker : attackerJsonArray) {
+                String attackerName = attacker.getAsString();
+                attackerList.add(attackerName);
+            }
+        }
+        String[] attackers = attackerList.toArray(new String[0]);
 
         String defender = json.has("defender") ? json.get("defender").getAsString() : null;
 
@@ -46,9 +55,7 @@ public class GameService {
         if(json.has("cardStacks")) {
             json.get("cardStacks").getAsJsonArray().forEach(stack -> {
                 ArrayList<Integer> cardArray = new ArrayList<>();
-                        stack.getAsJsonArray().forEach(card -> {
-                    cardArray.add(card.getAsInt());
-                });
+                        stack.getAsJsonArray().forEach(card -> cardArray.add(card.getAsInt()));
                 int[] cards = cardArray.stream().mapToInt(Integer::intValue).toArray();
                 cardStackArray.add(cards);
             });

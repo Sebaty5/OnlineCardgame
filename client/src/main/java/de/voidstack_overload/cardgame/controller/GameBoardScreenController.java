@@ -71,8 +71,6 @@ public class GameBoardScreenController extends BaseController
     @FXML
     public GridPane playerList;
     @FXML
-    private Label chatLabel;
-    @FXML
     private TextArea chatHistory;
     @FXML
     private TextField chatTextInputField;
@@ -88,10 +86,12 @@ public class GameBoardScreenController extends BaseController
     private Button startGameButton;
 
     private String host;
+    private boolean inGame = false;
 
     @FXML
     public void initialize() {
-        initLobby();
+        setInteractionButton();
+        NetworkManager.INSTANCE.sendMessage(MessageBuilder.build(OutgoingMessageType.LOBBY_REQUEST_DATA));
         //LEFT
         cardStack.setImage(RessourceService.getImage(RessourceService.ImageKey.CARD_BACK_LOW_SAT));
         //BOTTOM
@@ -101,20 +101,6 @@ public class GameBoardScreenController extends BaseController
         playerHand.setPadding(new Insets(10, 500, 10, 500));
         playerHand.setPrefHeight(200);
         //RIGHT
-
-        // TODO: Remove default initialization when no longer templating layout
-
-        Player sebaty1 = new Player("Sebaty1", 1);
-        Player sebaty2 = new Player("Sebaty2", 2);
-        Player sebaty3 = new Player("Sebaty3", 3);
-        Player sebaty4 = new Player("Sebaty4", 4);
-        Player sebaty5 = new Player("Sebaty5", 5);
-        Player sebaty6 = new Player("Sebaty6", 6);
-        int[] hand = new int[]{11, 12, 13, 14};
-        int[][] stacks = new int[][]{{15, 16}, {17, 18}, {19, 20}, {21, 22}, {-1, -1}, {-1, -1}};
-
-        GameState gameState = new GameState(sebaty4.name(), new String[]{sebaty4.name(), sebaty2.name()}, sebaty3.name(), new Player[]{sebaty5, sebaty1, sebaty4, sebaty2, sebaty3, sebaty6}, 30, 1, hand, stacks);
-        updateGameState(gameState);
     }
 
     public void updateGameState(GameState state) {
@@ -122,25 +108,43 @@ public class GameBoardScreenController extends BaseController
         updateTrumpColor(state);
         setCardStackSize(state);
         updateHand(state);
-        updateCardStacks(state);
+        updateCardStacks(state.cardStacks());
         updatePlayerList(state);
     }
 
+    public void updateLobby(Lobby lobby) {
+        setInfoLable(lobby);
+        setInteractionButton();
+        updateCardStacks(new int[][]{{-1, -1}, {-1, -1}, {-1, -1}, {-1, -1}, {-1, -1}, {-1, -1}});
+    }
+
     private void initGame() {
+        inGame = true;
         takeOrPassButton.setDisable(false);
+        takeOrPassButton.setVisible(true);
         startGameButton.setDisable(true);
         startGameButton.setVisible(false);
     }
 
-    private void initLobby() {
+    private void setInfoLable(Lobby lobby) {
+        String infoLabelText = "Waiting";
+        if(inGame){
+            infoLabelText = "In Game";
+        }
+        infoLabelText += ": " + lobby.currentPlayerCount() + "/" + lobby.maxPlayerCount();
+        LobbyInfoLabel.setText(infoLabelText);
+    }
+
+    private void setInteractionButton() {
         takeOrPassButton.setDisable(true);
-        if(host.equals(AuthenticationService.INSTANCE.getUser().username())) {
+        if(host != null && host.equals(AuthenticationService.INSTANCE.getUser().username())) {
             takeOrPassButton.setVisible(false);
-            startGameButton.setDisable(false);
             startGameButton.setVisible(true);
+            startGameButton.setDisable(false);
+
         } else {
-            startGameButton.setDisable(true);
             startGameButton.setVisible(false);
+            startGameButton.setDisable(true);
         }
     }
 
@@ -169,11 +173,15 @@ public class GameBoardScreenController extends BaseController
         {
             drawHandCard(state.hand()[i]);
         }
+        if(AuthenticationService.INSTANCE.getUser().username().equals(state.defender())) {
+            takeOrPassButton.setText("Take");
+        } else {
+            takeOrPassButton.setText("Pass");
+        }
+
     }
 
-    private void updateCardStacks(GameState state) {
-    int[][] stacks = state.cardStacks();
-
+    private void updateCardStacks(int[][] stacks) {
     smallStack1.getChildren().clear();
     smallStack1.getChildren().add(createImageView(stacks[0][0]));
     smallStack1.getChildren().add(createImageView(stacks[0][1]));
@@ -199,13 +207,8 @@ public class GameBoardScreenController extends BaseController
         for (int i = 0; i < state.players().length; i++) {
             Player p = state.players()[i];
 
-            boolean attacker = false;
-            for (int j = 0; j < state.attackers().length; j++) {
-                if (p.name().equals(state.attackers()[j])) {
-                    attacker = true;
-                    break;
-                }
-            }
+            boolean attacker = p.name().equals(state.attackers()[0]);
+            if(state.attackers().length > 1) attacker = attacker ||  p.name().equals(state.attackers()[1]);
 
             String role = "";
             if (attacker) role = "Attacker";
@@ -265,13 +268,14 @@ public class GameBoardScreenController extends BaseController
     @FXML
     private void sendChatMessage(ActionEvent actionEvent) {
         String msg = chatTextInputField.getText();
-        if (msg.isEmpty())
-        {
+        msg = msg.trim();
+        if (msg.isEmpty()) {
+            chatTextInputField.clear();
             return;
         }
         Message message = MessageBuilder.build(OutgoingMessageType.LOBBY_SEND_CHAT_MESSAGE, new JsonBuilder().add("message", msg));
         NetworkManager.INSTANCE.sendMessage(message);
-        chatTextInputField.setText("");
+        chatTextInputField.clear();
     }
 
     @FXML
@@ -296,14 +300,10 @@ public class GameBoardScreenController extends BaseController
     }
 
     public void startGame() {
-        NetworkManager.INSTANCE.sendMessage(MessageBuilder.build(OutgoingMessageType.LOBBY_GAME_START));
+        NetworkManager.INSTANCE.sendMessage(MessageBuilder.build(OutgoingMessageType.LOBBY_START_GAME));
     }
 
     public void setHost(String host) {
         this.host = host;
-    }
-
-    public void updateLobby(Lobby lobby) {
-        // TODO: Draw lobby relevant elements?
     }
 }
