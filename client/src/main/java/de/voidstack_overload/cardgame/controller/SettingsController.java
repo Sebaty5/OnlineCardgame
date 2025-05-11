@@ -90,6 +90,7 @@ public class SettingsController extends BaseController {
         });
 
         volumeSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
+            sceneManager.adjustVolume(newVal.doubleValue());
             LOGGER.log("Saving Values: VolumeSlider Slider");
             saveValues();
         });

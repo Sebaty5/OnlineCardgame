@@ -13,9 +13,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.Objects;
 
 public class SceneManager {
 
@@ -60,6 +63,8 @@ public class SceneManager {
         this.isFullScreen = fs;
     }
 
+    private final MediaPlayer player;
+
     public SceneManager(Stage stage) {
         this.stage = stage;
 
@@ -94,6 +99,11 @@ public class SceneManager {
         stage.setScene(scene);
         bindScale();
         stage.show();
+
+        String filePath = Objects.requireNonNull(getClass().getClassLoader().getResource("audio/Durak.mp3")).toString();
+        System.out.println(filePath);
+        Media media = new Media(filePath);
+        player = new MediaPlayer(media);
     }
 
     public void switchScene(SceneFXML fxmlFile) throws IOException {
@@ -105,11 +115,21 @@ public class SceneManager {
         SettingData data = Settings.INSTANCE.getSettingData();
         setFullScreen(data.fullscreen());
         stage.setFullScreenExitHint("");
-        if (!isFullScreen)
-        {
+        if (!isFullScreen) {
             setSize(data.width(), data.height());
             resizeStageIfNeeded();
         }
+
+        if (fxmlFile.equals(SceneFXML.MENU) || fxmlFile.equals(SceneFXML.SETTINGS) || fxmlFile.equals(SceneFXML.CREDIT) || fxmlFile.equals(SceneFXML.QUIT_GAME)) {
+            adjustVolume(data.volume());
+            player.play();
+        } else {
+            player.stop();
+        }
+    }
+
+    public void adjustVolume(double volume) {
+        player.setVolume(volume / 100.0);
     }
 
     private void bindScale() {
