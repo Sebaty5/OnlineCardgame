@@ -44,17 +44,18 @@ public class Lobby {
         return botCount;
     }
 
-    private Player host;
-    public Player getHost() {
+    private User host;
+    public User getHost() {
         return host;
     }
 
-    private final Set<Player> players = Collections.synchronizedSet(new HashSet<>());
-    public Set<Player> getPlayers() {
-        return players;
+    private final Set<User> users = Collections.synchronizedSet(new HashSet<>());
+    private final Set<Bot> bots = Collections.synchronizedSet(new HashSet<>());
+    public Set<User> getUsers() {
+        return users;
     }
     public int getPlayerCount() {
-        return players.size();
+        return users.size();
     }
 
     private boolean isFull = false;
@@ -75,10 +76,10 @@ public class Lobby {
         updateMaxPlayers(maxPlayers);
         updateBotCount(botCount);
         for (int i = 0; i < botCount; i++) {
-            players.add(new Bot(i));
+            bots.add(new Bot(i));
         }
 
-        this.players.add(this.host);
+        this.users.add(this.host);
         broadcast(lobbyName + " created by " + host.getUsername());
     }
 
@@ -128,11 +129,10 @@ public class Lobby {
             return ResponseBuilder.build(OutgoingMessageType.LOBBY_JOIN_DENY, jsonBuilder);
         }
 
-        Player player = new Player(user);
-        players.add(player);
+        users.add(user);
         LOGGER.log("Added new player to lobby.");
-        broadcast("Player " + player.getUsername() + " joined lobby.");
-        if(players.size() >= maxPlayers) {
+        broadcast("Player " + user.getUsername() + " joined lobby.");
+        if(users.size() >= maxPlayers) {
             LOGGER.log("Max player count reached.");
             isFull = true;
         }
@@ -141,10 +141,14 @@ public class Lobby {
 
     public void removePlayer(User user) {
         LOGGER.log("Removing player from lobby.");
-        players.remove(user);
+        users.remove(user);
+        if(isInGame) {
+            if(board.getPlayerFromUser(user) != null) board.getPlayerFromUser(user).setBot(true);
+        }
+
         isFull = false;
-        if (user.equals(host) && !players.isEmpty()) {
-            host = players.iterator().next(); // Assign new host
+        if (user.equals(host) && !users.isEmpty()) {
+            host = users.iterator().next(); // Assign new host
             broadcast(host.getUsername() + " is the new host.");
             LOGGER.log(host.getUsername() + " has been assigned host.");
         }
@@ -152,19 +156,24 @@ public class Lobby {
     }
 
     public boolean isEmpty() {
-        return players.isEmpty() || players.size() - botCount == 0;
+        return users.isEmpty() || users.size() - botCount == 0;
     }
 
     public void startGame() {
-        if (players.size() < maxPlayers) {
+        if (users.size() < maxPlayers) {
             List<Bot> bots = new ArrayList<>();
-            for (int i = 0; i < maxPlayers - players.size();) {
-                Bot bot = new Bot(++i);
+            for (int i = 0; i < maxPlayers - users.size(); i++) {
+                Bot bot = new Bot(i);
                 bots.add(bot);
             }
-            players.addAll(bots);
+            this.bots.addAll(bots);
         }
-        board = new Board(new ArrayList<>(this.getPlayers()));
+        ArrayList<Player> players = new ArrayList<>();
+        for(User user : users) {
+            players.add(new Player(user));
+        }
+        players.addAll(bots);
+        board = new Board(players, this);
         board.sendGameState();
         isInGame = true;
     }
@@ -173,7 +182,7 @@ public class Lobby {
         LOGGER.log("Broadcasting message: " + message);
         JsonBuilder json = new JsonBuilder();
         json.add("message", message);
-        players.forEach(player -> {
+        users.forEach(player -> {
             WebSocket socket =  player.getWebSocket();
             if(socket != null) {
                 socket.send(ResponseBuilder.build(OutgoingMessageType.LOBBY_BROADCAST, json).response());
@@ -187,10 +196,10 @@ public class Lobby {
         json.add("lobbyID", this.id);
         json.add("lobbyName", this.lobbyName);
         json.add("host", this.host.getUsername());
-        json.add("currentPlayerCount", players.size());
+        json.add("currentPlayerCount", users.size());
         json.add("maxPlayerCount", maxPlayers);
         json.add("isPasswordProtected", !this.password.isEmpty());
-        players.forEach(player -> {
+        users.forEach(player -> {
             WebSocket socket =  player.getWebSocket();
             if(socket != null) {
                 socket.send(ResponseBuilder.build(OutgoingMessageType.LOBBY_DATA, json).response());
@@ -206,9 +215,9 @@ public class Lobby {
 
     public void gameOver() {
         isInGame = false;
-        broadcast("Game Over\nPlayer " + host.getUsername() + " is the durak.");
+        broadcast("Game Over\nPlayer " + board.getLastPlayer().getUsername() + " is the durak.");
         board.sendCleanGameState();
-        players.forEach(player -> {
+        users.forEach(player -> {
             WebSocket socket =  player.getWebSocket();
             if(socket != null) {
                 socket.send(ResponseBuilder.build(OutgoingMessageType.LOBBY_GAME_OVER).response());

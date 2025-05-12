@@ -16,30 +16,19 @@ public class LobbyChatAction extends LobbyAction
     public Response execute(JsonObject json, WebSocket connection)
     {
         User user = UserManager.INSTANCE.getUser(connection);
-        if(user == null)
-        {
+        if(user == null) {
             return ResponseBuilder.errorResponse("You are not connected to the server? I have no idea how you may have managed this.");
         }
         Lobby lobby = LobbyManager.INSTANCE.getLobbyOfPlayer(user);
-        if (lobby == null)
-        {
-            return ResponseBuilder.errorResponse("You are not in a lobby to send chat Messages.");
-        }
-        Player player = null;
-        for (Player p : lobby.getPlayers())
-        {
-            if (p.equals(user))
-            {
-                player = p;
-                break;
-            }
-        }
-        if (player == null)
-        {
+        if (lobby == null) {
             return ResponseBuilder.errorResponse("You are not in a lobby to send chat Messages.");
         }
 
-        lobby.broadcast(player.getUsername() + ": " + json.get("message").getAsString());
+        if(!lobby.getUsers().contains(user)) {
+            return ResponseBuilder.errorResponse("You are not in a lobby to send chat Messages.");
+        }
+
+        lobby.broadcast(user.getUsername() + ": " + json.get("message").getAsString());
         return null;
     }
 }

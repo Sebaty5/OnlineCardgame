@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import de.voidstack_overload.cardgame.exceptions.GameOverException;
 import de.voidstack_overload.cardgame.game.engine.cards.Card;
 import de.voidstack_overload.cardgame.game.engine.cards.CardColor;
+import de.voidstack_overload.cardgame.game.lobby.Lobby;
 import de.voidstack_overload.cardgame.logging.StandardLogger;
 import de.voidstack_overload.cardgame.messages.OutgoingMessageType;
 import de.voidstack_overload.cardgame.network.User;
@@ -14,6 +15,9 @@ import de.voidstack_overload.cardgame.utility.ResponseBuilder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class Board {
     private static final StandardLogger LOGGER = new StandardLogger();
@@ -35,9 +39,36 @@ public class Board {
     private CardColor trumpColor;
     private Card[][] stacks = new Card[6][2];
     private boolean throwingIn = false;
+    private Lobby lobby;
 
-    public Board(List<Player> players) {
+    public Board(List<Player> players, Lobby lobby) {
         resetBoard(players);
+        this.lobby = lobby;
+    }
+
+    private void setActivePlayer(Player player) {
+        this.activePlayer = player;
+    }
+
+    private final ScheduledExecutorService botExecutor =
+            Executors.newSingleThreadScheduledExecutor(r ->
+                    new Thread(r, "bot-logic"));
+
+    private void tryForBotAction(Player player) {
+        if (player == null || !player.isBot()) {
+            return;
+        }
+
+        botExecutor.schedule(() -> {
+            try {
+                makeMove();
+            } catch (GameOverException e) {
+                LOGGER.log("Game over.");
+                lobby.gameOver();
+            } catch (Exception e) {
+                LOGGER.error("Bot move failed with error: ", e.getMessage());
+            }
+        }, 1, TimeUnit.SECONDS);
     }
 
     public void resetBoard(List<Player> players) {
@@ -110,7 +141,7 @@ public class Board {
             }
             if(!throwingIn) {
                 LOGGER.log("Switching active player to defender");
-                activePlayer = defender;
+                setActivePlayer(defender);
             }
         }
         return validPlay;
@@ -163,7 +194,7 @@ public class Board {
                 defenseWon();
             }
             LOGGER.log("Setting active player to attacker");
-            activePlayer = attacker;
+            setActivePlayer(attacker);
         }
         return validPlay;
     }
@@ -237,7 +268,7 @@ public class Board {
             return true;
         } else if(player.equals(defender)) {
             throwingIn = true;
-            activePlayer = attacker;
+            setActivePlayer(attacker);
             sendGameState();
             return true;
         }
@@ -295,7 +326,7 @@ public class Board {
             startingIndex = startingIndex % playerList.size();
         }
         mainAttackerIndex = startingIndex;
-        activePlayer = playerList.get(startingIndex);
+        setActivePlayer(playerList.get(startingIndex));
         attacker = playerList.get(startingIndex);
         defender = playerList.get(startingIndex + 1 < playerList.size() ? startingIndex + 1 : startingIndex + 1 - playerList.size());
         if(playerList.size() > 2) {
@@ -305,6 +336,109 @@ public class Board {
         }
     }
 
+    private void makeMove() throws GameOverException {
+        if(!activePlayer.isBot()) {
+            return;
+        }
+        ArrayList<Card> possibleActions = new ArrayList<>();
+        ArrayList<Card> botHandCards = new ArrayList<>(activePlayer.getHand());
+
+        if(activePlayer == defender) {
+            possibleActions = getBotDefenseActions(botHandCards);
+        } else {
+            possibleActions = getBotAttackActions(botHandCards);
+        }
+        // If no card can be played, skip instead
+        if(possibleActions.isEmpty()) {
+            skip(activePlayer);
+            return;
+        }
+        //Filter out trump cards to not waste them
+        ArrayList<Card> trumps = new ArrayList<>();
+        for (Card possible : possibleActions) {
+            if (possible.cardColor() == trumpColor) {
+                trumps.add(possible);
+            }
+        }
+        if (trumps.size() < possibleActions.size()) {
+            for (Card trump : trumps) {
+                possibleActions.remove(trump);
+            }
+        }
+        //Trying to sort all cards now from lowest to highest
+        Collections.sort(possibleActions);
+        playCard(possibleActions.getFirst(), activePlayer);
+    }
+
+    private ArrayList<Card> getBotAttackActions(ArrayList<Card> botHandCards) {
+        if (stacks[0][0] == null) {
+            return botHandCards;
+        }
+        return getCardsWithSameValueAsStacks(botHandCards);
+    }
+
+    private ArrayList<Card> getBotDefenseActions(ArrayList<Card> botHandCards) throws GameOverException {
+        ArrayList<Card> possibleActions = new ArrayList<>();
+
+        ArrayList<Card> sameWorth = getCardsWithSameValueAsStacks(botHandCards);
+
+        //Now getting Same Worth cards that are playable
+        Card attackingCard = null;
+        for(Card[] stack : stacks) {
+            if(stack[1] == null) {
+                attackingCard = stack[0];
+                break;
+            }
+        }
+        for (Card card : botHandCards) {
+            assert attackingCard != null;
+            if(card.cardColor() == attackingCard.cardColor()) {
+                if(card.cardValue() > attackingCard.cardValue()) {
+                    possibleActions.add(card);
+                }
+            } else if (card.cardColor() == trumpColor) {
+                possibleActions.add(card);
+            }
+        }
+        ArrayList<Card> bestCards = new ArrayList<>();
+        for (Card card : possibleActions) {
+            if(sameWorth.contains(card)) {
+                bestCards.add(card);
+            }
+        }
+        if(!bestCards.isEmpty()) {
+            return bestCards;
+        }
+        return possibleActions;
+    }
+
+    private ArrayList<Card> getCardsWithSameValueAsStacks(ArrayList<Card> botHandCards) {
+        ArrayList<Card> sameWorth = new ArrayList<>();
+        //getting all playable cards from the hand-cards
+        for (Card card : botHandCards) {
+            for (Card[] visible : stacks) {
+                if (!sameWorth.contains(card)) {
+                    if(visible[0] != null) {
+                        if (card.cardValue() == visible[0].cardValue()) {
+                            sameWorth.add(card);
+                            continue;
+                        }
+                    } else {
+                        break;
+                    }
+                    if (visible[1] != null) {
+                        if(card.cardValue() == visible[1].cardValue()) {
+                            sameWorth.add(card);
+                        }
+                    } else {
+                        break;
+                    }
+                }
+            }
+        }
+        return sameWorth;
+    }
+
     private boolean togglePrimaryAttacker() {
         if(secondAttacker == null) {
             return false;
@@ -312,7 +446,7 @@ public class Board {
         Player temp = secondAttacker;
         secondAttacker = attacker;
         attacker = temp;
-        activePlayer = attacker;
+        setActivePlayer(attacker);
         return true;
     }
 
@@ -330,6 +464,7 @@ public class Board {
         for(Player player : spectatorList) {
             player.getWebSocket().send(ResponseBuilder.build(OutgoingMessageType.GAME_STATE, toJson()).response());
         }
+        tryForBotAction(activePlayer);
     }
 
     private JsonBuilder toJson() {
@@ -407,5 +542,9 @@ public class Board {
         for(Player player : spectatorList) {
             player.getWebSocket().send(ResponseBuilder.build(OutgoingMessageType.GAME_STATE, json).response());
         }
+    }
+
+    public User getLastPlayer() {
+        return playerList.getLast();
     }
 }

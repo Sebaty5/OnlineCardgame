@@ -39,6 +39,10 @@ public class User {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (!(obj instanceof User user)) return false;
+        if(webSocket == null) {
+             if(user.webSocket == null) return Objects.equals(this.username, user.username);
+             else return false;
+        }
         return webSocket.equals(user.getWebSocket());
     }
 
