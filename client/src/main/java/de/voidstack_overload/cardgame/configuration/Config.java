@@ -18,7 +18,7 @@ public class Config extends JsonHandler<Config.Data> {
         }
     }
 
-    private String serverUri = "ws://localhost:8080";
+    private String serverUri = "";
 
 
     private Config() throws IOException {
@@ -51,6 +51,6 @@ public class Config extends JsonHandler<Config.Data> {
     }
 
     static final class Data {
-        private String serverUri = "ws://localhost:8080";
+        private String serverUri = "ws://[2a02:8109:2d26:b800:25f1:e24d:af8:f3a]:25566";
     }
 }

@@ -51,6 +51,6 @@ public class Config extends JsonHandler<Config.Data> {
     }
 
     static final class Data {
-        private int serverPort = 8080;
+        private int serverPort = 25566;
     }
 }

@@ -134,7 +134,7 @@ public class Board {
                     secondAttacker = null;
                 }
                 playerList.remove(player);
-                spectatorList.add(player);
+                if(!player.isBot()) spectatorList.add(player);
                 if(isGameOver()) {
                     throw new GameOverException();
                 }
@@ -186,7 +186,7 @@ public class Board {
                 if(drawPile.isEmpty()) {
                     LOGGER.log("Player " + player.getUsername() + " has played last card. Adding them as spectator.");
                     playerList.remove(player);
-                    spectatorList.add(player);
+                    if(!player.isBot()) spectatorList.add(player);
                     if(isGameOver()) {
                         throw new GameOverException();
                     }
@@ -255,7 +255,7 @@ public class Board {
 
         if(player.equals(attacker)) {
             LOGGER.log("Player " + player.getUsername() + " skipped as attacker.");
-            if(playerList.size() > 2 && !secondAttacker.getSkipped()) {
+            if(playerList.size() > 2 && secondAttacker != null && !secondAttacker.getSkipped()) {
                 if(!togglePrimaryAttacker()) throw new RuntimeException("game logic error");
                 player.setSkipped(true);
             } else if (throwingIn) {
