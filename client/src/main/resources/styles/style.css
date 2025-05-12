@@ -41,10 +41,15 @@
             dropshadow(gaussian, #60239F, 3, 1, 1, 1); /* Bottom-right shadow */
 }
 
-#logo {
+.logo {
     -fx-pref-width: 470px;
     -fx-pref-height: 435px;
-    -fx-background-image: url('../textures/logo/logo.png');
+}
+
+.logoexit {
+    -fx-translate-y: -50px;
+    -fx-pref-width: 70px;
+    -fx-pref-height: 35px;
 }
 
 #subtext {
@@ -199,10 +204,7 @@
 
 /*QuitGameScreen*/
 #QuitGameBox {
-    -fx-min-width: 581px;
-    -fx-min-height: 100px;
-    -fx-margin: 0;
-    -fx-background-color: #0F042C;
+    -fx-background-color: linear-gradient(to right top, #B81FA1, #0F042C, #0F042C, #0F042C, #4E34C1);
 }
 
 #quitGame {
