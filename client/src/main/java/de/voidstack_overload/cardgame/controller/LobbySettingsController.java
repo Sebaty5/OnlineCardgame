@@ -23,6 +23,16 @@ public class LobbySettingsController extends BaseController {
     @FXML
     private Slider botAmount;
 
+    @FXML
+    public void initialize() {
+        maxPlayers.valueProperty().addListener((obs, oldV, newV) -> {
+            botAmount.setMax(newV.doubleValue() - 1);
+            if (botAmount.getValue() > newV.doubleValue()) {
+                botAmount.setValue(newV.doubleValue());
+            }
+        });
+    }
+
     public void createLobby() {
         String name = lobbyName.getText();
         String password = lobbyPassword.getText();
