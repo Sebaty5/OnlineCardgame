@@ -4,13 +4,13 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="QuitGameBox" prefHeight="1080" prefWidth="1920" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.voidstack_overload.cardgame.controller.QuitGameScreenController">
+<BorderPane fx:id="QuitGameBox" styleClass="QuitGameBox" prefHeight="1080" prefWidth="1920" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.voidstack_overload.cardgame.controller.QuitGameScreenController">
     <center>
-        <VBox fx:id="quitGame" alignment="CENTER" spacing="35.0" maxWidth="1200" maxHeight="400">
-            <Label fx:id="quitGameText"  text="Are you sure you want to quit the Game?" />
+        <VBox fx:id="quitGame" styleClass="quitGame" alignment="CENTER" spacing="35.0" maxWidth="1200" maxHeight="400">
+            <Label fx:id="quitGameText" styleClass="quitGameText"  text="Are you sure you want to quit the Game?" />
             <TilePane alignment="CENTER" hgap="20">
-                <Button fx:id="quitGameButton" onAction="#quitGame" text="Yes" />
-                <Button fx:id="dontQuitGameButton" onAction="#switchToMenu" text="No" />
+                <Button fx:id="quitGameButton" styleClass="quitGameButton" onAction="#quitGame" text="Yes" />
+                <Button fx:id="dontQuitGameButton" styleClass="quitGameButton" onAction="#switchToMenu" text="No" />
             </TilePane>
         </VBox>
     </center>
