@@ -5,13 +5,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane hgap="50" stylesheets="@styles/style.css" styleClass="background"
+<GridPane hgap="200" alignment="CENTER" stylesheets="@styles/style.css" styleClass="background"
           prefWidth="1920" prefHeight="1080"
           xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.voidstack_overload.cardgame.controller.LobbySettingsController">
 
     <VBox alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="0">
         <HBox spacing="15">
-            <Region/>
             <Button styleClass="backButton" text="&lt;" onAction="#switchToProfile"/>
             <VBox fx:id="menuPanel" styleClass="menuPanel" alignment="CENTER" spacing="15">
                 <Text fx:id="menuPanelHeader" text="  Lobby&#10;Settings"/>
@@ -27,12 +26,9 @@
                 </HBox>
                 <Slider fx:id="botAmount" blockIncrement="1" majorTickUnit="1" max="5" min="0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" styleClass="panelSlider" value="0" />
                 <Button mnemonicParsing="false" styleClass="normalButton" text="create lobby" onAction="#createLobby"/>
-                <Region />
             </VBox>
-            <Region />
         </HBox>
     </VBox>
-
     <VBox GridPane.columnIndex="1" GridPane.rowIndex="0">
         <ImageView pickOnBounds="true" preserveRatio="true">
             <image>
@@ -40,13 +36,5 @@
             </image>
         </ImageView>
     </VBox>
-   <columnConstraints>
-      <ColumnConstraints />
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-   </rowConstraints>
-
 </GridPane>
 
