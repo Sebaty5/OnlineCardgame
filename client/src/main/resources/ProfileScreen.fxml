@@ -1,39 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane hgap="50" stylesheets="@styles/style.css" styleClass="background3"
-          prefWidth="1920" prefHeight="1080"
-          xmlns="http://javafx.com/javafx/11.0.1"
-          xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="de.voidstack_overload.cardgame.controller.ProfileScreenController" alignment="CENTER"
-          maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+<GridPane alignment="CENTER" hgap="200" prefHeight="1080" prefWidth="1920" styleClass="background" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.voidstack_overload.cardgame.controller.ProfileScreenController">
 
-    <VBox fx:id="hostPanel" spacing="15" alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="1">
-        <Button styleClass="normalButton" mnemonicParsing="false" text="Host" onAction="#switchToLobbySettings"/>
-        <Button styleClass="normalButton" mnemonicParsing="false" text="Join" onAction="#switchToLobbyList"/>
+    <VBox  alignment="CENTER"  GridPane.columnIndex="0" GridPane.rowIndex="0" >
+        <HBox spacing="15">
+            <Button styleClass="backButton" text="&lt;" visible="false" />
+            <VBox fx:id="profilePanel" spacing="15" alignment="CENTER">
+                <Label fx:id="profilePaneltext" text="Profile" />
+                <TextField fx:id="profileText" editable="false" text="Username" />
+                <Button mnemonicParsing="false" onAction="#switchToMainMenuAndLogout" styleClass="secondaryButton" text="Log out" />
+                <Button mnemonicParsing="false" styleClass="secondaryButton" text="Settings" />
+            </VBox>
+        </HBox>
     </VBox>
-    <VBox fx:id="profilePanel" spacing="15" alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="2">
-        <Region/>
-        <Label fx:id="profilePaneltext" text="Profile"/>
-        <Label fx:id="profilePanellogin" text="Logged in as:"/>
-        <TextField fx:id="profileText" editable="false" text="Username"/>
-        <Button styleClass="normalButton" mnemonicParsing="false" text="Log out" onAction="#switchToMainMenuAndLogout"/>
-        <Region/>
-    </VBox>
-    <VBox GridPane.rowIndex="0" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
-        <Region/>
-        <Button styleClass="einstllBtn" mnemonicParsing="false">
-            <graphic>
-                <ImageView>
-                    <image>
-                        <Image url="@textures/icons/settingIcon.png"/>
-                    </image>
-                </ImageView>
-            </graphic>
-        </Button>
+    <VBox fx:id="hostPanel" styleClass="hostPanel" alignment="CENTER" spacing="15" GridPane.columnIndex="1" GridPane.rowIndex="0">
+        <Button mnemonicParsing="false" onAction="#switchToLobbySettings" styleClass="normalButton" text="Host" />
+        <Button mnemonicParsing="false" onAction="#switchToLobbyList" styleClass="normalButton" text="Join" />
     </VBox>
 </GridPane>

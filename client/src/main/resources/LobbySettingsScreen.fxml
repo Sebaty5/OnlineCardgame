@@ -13,7 +13,7 @@
         <HBox spacing="15">
             <Region/>
             <Button styleClass="backButton" text="&lt;" onAction="#switchToProfile"/>
-            <VBox fx:id="menuPanel" alignment="CENTER" spacing="15">
+            <VBox fx:id="menuPanel" styleClass="menuPanel" alignment="CENTER" spacing="15">
                 <Text fx:id="menuPanelHeader" text="  Lobby&#10;Settings"/>
                 <TextField fx:id="lobbyName" styleClass="inputField" promptText="Lobby Name"/>
                 <PasswordField fx:id="lobbyPassword" styleClass="inputField" promptText="Lobby Password"/>
