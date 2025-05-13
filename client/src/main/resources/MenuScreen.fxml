@@ -11,14 +11,17 @@
           fx:controller="de.voidstack_overload.cardgame.controller.MenuController" alignment="CENTER">
 
     <VBox alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="0">
-        <VBox fx:id="menuPanel" spacing="15">
-            <Region/>
-            <Button styleClass="normalButton" mnemonicParsing="false" text="Play" onAction="#switchToLogin"/>
-            <Button styleClass="normalButton" mnemonicParsing="false" text="Settings" onAction="#switchToSettings"/>
-            <Button styleClass="normalButton" mnemonicParsing="false" text="Credits" onAction="#switchToCredits"/>
-            <Button styleClass="normalButton" mnemonicParsing="false" text="Quit" onAction="#switchToQuitGame"/>
-            <Region/>
-        </VBox>
+        <HBox spacing="15">
+            <Button styleClass="backButton" text="&lt;" visible="false" />
+            <VBox fx:id="menuPanel" spacing="15">
+                <Region/>
+                <Button styleClass="normalButton" mnemonicParsing="false" text="Play" onAction="#switchToLogin"/>
+                <Button styleClass="normalButton" mnemonicParsing="false" text="Settings" onAction="#switchToSettings"/>
+                <Button styleClass="normalButton" mnemonicParsing="false" text="Credits" onAction="#switchToCredits"/>
+                <Button styleClass="normalButton" mnemonicParsing="false" text="Quit" onAction="#switchToQuitGame"/>
+                <Region/>
+            </VBox>
+        </HBox>
     </VBox>
 
     <VBox GridPane.rowIndex="0" GridPane.columnIndex="1">

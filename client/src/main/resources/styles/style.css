@@ -42,7 +42,7 @@
 .startButton:pressed {
     -fx-background-color: #09021B;
     -fx-background-radius: 24px;
-    -fx-effect: innershadow(gaussian, #FFD3FF, 30, 0, 1, 1);
+    -fx-effect: innershadow(gaussian, #E1BCE1, 30, 0, 1, 1);
 }
 
 .startButton .text {

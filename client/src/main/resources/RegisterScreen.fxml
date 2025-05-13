@@ -6,14 +6,13 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.text.Text?>
 
-<GridPane hgap="50" stylesheets="@styles/style.css" styleClass="background"
+<GridPane hgap="200" stylesheets="@styles/style.css" styleClass="background"
           prefWidth="1920" prefHeight="1080"
           xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="de.voidstack_overload.cardgame.controller.RegisterController">
+          fx:controller="de.voidstack_overload.cardgame.controller.RegisterController" alignment="CENTER">
 
     <VBox alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="0">
         <HBox spacing="15">
-            <Region/>
             <Button styleClass="backButton" text="&lt;" onAction="#switchToLogin"/>
             <VBox alignment="CENTER" fx:id="menuPanel" spacing="15">
                 <Text fx:id="menuPanelHeader" text="Register"/>
@@ -21,10 +20,9 @@
                 <TextField fx:id="email" styleClass="inputField" promptText="Email"/>
                 <TextField fx:id="username" styleClass="inputField" promptText="Username"/>
                 <PasswordField fx:id="password" styleClass="inputField" promptText="Password"/>
-                <Button styleClass="normalButton" mnemonicParsing="false" text="Submit" onAction="#confirmRegistration"/>
+                <Button styleClass="normalButton" mnemonicParsing="false" text="Register" onAction="#confirmRegistration"/>
                 <Region/>
             </VBox>
-            <Region/>
         </HBox>
     </VBox>
 
