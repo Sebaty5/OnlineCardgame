@@ -14,13 +14,12 @@
     <VBox alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="0">
         <HBox spacing="15">
             <Button styleClass="backButton" text="&lt;" onAction="#switchToMainMenu"/>
-            <VBox alignment="CENTER" fx:id="menuPanel" spacing="15">
+            <VBox alignment="CENTER" fx:id="menuPanel" styleClass="menuPanel" spacing="15">
                 <Text fx:id="menuPanelHeader" text="Login"/>
                 <TextField fx:id="username" styleClass="inputField" promptText="Username"/>
                 <PasswordField fx:id="password" styleClass="inputField" promptText="Password"/>
                 <Button styleClass="normalButton" mnemonicParsing="false" text="Log in" onAction="#confirmLogin"/>
-                <Button styleClass="normalButton" mnemonicParsing="false" text="Register" onAction="#switchToRegistration"/>
-                <Region/>
+                <Button styleClass="secondaryButton" mnemonicParsing="false" text="Register" onAction="#switchToRegistration"/>
             </VBox>
         </HBox>
     </VBox>

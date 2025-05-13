@@ -8,16 +8,15 @@
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
 
-<GridPane hgap="50" stylesheets="@styles/style.css" styleClass="background"
+<GridPane hgap="200" stylesheets="@styles/style.css" styleClass="background"
           prefWidth="1920" prefHeight="1080"
           xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="de.voidstack_overload.cardgame.controller.SettingsController">
+          fx:controller="de.voidstack_overload.cardgame.controller.SettingsController" alignment="CENTER">
 
     <VBox alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="0">
         <HBox spacing="15">
-            <Region/>
             <Button styleClass="backButton" text="&lt;" onAction="#switchToMenu"/>
-            <VBox alignment="CENTER" fx:id="menuPanel" spacing="15">
+            <VBox alignment="CENTER" fx:id="menuPanel" styleClass="menuPanel" spacing="15">
                 <Text fx:id="menuPanelHeader" text="Settings"/>
                 <HBox alignment="CENTER_LEFT">
                     <Text styleClass="panelText" text="Sound"/>
@@ -53,7 +52,6 @@
                 </HBox>
                 <Region/>
             </VBox>
-            <Region/>
         </HBox>
     </VBox>
 
