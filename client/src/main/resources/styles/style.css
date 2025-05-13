@@ -176,7 +176,7 @@
 
 
 .info{
-    -fx-font-size: 13px;
+    -fx-font-size: 15px;
     -fx-fill: #FFD3FF;
 }
 
@@ -243,23 +243,19 @@
 }
 
 .quitGame {
-    -fx-padding: 50px;
+    -fx-padding: 20px;
     -fx-width: 100px;
     -fx-height: 200px;
     -fx-min-width: 400px;
     -fx-min-height: 300px;
-    -fx-border-radius: 30px;
-    -fx-border-width: 6px;
     -fx-font-family: 'Orbitron';
     -fx-font-size: 40px;
+    -fx-border-width: 2px;
+    -fx-border-radius: 24px;
+    -fx-border-color: #FFD3FF;
     -fx-text-alignment: center;
-    -fx-background-color: #000000;
+    -fx-background-color: rgb(15, 4, 44, 0.85);
     -fx-background-radius: 24px;
-    -fx-effect:
-            dropshadow(gaussian, #FFD3FF, 13, 0, -1, -1), /* Top-left shadow */
-            dropshadow(gaussian, #FFD3FF, 13, 0, 1, -1), /* Top-right shadow */
-            dropshadow(gaussian, #FFD3FF, 13, 0, -1, 1), /* Bottom-left shadow */
-            dropshadow(gaussian, #FFD3FF, 13, 0, 1, 1); /* Bottom-right shadow */
 }
 
 .quitGameText {
@@ -614,14 +610,13 @@ Region {
 
 /* === DIALOGS =================================================== */
 .dialog-pane {
-    -fx-background-color: rgb(0, 0, 0, 0.98), transparent, transparent, transparent;
+    -fx-background-color: rgb(15, 4, 44, 0.85);
     -fx-background-radius: 24px;
-    -fx-border-color: #FFB9FF;
-    -fx-border-width: 3;
-    -fx-border-radius: 24;
-    -fx-text-fill: #FFFFFF;
-    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
-    -fx-padding: 36 50;
+    -fx-border-color: #FFD3FF;
+    -fx-border-radius: 24px;
+    -fx-border-width: 1px;
+    -fx-padding: 20px;
+
 }
 
 .neon-btn {
