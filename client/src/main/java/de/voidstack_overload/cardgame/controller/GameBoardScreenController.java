@@ -162,7 +162,7 @@ public class GameBoardScreenController extends BaseController
             // Spade
             case 3 -> trumpColorImage.setImage(RessourceService.getImage(RessourceService.ImageKey.SPADE_GLOW_SYMBOL));
             // No Color
-            default -> trumpColorImage.setImage(RessourceService.getImage(RessourceService.ImageKey.EMPTY_IMAGE));
+            default -> trumpColorImage.setImage(RessourceService.getImage(RessourceService.ImageKey.CLUB_GLOW_SYMBOL));
         }
     }
 

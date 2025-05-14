@@ -20,6 +20,7 @@
 <?import de.voidstack_overload.cardgame.fxNodes.HandPane?>
 <?import de.voidstack_overload.cardgame.fxNodes.CardStackPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.text.Font?>
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
             prefWidth="1920" prefHeight="1080"
             fx:id="root"
@@ -28,22 +29,22 @@
 
     <top>
         <AnchorPane minHeight="80" prefHeight="100">
-            <HBox spacing="28" AnchorPane.rightAnchor="40" AnchorPane.topAnchor="16">
+            <HBox spacing="20" AnchorPane.rightAnchor="40" AnchorPane.topAnchor="16">
                 <Button fx:id="settingsButton"
                         text="Settings"
                         onAction="#openSettings"
-                        styleClass="normalButton"/>
+                        styleClass="mainGameButton"/>
                 <Button fx:id="leaveButton"
                         text="Leave"
                         onAction="#lobbyLeave"
-                        styleClass="normalButton"/>
+                        styleClass="mainGameButton"/>
             </HBox>
         </AnchorPane>
     </top>
 
     <!-- ═════════════ LEFT COLUMN ─ score + stacks ════════════════ -->
     <left>
-        <VBox fx:id="leftPane" spacing="12" alignment="TOP_CENTER" BorderPane.alignment="CENTER" prefWidth="100" prefHeight="Infinity">
+        <VBox fx:id="leftPane" spacing="12" alignment="CENTER" BorderPane.alignment="TOP_CENTER" prefWidth="100" prefHeight="Infinity">
             <padding><Insets top="40" right="20" bottom="0" left="40"/></padding>
 
             <FlowPane alignment="CENTER">
@@ -52,7 +53,9 @@
                     <ImageView fx:id="cardStack" fitWidth="182" preserveRatio="true">
                     </ImageView>
                 </StackPane>
-                <Label fx:id="cardStackLabel" text="42" styleClass="stackLabel"/>
+                <Label fx:id="cardStackLabel" text="42" styleClass="stackLabel"><font>
+                    <Font size="20.0" />
+                </font></Label>
             </FlowPane>
         </VBox>
     </left>
@@ -115,12 +118,11 @@
 
     <!-- ═════════════ RIGHT PANEL ─ lobby + chat ═════════════════ -->
     <right>
-        <VBox fx:id="lobbyInfoPane" spacing="24" prefWidth="360" BorderPane.alignment="CENTER" styleClass="playerList">
+        <VBox BorderPane.alignment="TOP_CENTER">
             <padding><Insets top="40" right="40" bottom="40" left="40"/></padding>
-            <VBox>
+            <VBox fx:id="lobbyInfoPane" spacing="20" styleClass="playerList" prefWidth="360" >
                 <!-- header -->
                 <Label fx:id="LobbyInfoLabel" text="Waiting 1/6" styleClass="panelHeader"/>
-                <Label text="SPACER" style="-fx-text-fill: transparent"/>
 
                 <GridPane prefWidth="300" fx:id="playerList" styleClass="list-area">
                     <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
@@ -147,7 +149,6 @@
                 <TextField fx:id="chatTextInputField" promptText="Write something…" onAction="#checkButtonAvailability" styleClass="chatSendField"/>
                 <Button fx:id="sendText" text="Send" onAction="#sendChatMessage" styleClass="chatSendButton"/>
             </VBox>
-
         </VBox>
     </right>
 
