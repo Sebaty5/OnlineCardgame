@@ -9,17 +9,14 @@
     <VBox alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="0">
         <HBox spacing="15">
             <Button styleClass="backButton" text="&lt;" visible="false" />
-            <VBox fx:id="menuPanel" spacing="15" styleClass="menuPanel">
-
+            <VBox fx:id="menuPanel" spacing="15" styleClass="menuPanel" alignment="CENTER">
                 <Button mnemonicParsing="false" onAction="#switchToLogin" styleClass="normalButton" text="Play" />
                 <Button mnemonicParsing="false" onAction="#switchToSettings" styleClass="secondaryButton" text="Settings" />
                 <Button mnemonicParsing="false" onAction="#switchToCredits" styleClass="secondaryButton" text="Credits" />
                 <Button mnemonicParsing="false" onAction="#switchToQuitGame" styleClass="secondaryButton" text="Quit" />
-
             </VBox>
         </HBox>
     </VBox>
-
     <VBox GridPane.columnIndex="1" GridPane.rowIndex="0">
         <ImageView fx:id="logo" pickOnBounds="true" preserveRatio="true" >
             <image>
