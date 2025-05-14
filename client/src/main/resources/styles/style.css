@@ -30,10 +30,11 @@
     -fx-translate-y: -150px;
     -fx-background-insets: 6px;
     -fx-wrap-text: true;
+    -fx-cursor: hand;
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
 }
 
-.startButton:hover, .backButton:hover   {
+.startButton:hover, .backButton:hover {
     -fx-background-color: #130539;
     -fx-background-radius: 24px;
     -fx-effect: innershadow(gaussian, #FFD3FF, 20, 0, 1, 1);
@@ -93,6 +94,7 @@
     -fx-background-radius: 24px;
     -fx-background-insets: 6px;
     -fx-wrap-text: true;
+    -fx-cursor: hand;
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
 }
 
@@ -119,6 +121,7 @@
     -fx-background-radius: 24px;
     -fx-background-insets: 6px;
     -fx-wrap-text: true;
+    -fx-cursor: hand;
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
 }
 
@@ -135,18 +138,19 @@
     -fx-background-radius: 24px;
     -fx-background-insets: 6px;
     -fx-wrap-text: true;
+    -fx-cursor: hand;
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
 }
 
 
-.normalButton:hover, .secondaryButton:hover, .backButton:hover {
+.normalButton:hover, .secondaryButton:hover, .mainGameButton:hover, .chatSendButton:hover {
     -fx-background-color: #332557;
     -fx-background-radius: 24px;
     -fx-text-fill: #FFD3FF;
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
 }
 
-.normalButton:pressed, .secondaryButton:pressed, .backButton:pressed {
+.normalButton:pressed, .secondaryButton:pressed, .mainGameButton:pressed, .chatSendButton:pressed {
     -fx-background-color: #231449;
     -fx-background-radius: 24px;
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
@@ -258,31 +262,6 @@
     -fx-background-radius: 24px;
 }
 
-.quitGameText {
-    -fx-text-fill: #FFFFFF;
-}
-
-.quitGameButton{
-    -fx-min-width: 446px;
-    -fx-min-height: 82px;
-    -fx-margin: 100px;
-    -fx-border-radius: 30px;
-    -fx-background-radius: 30px;
-    -fx-background-color: #0F042C;
-    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
-}
-
-.quitGameButton:hover   {
-    -fx-background-color: #332557;
-    -fx-background-radius: 30px;
-    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
-}
-.quitGameButton:pressed {
-    -fx-background-color: #231449;
-    -fx-background-radius: 30px;
-    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
-}
-
 #cornerTop {
     -fx-translate-y: 25px;
     -fx-translate-x: 25px;
@@ -371,28 +350,6 @@ Region {
     -fx-alignment: center;
 }
 
-.einstllBtn {
-    -fx-pref-width: 60px;
-    -fx-pref-height: 60px;
-    -fx-border-radius: 24px;
-    -fx-border-width: 2px;
-    -fx-translate-x: 50px;
-    -fx-font-family: 'Orbitron';
-    -fx-font-size: 40px;
-    -fx-text-fill: #FFD3FF;
-    -fx-text-alignment: center;
-    -fx-background-color: #0F042C;
-    -fx-background-radius: 24px;
-    -fx-border-color: #FFD3FF;
-    -fx-background-insets: 6px;
-    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
-}
-
-.einstllBtn ImageView {
-    -fx-fit-width: 30px;
-    -fx-fit-height: 30px;
-}
-
 .lobby {
     -fx-background-color: rgb(0, 0, 0, 0.4);
     -fx-padding: 20px;
@@ -407,23 +364,9 @@ Region {
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
     -fx-background-color: #0F042C;
+    -fx-cursor: hand;
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
 }
-
-/*.backButton2 {
-    -fx-min-width: 83px;
-    -fx-min-height: 83px;
-    -fx-border-radius: 24px;
-    -fx-border-width: 6px;
-    -fx-font-family: 'Orbitron';
-    -fx-font-size: 40px;
-    -fx-text-alignment: center;
-    -fx-background-color: #0F042C;
-    -fx-background-radius: 24px;
-    -fx-background-insets: 6px;
-    -fx-wrap-text: true;
-    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
-}*/
 
 .panelText {
     -fx-font-size: 34px;
@@ -605,6 +548,7 @@ Region {
     -fx-background-radius: 24px;
     -fx-background-insets: 6px;
     -fx-wrap-text: true;
+    -fx-cursor: hand;
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
 }
 
@@ -630,6 +574,7 @@ Region {
     -fx-border-radius: 24px;
     -fx-background-color: #0F042C;
     -fx-text-fill: #FFD3FF;
+    -fx-cursor: hand;
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
     -fx-padding: 4 28;
 }
@@ -665,6 +610,7 @@ Region {
     -fx-background-radius: 24px;
     -fx-background-insets: 6px;
     -fx-wrap-text: true;
+    -fx-cursor: hand;
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
 }
 
@@ -703,6 +649,7 @@ Region {
     -fx-background-radius: 24px;
     -fx-background-insets: 6px;
     -fx-wrap-text: true;
+    -fx-cursor: hand;
     -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
 }
 
@@ -710,12 +657,6 @@ Region {
     -fx-font-size: 20px;
     -fx-fill: #FFD3FF;
 }
-
-/*.button:hover {
-    -fx-background-color: #FFB0FF;
-    -fx-text-fill: #0F042C;
-    -fx-effect: innershadow(gaussian, #0F042C, 15, 0, 1, 1);
-}*/
 
 .chatPanelOutput {
     -fx-pref-width: 350px;
