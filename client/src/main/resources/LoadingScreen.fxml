@@ -11,6 +11,13 @@
             prefWidth="1920" prefHeight="1080"
             xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="de.voidstack_overload.cardgame.controller.LoadingController">
+    <top>
+        <ImageView BorderPane.alignment="CENTER_LEFT" fx:id="cornerTop" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@textures/corner.png" />
+            </image>
+        </ImageView>
+    </top>
     <center>
         <VBox alignment="CENTER" spacing="35.0">
             <Label fx:id = "loadingText" text="loading"/>
@@ -18,4 +25,11 @@
             </ProgressBar>
         </VBox>
     </center>
+    <bottom>
+        <ImageView fx:id="cornerBottom" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER_RIGHT">
+            <image>
+                <Image  url="@textures/corner.png" />
+            </image>
+        </ImageView>
+    </bottom>
 </BorderPane>

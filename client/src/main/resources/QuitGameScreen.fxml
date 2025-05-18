@@ -9,7 +9,7 @@
         <VBox fx:id="quitGame" styleClass="quitGame" alignment="CENTER" spacing="35.0" maxWidth="1200" maxHeight="400">
             <Label fx:id="quitGameText" styleClass="quitGameText"  text="Are you sure you want to quit the Game?" />
             <TilePane alignment="CENTER" hgap="20">
-                <Button fx:id="quitGameButton" styleClass="secondaryButton" onAction="#quitGame" text="Yes, quit" />
+                <Button fx:id="quitGameButton" styleClass="normalButton" onAction="#quitGame" text="Yes, quit" />
                 <Button fx:id="dontQuitGameButton" styleClass="normalButton" onAction="#switchToMenu" text="No, stay" />
             </TilePane>
         </VBox>
