@@ -8,7 +8,6 @@
 
     <VBox  alignment="CENTER"  GridPane.columnIndex="0" GridPane.rowIndex="0" >
         <HBox spacing="15">
-            <Button styleClass="backButton" text="&lt;" visible="false" />
             <VBox fx:id="hostPanel" styleClass="menuPanel" alignment="CENTER" spacing="15" >
                 <Button mnemonicParsing="false" onAction="#switchToLobbySettings" styleClass="normalButton" text="Host" />
                 <Button mnemonicParsing="false" onAction="#switchToLobbyList" styleClass="normalButton" text="Join" />
@@ -16,7 +15,9 @@
         </HBox>
     </VBox>
 
-    <VBox spacing="15" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="0">
+    <VBox spacing="15" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="menuPanel">
+        <Label fx:id="profilePaneltext" text="Profile"/>
+        <Label fx:id="profilePanellogin" text="Logged in as:"/>
         <TextField fx:id="profileText" editable="false" text="Username" />
         <Button mnemonicParsing="false" onAction="#switchToMainMenuAndLogout" styleClass="secondaryButton" text="Log out" />
     </VBox>
