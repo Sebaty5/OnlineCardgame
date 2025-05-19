@@ -54,7 +54,7 @@ public class Board {
             Executors.newSingleThreadScheduledExecutor(r ->
                     new Thread(r, "bot-logic"));
 
-    private void tryForBotAction(Player player) {
+    public void tryForBotAction(Player player) {
         if (player == null || !player.isBot()) {
             return;
         }

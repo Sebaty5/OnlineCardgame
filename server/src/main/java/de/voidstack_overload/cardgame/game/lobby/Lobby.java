@@ -143,7 +143,10 @@ public class Lobby {
         LOGGER.log("Removing player from lobby.");
         users.remove(user);
         if(isInGame) {
-            if(board.getPlayerFromUser(user) != null) board.getPlayerFromUser(user).setBot(true);
+            if(board.getPlayerFromUser(user) != null) {
+                board.getPlayerFromUser(user).setBot(true);
+                board.tryForBotAction(board.getPlayerFromUser(user));
+            }
         }
 
         isFull = false;
