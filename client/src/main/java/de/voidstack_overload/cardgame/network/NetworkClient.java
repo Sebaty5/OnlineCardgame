@@ -40,6 +40,6 @@ public class NetworkClient extends WebSocketClient {
     @Override
     public void onError(Exception e) {
         LOGGER.error("Error: " + e.getMessage());
-
+        FxUtility.showAlert("Could not connect to server.\n" + e.getMessage());
     }
 }
