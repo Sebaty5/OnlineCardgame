@@ -55,7 +55,7 @@ public class Lobby {
         return users;
     }
     public int getPlayerCount() {
-        return users.size();
+        return users.size() + bots.size();
     }
 
     private boolean isFull = false;
@@ -132,7 +132,7 @@ public class Lobby {
         users.add(user);
         LOGGER.log("Added new player to lobby.");
         broadcast("Player " + user.getUsername() + " joined lobby.");
-        if(users.size() >= maxPlayers) {
+        if(getPlayerCount() >= maxPlayers) {
             LOGGER.log("Max player count reached.");
             isFull = true;
         }
@@ -159,15 +159,16 @@ public class Lobby {
     }
 
     public boolean isEmpty() {
-        return users.isEmpty() || users.size() - botCount == 0;
+        return users.isEmpty();
     }
 
     public void startGame() {
-        if (users.size() < maxPlayers) {
+        if (getPlayerCount() < maxPlayers) {
             List<Bot> bots = new ArrayList<>();
-            for (int i = 0; i < maxPlayers - users.size(); i++) {
+            for (int i = 0; i < maxPlayers - getPlayerCount(); i++) {
                 Bot bot = new Bot(i);
                 bots.add(bot);
+                botCount += 1;
             }
             this.bots.addAll(bots);
         }
@@ -199,7 +200,7 @@ public class Lobby {
         json.add("lobbyID", this.id);
         json.add("lobbyName", this.lobbyName);
         json.add("host", this.host.getUsername());
-        json.add("currentPlayerCount", users.size());
+        json.add("currentPlayerCount", getPlayerCount());
         json.add("maxPlayerCount", maxPlayers);
         json.add("isPasswordProtected", !this.password.isEmpty());
         users.forEach(player -> {
