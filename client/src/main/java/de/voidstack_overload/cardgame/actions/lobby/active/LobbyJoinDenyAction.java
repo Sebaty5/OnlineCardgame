@@ -9,7 +9,7 @@ public class LobbyJoinDenyAction extends LobbyActiveAction {
     @Override
     public void execute(JsonObject json) {
         super.execute(json);
-        if(super.isNotExpectedResponse(OutgoingMessageType.LOBBY_JOIN)) {
+        if(super.isNotExpectedResponse(OutgoingMessageType.LOBBY_JOIN) && super.isNotExpectedResponse(OutgoingMessageType.LOBBY_LIST)) {
             resetConnection(false, OutgoingMessageType.LOBBY_JOIN);
             return;
         }
