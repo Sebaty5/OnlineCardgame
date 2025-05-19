@@ -132,6 +132,7 @@ public class Board {
                     LOGGER.log("Changing attacker due to original attacker playing their last card.");
                     attacker = secondAttacker;
                     secondAttacker = null;
+                    setActivePlayer(attacker);
                 }
                 playerList.remove(player);
                 if(!player.isBot()) spectatorList.add(player);
@@ -340,13 +341,17 @@ public class Board {
         if(!activePlayer.isBot()) {
             return;
         }
-        ArrayList<Card> possibleActions = new ArrayList<>();
+        ArrayList<Card> possibleActions;
         ArrayList<Card> botHandCards = new ArrayList<>(activePlayer.getHand());
 
         if(activePlayer == defender) {
             possibleActions = getBotDefenseActions(botHandCards);
         } else {
-            possibleActions = getBotAttackActions(botHandCards);
+            if (this.throwingIn && this.stacks[5][0] != null) {
+                possibleActions = new ArrayList<>();
+            } else {
+                possibleActions = getBotAttackActions(botHandCards);
+            }
         }
         // If no card can be played, skip instead
         if(possibleActions.isEmpty()) {
