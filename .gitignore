@@ -42,3 +42,4 @@ build/
 /server/config/
 /server/database/
 /client/config/
+/out/
