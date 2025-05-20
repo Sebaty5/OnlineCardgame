@@ -1,0 +1,767 @@
+@font-face {
+    font-family: 'Orbitron';
+    src: url('../fonts/Orbitron-Regular.ttf');
+}
+
+* {
+    -fx-margin: 0;
+    -fx-box-sizing: border-box;
+    -fx-font-family: 'Orbitron';
+    -fx-text-fill: #FFD3FF;
+}
+
+/*StartupScreen*/
+#Startup {
+    -fx-alignment: center;
+    -fx-margin: 0;
+    -fx-background-color: linear-gradient(to right top, #B81FA1, #0F042C, #0F042C, #0F042C, #4E34C1);
+}
+
+.startButton {
+    -fx-pref-width: 581px;
+    -fx-pref-height: 100px;
+    -fx-border-radius: 24px;
+    -fx-border-width: 6px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 60px;
+    -fx-text-alignment: center;
+    -fx-background-color: #0F042C;
+    -fx-background-radius: 24px;
+    -fx-translate-y: -150px;
+    -fx-background-insets: 6px;
+    -fx-wrap-text: true;
+    -fx-cursor: hand;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
+}
+
+.startButton:hover, .backButton:hover {
+    -fx-background-color: #130539;
+    -fx-background-radius: 24px;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 20, 0, 1, 1);
+}
+
+.startButton:pressed, .backButton:pressed {
+    -fx-background-color: #09021B;
+    -fx-background-radius: 24px;
+    -fx-effect: innershadow(gaussian, #E1BCE1, 25, 0, 1, 1);
+}
+
+.startButton .text {
+    -fx-fill: #FFD3FF;
+    -fx-effect:
+            dropshadow(gaussian, #60239F, 3, 1, -1, -1), /* Top-left shadow */
+            dropshadow(gaussian, #60239F, 3, 1, 1, -1), /* Top-right shadow */
+            dropshadow(gaussian, #60239F, 3, 1, -1, 1), /* Bottom-left shadow */
+            dropshadow(gaussian, #60239F, 3, 1, 1, 1); /* Bottom-right shadow */
+}
+
+.logo {
+    -fx-pref-width: 470px;
+    -fx-pref-height: 435px;
+}
+
+.logoexit {
+    -fx-translate-y: -50px;
+    -fx-pref-width: 70px;
+    -fx-pref-height: 35px;
+}
+
+#subtext {
+    -fx-font-size: 35px;
+    -fx-text-alignment: center;
+    -fx-fill: #FFFFFF;
+}
+
+.header {
+    -fx-alignment: center;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 100px;
+    -fx-font-weight: bold;
+    -fx-fill: #0F042C; /* Fill color */
+    -fx-stroke: #FFD3FF; /* Border color */
+    -fx-stroke-width: 2px;
+}
+
+.backButton {
+    -fx-min-width: 83px;
+    -fx-min-height: 83px;
+    -fx-border-radius: 24px;
+    -fx-border-width: 6px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 40px;
+    -fx-text-alignment: center;
+    -fx-background-color: #1E172E;
+    -fx-background-radius: 24px;
+    -fx-background-insets: 6px;
+    -fx-wrap-text: true;
+    -fx-cursor: hand;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
+}
+
+.backButton .text {
+    -fx-effect:
+            dropshadow(gaussian, #60239F, 3, 1, -1, -1),/* Top-left shadow */
+            dropshadow(gaussian, #60239F, 3, 1, 1, -1), /* Top-right shadow */
+            dropshadow(gaussian, #60239F, 3, 1, -1, 1), /* Bottom-left shadow */
+            dropshadow(gaussian, #60239F, 3, 1, 1, 1);  /* Bottom-right shadow */
+}
+
+
+
+.normalButton {
+    -fx-pref-width: 350px;
+    -fx-min-width: 350px;
+    -fx-pref-height: 80px;
+    -fx-min-height: 80px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 40px;
+    -fx-text-fill: #FFD3FF;
+    -fx-text-alignment: center;
+    -fx-background-color: #0F042C;
+    -fx-background-radius: 24px;
+    -fx-background-insets: 6px;
+    -fx-wrap-text: true;
+    -fx-cursor: hand;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
+}
+
+.secondaryButton {
+    -fx-pref-width: 325px;
+    -fx-min-width: 325px;
+    -fx-pref-height: 75px;
+    -fx-min-height: 75px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 35px;
+    -fx-text-fill: #E0BCE0;
+    -fx-text-alignment: center;
+    -fx-background-color: #231B38;
+    -fx-background-radius: 24px;
+    -fx-background-insets: 6px;
+    -fx-wrap-text: true;
+    -fx-cursor: hand;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
+}
+
+
+.normalButton:hover, .secondaryButton:hover, .mainGameButton:hover, .chatSendButton:hover {
+    -fx-background-color: #332557;
+    -fx-background-radius: 24px;
+    -fx-text-fill: #FFD3FF;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
+}
+
+.normalButton:pressed, .secondaryButton:pressed, .mainGameButton:pressed, .chatSendButton:pressed {
+    -fx-background-color: #231449;
+    -fx-background-radius: 24px;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
+}
+
+.inputField {
+    -fx-pref-width: 350px;
+    -fx-min-width: 350px;
+    -fx-pref-height: 80px;
+    -fx-min-height: 80px;
+    -fx-border-radius: 24px;
+    -fx-border-width: 3px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 34px;
+    -fx-text-fill: #A8A8A8;
+    -fx-text-alignment: left;
+    -fx-background-color: #0F042C;
+    -fx-background-radius: 24px;
+    -fx-background-insets: 6px;
+    -fx-wrap-text: true;
+    -fx-border-color: #FFD3FF;
+}
+
+.inputField:hover {
+    -fx-border-color: #FFC0F0;
+}
+
+
+.info{
+    -fx-font-size: 15px;
+    -fx-fill: #FFD3FF;
+}
+
+#loadingBar {
+    -fx-pref-width: 600px;
+    -fx-pref-height: 40px;
+    -fx-fill: #0F042C; /* Fill color */
+    -fx-border-color: #FFD3FF;
+    -fx-border-width: 3px;
+    -fx-effect:
+            dropshadow(gaussian, #60239F, 3, 1, -1, -1), /* Top-left shadow */
+            dropshadow(gaussian, #60239F, 3, 1, 1, -1), /* Top-right shadow */
+            dropshadow(gaussian, #60239F, 3, 1, -1, 1), /* Bottom-left shadow */
+            dropshadow(gaussian, #60239F, 3, 1, 1, 1); /* Bottom-right shadow */
+}
+
+#loadingText {
+    -fx-font-size: 40px;
+    -fx-text-fill: #FFFFFF;
+}
+
+#box {
+    -fx-pref-height: 700px;
+    -fx-pref-width: 400px;
+    -fx-padding: 50px;
+    -fx-width: 100px;
+    -fx-height: 200px;
+    -fx-min-width: 400px;
+    -fx-min-height: 300px;
+    -fx-border-radius: 30px;
+    -fx-border-width: 6px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 40px;
+    -fx-text-fill: #FFFFFF;
+    -fx-text-alignment: center;
+    -fx-background-color: #000000;
+    -fx-background-radius: 24px;
+    -fx-effect:
+            dropshadow(gaussian, #FFD3FF, 13, 0, -1, -1), /* Top-left shadow */
+            dropshadow(gaussian, #FFD3FF, 13, 0, 1, -1), /* Top-right shadow */
+            dropshadow(gaussian, #FFD3FF, 13, 0, -1, 1), /* Bottom-left shadow */
+            dropshadow(gaussian, #FFD3FF, 13, 0, 1, 1); /* Bottom-right shadow */
+}
+
+.background {
+    -fx-background-color: linear-gradient(to right top, #B81FA1, #0F042C, #0F042C, #0F042C, #4E34C1);
+}
+
+.background2 {
+    -fx-background-color: #0F042C;
+}
+
+.background3 {
+    -fx-background-color: linear-gradient(to right top, #B81FA1, #0F042C, #0F042C, #0F042C, #4E34C1);
+    -fx-background-image: url('../textures/vector2.png');
+    -fx-background-size: 100% 120%; /* Adjust the size of the background image */
+    -fx-background-repeat: no-repeat; /* Prevent the image from repeating */
+    -fx-background-position: center; /* Center the image */
+}
+
+/*QuitGameScreen*/
+.QuitGameBox {
+    -fx-background-color: linear-gradient(to right top, #B81FA1, #0F042C, #0F042C, #0F042C, #4E34C1);
+}
+
+.quitGame {
+    -fx-padding: 20px;
+    -fx-width: 100px;
+    -fx-height: 200px;
+    -fx-min-width: 400px;
+    -fx-min-height: 300px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 40px;
+    -fx-border-width: 2px;
+    -fx-border-radius: 24px;
+    -fx-border-color: #FFD3FF;
+    -fx-text-alignment: center;
+    -fx-background-color: rgb(15, 4, 44, 0.85);
+    -fx-background-radius: 24px;
+}
+
+#cornerTop {
+    -fx-translate-y: 25px;
+    -fx-translate-x: 25px;
+    -fx-rotate: 180deg;
+}
+
+#cornerBottom {
+    -fx-translate-y: -25px;
+    -fx-translate-x: -25px;
+}
+
+.rounded-progress {
+    -fx-background-radius: 24px;
+    -fx-border-radius: 24px;
+    -fx-padding: 2px;
+}
+
+.rounded-progress .track {
+    -fx-background-radius: 24px;
+    -fx-background-color: #0F042C;
+}
+
+.rounded-progress .bar {
+    -fx-background-radius: 24px;
+    -fx-background-color: #FFD3FF;
+}
+
+.menuPanel {
+    -fx-background-color: rgb(15, 4, 44, 0.6);
+    -fx-background-radius: 24px;
+    -fx-border-color: #FFD3FF;
+    -fx-border-radius: 24px;
+    -fx-border-width: 1px;
+    -fx-padding: 20px;
+}
+
+#menuPanelHeader {
+    -fx-alignment: center;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 60px;
+    -fx-font-weight: bold;
+    -fx-fill: #0F042C; /* Fill color */
+    -fx-stroke: #FFD3FF; /* Border color */
+    -fx-stroke-width: 2px;
+}
+
+Region {
+    -fx-min-height: 20px;
+}
+
+/*Profile*/
+#profilePaneltext {
+    -fx-alignment: center;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 60px;
+    -fx-font-weight: bold;
+    -fx-fill: #0F042C; /* Fill color */
+    -fx-stroke: #FFD3FF; /* Border color */
+    -fx-stroke-width: 2px;
+}
+
+#profilePanellogin {
+    -fx-font-size: 20px;
+}
+
+.hostPanel {
+    -fx-background-color: rgb(0, 0, 0, 0.8);
+    -fx-background-radius: 24px;
+    -fx-padding: 20px;
+    -fx-border-color: #FFD3FF;
+    -fx-border-radius: 24px;
+    -fx-border-width: 1px;
+}
+
+#profileText {
+    -fx-pref-width: 350px;
+    -fx-pref-height: 60px;
+    -fx-border-radius: 24px;
+    -fx-font-size: 40px;
+    -fx-text-fill: #FFD3FF;
+    -fx-text-alignment: left;
+    -fx-background-color: #231B38;
+    -fx-background-radius: 24px;
+    -fx-background-insets: 6px;
+    -fx-wrap-text: true;
+    -fx-alignment: center;
+}
+
+.lobby {
+    -fx-background-color: rgb(0, 0, 0, 0.4);
+    -fx-padding: 20px;
+    -fx-border-color: #FFD3FF;
+    -fx-text-fill: white;
+}
+
+.joinButton {
+    -fx-min-width: 100px;
+    -fx-min-height: 22px;
+    -fx-margin: 20px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-background-color: #0F042C;
+    -fx-cursor: hand;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
+}
+
+.panelText {
+    -fx-font-size: 34px;
+    -fx-fill: #FFD3FF;
+}
+
+.slider .track {
+    -fx-background-color: #0F042C;
+    -fx-pref-height: 40px;
+    -fx-border-radius: 20px;
+    -fx-border-width: 3px;
+    -fx-border-color: #FFD3FF;
+}
+
+.slider .thumb {
+    -fx-background-color: #FFD3FF;
+    -fx-pref-width: 25px;
+    -fx-pref-height: 25px;
+    -fx-border-radius: 20px;
+}
+
+.slider .tick-mark {
+    -fx-font-size: 20px;
+    -fx-fill: #FFD3FF;
+}
+
+.choice-box {
+    -fx-pref-width: 350px;
+    -fx-min-width: 350px;
+    -fx-pref-height: 60px;
+    -fx-min-height: 60px;
+    -fx-background-color: #0F042C;
+    -fx-fill: #FFD3FF;
+    -fx-border-width: 3px;
+    -fx-border-radius: 20px;
+    -fx-border-color: #FFD3FF;
+    -fx-background-radius: 20px;
+    -fx-font-size: 24px;
+}
+
+.choice-box .menu-item {
+    -fx-background-color: #0F042C;
+    -fx-text-fill: #FFD3FF;
+    -fx-border-color: #FFD3FF;
+    -fx-pref-width: 350px;
+    -fx-pref-height: 60px;
+    -fx-font-size: 24px;
+}
+
+.choice-box .menu-item:focused {
+    -fx-background-color: #5d26ab;
+}
+
+.choice-box .context-menu {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.check-box {
+    -fx-pref-height: 60px;
+    -fx-pref-width: 60px;
+    -fx-background-color: #0F042C;
+    -fx-text-fill: #FFD3FF;
+    -fx-border-color: #FFD3FF;
+    -fx-border-width: 3px;
+    -fx-border-radius: 20px;
+    -fx-font-size: 20px;
+    -fx-background-radius: 20px;
+}
+
+.check-box .box {
+    -fx-background-color: transparent;
+    -fx-pref-height: 60px;
+    -fx-pref-width: 60px;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #FFD3FF;
+}
+
+/* === LISTVIEW ===================================================== */
+.list-view {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.list-view .scroll-bar:vertical .thumb {
+    -fx-background-color: #FFD3FF66;
+}
+
+/* === ROW / CARD =================================================== */
+.list-cell,
+.list-cell:hover,
+.list-cell:selected,
+.list-cell:selected:hover {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+
+
+}
+
+.listBox {
+    -fx-background-color: rgb(15, 4, 44, 0.98);
+    -fx-background-radius: 18px;
+    -fx-border-color: #FFD3FF;
+    -fx-border-width: 3px;
+    -fx-border-radius: 18px;
+    -fx-effect: innershadow(gaussian, #FFAFFA, 50, 0.2,1,1);
+}
+
+.list-grid {
+    -fx-background-color: transparent;
+    -fx-border-width: 0 0 4 0;
+    -fx-border-color: transparent transparent #FFD3FF transparent;
+    -fx-padding: 0 8 0 0;
+}
+
+.lobby {
+    -fx-background-color: rgba(255,255,255,0.07);
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+}
+
+.list-cell:empty {
+    -fx-background-color: transparent;
+}
+
+.list-area {
+    -fx-background-color: rgba(255,255,255,0.08);
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-border-width: 5;
+    -fx-border-color: #FFD3FF55;
+    -fx-effect: dropshadow(gaussian,#FFD3FF,30,0.30,0,0);
+}
+
+.list-view > .virtual-flow > .clipped-container > .sheet > .list-cell {
+    -fx-background-color: transparent;
+}
+
+.list-view .scroll-bar:vertical {
+    -fx-pref-width: 10;
+    -fx-background-color: transparent;
+}
+
+.list-view .scroll-bar:vertical .track {
+    -fx-background-color: rgba(255,255,255,0.15);
+    -fx-background-radius: 5;
+
+}
+
+.list-view .scroll-bar:vertical .thumb {
+    -fx-background-color: linear-gradient(#FFC8FF 0%, #FD74FF 100%);
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian,#FFD6FF,10,0.8,0,0);
+}
+
+.list-view .scroll-bar:vertical .increment-button,
+.list-view .scroll-bar:vertical .decrement-button {
+    -fx-opacity: 0;
+    -fx-padding: 0;
+}
+
+.list-label {
+    -fx-font-size: 2em;
+}
+
+.lobby-join-button {
+    -fx-pref-width: 40px;
+    -fx-pref-height: 20px;
+    -fx-border-radius: 24px;
+    -fx-border-width: 6px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 2em;
+    -fx-text-fill: #FFD3FF;
+    -fx-text-alignment: center;
+    -fx-background-color: #0F042C;
+    -fx-background-radius: 24px;
+    -fx-background-insets: 6px;
+    -fx-wrap-text: true;
+    -fx-cursor: hand;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
+}
+
+/* === DIALOGS =================================================== */
+.dialog-pane {
+    -fx-background-color: rgb(15, 4, 44, 0.85);
+    -fx-background-radius: 24px;
+    -fx-border-color: #FFD3FF;
+    -fx-border-radius: 24px;
+    -fx-border-width: 1px;
+    -fx-padding: 20px;
+
+}
+
+.neon-btn {
+    -fx-pref-width: 250px;
+    -fx-min-width: 250px;
+    -fx-pref-height: 50px;
+    -fx-min-height: 50px;
+    -fx-font-size: 20px;
+    -fx-border-width: 6px;
+    -fx-background-radius: 24px;
+    -fx-border-radius: 24px;
+    -fx-background-color: #0F042C;
+    -fx-text-fill: #FFD3FF;
+    -fx-cursor: hand;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
+    -fx-padding: 4 28;
+}
+
+.neon-btn:hover   {
+    -fx-background-color: #332557;
+    -fx-background-radius: 24px;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
+}
+
+.neon-btn:pressed {
+    -fx-background-color: #231449;
+    -fx-background-radius: 24px;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
+}
+
+.dialogLabel{
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 20px;
+}
+
+/* Gameboard */
+.mainGameButton {
+    -fx-pref-width: 170px;
+    -fx-min-width: 170px;
+    -fx-pref-height: 70px;
+    -fx-min-height: 70px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 20px;
+    -fx-text-fill: #E0BCE0;
+    -fx-text-alignment: center;
+    -fx-background-color: #231B38;
+    -fx-background-radius: 24px;
+    -fx-background-insets: 6px;
+    -fx-wrap-text: true;
+    -fx-cursor: hand;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
+}
+
+.cardStackSection {
+    -fx-background-color: rgb(15, 4, 44, 0.98), transparent, transparent, transparent;
+    -fx-background-radius: 18, 18, 18, 18;
+    -fx-border-color: #FFB9FF;
+    -fx-border-width: 3;
+    -fx-border-radius: 18;
+    -fx-padding: 20;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
+}
+
+.playerList {
+    -fx-min-height: 100px;
+    -fx-border-width: 1px;
+    -fx-border-radius: 24px;
+    -fx-border-color: #FFD3FF;
+    -fx-padding: 20px;
+    -fx-background-color: rgb(15, 4, 44, 0.85);
+    -fx-background-radius: 24px;
+}
+
+.chatSendButton {
+    -fx-pref-width: 120px;
+    -fx-min-width: 120px;
+    -fx-pref-height: 50px;
+    -fx-min-height: 50px;
+    -fx-border-radius: 18px;
+    -fx-border-width: 3px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 16px;
+    -fx-text-fill: #FFD3FF;
+    -fx-text-alignment: center;
+    -fx-background-color: #231B38;
+    -fx-background-radius: 24px;
+    -fx-background-insets: 6px;
+    -fx-wrap-text: true;
+    -fx-cursor: hand;
+    -fx-effect: innershadow(gaussian, #FFD3FF, 15, 0, 1, 1);
+}
+
+.panelHeader{
+    -fx-font-size: 20px;
+    -fx-fill: #FFD3FF;
+}
+
+.chatPanelOutput {
+    -fx-pref-width: 350px;
+    -fx-pref-height: 700px;
+    -fx-background-color: #231B38;
+    -fx-background-radius: 10px;
+    -fx-control-inner-background: #231B38;
+    -fx-control-inner-background-radius: 10px;
+    -fx-padding: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-width: 5px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 15px;
+    -fx-text-fill: #FFD3FF;
+    -fx-text-alignment: left;
+    -fx-background-insets: 6px;
+    -fx-wrap-text: true;
+    -fx-padding: 10px;
+}
+
+.chatSendField {
+    -fx-pref-width: 350px;
+    -fx-pref-height: 50px;
+    -fx-border-radius: 24px;
+    -fx-border-width: 1px;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 20px;
+    -fx-text-fill: #FFD3FF;
+    -fx-text-alignment: left;
+    -fx-background-color: #231B38;
+    -fx-background-radius: 24px;
+    -fx-wrap-text: true;
+    -fx-border-color: #FFD3FF;
+    -fx-padding: 10px;
+}
+
+/* 1) The outer frame */
+.player-table {
+    -fx-background-color: transparent;       /* let the parent show through */
+    -fx-border-color: #E67FFF;               /* neon-pink outline */
+    -fx-border-width: 1.5;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+/* 2) Column header bar */
+.player-table .column-header-background {
+    -fx-background-color: rgba(255,255,255,0.05);
+    -fx-border-color: transparent transparent #9FDCEE transparent;
+    -fx-border-width: 0 0 1 0;                /* subtle bottom rule */
+}
+
+/* 3) Header text */
+.player-table .column-header,
+.player-table .column-header .label {
+    -fx-font-family: "Orbitron", sans-serif;
+    -fx-font-size: 13px;
+    -fx-text-fill: #9FDCEE;                  /* icy-blue headers */
+    -fx-alignment: CENTER;
+}
+
+/* 4) Row backgrounds */
+.player-table .table-row-cell {
+    -fx-background-color: transparent;
+}
+.player-table .table-row-cell:filled:hover {
+    -fx-background-color: rgba(159,220,255,0.10);
+}
+.player-table .table-row-cell:filled:selected {
+    -fx-background-color: rgba(159,220,255,0.20);
+}
+
+/* 5) Cell text */
+.player-table .table-cell {
+    -fx-font-family: "Ubuntu Mono", monospace;
+    -fx-font-size: 12px;
+    -fx-text-fill: #F0F0F0;
+    -fx-padding: 4 8;                        /* tight padding */
+    -fx-alignment: CENTER_LEFT;
+}
+
+/* 6) “Active” dot column: center the bullet */
+.player-table .table-column > .table-cell:selected {
+    -fx-text-fill: #E67FFF;                  /* neon-pink when selected */
+}
+.active-col .table-cell {
+    -fx-alignment: CENTER;                   /* dot in center */
+}
+
+/* 7) Scrollbar styling */
+.player-table .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-padding: 0 2 0 0;
+}
+.player-table .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-padding: 2 0 0 0;
+}
+.player-table .thumb {
+    -fx-background-color: rgba(159,220,255,0.4);
+    -fx-background-insets: 0;
+    -fx-background-radius: 4;
+}
+.player-table .increment-button,
+.player-table .decrement-button {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+}

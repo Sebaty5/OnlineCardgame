@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<VBox fx:id="Startup" stylesheets="@styles/style.css"
+      prefWidth="1920" prefHeight="1080" minWidth="1920" minHeight="1080" maxWidth="1920" maxHeight="1080"
+
+      alignment="CENTER" spacing="5.0"
+      xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="de.voidstack_overload.cardgame.controller.StartupScreenController">
+    <ImageView fx:id="logo" styleClass="logo" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@textures/logo/logo.png" />
+        </image>
+    </ImageView>
+    <Button fx:id="start" styleClass="startButton" mnemonicParsing="false" text="Start" onAction="#continueButtonClicked"/>
+</VBox>

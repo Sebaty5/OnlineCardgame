@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.text.Text?>
+
+<GridPane hgap="200" stylesheets="@styles/style.css" styleClass="background"
+          prefWidth="1920" prefHeight="1080"
+          xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="de.voidstack_overload.cardgame.controller.LoginController" alignment="CENTER">
+
+    <VBox alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="0">
+        <HBox spacing="15">
+            <Button styleClass="backButton" text="&lt;" onAction="#switchToMainMenu"/>
+            <VBox alignment="CENTER" fx:id="menuPanel" styleClass="menuPanel" spacing="15">
+                <Text fx:id="menuPanelHeader" text="Login"/>
+                <TextField fx:id="username" styleClass="inputField" promptText="Username"/>
+                <PasswordField fx:id="password" styleClass="inputField" promptText="Password"/>
+                <Button styleClass="normalButton" mnemonicParsing="false" text="Log in" onAction="#confirmLogin"/>
+                <Button styleClass="secondaryButton" mnemonicParsing="false" text="Register" onAction="#switchToRegistration"/>
+            </VBox>
+        </HBox>
+    </VBox>
+    <VBox GridPane.rowIndex="0" GridPane.columnIndex="1">
+        <ImageView fx:id="logo" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@textures/logo/logo.png"/>
+            </image>
+        </ImageView>
+    </VBox>
+</GridPane>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="CENTER" hgap="200" prefHeight="1080" prefWidth="1920" styleClass="background" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.voidstack_overload.cardgame.controller.MenuController">
+
+    <VBox alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="0">
+        <HBox spacing="15">
+            <Button styleClass="backButton" text="&lt;" visible="false" />
+            <VBox fx:id="menuPanel" spacing="15" styleClass="menuPanel" alignment="CENTER">
+                <Button mnemonicParsing="false" onAction="#switchToLogin" styleClass="normalButton" text="Play" />
+                <Button mnemonicParsing="false" onAction="#switchToSettings" styleClass="secondaryButton" text="Settings" />
+                <Button mnemonicParsing="false" onAction="#switchToCredits" styleClass="secondaryButton" text="Credits" />
+                <Button mnemonicParsing="false" onAction="#switchToQuitGame" styleClass="secondaryButton" text="Quit" />
+            </VBox>
+        </HBox>
+    </VBox>
+    <VBox GridPane.columnIndex="1" GridPane.rowIndex="0">
+        <ImageView fx:id="logo" pickOnBounds="true" preserveRatio="true" >
+            <image>
+                <Image url="@textures/logo/logo.png" />
+            </image>
+        </ImageView>
+    </VBox>
+</GridPane>

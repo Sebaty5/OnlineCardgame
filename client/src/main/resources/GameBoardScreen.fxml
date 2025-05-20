@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+
+<?import javafx.geometry.Insets?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import de.voidstack_overload.cardgame.fxNodes.HandPane?>
+<?import de.voidstack_overload.cardgame.fxNodes.CardStackPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.text.Font?>
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            prefWidth="1920" prefHeight="1080"
+            fx:id="root"
+            fx:controller="de.voidstack_overload.cardgame.controller.GameBoardScreenController"
+            stylesheets="@styles/style.css" styleClass="background">
+
+    <top>
+        <AnchorPane minHeight="80" prefHeight="100">
+            <HBox spacing="20" AnchorPane.rightAnchor="40" AnchorPane.topAnchor="16">
+                <Button fx:id="settingsButton"
+                        text="Settings"
+                        onAction="#openSettings"
+                        styleClass="mainGameButton"/>
+                <Button fx:id="leaveButton"
+                        text="Leave"
+                        onAction="#lobbyLeave"
+                        styleClass="mainGameButton"/>
+            </HBox>
+        </AnchorPane>
+    </top>
+
+    <!-- ═════════════ LEFT COLUMN ─ score + stacks ════════════════ -->
+    <left>
+        <VBox fx:id="leftPane" spacing="12" alignment="CENTER" BorderPane.alignment="TOP_CENTER" prefWidth="100" prefHeight="Infinity">
+            <padding><Insets top="40" right="20" bottom="0" left="40"/></padding>
+
+            <FlowPane alignment="CENTER">
+                <ImageView fx:id="trumpColorImage" fitWidth="72" preserveRatio="true"/>
+                <StackPane>
+                    <ImageView fx:id="cardStack" fitWidth="182" preserveRatio="true">
+                    </ImageView>
+                </StackPane>
+                <Label fx:id="cardStackLabel" text="42" styleClass="stackLabel"><font>
+                    <Font size="20.0" />
+                </font></Label>
+            </FlowPane>
+        </VBox>
+    </left>
+
+    <center>
+        <StackPane BorderPane.alignment="TOP_CENTER">
+            <GridPane fx:id="stackArea" hgap="20" vgap="8" alignment="CENTER">
+                <padding><Insets top="40" right="40" bottom="20" left="40"/></padding>
+                <columnConstraints>
+
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints vgrow="ALWAYS"/>
+                    <RowConstraints vgrow="ALWAYS"/>
+                </rowConstraints>
+
+                <CardStackPane fx:id="smallStack1" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="cardStackSection">
+                </CardStackPane>
+
+                <CardStackPane fx:id="smallStack2" GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="cardStackSection">
+                </CardStackPane>
+
+                <CardStackPane fx:id="smallStack3" GridPane.columnIndex="2" GridPane.rowIndex="0" styleClass="cardStackSection">
+                </CardStackPane>
+
+                <CardStackPane fx:id="smallStack4" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="cardStackSection">
+                </CardStackPane>
+
+                <CardStackPane fx:id="smallStack5" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="cardStackSection">
+                </CardStackPane>
+
+                <CardStackPane fx:id="smallStack6" GridPane.columnIndex="2" GridPane.rowIndex="1" styleClass="cardStackSection">
+                </CardStackPane>
+            </GridPane>
+        </StackPane>
+        <!-- ❷ defend / take prompt (slightly below row)
+        <Label fx:id="defendOrTakeLabel"
+               StackPane.alignment="BOTTOM_CENTER"
+               translateY="-160"
+               styleClass="defendOrTakeLabel"/> -->
+
+    </center>
+
+    <!-- ═════════════ BOTTOM BAR ─ player hand + actions ═════════ -->
+    <bottom>
+        <VBox spacing="20" BorderPane.alignment="CENTER" alignment="CENTER">
+            <padding><Insets top="0" right="0" bottom="40" left="0"/></padding>
+
+            <!-- dynamic card buttons get added here -->
+            <HandPane fx:id="playerHand" maxHeight="360">
+
+            </HandPane>
+
+            <StackPane>
+                <Button fx:id="takeOrPassButton" text="Take" styleClass="normalButton" onAction="#takeOrPassAction"/>
+                <Button fx:id="startGameButton" text="Start" styleClass="normalButton" onAction="#startGame"/>
+            </StackPane>
+        </VBox>
+    </bottom>
+
+    <!-- ═════════════ RIGHT PANEL ─ lobby + chat ═════════════════ -->
+    <right>
+        <VBox BorderPane.alignment="TOP_CENTER">
+            <padding><Insets top="40" right="40" bottom="40" left="40"/></padding>
+            <VBox fx:id="lobbyInfoPane" spacing="20" styleClass="playerList" prefWidth="360" >
+                <!-- header -->
+                <Label fx:id="LobbyInfoLabel" text="Waiting 1/6" styleClass="panelHeader"/>
+
+                <GridPane prefWidth="300" fx:id="playerList" styleClass="list-area">
+                    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="10"/>
+                        <ColumnConstraints percentWidth="30"/>
+                        <ColumnConstraints percentWidth="50"/>
+                        <ColumnConstraints percentWidth="10"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints vgrow="ALWAYS"/>
+                        <RowConstraints vgrow="ALWAYS"/>
+                        <RowConstraints vgrow="ALWAYS"/>
+                        <RowConstraints vgrow="ALWAYS"/>
+                        <RowConstraints vgrow="ALWAYS"/>
+                        <RowConstraints vgrow="ALWAYS"/>
+                    </rowConstraints>
+
+                </GridPane>
+                <Button fx:id="closeSlotBtn" text="×" styleClass="closeSlotButton" visible="false"/>
+
+                <Label text="Chat" styleClass="panelHeader"/>
+                <TextArea fx:id="chatHistory" editable="false" prefRowCount="6" styleClass="chatPanelOutput"/>
+                <TextField fx:id="chatTextInputField" promptText="Write something…" onAction="#checkButtonAvailability" styleClass="chatSendField"/>
+                <Button fx:id="sendText" text="Send" onAction="#sendChatMessage" styleClass="chatSendButton"/>
+            </VBox>
+        </VBox>
+    </right>
+
+</BorderPane>

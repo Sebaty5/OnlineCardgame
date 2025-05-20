@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane hgap="200" alignment="CENTER" stylesheets="@styles/style.css" styleClass="background"
+          prefWidth="1920" prefHeight="1080"
+          xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.voidstack_overload.cardgame.controller.LobbySettingsController">
+
+    <VBox alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="0">
+        <HBox spacing="15">
+            <Button styleClass="backButton" text="&lt;" onAction="#switchToProfile"/>
+            <VBox fx:id="menuPanel" styleClass="menuPanel" alignment="CENTER" spacing="15">
+                <Text fx:id="menuPanelHeader" text="  Lobby&#10;Settings"/>
+                <TextField fx:id="lobbyName" styleClass="inputField" promptText="Lobby Name"/>
+                <PasswordField fx:id="lobbyPassword" styleClass="inputField" promptText="Lobby Password"/>
+                <Text styleClass="info" text="To create a public lobby leave the password field empty"/>
+                <HBox alignment="CENTER_LEFT">
+                    <Text styleClass="panelText" text="max players"/>
+                </HBox>
+                <Slider fx:id="maxPlayers" blockIncrement="1" majorTickUnit="1" max="6" min="2" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="2" />
+                <HBox alignment="CENTER_LEFT">
+                    <Text styleClass="panelText" text="bots"/>
+                </HBox>
+                <Slider fx:id="botAmount" blockIncrement="1" majorTickUnit="1" max="1" min="0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" styleClass="panelSlider" value="0" />
+                <Button mnemonicParsing="false" styleClass="normalButton" text="create lobby" onAction="#createLobby"/>
+            </VBox>
+        </HBox>
+    </VBox>
+    <VBox GridPane.columnIndex="1" GridPane.rowIndex="0">
+        <ImageView pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@textures/logo/logo.png"/>
+            </image>
+        </ImageView>
+    </VBox>
+</GridPane>
+

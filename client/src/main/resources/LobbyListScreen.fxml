@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane fx:id="masterPane" alignment="CENTER" hgap="200" prefHeight="1080" prefWidth="1920" styleClass="background" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.voidstack_overload.cardgame.controller.LobbyListScreenController">
+    <padding>
+        <Insets bottom="40" left="40" right="40" top="40" />
+    </padding>
+
+    <columnConstraints>
+        <ColumnConstraints hgrow="ALWAYS" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="80" />
+        <RowConstraints vgrow="ALWAYS" />
+    </rowConstraints>
+
+
+
+    <Button fx:id="backButton" onAction="#switchToMenu" styleClass="backButton" text="&lt;" GridPane.columnIndex="0" GridPane.rowIndex="0">
+      <GridPane.margin>
+         <Insets bottom="20.0" />
+      </GridPane.margin></Button>
+
+    <StackPane GridPane.columnIndex="0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+        <BorderPane styleClass="listBox" GridPane.columnIndex="0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+            <padding><Insets bottom="14" left="14" right="14" top="14" /></padding>
+
+            <center>
+                <ListView fx:id="listView" prefHeight="0" prefWidth="0" BorderPane.alignment="CENTER" />
+            </center>
+        </BorderPane>
+    </StackPane>
+</GridPane>

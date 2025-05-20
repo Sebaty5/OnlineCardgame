@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.text.Text?>
+
+<GridPane hgap="50" stylesheets="@styles/style.css" styleClass="background"
+          prefWidth="1920" prefHeight="1080"
+
+          xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="de.voidstack_overload.cardgame.controller.ConnectionScreenController">
+
+    <VBox alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="0">
+        <HBox spacing="15">
+            <Region/>
+            <Button styleClass="backButton" text="&lt;"/>
+            <VBox alignment="CENTER" fx:id="menuPanel" spacing="15">
+                <Text fx:id="menuPanelHeader" text="Connection"/>
+                <TextField styleClass="inputField" text="IP-Adresse"/>
+                <TextField styleClass="inputField" text="Port"/>
+                <TextField styleClass="inputField" text="Server-Password"/>
+                <TextField styleClass="inputField" text="Name"/>
+                <Button styleClass="normalButton" mnemonicParsing="false" text="Play"/>
+                <Region/>
+            </VBox>
+            <Region/>
+        </HBox>
+    </VBox>
+
+    <VBox GridPane.rowIndex="0" GridPane.columnIndex="1">
+        <ImageView pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@textures/logo/logo.png"/>
+            </image>
+        </ImageView>
+    </VBox>
+</GridPane>
