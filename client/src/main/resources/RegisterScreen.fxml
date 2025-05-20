@@ -16,11 +16,11 @@
             <Button styleClass="backButton" text="&lt;" onAction="#switchToLogin"/>
             <VBox alignment="CENTER" fx:id="menuPanel" styleClass="menuPanel" spacing="15">
                 <Text fx:id="menuPanelHeader" text="Register"/>
-                <TextField fx:id="name" styleClass="inputField" promptText="Name"/>
-                <TextField fx:id="email" styleClass="inputField" promptText="Email"/>
-                <TextField fx:id="username" styleClass="inputField" promptText="Username"/>
-                <PasswordField fx:id="password" styleClass="inputField" promptText="Password"/>
-                <Button styleClass="normalButton" mnemonicParsing="false" text="Register" onAction="#confirmRegistration"/>
+                <TextField fx:id="name" styleClass="inputField" text="%name"/>
+                <TextField fx:id="email" styleClass="inputField" text="%email"/>
+                <TextField fx:id="username" styleClass="inputField" text="%username"/>
+                <PasswordField fx:id="password" styleClass="inputField" text="%password"/>
+                <Button styleClass="normalButton" mnemonicParsing="false" text="%register" onAction="#confirmRegistration"/>
             </VBox>
         </HBox>
     </VBox>

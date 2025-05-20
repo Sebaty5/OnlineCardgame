@@ -16,5 +16,5 @@
             <Image url="@textures/logo/logo.png" />
         </image>
     </ImageView>
-    <Button fx:id="start" styleClass="startButton" mnemonicParsing="false" text="%game.start" onAction="#continueButtonClicked"/>
+    <Button fx:id="start" styleClass="startButton" mnemonicParsing="false" text="%start" onAction="#continueButtonClicked"/>
 </VBox>

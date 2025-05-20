@@ -10,10 +10,10 @@
         <HBox spacing="15">
             <Button styleClass="backButton" text="&lt;" visible="false" />
             <VBox fx:id="menuPanel" spacing="15" styleClass="menuPanel" alignment="CENTER">
-                <Button mnemonicParsing="false" onAction="#switchToLogin" styleClass="normalButton" text="Play" />
-                <Button mnemonicParsing="false" onAction="#switchToSettings" styleClass="secondaryButton" text="Settings" />
-                <Button mnemonicParsing="false" onAction="#switchToCredits" styleClass="secondaryButton" text="Credits" />
-                <Button mnemonicParsing="false" onAction="#switchToQuitGame" styleClass="secondaryButton" text="Quit" />
+                <Button mnemonicParsing="false" onAction="#switchToLogin" styleClass="normalButton" text="%play" />
+                <Button mnemonicParsing="false" onAction="#switchToSettings" styleClass="secondaryButton" text="%settings" />
+                <Button mnemonicParsing="false" onAction="#switchToCredits" styleClass="secondaryButton" text="%credits" />
+                <Button mnemonicParsing="false" onAction="#switchToQuitGame" styleClass="secondaryButton" text="%quit" />
             </VBox>
         </HBox>
     </VBox>

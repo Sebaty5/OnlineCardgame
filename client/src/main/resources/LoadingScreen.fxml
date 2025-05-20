@@ -20,7 +20,7 @@
     </top>
     <center>
         <VBox alignment="CENTER" spacing="35.0">
-            <Label fx:id = "loadingText" text="loading"/>
+            <Label fx:id = "loadingText" text="%loading"/>
             <ProgressBar fx:id="loadingBar" styleClass="rounded-progress">
             </ProgressBar>
         </VBox>

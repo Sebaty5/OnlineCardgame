@@ -17,14 +17,14 @@
         <HBox spacing="15">
             <Button styleClass="backButton" text="&lt;" onAction="#switchToMenu"/>
             <VBox alignment="CENTER" fx:id="menuPanel" styleClass="menuPanel" spacing="15">
-                <Text fx:id="menuPanelHeader" text="Settings"/>
+                <Text fx:id="menuPanelHeader" text="%settings"/>
                 <HBox alignment="CENTER_LEFT">
-                    <Text styleClass="panelText" text="Sound"/>
+                    <Text styleClass="panelText" text="%sound"/>
                 </HBox>
                 <Slider fx:id="volumeSlider" min="0" max="100" value="50" showTickLabels="true" showTickMarks="true" blockIncrement="10"
                         majorTickUnit="10" minorTickCount="0"/>
                 <HBox alignment="CENTER_LEFT">
-                    <Text styleClass="panelText" text="Language"/>
+                    <Text styleClass="panelText" text="%language"/>
                 </HBox>
                 <ChoiceBox fx:id="choiceBoxLanguage">
                     <items>
@@ -35,7 +35,7 @@
                     </items>
                 </ChoiceBox>
                 <HBox alignment="CENTER_LEFT">
-                    <Text styleClass="panelText" text="Resulotion"/>
+                    <Text styleClass="panelText" text="%resolution"/>
                 </HBox>
                 <ChoiceBox fx:id="choiceBoxResolution" value="1920x1080">
                     <items>
@@ -48,7 +48,7 @@
                 <HBox alignment="CENTER_LEFT" spacing="10">
                     <CheckBox fx:id="checkFullScreen"/>
                     <Region/>
-                    <Text styleClass="panelText" text="Fullscreen"/>
+                    <Text styleClass="panelText" text="%fullscreen"/>
                 </HBox>
                 <Region/>
             </VBox>
