@@ -18,7 +18,9 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 public class SceneManager {
 
@@ -107,6 +109,7 @@ public class SceneManager {
 
     public void switchScene(SceneFXML fxmlFile) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(fxmlFile.getFxmlFile()));
+        loader.setResources(ResourceBundle.getBundle("messages", new Locale("en", "EN")));
         Parent view = loader.load();
         BaseController controller = loader.getController();
         controller.setSceneManager(this);

@@ -10,11 +10,11 @@
 
       alignment="CENTER" spacing="5.0"
       xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="de.voidstack_overload.cardgame.controller.StartupScreenController">
+      fx:controller="de.voidstack_overload.cardgame.controller.StartupScreenController" >
     <ImageView fx:id="logo" styleClass="logo" pickOnBounds="true" preserveRatio="true">
         <image>
             <Image url="@textures/logo/logo.png" />
         </image>
     </ImageView>
-    <Button fx:id="start" styleClass="startButton" mnemonicParsing="false" text="Start" onAction="#continueButtonClicked"/>
+    <Button fx:id="start" styleClass="startButton" mnemonicParsing="false" text="%game.start" onAction="#continueButtonClicked"/>
 </VBox>
