@@ -16,8 +16,8 @@
             <Button styleClass="backButton" text="&lt;" onAction="#switchToMainMenu"/>
             <VBox alignment="CENTER" fx:id="menuPanel" styleClass="menuPanel" spacing="15">
                 <Text fx:id="menuPanelHeader" text="%login"/>
-                <TextField fx:id="username" styleClass="inputField" text="%username"/>
-                <PasswordField fx:id="password" styleClass="inputField" text="%password"/>
+                <TextField fx:id="username" styleClass="inputField" promptText="%username"/>
+                <PasswordField fx:id="password" styleClass="inputField" promptText="%password"/>
                 <Button styleClass="normalButton" mnemonicParsing="false" text="%login" onAction="#confirmLogin"/>
                 <Button styleClass="secondaryButton" mnemonicParsing="false" text="%register" onAction="#switchToRegistration"/>
             </VBox>
