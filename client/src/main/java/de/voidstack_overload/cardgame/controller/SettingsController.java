@@ -29,11 +29,12 @@ public class SettingsController extends BaseController {
     private ChoiceBox<String> choiceBoxResolution;
     @FXML
     private CheckBox checkFullScreen;
-
+    @FXML
+    private ResourceBundle resources;
     private int lastWindowedW;
     private int lastWindowedH;
-
     private Stage stage;
+
 
 
     @Override
@@ -70,7 +71,6 @@ public class SettingsController extends BaseController {
 
         checkFullScreen.selectedProperty().addListener((obs, was, is) -> {
             if (is) {
-                ResourceBundle ressources = ResourceBundle.getBundle("messages", sceneManager.getLocale());
 
                 lastWindowedW = SceneManager.getWidth();
                 lastWindowedH = SceneManager.getHeight();
@@ -81,7 +81,7 @@ public class SettingsController extends BaseController {
                 Pair<Integer, Integer> monitor = monitorPixels();
                 SceneManager.setSize(monitor.getKey(), monitor.getValue());
                 choiceBoxResolution.setDisable(true);
-                choiceBoxResolution.setValue(ressources.getString("fullscreenMessage"));
+                choiceBoxResolution.setValue(resources.getString("fullscreenMessage"));
             } else {
                 stage.setFullScreen(false);
                 applyWindowedSize(lastWindowedW, lastWindowedH);

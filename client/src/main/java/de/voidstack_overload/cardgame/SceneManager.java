@@ -187,8 +187,4 @@ public class SceneManager {
             stage.setWidth(width + decoW);
         }
     }
-
-    public Locale getLocale() {
-        return locale;
-    }
 }
