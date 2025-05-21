@@ -308,6 +308,16 @@
     -fx-stroke-width: 2px;
 }
 
+.menuPanelHeader {
+    -fx-alignment: center;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 60px;
+    -fx-font-weight: bold;
+    -fx-fill: #0F042C; /* Fill color */
+    -fx-stroke: #FFD3FF; /* Border color */
+    -fx-stroke-width: 2px;
+}
+
 Region {
     -fx-min-height: 20px;
 }
