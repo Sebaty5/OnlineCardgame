@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import javafx.util.Pair;
 
 import java.io.IOException;
+import java.util.Locale;
 
 public class SettingsController extends BaseController {
     private static final StandardLogger LOGGER = new StandardLogger();
@@ -41,7 +42,6 @@ public class SettingsController extends BaseController {
         SettingData data = Settings.INSTANCE.getSettingData();
 
         volumeSlider.setValue(data.volume());
-
         choiceBoxLanguage.setValue(data.language());
 
         choiceBoxResolution.setValue(data.width() + "x" + data.height());
@@ -58,7 +58,7 @@ public class SettingsController extends BaseController {
         choiceBoxResolution.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             if (newVal == null) return;
             if (checkFullScreen.isSelected()) return;
-            Pair<Integer,Integer> s = parse(newVal);
+            Pair<Integer, Integer> s = parse(newVal);
             applyWindowedSize(s.getKey(), s.getValue());
             LOGGER.log("Saving Values: choiceBoxResolution ComboBox");
             saveValues();
@@ -73,7 +73,7 @@ public class SettingsController extends BaseController {
                 stage.setFullScreenExitHint("");
                 stage.setFullScreen(true);
 
-                Pair<Integer,Integer> monitor = monitorPixels();
+                Pair<Integer, Integer> monitor = monitorPixels();
                 SceneManager.setSize(monitor.getKey(), monitor.getValue());
                 choiceBoxResolution.setDisable(true);
                 choiceBoxResolution.setValue("fixed (full-screen)");
@@ -97,7 +97,20 @@ public class SettingsController extends BaseController {
 
         choiceBoxLanguage.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             LOGGER.log("Saving Values: choiceBoxLanguage ComboBox");
+            String language = choiceBoxLanguage.getValue();
             saveValues();
+            System.out.println("ABC 1 " + language + " " + sceneManager.getLanguage());
+            if (!language.equals(sceneManager.getLanguage())) {
+                System.out.println("ABC 2");
+                sceneManager.changeLanguage(language);
+                try {
+                    sceneManager.switchScene(SceneFXML.SETTINGS);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+
         });
     }
 

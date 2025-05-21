@@ -1,5 +1,6 @@
 package de.voidstack_overload.cardgame;
 
+import de.voidstack_overload.cardgame.configuration.Config;
 import de.voidstack_overload.cardgame.configuration.SettingData;
 import de.voidstack_overload.cardgame.configuration.Settings;
 import de.voidstack_overload.cardgame.controller.BaseController;
@@ -43,7 +44,9 @@ public class SceneManager {
 
     private static int width = Math.max(Toolkit.getDefaultToolkit().getScreenSize().width, 1920);
     private static int height = Math.max(Toolkit.getDefaultToolkit().getScreenSize().height, 1080);
-
+    private Locale locale = changeLanguage(Settings.INSTANCE.getSettingData().language());
+    private SceneFXML fxml;
+    private String language = Settings.INSTANCE.getSettingData().language();
     public static void setSize(int w, int h) {
         width = w;
         height = h;
@@ -51,20 +54,23 @@ public class SceneManager {
     public static int getWidth () {
         return width;
     }
+
     public static int getHeight() {
         return height;
     }
-
     private final double decoW;
     private final double decoH;
 
     private boolean isFullScreen = false;
 
+    public String getLanguage() {
+        return language;
+    }
+
     public void setFullScreen(boolean fs)
     {
         this.isFullScreen = fs;
     }
-
     private final MediaPlayer player;
 
     public SceneManager(Stage stage) {
@@ -106,10 +112,9 @@ public class SceneManager {
         Media media = new Media(filePath);
         player = new MediaPlayer(media);
     }
-
     public void switchScene(SceneFXML fxmlFile) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(fxmlFile.getFxmlFile()));
-        loader.setResources(ResourceBundle.getBundle("messages", new Locale("en", "EN")));
+        loader.setResources(ResourceBundle.getBundle("messages", locale));
         Parent view = loader.load();
         BaseController controller = loader.getController();
         controller.setSceneManager(this);
@@ -122,6 +127,8 @@ public class SceneManager {
             resizeStageIfNeeded();
         }
 
+        fxml = fxmlFile;
+
         if (fxmlFile.equals(SceneFXML.MENU) || fxmlFile.equals(SceneFXML.SETTINGS) || fxmlFile.equals(SceneFXML.CREDIT) || fxmlFile.equals(SceneFXML.QUIT_GAME)) {
             adjustVolume(data.volume());
             player.play();
@@ -132,6 +139,21 @@ public class SceneManager {
 
     public void adjustVolume(double volume) {
         player.setVolume(volume / 100.0);
+    }
+
+    public Locale changeLanguage(String language) {
+        switch (language) {
+            case "Deutsch":
+                locale = new Locale("de", "DE");
+                break;
+            case "English":
+                locale = new Locale("en", "EN");
+                break;
+            default:
+                break;
+        }
+        this.language = language;
+        return this.locale;
     }
 
     private void bindScale() {
