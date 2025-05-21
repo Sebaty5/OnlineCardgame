@@ -8,6 +8,7 @@ import de.voidstack_overload.cardgame.utility.FxUtility;
 import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -85,12 +86,15 @@ public class LobbyListScreenController extends BaseController {
         }
     }
 
+    @FXML
+    private ResourceBundle resources;
+
     private static class LobbyCell extends ListCell<Lobby> {
         private final GridPane grid = new GridPane();
         private final Label name   = new Label();
         private final Label count  = new Label();
         private final ImageView lock = new ImageView("textures/icons/lock.png");
-        private final Button join  = new Button("Join");
+        private final Button join  = new Button();
 
         public LobbyCell() {
             //grid.getStyleClass().add("lobby");            // neon background
@@ -140,6 +144,9 @@ public class LobbyListScreenController extends BaseController {
                 join.setOnAction(null);
                 return;
             }
+
+            join.setText(LobbyListScreenController.INSTANCE.resources.getString("join"));
+
             name.setText(lobby.lobbyName());
             count.setText(lobby.currentPlayerCount() + "/" + lobby.maxPlayerCount());
             lock.setVisible(lobby.isPasswordProtected());
