@@ -31,6 +31,8 @@
         <AnchorPane minHeight="80" prefHeight="100">
             <HBox spacing="20" AnchorPane.rightAnchor="40" AnchorPane.topAnchor="16">
                 <Button fx:id="settingsButton"
+                        visible="false"
+                        disable="true"
                         text="%settings"
                         onAction="#openSettings"
                         styleClass="mainGameButton"/>
