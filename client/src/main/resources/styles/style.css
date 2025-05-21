@@ -385,7 +385,7 @@ Region {
 
 .slider .track {
     -fx-background-color: #0F042C;
-    -fx-pref-height: 40px;
+    -fx-pref-height: 20px;
     -fx-border-radius: 20px;
     -fx-border-width: 3px;
     -fx-border-color: #FFD3FF;
@@ -398,9 +398,8 @@ Region {
     -fx-border-radius: 20px;
 }
 
-.slider .tick-mark {
-    -fx-font-size: 20px;
-    -fx-fill: #FFD3FF;
+.slider {
+    -fx-font-size: 18px;
 }
 
 .choice-box {
