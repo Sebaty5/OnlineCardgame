@@ -26,6 +26,7 @@ import javafx.scene.image.Image;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.ResourceBundle;
 
 
 public class GameBoardScreenController extends BaseController
@@ -85,6 +86,9 @@ public class GameBoardScreenController extends BaseController
     @FXML
     private Button startGameButton;
 
+    @FXML
+    private ResourceBundle resources;
+
     private String host;
     private boolean inGame = false;
     private Lobby lobby;
@@ -130,9 +134,9 @@ public class GameBoardScreenController extends BaseController
     }
 
     private void setInfoLable(Lobby lobby) {
-        String infoLabelText = "Waiting";
+        String infoLabelText = resources.getString("game.wait");
         if(inGame){
-            infoLabelText = "In Game";
+            infoLabelText = resources.getString("in.game");
         }
         infoLabelText += ": " + lobby.currentPlayerCount() + "/" + lobby.maxPlayerCount();
         LobbyInfoLabel.setText(infoLabelText);
@@ -179,7 +183,7 @@ public class GameBoardScreenController extends BaseController
 
     public void updateTakePassButton(GameState state)
     {
-        takeOrPassButton.setText(state.defender().equals(AuthenticationService.INSTANCE.getUser().username()) ? "Take" : "Pass");
+        takeOrPassButton.setText(state.defender().equals(AuthenticationService.INSTANCE.getUser().username()) ? resources.getString("card.take") : resources.getString("card.pass"));
         takeOrPassButton.setDisable(!state.activePlayer().equals(AuthenticationService.INSTANCE.getUser().username()));
     }
 
@@ -213,8 +217,8 @@ public class GameBoardScreenController extends BaseController
             if(state.attackers().length > 1) attacker = attacker ||  p.name().equals(state.attackers()[1]);
 
             String role = "";
-            if (attacker) role = "Attacker";
-            else if (p.name().equals(state.defender())) role = "Defender";
+            if (attacker) role = resources.getString("game.attacker");
+            else if (p.name().equals(state.defender())) role = resources.getString("game.defender");
 
             playerList.add(new Label(p.name().equals(state.activePlayer()) ? "+" : ""), 0 ,i);
             playerList.add(new Label(role), 1, i);
