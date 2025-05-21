@@ -1,6 +1,5 @@
 package de.voidstack_overload.cardgame;
 
-import de.voidstack_overload.cardgame.configuration.Config;
 import de.voidstack_overload.cardgame.configuration.SettingData;
 import de.voidstack_overload.cardgame.configuration.Settings;
 import de.voidstack_overload.cardgame.controller.BaseController;
@@ -45,7 +44,6 @@ public class SceneManager {
     private static int width = Math.max(Toolkit.getDefaultToolkit().getScreenSize().width, 1920);
     private static int height = Math.max(Toolkit.getDefaultToolkit().getScreenSize().height, 1080);
     private Locale locale = changeLanguage(Settings.INSTANCE.getSettingData().language());
-    private SceneFXML fxml;
     private String language = Settings.INSTANCE.getSettingData().language();
     public static void setSize(int w, int h) {
         width = w;
@@ -126,8 +124,6 @@ public class SceneManager {
             setSize(data.width(), data.height());
             resizeStageIfNeeded();
         }
-
-        fxml = fxmlFile;
 
         if (fxmlFile.equals(SceneFXML.MENU) || fxmlFile.equals(SceneFXML.SETTINGS) || fxmlFile.equals(SceneFXML.CREDIT) || fxmlFile.equals(SceneFXML.QUIT_GAME)) {
             adjustVolume(data.volume());

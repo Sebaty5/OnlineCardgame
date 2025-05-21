@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 import javafx.util.Pair;
 
 import java.io.IOException;
-import java.util.Locale;
 
 public class SettingsController extends BaseController {
     private static final StandardLogger LOGGER = new StandardLogger();
