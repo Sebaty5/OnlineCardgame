@@ -15,6 +15,9 @@ import javafx.util.Pair;
 
 import java.io.IOException;
 
+import java.util.ResourceBundle;
+
+
 public class SettingsController extends BaseController {
     private static final StandardLogger LOGGER = new StandardLogger();
 
@@ -54,6 +57,7 @@ public class SettingsController extends BaseController {
 
     @FXML
     private void initialize() {
+
         choiceBoxResolution.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             if (newVal == null) return;
             if (checkFullScreen.isSelected()) return;
@@ -66,6 +70,8 @@ public class SettingsController extends BaseController {
 
         checkFullScreen.selectedProperty().addListener((obs, was, is) -> {
             if (is) {
+                ResourceBundle ressources = ResourceBundle.getBundle("messages", sceneManager.getLocale());
+
                 lastWindowedW = SceneManager.getWidth();
                 lastWindowedH = SceneManager.getHeight();
 
@@ -75,7 +81,7 @@ public class SettingsController extends BaseController {
                 Pair<Integer, Integer> monitor = monitorPixels();
                 SceneManager.setSize(monitor.getKey(), monitor.getValue());
                 choiceBoxResolution.setDisable(true);
-                choiceBoxResolution.setValue("fixed (full-screen)");
+                choiceBoxResolution.setValue(ressources.getString("fullscreenMessage"));
             } else {
                 stage.setFullScreen(false);
                 applyWindowedSize(lastWindowedW, lastWindowedH);
