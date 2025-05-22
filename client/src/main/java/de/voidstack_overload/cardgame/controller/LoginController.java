@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 public class LoginController extends BaseController {
 
@@ -17,11 +18,14 @@ public class LoginController extends BaseController {
     @FXML
     private PasswordField password;
 
+    @FXML
+    private ResourceBundle resources;
+
     public void confirmLogin() {
         String username = this.username.getText();
         String password = this.password.getText();
         if (username.isEmpty() || password.isEmpty()) {
-            showError("Username or password cannot be empty");
+            showError(resources.getString("login.error"));
             return;
         }
         AuthenticationService.INSTANCE.login(username, password);

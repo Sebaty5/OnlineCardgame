@@ -68,7 +68,6 @@
 
 #subtext {
     -fx-font-size: 35px;
-    -fx-text-alignment: center;
     -fx-fill: #FFFFFF;
 }
 
@@ -308,6 +307,16 @@
     -fx-stroke-width: 2px;
 }
 
+.menuPanelHeader {
+    -fx-alignment: center;
+    -fx-font-family: 'Orbitron';
+    -fx-font-size: 60px;
+    -fx-font-weight: bold;
+    -fx-fill: #0F042C; /* Fill color */
+    -fx-stroke: #FFD3FF; /* Border color */
+    -fx-stroke-width: 2px;
+}
+
 Region {
     -fx-min-height: 20px;
 }
@@ -375,7 +384,7 @@ Region {
 
 .slider .track {
     -fx-background-color: #0F042C;
-    -fx-pref-height: 40px;
+    -fx-pref-height: 20px;
     -fx-border-radius: 20px;
     -fx-border-width: 3px;
     -fx-border-color: #FFD3FF;
@@ -388,9 +397,8 @@ Region {
     -fx-border-radius: 20px;
 }
 
-.slider .tick-mark {
-    -fx-font-size: 20px;
-    -fx-fill: #FFD3FF;
+.slider {
+    -fx-font-size: 18px;
 }
 
 .choice-box {
@@ -764,4 +772,17 @@ Region {
 .player-table .decrement-button {
     -fx-padding: 0;
     -fx-background-color: transparent;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #130539;
+    -fx-background-radius: 25;
 }

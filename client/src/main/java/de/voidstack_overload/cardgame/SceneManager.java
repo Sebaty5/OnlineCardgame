@@ -18,7 +18,9 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 public class SceneManager {
 
@@ -41,7 +43,8 @@ public class SceneManager {
 
     private static int width = Math.max(Toolkit.getDefaultToolkit().getScreenSize().width, 1920);
     private static int height = Math.max(Toolkit.getDefaultToolkit().getScreenSize().height, 1080);
-
+    private Locale locale = changeLanguage(Settings.INSTANCE.getSettingData().language());
+    private String language = Settings.INSTANCE.getSettingData().language();
     public static void setSize(int w, int h) {
         width = w;
         height = h;
@@ -49,20 +52,23 @@ public class SceneManager {
     public static int getWidth () {
         return width;
     }
+
     public static int getHeight() {
         return height;
     }
-
     private final double decoW;
     private final double decoH;
 
     private boolean isFullScreen = false;
 
+    public String getLanguage() {
+        return language;
+    }
+
     public void setFullScreen(boolean fs)
     {
         this.isFullScreen = fs;
     }
-
     private final MediaPlayer player;
 
     public SceneManager(Stage stage) {
@@ -104,9 +110,9 @@ public class SceneManager {
         Media media = new Media(filePath);
         player = new MediaPlayer(media);
     }
-
     public void switchScene(SceneFXML fxmlFile) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(fxmlFile.getFxmlFile()));
+        loader.setResources(ResourceBundle.getBundle("messages", locale));
         Parent view = loader.load();
         BaseController controller = loader.getController();
         controller.setSceneManager(this);
@@ -129,6 +135,21 @@ public class SceneManager {
 
     public void adjustVolume(double volume) {
         player.setVolume(volume / 100.0);
+    }
+
+    public Locale changeLanguage(String language) {
+        switch (language) {
+            case "Deutsch":
+                locale = new Locale("de", "DE");
+                break;
+            case "English":
+                locale = new Locale("en", "EN");
+                break;
+            default:
+                break;
+        }
+        this.language = language;
+        return this.locale;
     }
 
     private void bindScale() {

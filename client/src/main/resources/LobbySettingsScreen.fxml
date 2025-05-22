@@ -13,19 +13,20 @@
         <HBox spacing="15">
             <Button styleClass="backButton" text="&lt;" onAction="#switchToProfile"/>
             <VBox fx:id="menuPanel" styleClass="menuPanel" alignment="CENTER" spacing="15">
-                <Text fx:id="menuPanelHeader" text="  Lobby&#10;Settings"/>
-                <TextField fx:id="lobbyName" styleClass="inputField" promptText="Lobby Name"/>
-                <PasswordField fx:id="lobbyPassword" styleClass="inputField" promptText="Lobby Password"/>
-                <Text styleClass="info" text="To create a public lobby leave the password field empty"/>
+                <Text styleClass="menuPanelHeader" text="%lobby"/>
+                <Text styleClass="menuPanelHeader" text="%settings"/>
+                <TextField fx:id="lobbyName" styleClass="inputField" promptText="%lobby.name"/>
+                <PasswordField fx:id="lobbyPassword" styleClass="inputField" promptText="%lobby.password"/>
+                <Text styleClass="info" text="%password.comment"/>
                 <HBox alignment="CENTER_LEFT">
-                    <Text styleClass="panelText" text="max players"/>
+                    <Text styleClass="panelText" text="%maxplayers"/>
                 </HBox>
                 <Slider fx:id="maxPlayers" blockIncrement="1" majorTickUnit="1" max="6" min="2" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="2" />
                 <HBox alignment="CENTER_LEFT">
-                    <Text styleClass="panelText" text="bots"/>
+                    <Text styleClass="panelText" text="%bots"/>
                 </HBox>
                 <Slider fx:id="botAmount" blockIncrement="1" majorTickUnit="1" max="1" min="0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" styleClass="panelSlider" value="0" />
-                <Button mnemonicParsing="false" styleClass="normalButton" text="create lobby" onAction="#createLobby"/>
+                <Button mnemonicParsing="false" styleClass="normalButton" text="%create.lobby" onAction="#createLobby"/>
             </VBox>
         </HBox>
     </VBox>

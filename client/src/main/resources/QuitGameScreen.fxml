@@ -7,10 +7,10 @@
 <BorderPane fx:id="QuitGameBox" styleClass="QuitGameBox" prefHeight="1080" prefWidth="1920" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.voidstack_overload.cardgame.controller.QuitGameScreenController">
     <center>
         <VBox fx:id="quitGame" styleClass="quitGame" alignment="CENTER" spacing="35.0" maxWidth="1200" maxHeight="400">
-            <Label fx:id="quitGameText" styleClass="quitGameText"  text="Are you sure you want to quit the Game?" />
+            <Label fx:id="quitGameText" styleClass="quitGameText"  text="%game.quit" />
             <TilePane alignment="CENTER" hgap="20">
-                <Button fx:id="quitGameButton" styleClass="normalButton" onAction="#quitGame" text="Yes, quit" />
-                <Button fx:id="dontQuitGameButton" styleClass="normalButton" onAction="#switchToMenu" text="No, stay" />
+                <Button fx:id="quitGameButton" styleClass="normalButton" onAction="#quitGame" text="%game.quit.yes" />
+                <Button fx:id="dontQuitGameButton" styleClass="normalButton" onAction="#switchToMenu" text="%game.quit.no" />
             </TilePane>
         </VBox>
     </center>
