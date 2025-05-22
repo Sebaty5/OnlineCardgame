@@ -32,6 +32,14 @@ public class MenuController extends BaseController {
         }
     }
 
+    public void switchToRules() {
+        try {
+            sceneManager.switchScene(SceneFXML.RULES);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void switchToQuitGame() {
         try {
             sceneManager.switchScene(SceneFXML.QUIT_GAME);

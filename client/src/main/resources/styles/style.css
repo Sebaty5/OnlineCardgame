@@ -68,7 +68,6 @@
 
 #subtext {
     -fx-font-size: 35px;
-    -fx-text-alignment: center;
     -fx-fill: #FFFFFF;
 }
 
@@ -773,4 +772,17 @@ Region {
 .player-table .decrement-button {
     -fx-padding: 0;
     -fx-background-color: transparent;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #130539;
+    -fx-background-radius: 25;
 }

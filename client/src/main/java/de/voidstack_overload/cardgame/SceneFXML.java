@@ -1,5 +1,7 @@
 package de.voidstack_overload.cardgame;
 
+import de.voidstack_overload.cardgame.controller.GameRulesScreenController;
+
 public enum SceneFXML {
     STARTUP("StartupScreen.fxml"),
     LOADING("LoadingScreen.fxml"),
@@ -12,7 +14,8 @@ public enum SceneFXML {
     PROFILE("ProfileScreen.fxml"),
     LOBBY_SETTINGS("LobbySettingsScreen.fxml"),
     LOBBY_LIST("LobbyListScreen.fxml"),
-    GAMEBOARD("GameBoardScreen.fxml");
+    GAMEBOARD("GameBoardScreen.fxml"),
+    RULES("GameRulesScreen.fxml");
     private final String fxmlFile;
 
     SceneFXML(String fxmlFile) {

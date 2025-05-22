@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      stylesheets="@styles/style.css" styleClass="background"
+      fx:controller="de.voidstack_overload.cardgame.controller.GameRulesScreenController"
+      prefWidth="1920" prefHeight="1080" alignment="CENTER" spacing="25">
+    <Region/>
+    <HBox spacing="25">
+        <Region/>
+        <Button styleClass="backButton" text="&lt;" onAction="#switchToMenu"/>
+    </HBox>
+    <HBox spacing="15">
+        <Region/>
+            <ScrollPane fitToWidth="true" fitToHeight="true" hbarPolicy="NEVER" vbarPolicy="NEVER">
+                <content>
+                    <Text fx:id="subtext" wrappingWidth="1850" text="%rules" textAlignment="LEFT"/>
+                </content>
+            </ScrollPane>
+        <Region/>
+    </HBox>
+</VBox>

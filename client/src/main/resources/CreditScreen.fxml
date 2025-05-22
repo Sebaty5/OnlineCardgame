@@ -18,7 +18,7 @@
     <VBox alignment="CENTER" spacing="50">
         <Text fx:id="header" styleClass="header" text="%credits"/>
         <Text fx:id="subtext"
-              text="%creditText"/>
+              text="%creditText" textAlignment="CENTER"/>
         <Button fx:id="backButton" mnemonicParsing="false" styleClass="normalButton" text="%back" BorderPane.alignment="CENTER_LEFT"
                 onAction="#switchToMenu"/>
     </VBox>
