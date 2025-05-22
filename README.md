@@ -8,9 +8,11 @@
 
 - 🔊 **Sound effects** for an immersive experience  
 - ⚙️ **Resolution options** and visual settings via CSS  
+- 🏳️**Two-language support** Game can be played in **English** or **German**
+- 📃**Rules** Read the rules of the game before playing
 - 🌐 **Multiplayer** over the internet or LAN via remote server connection  
 - 🧠 **Bot support** for singleplayer or filling incomplete lobbies  
-- 🎨 **Custom application icon** support  
+- 🎨 **Custom application icon** support 
 - 🖥️ Simple UI built with **JavaFX** and **FXML**  
 - 🪛 Self-contained `client.jar` with no installer required
 
