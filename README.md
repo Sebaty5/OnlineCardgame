@@ -32,8 +32,8 @@
 
 ### 💡 To run the game:
 
-1. Download the latest release of `client.jar` from the [Releases](./releases) section.
+1. Download the latest release of `OnlineCardgame.jar` from the [Releases](./releases) section.
 2. Run with:
 
 ```bash
-java -jar client.jar
+java -jar OnlineCardgame.jar
