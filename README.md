@@ -34,7 +34,7 @@
 
 ### 💡 To run the game:
 
-1. Download the latest release of `OnlineCardgame.jar` from the [Releases](./releases) section.
+1. Download the latest release of `OnlineCardgame.jar` from the [Releases](https://github.com/Sebaty5/OnlineCardgame/releases) section.
 2. Run with:
 
 ```bash
